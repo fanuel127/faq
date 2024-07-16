@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\QuestionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,13 +19,5 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-//Auth::routes();
-
-Route::get('/question', [App\Http\Controllers\QuestionController::class, 'index2'])->name('question');
-
-//Auth::routes();
-
-Route::get('/liste', [App\Http\Controllers\ListeController::class, 'index3'])->name('liste');
