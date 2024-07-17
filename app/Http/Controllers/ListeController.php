@@ -21,7 +21,7 @@ class ListeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index3()
+    public function index()
     {
         return view('liste');
     }
