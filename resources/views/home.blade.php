@@ -11,9 +11,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
+    <style>
+        body { background-image: url('{{ asset('image/streaming5.png') }}') }
+    </style>
 </head>
 <body>
-    <section class="vh-100 gradient-custom">
+    <!-- <section class="vh-100 gradient-custom">
         <div class="container py-2 h-100">
           <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-12 col-md-8 col-lg-8 col-xl-5">
@@ -71,6 +74,61 @@
             </div>
           </div>
         </div>
-      </section>
+    </section>
+    <div class="container">
+        <div class="row g-2">
+            <div class="col-md">
+              <div class="form-floating">
+                <input type="email" class="form-control" id="floatingInputGrid" placeholder="name@example.com">
+                <label for="floatingInputGrid">Email address</label>
+              </div>
+            </div>
+            <div class="col-md">
+              <div class="form-floating">
+                <select class="form-select" id="floatingSelectGrid">
+                  <option selected>Open this select menu</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                </select>
+                <label for="floatingSelectGrid">Works with selects</label>
+              </div>
+            </div>
+        </div>
+        <div class="row g-2">
+            <div class="col-md">
+              <div class="form-floating">
+                <input type="email" class="form-control" id="floatingInputGrid" placeholder="name@example.com">
+                <label for="floatingInputGrid">Email address</label>
+              </div>
+            </div>
+            <div class="col-md">
+              <div class="form-floating">
+                <input type="email" class="form-control" id="floatingInputGrid" placeholder="name@example.com">
+                <label for="floatingInputGrid">Email address</label>
+              </div>
+            </div>
+        </div>
+        <div class="row g-2">
+            <div class="col-md">
+              <div class="form-floating">
+                <input type="email" class="form-control" id="floatingInputGrid" placeholder="name@example.com">
+                <label for="floatingInputGrid">Email address</label>
+              </div>
+            </div>
+            <div class="col-md">
+              <div class="form-floating">
+                <input type="email" class="form-control" id="floatingInputGrid" placeholder="name@example.com">
+                <label for="floatingInputGrid">Email address</label>
+              </div>
+            </div>
+        </div>
+    </div> -->
+    <div class="container">
+        <a href="#" class="tt_button tt_primary_button btn_primary_color pull-left panel-trigger-btn icon_right ">
+            <span class="prim_text"> <button style="height:90px; width: 400px ; background-color:orange ; text-align:center; font-size:40px;
+            margin:35% 38%">Gérer un Utilisateur</button> </span>
+        </a>
+    </div>
 </body>
 </html>
