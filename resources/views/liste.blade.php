@@ -12,31 +12,37 @@
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
     <style>
-        table { border: 3px solid brown; }
-        td,th,tr { border: 3px solid brown; }
-        body { background-color: black ; color: whitesmoke ; }
+        body { background-color:white; color:black; }
     </style>
 
 </head>
 <body>
-    <div class="row justify-content-center mt-5">
+    <div class="row justify-content-center mt-2">
         <div class="table-responsive col-12">
-            <table class="table table-bordered table-stiped table-success table-hover" id="crudTable">
-                <caption class="caption-top" style="font-size: 60px ; text-align:center ; color:aqua">
-                    <p> <u>Tableaux Des Questions Ajoutés</u> </p>
+            <table>
+                <caption class="caption-top" style="font-size: 60px ; text-align:center ; color:orange ; margin-top: 2px">
+                    <p> <u> Table des questions ajoutés </u> </p>
                 </caption>
                 <br>
                 <thead>
                     <tr>
-                        <th>Question Name</th>
-                        <th>Question Description</th>
-                        <th>QuestionCategory </th>
-                        <th>Image For The Question</th>
-                        <th>Video For The Question</th>
-                        <th>Solution To The Question</th>
+                        <th>Nom de la question</th>
+                        <th>Description de la question</th>
+                        <th>Categorie de la question</th>
+                        <th>Image de la question</th>
+                        <th>Vidéo de la question</th>
+                        <th>Solution à la question</th>
                     </tr>
                 </thead>
                 <tbody>
+                    <tr>
+                        <td>Listes Des Questions AjoutésListes Des Questions AjoutésListes Des Questions AjoutésListes Des Questions Ajoutés</td>
+                        <td>Listes Des Questions AjoutésListes Des Questions AjoutésListes Des Questions AjoutésListes Des Questions Ajoutés</td>
+                        <td>Listes Des Questions AjoutésListes Des Questions AjoutésListes Des Questions AjoutésListes Des Questions Ajoutés</td>
+                        <td> <img src="{{ asset('image/image1.png') }}" style="height: 180px ; width:340px ; padding-top:5px"> </td>
+                        <td>Listes Des Questions AjoutésListes Des Questions AjoutésListes Des Questions AjoutésListes Des Questions Ajoutés</td>
+                        <td>Listes Des Questions AjoutésListes Des Questions AjoutésListes Des Questions AjoutésListes Des Questions Ajoutés</td>
+                    </tr>
                     <tr>
                         <td>Listes Des Questions AjoutésListes Des Questions AjoutésListes Des Questions AjoutésListes Des Questions Ajoutés</td>
                         <td>Listes Des Questions AjoutésListes Des Questions AjoutésListes Des Questions AjoutésListes Des Questions Ajoutés</td>
@@ -65,13 +71,13 @@
             </table>
         </div>
     </div>
-    <footer>
+    <!-- <footer>
         <nav aria-label="Page navigation example">
             <ul class="pagination pagination-lg justify-content-end">
               <li class="page-item disabled">
                 <a class="page-link">Previous</a>
               </li>
-              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#" style="color: orange">1</a></li>
               <li class="page-item"><a class="page-link" href="#">2</a></li>
               <li class="page-item"><a class="page-link" href="#">3</a></li>
               <li class="page-item">
@@ -79,6 +85,6 @@
               </li>
             </ul>
         </nav>
-    </footer>
+    </footer> -->
 </body>
 </html>
