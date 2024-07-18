@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth;
+
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Question\QuestionController;
 /*
@@ -46,5 +46,3 @@ Route::group(['prefix' => 'questions', 'as' => 'questions.'], function () {
 
 // route controller
 
-Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
