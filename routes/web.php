@@ -13,10 +13,13 @@ use App\Http\Controllers\QuestionController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+// route view
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+// route controller
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

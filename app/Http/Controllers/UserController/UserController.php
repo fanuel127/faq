@@ -11,10 +11,10 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function listUser()
     {
         $users = User::all();
-        return view ('users.index')->with('users', $users);
+        return view ('users.list_user')->with('users', $users);
     }
 
     /**
@@ -22,9 +22,10 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function createUser()
     {
-        return view('users.create');
+        return view('users.add_user');
+
     }
 
     /**
@@ -38,10 +39,11 @@ class UserController extends Controller
         $input = $request->validate([
             'firstName' => 'required',
             'lastName' => 'required',
+            'gender' => 'required',
             'phoneNumber'=> 'required',
             'password' => 'required|max:8|confirmed',
             'email' => 'required',
-            'role_id' => 'required',
+            'role_id' => 'required|exists:role,id',
             'status' => 'required',
         ]);
         $input = $request->all();

@@ -17,19 +17,20 @@ return new class extends Migration
             $table->id();
             $table->string('firstName');
             $table->string('lastName');
-            $table->string('Gender');
+            $table->string('gender');
             $table->string('phoneNumber');
             $table->string('password',8);
             $table->rememberToken();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->boolean('status')->default('0');
-            $table->unsignedBigInteger('role_id')->default('0');
+            $table->unsignedBigInteger('role_id')->nullable();
             $table->foreign('role_id')->constrained()->references('id')->on('role')
             ->onUpdate('cascade')
             ->onDelete('cascade');
 
             $table->timestamps();
+
         });
     }
 
