@@ -25,9 +25,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->boolean('status')->default('0');
             $table->unsignedBigInteger('role_id');
-            $table->foreign('role_id')->constrained()->references('id')->on('role')
-            ->onUpdate('cascade')
-            ->onDelete('cascade');
+          
 
             $table->timestamps();
 
