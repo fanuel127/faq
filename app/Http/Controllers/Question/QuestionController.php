@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Question;
 use Illuminate\Http\Request;
 
 use App\Models\Question;
-class QuestionController extends    QuestionController
+class QuestionController extends QuestionController
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class QuestionController extends    QuestionController
     public function index()
     {
         $questions = Question::all();
-        return view ('questions.list_question')->with('questions', $questions);
+        return view ('question')->with('questions', $questions);
     }
 
     /**
