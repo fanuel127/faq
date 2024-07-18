@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Pages des Questions</title>
+    <title>Ajouter une question</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
     crossorigin="anonymous">
@@ -138,15 +138,16 @@
             </div>
         </div>
     </div> -->
+    <h2> <u>NB : </u>Les champs à remplir contenant un Asterix(*) sont obligatoires pour pouvoir ajouter un utilisateur</h2>
 
     <section class="vh-100 gradient-custom">
-        <div class="container py-2 h-100">
+        <div class="container py-1 h-100">
           <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col-12 col-md-8 col-lg-8 col-xl-7">
+            <div class="col-12 col-md-4 col-lg-8 col-xl-7">
               <div class="card bg-dark text-white" style="border-radius: 1rem;">
-                <div class="card-body p-2">
+                <div class="card-body p-1">
 
-                  <div class="mb-md-5 mt-md-4 pb-2">
+                  <div class="mb-md-2 mt-md-3 pb-2">
 
                     <!-- <h2 class="fw-bold mb-4 text-uppercase" style="border-radius: 25%; color: orange"> <p> <u>Ajouter un Utilisateur</u> </p> </h2>
 
@@ -194,22 +195,22 @@
 
                     <h1 style="text-align :center ; color: orange;"> <p> <u> <strong>Ajouter une question</strong> </u> </p> </h1>
                 <div class="mb-3">
-                    <label for="exampleFormControlTextarea1" class="form-label"> <h4>Nom de la question</h4> </label>
+                    <label for="exampleFormControlTextarea1" class="form-label"> <h4>Nom de la question<span class="text-danger">*</span></h4> </label>
                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                 </div>
 
                 <div class="mb-3">
-                    <label for="exampleFormControlTextarea2 form-group col-md-6 mb-3" class="form-label"> <h4>Description de la question</h4> </label>
+                    <label for="exampleFormControlTextarea2 form-group col-md-6 mb-3" class="form-label"> <h4>Description de la question<span class="text-danger">*</span></h4> </label>
                     <textarea class="form-control" id="exampleFormControlTextarea2" rows="3"></textarea>
                 </div>
 
                 <div class="mb-3">
-                    <label for="exampleFormControlTextarea3 form-group col-md-6 mb-3" class="form-label"> <h4>Categorie de la question</h4> </label>
+                    <label for="exampleFormControlTextarea3 form-group col-md-6 mb-3" class="form-label"> <h4>Categorie de la question<span class="text-danger">*</span></h4> </label>
                     <textarea class="form-control" id="exampleFormControlTextarea3" rows="3"></textarea>
                 </div>
 
                 <div class="mb-3">
-                    <label for="formFile" class="form-label"> <h4>Image de la question</h4> </label>
+                    <label for="formFile" class="form-label"> <h4>Image de la question<span class="text-danger">*</span></h4> </label>
                     <input class="form-control" type="file" id="formFile">
                 </div>
 
@@ -219,7 +220,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="exampleFormControlTextarea1" class="form-label"> <h4>Solution à la question</h4> </label>
+                    <label for="exampleFormControlTextarea1" class="form-label"> <h4>Solution à la question<span class="text-danger">*</span></h4> </label>
                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                 </div>
 

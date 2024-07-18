@@ -17,12 +17,3 @@ use App\Http\Controllers\QuestionController;
 Route::get('/', function () {
     return view('welcome');
 });
-
-Auth::routes();
-Route::get('/user', [App\Http\Controllers\HomeController::class, 'index'])->name('user');
-
-//Auth::routes();
-Route::get('/liste', [App\Http\Controllers\ListeController::class, 'index'])->name('liste');
-
-//Auth::routes();
-Route::get('/question', [App\Http\Controllers\QuestionController::class, 'index'])->name('question');

@@ -13,6 +13,7 @@
     crossorigin="anonymous"></script>
     <style>
         body { background-color:white; color:black; }
+        a { color:orange; }
     </style>
 
 </head>
@@ -32,6 +33,7 @@
                         <th>Image de la question</th>
                         <th>Vidéo de la question</th>
                         <th>Solution à la question</th>
+                        <th>Modifier</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -42,6 +44,7 @@
                         <td> <img src="{{ asset('image/image1.png') }}" style="height: 180px ; width:340px ; padding-top:5px"> </td>
                         <td>Listes Des Questions AjoutésListes Des Questions AjoutésListes Des Questions AjoutésListes Des Questions Ajoutés</td>
                         <td>Listes Des Questions AjoutésListes Des Questions AjoutésListes Des Questions AjoutésListes Des Questions Ajoutés</td>
+                        <td> <a href="edit_question.blade.php">modifier cette question</a> </td>
                     </tr>
                     <tr>
                         <td>Listes Des Questions AjoutésListes Des Questions AjoutésListes Des Questions AjoutésListes Des Questions Ajoutés</td>
@@ -50,6 +53,7 @@
                         <td> <img src="{{ asset('image/image1.png') }}" style="height: 180px ; width:340px"> </td>
                         <td>Listes Des Questions AjoutésListes Des Questions AjoutésListes Des Questions AjoutésListes Des Questions Ajoutés</td>
                         <td>Listes Des Questions AjoutésListes Des Questions AjoutésListes Des Questions AjoutésListes Des Questions Ajoutés</td>
+                        <td> <a href="edit_question.blade.php">modifier cette question</a> </td>
                     </tr>
                     <tr>
                         <td>Listes Des Questions AjoutésListes Des Questions AjoutésListes Des Questions AjoutésListes Des Questions Ajoutés</td>
@@ -58,6 +62,7 @@
                         <td> <img src="{{ asset('image/image1.png') }}" style="height: 180px ; width:340px"> </td>
                         <td>Listes Des Questions AjoutésListes Des Questions AjoutésListes Des Questions AjoutésListes Des Questions Ajoutés</td>
                         <td>Listes Des Questions AjoutésListes Des Questions AjoutésListes Des Questions AjoutésListes Des Questions Ajoutés</td>
+                        <td> <a href="edit_question.blade.php">modifier cette question</a> </td>
                     </tr>
                     <tr>
                         <td>Listes Des Questions AjoutésListes Des Questions AjoutésListes Des Questions AjoutésListes Des Questions Ajoutés</td>
@@ -66,6 +71,7 @@
                         <td> <img src="{{ asset('image/image1.png') }}" style="height: 180px ; width:340px"> </td>
                         <td>Listes Des Questions AjoutésListes Des Questions AjoutésListes Des Questions AjoutésListes Des Questions Ajoutés</td>
                         <td>Listes Des Questions AjoutésListes Des Questions AjoutésListes Des Questions AjoutésListes Des Questions Ajoutés</td>
+                        <td> <a href="edit_question.blade.php">modifier cette question</a> </td>
                     </tr>
                 </tbody>
             </table>

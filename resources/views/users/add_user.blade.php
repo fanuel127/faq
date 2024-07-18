@@ -33,12 +33,12 @@
                     </div>
 
                     <div class="mb-3 mt-3">
-                        <label for="exampleFormControlInput1" class="form-label"> <h5>Nom</h5> </label>
+                        <label for="exampleFormControlInput1" class="form-label"> <h5>Nom<span class="text-danger">*</span></h5> </label>
                         <input type="text" class="form-control" id="exampleFormControlInput1">
                     </div>
 
                     <div>
-                        <label for="floatingSelect"> <h5>Genre</h5> </label>
+                        <label for="floatingSelect"> <h5>Genre<span class="text-danger">*</span></h5> </label>
                         <select class="form-select" id="floatingSelect">
                           <option value="1">Masculin</option>
                           <option value="2">Féminin</option>
@@ -46,22 +46,22 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="exampleFormControlInput2" class="form-label"> <h5>Adresse Email</h5> </label>
+                        <label for="exampleFormControlInput2" class="form-label"> <h5>Adresse Email<span class="text-danger">*</span></h5> </label>
                         <input type="email" class="form-control" id="exampleFormControlInput2" placeholder="name@example.com">
                     </div>
 
                     <div class="mb-3">
-                        <label for="exampleFormControlInput3" class="form-label"> <h5>Mot de passe</h5> </label>
+                        <label for="exampleFormControlInput3" class="form-label"> <h5>Mot de passe<span class="text-danger">*</span></h5> </label>
                         <input type="password" class="form-control" id="exampleFormControlInput3" >
                     </div>
 
                     <div class="mb-3">
-                        <label for="exampleFormControlInput3" class="form-label"> <h5>Confirmation mot de passe</h5> </label>
+                        <label for="exampleFormControlInput3" class="form-label"> <h5>Confirmation mot de passe<span class="text-danger">*</span></h5> </label>
                         <input type="password" class="form-control" id="exampleFormControlInput3" >
                     </div>
 
                     <div class="mb-3">
-                        <label for="exampleFormControlInput4" class="form-label"> <h5>Numéro de téléphone</h5> </label>
+                        <label for="exampleFormControlInput4" class="form-label"> <h5>Numéro de téléphone<span class="text-danger">*</span></h5> </label>
                         <input type="text" class="form-control" id="exampleFormControlInput4">
                     </div>
 
