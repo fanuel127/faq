@@ -16,7 +16,7 @@
     </style>
 </head>
 <body>
-    <!-- <section class="vh-100 gradient-custom">
+    <section class="vh-100 gradient-custom">
         <div class="container py-2 h-100">
           <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-12 col-md-8 col-lg-8 col-xl-5">
@@ -75,7 +75,7 @@
           </div>
         </div>
     </section>
-    <div class="container">
+    <!-- <div class="container">
         <div class="row g-2">
             <div class="col-md">
               <div class="form-floating">
@@ -123,12 +123,12 @@
               </div>
             </div>
         </div>
-    </div> -->
+    </div>
     <div class="container">
         <a href="#" class="tt_button tt_primary_button btn_primary_color pull-left panel-trigger-btn icon_right ">
             <span class="prim_text"> <button style="height:90px; width: 400px ; background-color:orange ; text-align:center; font-size:40px;
             margin:35% 38%">Gérer un Utilisateur</button> </span>
         </a>
-    </div>
+    </div> -->
 </body>
 </html>
