@@ -38,6 +38,7 @@ class UserController extends Controller
         $input = $request->validate([
             'firstName' => 'required',
             'lastName' => 'required',
+            'gender' => 'required' ,
             'phoneNumber'=> 'required',
             'password' => 'required|max:8|confirmed',
             'email' => 'required',
