@@ -46,5 +46,5 @@ Route::group(['prefix' => 'questions', 'as' => 'questions.'], function () {
 
 // route controller
 
-// Auth::routes();
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Auth::routes();
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
