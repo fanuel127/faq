@@ -19,7 +19,7 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/user', [App\Http\Controllers\HomeController::class, 'index'])->name('user');
 
 //Auth::routes();
 Route::get('/liste', [App\Http\Controllers\ListeController::class, 'index'])->name('liste');
