@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use App\Models\user;
-class UserController extends Controller
+class UserController extends  UserController
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function listUser()
+    public function index()
     {
         $users = User::all();
         return view ('users.list_user')->with('users', $users);
@@ -22,7 +22,7 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function createUser()
+    public function create()
     {
         return view('users.add_user');
 
@@ -60,7 +60,7 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        return view('users.show')->with('users', $user);
+        return view('users.show_user')->with('users', $user);
     }
 
     /**
@@ -73,7 +73,7 @@ class UserController extends Controller
     {
 
         $user = User::find($id);
-        return view('users.edit')->with('users', $user);
+        return view('users.edit_user')->with('users', $user);
     }
 
     /**
@@ -88,7 +88,7 @@ class UserController extends Controller
         $user = User::find($id);
         $input = $request->all();
         $user->update($input);
-        return redirect('user')->with('flash_message', 'user Updated!');
+        return redirect('user')->with('flash_message', 'User Updated!');
     }
 
     /**

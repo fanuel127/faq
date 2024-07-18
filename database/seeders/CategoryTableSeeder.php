@@ -16,8 +16,8 @@ class CategoryTableSeeder extends Seeder
     public function run(): void
     {
         DB::table('category')->insert([
-            ['category' => 'NetworkProblem'],
-            [ 'category' => 'unauthoriseAcess'],
+            ['category' => 'Probleme Serveur'],
+            [ 'category' => 'Difficulte de lecture'],
         ]);
 
     }

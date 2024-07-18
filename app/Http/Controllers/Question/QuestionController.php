@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Question;
 
 use Illuminate\Http\Request;
 
 use App\Models\Question;
-class QuestionController extends Controller
+class QuestionController extends    QuestionController
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class QuestionController extends Controller
     public function index()
     {
         $questions = Question::all();
-        return view ('questions.index')->with('questions', $questions);
+        return view ('questions.list_question')->with('questions', $questions);
     }
 
     /**
@@ -25,7 +25,7 @@ class QuestionController extends Controller
      */
     public function create()
     {
-        return view('question.create');
+        return view('question.add_question');
     }
 
     /**
@@ -58,7 +58,7 @@ class QuestionController extends Controller
     {
         $question = Question::find($id);
         $answers = $question->answers;
-        return view('questions.show')->with( $question , $answers);
+        return view('questions.show_question')->with( $question , $answers);
     }
 
     /**
@@ -70,7 +70,7 @@ class QuestionController extends Controller
     public function edit($id)
     {
         $question = Question::find($id);
-        return view('questions.edit')->with('questions', $question);
+        return view('questions.edit_question')->with('questions', $question);
     }
 
     /**
