@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use App\Models\user;
-class UserController extends Controller
+class UserController extends  UserController
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        return view ('users.index')->with('users', $users);
+        return view ('users.list_user')->with('users', $users);
     }
 
     /**
@@ -24,7 +24,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+        return view('users.add_user');
+
     }
 
     /**
@@ -42,12 +43,12 @@ class UserController extends Controller
             'phoneNumber'=> 'required',
             'password' => 'required|max:8|confirmed',
             'email' => 'required',
-            'role_id' => 'required',
+            'role_id' => 'required|exists:role,id',
             'status' => 'required',
         ]);
         $input = $request->all();
         User::create($input);
-        return redirect('user')->with('flash_message', 'User Addedd!');
+        return redirect('user')->with('flash_message', 'Utilisateur Ajouter!');
     }
 
     /**
@@ -59,7 +60,7 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        return view('users.show')->with('users', $user);
+        return view('users.show_user')->with('users', $user);
     }
 
     /**
@@ -72,7 +73,7 @@ class UserController extends Controller
     {
 
         $user = User::find($id);
-        return view('users.edit')->with('users', $user);
+        return view('users.edit_user')->with('users', $user);
     }
 
     /**
@@ -87,7 +88,7 @@ class UserController extends Controller
         $user = User::find($id);
         $input = $request->all();
         $user->update($input);
-        return redirect('user')->with('flash_message', 'user Updated!');
+        return redirect('user')->with('flash_message', 'Utilisateur Modifier!');
     }
 
     /**
@@ -99,6 +100,6 @@ class UserController extends Controller
     public function destroy($id)
     {
             User::destroy($id);
-            return redirect('user')->with('flash_message', 'User deleted!');
+            return redirect('user')->with('flash_message', 'Utilisateur Suprime!');
     }
 }
