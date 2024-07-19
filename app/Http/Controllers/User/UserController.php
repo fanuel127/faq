@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
-use App\Models\user;
-class UserController extends  UserController
+use App\Models\User;
+use App\Http\Controllers\Controller;
+class UserController extends  Controller
 {
     /**
      * Display a listing of the resource.
@@ -57,10 +58,14 @@ class UserController extends  UserController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    /*public function show($id)
     {
         $user = User::find($id);
         return view('users.show_user')->with('users', $user);
+    }*/
+    public function show(User $user)
+    {
+        return view('users.show_user',compact('user'));
     }
 
     /**
@@ -69,11 +74,15 @@ class UserController extends  UserController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    /*public function edit($id)
     {
 
         $user = User::find($id);
         return view('users.edit_user')->with('users', $user);
+    }*/
+    public function edit(User $user)
+    {
+        return view('users.edit_user',compact('user'));
     }
 
     /**

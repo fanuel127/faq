@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Question;
 
 use Illuminate\Http\Request;
-
+use App\Http\Controllers\Controller;
 use App\Models\Question;
-class QuestionController extends QuestionController
+class QuestionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,10 @@ class QuestionController extends QuestionController
     public function index()
     {
         $questions = Question::all();
-        return view ('question')->with('question', $questions);
-    }
 
+        return view ('question')->with('questions', $questions);
+
+    }
     /**
      * Show the form for creating a new resource.
      *
