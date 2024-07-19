@@ -20,4 +20,9 @@ class Question extends Model
         'video',
 
     ];
+    public function category(){
+
+        return $this->belongsTo(Category::class);
+
+}
 }

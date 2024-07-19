@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Question;
 
 use Illuminate\Http\Request;
-use App\Models\user;
-class UserController extends Controller
+
+use App\Models\Question;
+class QuestionController extends QuestionController
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +14,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        return view ('users.index')->with('users', $users);
+        $questions = Question::all();
+        return view ('question')->with('questions', $questions);
     }
 
     /**
@@ -24,7 +25,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+        return view('question.add_question');
     }
 
     /**
@@ -36,18 +37,15 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $input = $request->validate([
-            'firstName' => 'required',
-            'lastName' => 'required',
-            'gender' => 'required',
-            'phoneNumber'=> 'required',
-            'password' => 'required|max:8|confirmed',
-            'email' => 'required',
-            'role_id' => 'required',
-            'status' => 'required',
+            'questionName'=> 'required|max:255',
+            'category_id'=>'required',
+            'description'=> 'required',
+            'answer' => 'required',
+            'photo'=>'required',
         ]);
         $input = $request->all();
-        User::create($input);
-        return redirect('user')->with('flash_message', 'User Addedd!');
+        Question::create($input);
+        return redirect('question')->with('flash_message', 'Question created successfully.');
     }
 
     /**
@@ -58,8 +56,9 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = User::find($id);
-        return view('users.show')->with('users', $user);
+        $question = Question::find($id);
+        $answers = $question->answers;
+        return view('questions.show_question')->with( $question , $answers);
     }
 
     /**
@@ -70,9 +69,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-
-        $user = User::find($id);
-        return view('users.edit')->with('users', $user);
+        $question = Question::find($id);
+        return view('questions.edit_question')->with('questions', $question);
     }
 
     /**
@@ -84,10 +82,10 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = User::find($id);
+        $question = Question::find($id);
         $input = $request->all();
-        $user->update($input);
-        return redirect('user')->with('flash_message', 'user Updated!');
+        $question->update($input);
+        return redirect('question')->with('flash_message', 'Question updated successfully.');
     }
 
     /**
@@ -98,7 +96,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-            User::destroy($id);
-            return redirect('user')->with('flash_message', 'User deleted!');
+        Question::destroy($id);
+        return redirect('question')->with('flash_message', 'Question deleted!');
+
     }
 }
