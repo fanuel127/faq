@@ -17,3 +17,4 @@ use App\Http\Controllers\QuestionController;
 Route::get('/', function () {
     return view('welcome');
 });
+

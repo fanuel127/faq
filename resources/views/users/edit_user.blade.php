@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Modifier User</title>
+    <title>Edit_User</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
     crossorigin="anonymous">
@@ -51,22 +51,12 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="exampleFormControlInput3" class="form-label"> <h5>Mot de passe</h5> </label>
-                        <input type="password" class="form-control" id="exampleFormControlInput3" >
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput3" class="form-label"> <h5>Confirmation mot de passe</h5> </label>
-                        <input type="password" class="form-control" id="exampleFormControlInput3" >
-                    </div>
-
-                    <div class="mb-3">
                         <label for="exampleFormControlInput4" class="form-label"> <h5>Numéro de téléphone</h5> </label>
                         <input type="text" class="form-control" id="exampleFormControlInput4">
                     </div>
 
                     <div class="mb-3">
-                        <button type="button" class="btn btn-lg rounded-pill" style="width: 200px ; color: black;background-color:orange">modifier</button>
+                        <button type="button" class="btn btn-lg rounded-pill" style="width: 200px ; color: black;background-color:orange">Enregistrer</button>
                     </div>
 
                 </div>
