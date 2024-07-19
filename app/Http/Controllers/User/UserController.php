@@ -83,23 +83,49 @@ class UserController extends  UserController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        $user = User::find($id);
-        $input = $request->all();
-        $user->update($input);
-        return redirect('user')->with('flash_message', 'Utilisateur Modifier!');
+
+        public function activate(Request $request, User $user)
+        {
+            // Check if the user is already active
+            if ($user->is_active) {
+                return response()->json([
+                    'message' => 'utilisateur est deja active.',
+                ], 400);
+            }
+
+            // Activate the user
+            $user->is_active = true;
+            $user->save();
+
+            return response()->json([
+                'message' => 'utilisateur a été activé.',
+            ], 200);
+        }
+
+        /**
+         * Deactivate a user account.
+         *
+         * @param  \Illuminate\Http\Request  $request
+         * @param  \App\Models\User  $user
+         * @return \Illuminate\Http\Response
+         */
+        public function deactivate(Request $request, User $user)
+        {
+            // Check if the user is already inactive
+            if (!$user->is_active) {
+                return response()->json([
+                    'message' => 'utilisateur est déjà inactif.',
+                ], 400);
+            }
+
+            // Deactivate the user
+            $user->is_active = false;
+            $user->save();
+
+            return response()->json([
+                'message' => 'utilisateur a été désactivé.',
+            ], 200);
+        }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-            User::destroy($id);
-            return redirect('user')->with('flash_message', 'Utilisateur Suprime!');
-    }
-}
+
