@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Http\Controllers\Controller;
+use App\Models\Role;
 
 class UserController extends  Controller
 {
@@ -18,6 +19,13 @@ class UserController extends  Controller
     {
         $users = User::all();
         return view('users.list_user')->with('users', $users);
+    }
+
+    public function listRole()
+    {
+
+        $roles= Role::all();
+        return view('users.list_user')->with('roles', $roles);
     }
 
     /**
@@ -46,7 +54,7 @@ class UserController extends  Controller
             'password' => 'required|max:8|confirmed',
             'email' => 'required',
             'role_id' => 'required|exists:role,id',
-            'status' => 'required',
+
         ]);
 
         User::create([
