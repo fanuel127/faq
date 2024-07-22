@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Question;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Question;
 class QuestionController extends Controller
 {
@@ -15,18 +16,16 @@ class QuestionController extends Controller
     public function index()
     {
         $questions = Question::all();
-        return view ('question')->with('questions', $questions);
+        return view ('question.list_question')->with('questions', $questions);
 
     }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function listCategory()
     {
-        return view('question.add_question');
+
+        $categories=Category::all();
+        return view('question.list_question')->with('categories', $categories);
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -37,16 +36,16 @@ class QuestionController extends Controller
     public function store(Request $request)
     {
         $input = $request->validate([
-            'questionName'=> 'required|max:255',
-            'category_id'=>'required',
+            'questionName'=> 'required',
+            'category_id'=>'required|unique|exists:user,id',
             'description'=> 'required',
             'answer' => 'required',
-            'photo'=>'required',
+            'photo'=>'required|unique',
             'user_id' => 'required|exists:user,id',
         ]);
         $input = $request->all();
         Question::create($input);
-        return redirect('question')->with('flash_message', 'Question created successfully.');
+        return redirect('question.add_question')->with('flash_message', 'Question created successfully.');
     }
 
     /**
@@ -74,31 +73,5 @@ class QuestionController extends Controller
         return view('questions.edit_question')->with('questions', $question);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        $question = Question::find($id);
-        $input = $request->all();
-        $question->update($input);
-        return redirect('question')->with('flash_message', 'Question updated successfully.');
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        Question::destroy($id);
-        return redirect('question')->with('flash_message', 'Question deleted!');
-
-    }
 }
