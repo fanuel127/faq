@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -93,7 +93,7 @@ class UserController extends  Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    /*public function edit($id)
+    public function edit($id)
     {
 
         $user = User::find($id);

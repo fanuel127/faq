@@ -21,45 +21,48 @@
           <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-12 col-md-8 col-lg-8 col-xl-5">
               <div class="card bg-secondary text-white" style="border-radius: 1rem;">
-                <div class="card-body p-5">
+                <form action="{{ URL('users.edit_user') }}">
+                    @csrf
+                    <div class="card-body p-5">
 
-                  <div class="mb-md-5 mt-md-4 pb-2">
-
-                    <h2 class="fw-bold mb-4 text-uppercase" style="border-radius: 25%; color: orange"> <p> <u>Modifier un Utilisateur</u> </p> </h2>
-
-                    <div class="mb-3 mt-3">
-                        <label for="exampleFormControlInput1" class="form-label"> <h5>Prénom</h5> </label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1">
-                    </div>
-
-                    <div class="mb-3 mt-3">
-                        <label for="exampleFormControlInput1" class="form-label"> <h5>Nom</h5> </label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1">
-                    </div>
-
-                    <div>
-                        <label for="floatingSelect"> <h5>Genre</h5> </label>
-                        <select class="form-select" id="floatingSelect">
-                          <option value="1">Masculin</option>
-                          <option value="2">Féminin</option>
-                        </select>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput2" class="form-label"> <h5>Adresse Email</h5> </label>
-                        <input type="email" class="form-control" id="exampleFormControlInput2" placeholder="name@example.com">
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput4" class="form-label"> <h5>Numéro de téléphone</h5> </label>
-                        <input type="text" class="form-control" id="exampleFormControlInput4">
-                    </div>
-
-                    <div class="mb-3">
-                        <button type="button" class="btn btn-lg rounded-pill" style="width: 200px ; color: black;background-color:orange">Enregistrer</button>
-                    </div>
-
-                </div>
+                        <div class="mb-md-5 mt-md-4 pb-2">
+      
+                          <h2 class="fw-bold mb-4 text-uppercase" style="border-radius: 25%; color: orange"> <p> <u>Modifier un Utilisateur</u> </p> </h2>
+      
+                          <div class="mb-3 mt-3">
+                              <label for="exampleFormControlInput1" class="form-label"> <h5>Prénom</h5> </label>
+                              <input type="text" class="form-control" id="exampleFormControlInput1">
+                          </div>
+      
+                          <div class="mb-3 mt-3">
+                              <label for="exampleFormControlInput1" class="form-label"> <h5>Nom</h5> </label>
+                              <input type="text" class="form-control" id="exampleFormControlInput1">
+                          </div>
+      
+                          <div>
+                              <label for="floatingSelect"> <h5>Genre</h5> </label>
+                              <select class="form-select" id="floatingSelect">
+                                <option value="1">Masculin</option>
+                                <option value="2">Féminin</option>
+                              </select>
+                          </div>
+      
+                          <div class="mb-3">
+                              <label for="exampleFormControlInput2" class="form-label"> <h5>Adresse Email</h5> </label>
+                              <input type="email" class="form-control" id="exampleFormControlInput2" placeholder="name@example.com">
+                          </div>
+      
+                          <div class="mb-3">
+                              <label for="exampleFormControlInput4" class="form-label"> <h5>Numéro de téléphone</h5> </label>
+                              <input type="text" class="form-control" id="exampleFormControlInput4">
+                          </div>
+      
+                          <div class="mb-3">
+                              <button type="button" class="btn btn-lg rounded-pill" style="width: 200px ; color: black;background-color:orange">Enregistrer</button>
+                          </div>
+      
+                      </div>
+                </form>
               </div>
             </div>
           </div>

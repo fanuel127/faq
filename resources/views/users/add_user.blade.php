@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,55 +22,66 @@
           <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-12 col-md-8 col-lg-8 col-xl-5">
               <div class="card bg-secondary text-white" style="border-radius: 1rem;">
-                <div class="card-body p-5">
+                <form action="{{ URL('users.store') }}">
+                    @csrf
+                    <div class="card-body p-2">
 
-                  <div class="mb-md-5 mt-md-4 pb-2">
-
-                    <h2 class="fw-bold mb-4 text-uppercase" style="border-radius: 25%; color: orange"> <p> <u>Ajouter un Utilisateur</u> </p> </h2>
-
-                    <div class="mb-3 mt-3">
-                        <label for="exampleFormControlInput1" class="form-label"> <h5>Prénom</h5> </label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1">
-                    </div>
-
-                    <div class="mb-3 mt-3">
-                        <label for="exampleFormControlInput1" class="form-label"> <h5>Nom</h5> </label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1">
-                    </div>
-
-                    <div>
-                        <label for="floatingSelect"> <h5>Genre</h5> </label>
-                        <select class="form-select" id="floatingSelect">
-                          <option value="1">Masculin</option>
-                          <option value="2">Féminin</option>
-                        </select>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput2" class="form-label"> <h5>Adresse Email</h5> </label>
-                        <input type="email" class="form-control" id="exampleFormControlInput2" placeholder="name@example.com">
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput3" class="form-label"> <h5>Mot de passe</h5> </label>
-                        <input type="password" class="form-control" id="exampleFormControlInput3" >
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput3" class="form-label"> <h5>Confirmation mot de passe</h5> </label>
-                        <input type="password" class="form-control" id="exampleFormControlInput3" >
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput4" class="form-label"> <h5>Numéro de téléphone</h5> </label>
-                        <input type="text" class="form-control" id="exampleFormControlInput4">
-                    </div>
-
-                    <div class="mb-3">
-                        <button type="button" class="btn btn-lg rounded-pill" style="width: 200px ; color: black;background-color:orange">Enregistrer</button>
-                    </div>
-
-                </div>
+                        <div class="mb-md-5 mt-md-4 pb-2">
+      
+                          <h2 class="fw-bold mb-4 text-uppercase" style="border-radius: 25%; color: orange"> <p> <u>Ajouter un Utilisateur</u> </p> </h2>
+      
+                          <div class="mb-3 mt-3">
+                              <label for="exampleFormControlInput1" class="form-label"> <h5>Prénom</h5> </label>
+                              <input type="text" name="lastName" class="form-control" name="lastName" id="exampleFormControlInput1">
+                          </div>
+      
+                          <div class="mb-3 mt-3">
+                              <label for="exampleFormControlInput1" class="form-label"> <h5>Nom</h5> </label>
+                              <input type="text" name="firstName" class="form-control" id="exampleFormControlInput1">
+                          </div>
+      
+                          <div>
+                              <label for="floatingSelect"> <h5>Genre</h5> </label>
+                              <select class="form-select" name="gender" id="floatingSelect">
+                                <option value="masculin">Masculin</option>
+                                <option value="féminin">Féminin</option>
+                              </select>
+                          </div>
+                          <div>
+                            <label for="floatingSelect"> <h5>Role</h5> </label>
+                            <select class="form-select" name="role_id" id="floatingSelect">
+                                @foreach ($roles as $role )
+                                    <option value={{ $role->value }}>{{ $role->role_name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+      
+                          <div class="mb-3">
+                              <label for="exampleFormControlInput2" class="form-label"> <h5>Adresse Email</h5> </label>
+                              <input type="email" name="email" class="form-control" id="exampleFormControlInput2" placeholder="name@example.com">
+                          </div>
+      
+                          <div class="mb-3">
+                              <label for="exampleFormControlInput3" class="form-label"> <h5>Mot de passe</h5> </label>
+                              <input type="password" name="password" class="form-control" id="exampleFormControlInput3" >
+                          </div>
+      
+                          <div class="mb-3">
+                              <label for="exampleFormControlInput3" class="form-label"> <h5>Confirmation mot de passe</h5> </label>
+                              <input type="password" name="password_confirmation" class="form-control" id="exampleFormControlInput3" >
+                          </div>
+      
+                          <div class="mb-3">
+                              <label for="exampleFormControlInput4" class="form-label"> <h5>Téléphone</h5> </label>
+                              <input type="text" name="phoneNumber" class="form-control" id="exampleFormControlInput4">
+                          </div>
+      
+                          <div class="mb-3">
+                              <button type="submit" class="btn btn-lg rounded-pill" style="width: 200px ; color: black;background-color:orange">Enregistrer</button>
+                          </div>
+      
+                      </div>
+                </form>
               </div>
             </div>
           </div>
