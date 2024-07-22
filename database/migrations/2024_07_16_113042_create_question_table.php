@@ -22,10 +22,12 @@ return new class extends Migration
             $table->text('video')->nullable;
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->constrained()->references('id')->on('category')
-           // $table->unsignedBigInteger('user_id');
-           // $table->foreign('user_id')->constrained()->references('id')->on('users')
-             ->onUpdate('cascade')
-             ->onDelete('cascade');
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->constrained()->references('id')->on('users')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
 
             $table->timestamps();
         });

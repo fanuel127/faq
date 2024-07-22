@@ -16,8 +16,8 @@ class QuestionController extends Controller
     {
         $questions = Question::all();
         return view ('question')->with('questions', $questions);
-    }
 
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -42,6 +42,7 @@ class QuestionController extends Controller
             'description'=> 'required',
             'answer' => 'required',
             'photo'=>'required',
+            'user_id' => 'required|exists:user,id',
         ]);
         $input = $request->all();
         Question::create($input);
