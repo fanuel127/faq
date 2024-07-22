@@ -83,7 +83,7 @@ class UserController extends  Controller
     }*/
     public function show(User $user)
     {
-       // $roles = Role::all();
+      
         return view('users.show_user', compact('user'));
     }
 
@@ -98,10 +98,6 @@ class UserController extends  Controller
 
         $user = User::find($id);
         return view('users.edit_user')->with('users', $user);
-    }*/
-    public function edit(User $user)
-    {
-        return view('users.edit_user', compact('user'));
     }
 
     /**
