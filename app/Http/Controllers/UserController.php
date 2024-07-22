@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -18,16 +18,6 @@ class UserController extends  Controller
         return view ('users.list_user')->with('users', $users);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('users.add_user');
-
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -49,7 +39,7 @@ class UserController extends  Controller
         ]);
         $input = $request->all();
         User::create($input);
-        return redirect('user')->with('flash_message', 'Utilisateur Ajouter!');
+        return redirect('users.list_user')->with('flash_message', 'Utilisateur Ajouter!');
     }
 
     /**
@@ -74,15 +64,11 @@ class UserController extends  Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    /*public function edit($id)
+    public function edit($id)
     {
 
         $user = User::find($id);
         return view('users.edit_user')->with('users', $user);
-    }*/
-    public function edit(User $user)
-    {
-        return view('users.edit_user',compact('user'));
     }
 
     /**
