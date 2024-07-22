@@ -15,7 +15,6 @@ class QuestionController extends Controller
     public function index()
     {
         $questions = Question::all();
-
         return view ('question')->with('questions', $questions);
 
     }
@@ -43,6 +42,7 @@ class QuestionController extends Controller
             'description'=> 'required',
             'answer' => 'required',
             'photo'=>'required',
+            'user_id' => 'required|exists:user,id',
         ]);
         $input = $request->all();
         Question::create($input);

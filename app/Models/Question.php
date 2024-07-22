@@ -18,11 +18,17 @@ class Question extends Model
         'answer',
         'photo',
         'video',
+        'user_id',
 
     ];
     public function category(){
 
         return $this->belongsTo(Category::class);
+
+}
+public function user(){
+
+    return $this->belongsTo(user::class);
 
 }
 }

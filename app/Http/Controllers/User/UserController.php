@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Http\Controllers\Controller;
+
 class UserController extends  Controller
 {
     /**
@@ -15,7 +17,7 @@ class UserController extends  Controller
     public function index()
     {
         $users = User::all();
-        return view ('users.list_user')->with('users', $users);
+        return view('users.list_user')->with('users', $users);
     }
 
     /**
@@ -26,7 +28,6 @@ class UserController extends  Controller
     public function create()
     {
         return view('users.add_user');
-
     }
 
     /**
@@ -37,18 +38,27 @@ class UserController extends  Controller
      */
     public function store(Request $request)
     {
-        $input = $request->validate([
+        $request->validate([
             'firstName' => 'required',
-            'lastName' => 'required',
+            'lastName',
             'gender' => 'required',
-            'phoneNumber'=> 'required',
+            'phoneNumber' => 'required',
             'password' => 'required|max:8|confirmed',
             'email' => 'required',
             'role_id' => 'required|exists:role,id',
             'status' => 'required',
         ]);
-        $input = $request->all();
-        User::create($input);
+
+        User::create([
+            'firstname' => $request['firstname'],
+            'lastName' => $request['lastname'],
+            'gender' => $request['gender'],
+            'phoneNumber' => $request['phoneNumber'],
+            'role_id' =>  $request['role_id'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+        ]);
+
         return redirect('user')->with('flash_message', 'Utilisateur Ajouter!');
     }
 
@@ -65,7 +75,8 @@ class UserController extends  Controller
     }*/
     public function show(User $user)
     {
-        return view('users.show_user',compact('user'));
+       // $roles = Role::all();
+        return view('users.show_user', compact('user'));
     }
 
     /**
@@ -82,7 +93,7 @@ class UserController extends  Controller
     }*/
     public function edit(User $user)
     {
-        return view('users.edit_user',compact('user'));
+        return view('users.edit_user', compact('user'));
     }
 
     /**
@@ -93,48 +104,46 @@ class UserController extends  Controller
      * @return \Illuminate\Http\Response
      */
 
-        public function activate(Request $request, User $user)
-        {
-            // Check if the user is already active
-            if ($user->is_active) {
-                return response()->json([
-                    'message' => 'utilisateur est deja active.',
-                ], 400);
-            }
-
-            // Activate the user
-            $user->is_active = true;
-            $user->save();
-
+    public function activate(Request $request, User $user)
+    {
+        // Check if the user is already active
+        if ($user->is_active) {
             return response()->json([
-                'message' => 'utilisateur a été activé.',
-            ], 200);
+                'message' => 'utilisateur est deja active.',
+            ], 400);
         }
 
-        /**
-         * Deactivate a user account.
-         *
-         * @param  \Illuminate\Http\Request  $request
-         * @param  \App\Models\User  $user
-         * @return \Illuminate\Http\Response
-         */
-        public function deactivate(Request $request, User $user)
-        {
-            // Check if the user is already inactive
-            if (!$user->is_active) {
-                return response()->json([
-                    'message' => 'utilisateur est déjà inactif.',
-                ], 400);
-            }
+        // Activate the user
+        $user->is_active = true;
+        $user->save();
 
-            // Deactivate the user
-            $user->is_active = false;
-            $user->save();
-
-            return response()->json([
-                'message' => 'utilisateur a été désactivé.',
-            ], 200);
-        }
+        return response()->json([
+            'message' => 'utilisateur a été activé.',
+        ], 200);
     }
 
+    /**
+     * Deactivate a user account.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function deactivate(Request $request, User $user)
+    {
+        // Check if the user is already inactive
+        if (!$user->is_active) {
+            return response()->json([
+                'message' => 'utilisateur est déjà inactif.',
+            ], 400);
+        }
 
+        // Deactivate the user
+        $user->is_active = false;
+        $user->save();
+
+        return response()->json([
+            'message' => 'utilisateur a été désactivé.',
+        ], 200);
+    }
+}
