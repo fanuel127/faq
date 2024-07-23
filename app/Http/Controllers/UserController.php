@@ -24,7 +24,7 @@ class UserController extends  Controller
     public function listRole()
     {
 
-        $roles= Role::all();
+        $roles = Role::all();
         return view('users.list_user')->with('roles', $roles);
     }
 
@@ -67,7 +67,7 @@ class UserController extends  Controller
             'password' => Hash::make($request['password']),
         ]);
 
-        return redirect('user')->with('flash_message', 'Utilisateur Ajouter!');
+        return redirect('users.list_user')->with('flash_message', 'Utilisateur Ajouter!');
     }
 
     /**
@@ -83,7 +83,7 @@ class UserController extends  Controller
     }*/
     public function show(User $user)
     {
-      
+
         return view('users.show_user', compact('user'));
     }
 
@@ -97,7 +97,8 @@ class UserController extends  Controller
     {
 
         $user = User::find($id);
-        return view('users.edit_user')->with('users', $user);
+
+        return view('users.edit_user',compact('user'));
     }
 
     /**
@@ -107,47 +108,11 @@ class UserController extends  Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-
-    public function activate(Request $request, User $user)
-    {
-        // Check if the user is already active
-        if ($user->is_active) {
-            return response()->json([
-                'message' => 'utilisateur est deja active.',
-            ], 400);
-        }
-
-        // Activate the user
-        $user->is_active = true;
+    public function toggleStatus( $id){
+        $user = User::FindOrFail($id);
+        $user->status= !$user->status;
         $user->save();
+        return redirect('users.list_user')->with('success', 'Utilisateur active!');
 
-        return response()->json([
-            'message' => 'utilisateur a été activé.',
-        ], 200);
-    }
-
-    /**
-     * Deactivate a user account.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function deactivate(Request $request, User $user)
-    {
-        // Check if the user is already inactive
-        if (!$user->is_active) {
-            return response()->json([
-                'message' => 'utilisateur est déjà inactif.',
-            ], 400);
-        }
-
-        // Deactivate the user
-        $user->is_active = false;
-        $user->save();
-
-        return response()->json([
-            'message' => 'utilisateur a été désactivé.',
-        ], 200);
     }
 }

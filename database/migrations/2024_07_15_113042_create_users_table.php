@@ -23,7 +23,7 @@ return new class extends Migration
             $table->rememberToken();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->boolean('status')->default('0');
+            $table->boolean('status')->default('0');// 0: disabled, 1:enabled
             $table->unsignedBigInteger('role_id');
              $table->foreign('role_id')->constrained()->references('id')->on('role')
               ->onUpdate('cascade')

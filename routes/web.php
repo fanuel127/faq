@@ -25,7 +25,7 @@ Route::get('/users/add_user', function () {
 
 Route::get('/users/edit_user', function () {
     return view('users.edit_user');
-}); 
+});
 Route::get('/users/list_user', function () {
     return view('users.list');
 });
@@ -45,7 +45,7 @@ Route::get('/questions/add_question', function () {
 
 Route::get('/questions/list_question', function () {
     return view('questions.list_question');
-}); 
+});
 
 Route::get('/questions/edit_question', function () {
     return view('questions.edit_question');
@@ -59,15 +59,15 @@ Route::get('/questions/show_question', function () {
 
 // Routes for Users
 Route::group(['prefix' => 'users', 'as' => 'users.'], function () {
-    Route::get('/list_user', [UserController::class, 'index'])->name('users.list_user');
-    Route::post('/store', [UserController::class, 'store'])->name('users.list_user');
-    Route::get('/show_user', [UserController::class, 'show'])->name('users.show_user');
-    Route::put('/edit_user', [UserController::class, 'edit'])->name('users.edit_user');
+
 Route::get('/list_user', [UserController::class, 'index'])->name('users.list_user');
 Route::get('/add_user', [UserController::class, 'create'])->name('users.add_user');
 Route::post('/', [UserController::class, 'store'])->name('users.store');
 Route::get('/show_user', [UserController::class, 'show'])->name('users.show_user');
 Route::put('/edit_user', [UserController::class, 'edit'])->name('users.edit_user');
+Route::post('/toggleStatus/{id}', [UserController::class, 'toggleStatus'])->name('users.list_user');
+
+
 });
 
 // routes for questions
