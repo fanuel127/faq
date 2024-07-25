@@ -31,8 +31,8 @@
                           <h2 class="fw-bold mb-4 text-uppercase" style="border-radius: 25%; color: orange"> <p> <u>Ajouter un Utilisateur</u> </p> </h2>
       
                           <div class="mb-3 mt-3">
-                              <label for="exampleFormControlInput1" class="form-label"> <h5>Prénom</h5> </label>
-                              <input type="text" name="lastName" class="form-control" name="lastName" id="exampleFormControlInput1">
+                              <label for="exampleFormControlInput" class="form-label"> <h5>Prénom</h5> </label>
+                              <input type="text" name="lastName" class="form-control" name="lastName" id="exampleFormControlInput">
                           </div>
       
                           <div class="mb-3 mt-3">
@@ -47,14 +47,14 @@
                                 <option value="féminin">Féminin</option>
                               </select>
                           </div>
-                          <div>
+                          {{-- <div>
                             <label for="floatingSelect"> <h5>Role</h5> </label>
                             <select class="form-select" name="role_id" id="floatingSelect">
                                 @foreach ($roles as $role )
                                     <option value={{ $role->value }}>{{ $role->role_name }}</option>
                                 @endforeach
                             </select>
-                        </div>
+                        </div> --}}
       
                           <div class="mb-3">
                               <label for="exampleFormControlInput2" class="form-label"> <h5>Adresse Email</h5> </label>
@@ -69,6 +69,10 @@
                           <div class="mb-3">
                               <label for="exampleFormControlInput3" class="form-label"> <h5>Confirmation mot de passe</h5> </label>
                               <input type="password" name="password_confirmation" class="form-control" id="exampleFormControlInput3" >
+                          </div>
+                          <div class="mb-3">
+                              <label for="email" class="form-label"> <h5>Confirmation mot de passe</h5> </label>
+                              <input type="email" name="email" class="form-control" id="email" >
                           </div>
       
                           <div class="mb-3">

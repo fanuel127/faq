@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+
 use App\Models\Role;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -23,11 +24,10 @@ class User extends Authenticatable
         'gender',
         'email',
         'gender',
-         'password',
-         'phoneNumber',
-         'email',
-         'role_id',
-         'status',
+        'password',
+        'phoneNumber',
+        'email',
+        'role_id',
     ];
 
     /**
@@ -48,17 +48,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    public function Role(){
+    public function Role()
+    {
 
         return $this->belongsTo(Role::class);
+    }
+    public function Question()
+    {
 
+        return $this->hasMany(Question::class);
+    }
 }
-public function Question(){
-
-    return $this->hasMany(Question::class);
-
-}
-
-
-}
-

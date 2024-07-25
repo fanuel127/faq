@@ -67,7 +67,7 @@ class UserController extends  Controller
             'password' => Hash::make($request['password']),
         ]);
 
-        return redirect('users.list_user')->with('flash_message', 'Utilisateur Ajouter!');
+        return redirect('users.list_user')->with('success', 'Utilisateur Ajouter!');
     }
 
     /**

@@ -14,6 +14,8 @@ use App\Http\Controllers\Question\QuestionController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+//test
+Route::get('/usercontroller',[UserController::class,'index']);
 // route view for user
 Route::get('/', function () {
     return view('welcome');
@@ -65,7 +67,7 @@ Route::get('/add_user', [UserController::class, 'create'])->name('users.add_user
 Route::post('/', [UserController::class, 'store'])->name('users.store');
 Route::get('/show_user', [UserController::class, 'show'])->name('users.show_user');
 Route::put('/edit_user', [UserController::class, 'edit'])->name('users.edit_user');
-Route::post('/toggleStatus/{id}', [UserController::class, 'toggleStatus'])->name('users.list_user');
+Route::put('/toggleStatus/{id}', [UserController::class, 'toggleStatus'])->name('users.list_user');
 
 
 });
