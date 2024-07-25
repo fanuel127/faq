@@ -23,9 +23,9 @@ class UserController extends  Controller
 
     public function listRole()
     {
-
         $roles = Role::all();
         return view('users.list_user')->with('roles', $roles);
+
     }
 
     /**
