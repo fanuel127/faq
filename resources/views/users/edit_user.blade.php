@@ -17,7 +17,7 @@
         }
 
         input,
-        select {
+        select,button {
             height: 60px;
         }
     </style>
@@ -74,6 +74,7 @@
                                                     <h5>Genre</h5>
                                                 </label>
                                                 <select class="form-select" name="gender" id="floatingSelect">
+                                                    <option selected disabled>entrer votre genre</option>
                                                     <option value="masculin">Masculin</option>
                                                     <option value="féminin">Féminin</option>
                                                 </select>
@@ -83,13 +84,13 @@
                                     <div class="row">
                                         <div class="col-6">
                                             <div class="mb-3 mt-3">
-                                                <button type="submit" class="btn btn-lg rounded-pill btn-primary"
+                                                <button type="submit" class="btn btn-lg btn-primary"
                                                    style="width: 400px ;" >Annuler</button>
                                             </div>
                                         </div>
                                         <div class="col-6">
                                             <div class="mb-3 mt-3">
-                                                <button type="submit" class="btn btn-lg rounded-pill"
+                                                <button type="submit" class="btn btn-lg"
                                                     style="width: 400px ; color: black;background-color:orange">Enregistrer</button>
                                             </div>
                                         </div>

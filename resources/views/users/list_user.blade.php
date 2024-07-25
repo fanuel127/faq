@@ -1,109 +1,115 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="en">
-    <head>
 
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>List_Users</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-        </script>
-        <style>
-            body {
-                background-color: white;
-            }
+<head>
 
-            a {
-                color: black;
-                text-decoration: 0;
-            }
+    <meta charset="UTF-8">
+    <meta name="Detailsport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>List_Users</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
+    <style>
+        body {
+            background-color: white;
+        }
 
-            .panel {
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                width: 600px;
-                background-color: #fff;
-                box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-                transition: width 0.3s ease-in-out, opacity 0.3s ease-in-out;
-                opacity: 0;
-                pointer-events: none;
-                z-index: 1000;
-            }
+        a {
+            color: black;
+            text-decoration: 0;
+        }
 
-            .panel.open {
-                width: 600px;
-                opacity: 1;
-                pointer-events: auto;
-            }
+        .panel {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            background-color: #fff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            transition: width 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 1000;
+        }
 
-            .panel-header {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding: 1rem;
-                background-color: #f1f1f1;
-            }
+        .panel.open {
+            width: 600px;
+            opacity: 1;
+            pointer-events: auto;
+        }
 
-            .panel-body {
-                padding: 1rem;
-            }
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background-color: #f1f1f1;
+        }
 
-            .gauche {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-            }
+        .panel-body {
+            padding: 1rem;
+        }
 
-            .gauche h1:first-child {
-                margin-right: auto;
-            }
+        .gauche {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-            .gauche a:last-child {
-                margin-left: auto;
-            }
+        .gauche h1:first-child {
+            margin-right: auto;
+        }
 
-            .card-body {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-            }
+        .gauche a:last-child {
+            margin-left: auto;
+        }
 
-            .card-body h5:first-child {
-                margin-right: auto;
-            }
+        .card-body {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-            .card-body a:last-child {
-                margin-left: auto;
-            }
-        </style>
-    </head>
+        .card-body h5:first-child {
+            margin-right: auto;
+        }
+
+        .card-body a:last-child {
+            margin-left: auto;
+        }
+    </style>
+</head>
+
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <a class="navbar-brand" href="#">Hidden brand</a>
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Accueil</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Questions</a>
-              </li>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                <a class="navbar-brand" href="#">Hidden brand</a>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Questions</a>
+                    </li>
 
-            </ul>
-            <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-          </div>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
         </div>
-      </nav>
+    </nav>
     <div class="card bg-secondary">
         <div class="card-body">
             <h5 class="card-title" style="color: white;font-size:20px;">Gestion des utilisateurs</h5>
@@ -168,7 +174,8 @@
                                     <button id="open-panel-btn" class="btn btn-info mx-3">details</button>
                                     <div class="form-check form-switch">
                                         <label class="switch">
-                                            <input class="form-check-input" type="checkbox" role="switch" id="mySwitch"><span class="slider round"></span>
+                                            <input class="form-check-input" type="checkbox" role="switch"
+                                                id="mySwitch"><span class="slider round"></span>
                                         </label>
                                     </div>
                                 </div>
@@ -188,8 +195,7 @@
                         <p>Prenom : </p> <br>
                         <p>Nom : </p> <br>
                         <p>Genre : </p> <br>
-                        <p>Adresse Email : </p> <br>
-                        <p>Mot de passe : </p> <br>
+                        <p>Email : </p> <br>
                         <p>Numero de telephone : </p>
                     </div>
                 </div>
@@ -212,40 +218,215 @@
 
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var panel = document.getElementById('user-info-panel');
-            var openBtns = document.querySelectorAll('#open-panel-btn');
-            var closeBtn = document.getElementById('close-panel-btn');
+        // document.addEventListener('DOMContentLoaded', function() {
+        //     var panel = document.getElementById('user-info-panel');
+        //     var openBtns = document.querySelectorAll('#open-panel-btn');
+        //     var closeBtn = document.getElementById('close-panel-btn');
 
-            openBtns.forEach(function(btn) {
-                btn.addEventListener('click', function() {
-                    panel.classList.add('open');
-                });
-            });
+        //     openBtns.forEach(function(btn) {
+        //         btn.addEventListener('click', function() {
+        //             panel.classList.add('open');
+        //         });
+        //     });
 
-            closeBtn.addEventListener('click', function() {
-                panel.classList.remove('open');
-            });
+        //     closeBtn.addEventListener('click', function() {
+        //         panel.classList.remove('open');
+        //     });
 
-        });
+        // });
     </script>
     <script>
-        const mySwitches = document.querySelectorAll('.switch input');
-        const myButtons = document.querySelectorAll('#myButton');
+        // const mySwitches = document.querySelectorAll('.switch input');
+        // const myButtons = document.querySelectorAll('#myButton');
 
-        mySwitches.forEach((mySwitch, index) => {
-            mySwitch.addEventListener('change', function() {
-                if (this.checked) {
-                    myButtons[index].textContent = 'Activer';
-                    myButtons[index].classList.remove('btn-danger');
-                    myButtons[index].classList.add('btn-success');
-                } else {
-                    myButtons[index].textContent = 'Desactiver';
-                    myButtons[index].classList.remove('btn-success');
-                    myButtons[index].classList.add('btn-danger');
-                }
-            });
-        });
+        // mySwitches.forEach((mySwitch, index) => {
+        //     mySwitch.addEventListener('change', function() {
+        //         if (this.checked) {
+        //             myButtons[index].textContent = 'Activer';
+        //             myButtons[index].classList.remove('btn-danger');
+        //             myButtons[index].classList.add('btn-success');
+        //         } else {
+        //             myButtons[index].textContent = 'Desactiver';
+        //             myButtons[index].classList.remove('btn-success');
+        //             myButtons[index].classList.add('btn-danger');
+        //         }
+        //     });
+        // });
     </script>
+</body>
+
+</html> --}}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Detailsport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>List_User</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
+    <style>
+        th {
+            font-size: 30px;
+        }
+        body {
+            background-image: url('{{ asset('image/streaming5.png') }}');
+            font-size: 25px;
+        }
+    </style>
+
+</head>
+<body>
+    {{-- <div class="container">
+        <div class="row" style="margin: 25px;">
+            <div class="col-12">
+                <div class="card card-lg">
+                    <div class="card-header">
+                        <h2>Laravel 9 CRUD</h2>
+                    </div>
+                    <div class="card-body" style="margin-top: 25px;">
+                        <a href="" class="btn btn-success btn-lg" title="Add New User">
+                            Add New
+                        </a>
+                        <br>
+                        <br>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Nom</th>
+                                        <th>Prenom</th>
+                                        <th>Genre</th>
+                                        <th>Email</th>
+                                        <th>Numero</th>
+                                        <th>Statut</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>ken</td>
+                                        <td>fanuel</td>
+                                        <td>masculin</td>
+                                        <td>ken@gmail.com</td>
+                                        <td>377893619</td>
+                                        <td>Activer</td>
+                                        <td>
+                                            <a href="" title="Details User"><button class="btn btn-info btn-lg"><i class="fa fa-eye" aria-hidden="true"></i>Details</button></a>
+                                            <a href="" title="Edit User"><button class="btn btn-primary btn-lg"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</button></a>
+                                            <a href="" title="Delete User"><button class="btn btn-danger btn-lg"><i class="fa fa-eye" aria-hidden="true"></i>Delete</button></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> --}}
+    <div class="row" style="margin: 25px;">
+        <div class="col-12">
+            <div class="card card-sm">
+                <div class="card-header">
+                    <h2 style="text-align: center;">Liste Des Utilisateurs</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <a href="{{ url('/users/add_user') }}" class="btn btn-warning btn-lg" title="Add New User">
+                    Add New
+                </a>
+                <br>
+                <br>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead style="color: #fff; background-color:black;">
+                            <tr>
+                                <th>#</th>
+                                <th>Nom</th>
+                                <th>Prenom</th>
+                                <th>Genre</th>
+                                <th>Email</th>
+                                <th>Numero</th>
+                                <th>Statut</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{-- <tr>
+                                <td>1</td>
+                                <td>ken</td>
+                                <td>fanuel</td>
+                                <td>masculin</td>
+                                <td>ken@gmail.com</td>
+                                <td>377893619</td>
+                                <td>Activer</td>
+                                <td>
+                                    <a href="" title="Details User"><button class="btn btn-info"><i class="fa fa-eye" aria-hidden="true"></i>Details</button></a>
+                                    <a href="" title="Edit User"><button class="btn btn-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</button></a>
+                                    <a href="" title="Delete User"><button class="btn btn-danger"><i class="fa fa-eye" aria-hidden="true"></i>Delete</button></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>ken</td>
+                                <td>fanuel</td>
+                                <td>masculin</td>
+                                <td>ken@gmail.com</td>
+                                <td>377893619</td>
+                                <td>Activer</td>
+                                <td>
+                                    <a href="" title="Details User"><button class="btn btn-info"><i class="fa fa-eye" aria-hidden="true"></i>Details</button></a>
+                                    <a href="" title="Edit User"><button class="btn btn-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</button></a>
+                                    <a href="" title="Delete User"><button class="btn btn-danger"><i class="fa fa-eye" aria-hidden="true"></i>Delete</button></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>ken</td>
+                                <td>fanuel</td>
+                                <td>masculin</td>
+                                <td>ken@gmail.com</td>
+                                <td>377893619</td>
+                                <td>Activer</td>
+                                <td>
+                                    <a href="" title="Details User"><button class="btn btn-info"><i class="fa fa-eye" aria-hidden="true"></i>Details</button></a>
+                                    <a href="" title="Edit User"><button class="btn btn-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</button></a>
+                                    <a href="" title="Delete User"><button class="btn btn-danger"><i class="fa fa-eye" aria-hidden="true"></i>Delete</button></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>ken</td>
+                                <td>fanuel</td>
+                                <td>masculin</td>
+                                <td>ken@gmail.com</td>
+                                <td>377893619</td>
+                                <td>Activer</td>
+                                <td>
+                                    <a href="" title="Details User"><button class="btn btn-info"><i class="fa fa-eye" aria-hidden="true"></i>Details</button></a>
+                                    <a href="" title="Edit User"><button class="btn btn-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</button></a>
+                                    <a href="" title="Delete User"><button class="btn btn-danger"><i class="fa fa-eye" aria-hidden="true"></i>Delete</button></a>
+                                </td>
+                            </tr> --}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>

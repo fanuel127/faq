@@ -23,6 +23,8 @@ Route::get('/users/add_user', function () {
     return view('users.add_user');
 });
 
+Route::resource("/user", UserController::class);
+
 Route::get('/users/edit_user', function () {
     return view('users.edit_user');
 }); 
