@@ -24,13 +24,25 @@
 </head>
 
 <body>
+    <div>
+        @if ($errors->any())
+        <ul>
+            @foreach ($errors->all() as $error )
+            <li>{{ $error }}</li>
+
+            @endforeach
+        </ul>
+
+        @endif
+    </div>
     <section class="vh-100 gradient-custom">
         <div class="container py-2 h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-12 col-md-5 col-lg-12 col-xl-8">
                     <div class="card bg-secondary text-white" style="border-radius: 1rem;">
-                        <form action="{{ URL('users.store') }}">
+                        <form action="{{ route('users.update',['user' => $users]) }}" method="post">
                             @csrf
+                            @method('put')
                             <div class="card-body px-4">
 
                                 <div class="mb-md-5 mt-md-4 pb-2">
@@ -45,7 +57,7 @@
                                                     <h5>Nom</h5>
                                                 </label>
                                                 <input type="text" name="firstName" class="form-control"
-                                                    id="exampleFormControlInput1">
+                                                    id="exampleFormControlInput1" value="{{ $users->firstName }}">
                                             </div>
                                         </div>
                                         <div class="col-6">
@@ -54,7 +66,7 @@
                                                     <h5>Prenom</h5>
                                                 </label>
                                                 <input type="text" name="lastName" class="form-control"
-                                                    id="exampleFormControlInput1">
+                                                    id="exampleFormControlInput1" value="{{ $users->lastName }}">
                                             </div>
                                         </div>
                                     </div>
@@ -65,7 +77,7 @@
                                                     <h5>Téléphone</h5>
                                                 </label>
                                                 <input type="text" name="phoneNumber" class="form-control"
-                                                    id="exampleFormControlInput4">
+                                                    id="exampleFormControlInput4" value="{{ $users->phoneNumber }}">
                                             </div>
                                         </div>
                                         <div class="col-6">
@@ -73,7 +85,7 @@
                                                 <label for="floatingSelect">
                                                     <h5>Genre</h5>
                                                 </label>
-                                                <select class="form-select" name="gender" id="floatingSelect">
+                                                <select class="form-select" name="gender" id="floatingSelect" value="{{ $users->gender }}">
                                                     <option selected disabled>entrer votre genre</option>
                                                     <option value="masculin">Masculin</option>
                                                     <option value="féminin">Féminin</option>
@@ -91,7 +103,7 @@
                                         <div class="col-6">
                                             <div class="mb-3 mt-3">
                                                 <button type="submit" class="btn btn-lg"
-                                                    style="width: 400px ; color: black;background-color:orange">Enregistrer</button>
+                                                    style="width: 400px ; color: black;background-color:orange">Modifier</button>
                                             </div>
                                         </div>
                                     </div>

@@ -1,4 +1,4 @@
-{{-- <!doctype html>
+<!doctype html>
 <html lang="en">
 
 <head>
@@ -122,7 +122,7 @@
 
 <body>
 
-    <section class="p-3">
+    {{-- <section class="p-3">
 
         <div class="row">
             <div class="col-12">
@@ -284,7 +284,10 @@
 
             </div>
         </div>
-    </div>
+    </div>  --}}
+
+    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#readData" style="margin-left: 28%; margin-top:28%"><i
+        class="bi bi-eye"></i></button>
 
     <div class="modal fade" id="readData">
         <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -380,5 +383,5 @@
 
 </body>
 
-</html>  --}}
+</html> 
 

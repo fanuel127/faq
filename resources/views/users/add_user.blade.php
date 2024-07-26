@@ -17,23 +17,37 @@
         }
 
         input,
-        select , button {
+        select,
+        button {
             height: 60px;
         }
     </style>
 </head>
 
 <body>
+
+    <div>
+        @if ($errors->any())
+        <ul>
+            @foreach ($errors->all() as $error )
+            <li>{{ $error }}</li>
+                
+            @endforeach
+        </ul>
+            
+        @endif
+    </div>
     <section class="vh-100 gradient-custom">
         <div class="container py-2 h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-12 col-md-5 col-lg-12 col-xl-8">
                     <div class="card bg-dark text-white" style="border-radius: 1rem;">
-                        <form action="{{ url('users') }}" method="post">
+                        <form action="{{ route('users.store') }}" method="post">
                             {!! csrf_field() !!}
+                            @method('post')
                             <div class="card-body px-4">
 
-                        <div class="mb-md-5 mt-md-4 pb-2">
+                                {{-- <div class="mb-md-5 mt-md-4 pb-2">
 
                           <h2 class="fw-bold mb-4 text-uppercase" style="border-radius: 25%; color: orange"> <p> <u>Ajouter un Utilisateur</u> </p> </h2>
 
@@ -54,14 +68,14 @@
                                 <option value="féminin">Féminin</option>
                               </select>
                           </div>
-                          {{-- <div>
+                          <div>
                             <label for="floatingSelect"> <h5>Role</h5> </label>
                             <select class="form-select" name="role_id" id="floatingSelect">
-                                @foreach ($roles as $role )
+                                @foreach ($roles as $role)
                                     <option value={{ $role->value }}>{{ $role->role_name }}</option>
                                 @endforeach
                             </select>
-                        </div> --}}
+                        </div>
 
                           <div class="mb-3">
                               <label for="exampleFormControlInput2" class="form-label"> <h5>Adresse Email</h5> </label>
@@ -93,7 +107,7 @@
 
                       </div>
                 </form>
-              </div>
+              </div> --}}
                                 <div class="mb-md-8 mt-md-4 pb-2">
 
                                     <h2 class="fw-bold mb-4 text-uppercase" style="border-radius: 25%; color: orange">
@@ -114,8 +128,8 @@
                                                 </label>
                                                 <select class="form-select" name="gender" id="floatingSelect">
                                                     <option selected disabled>entrer votre genre</option>
-                                                    <option value="masculin">Masculin</option>
-                                                    <option value="féminin">Féminin</option>
+                                                    <option value="male">Masculin</option>
+                                                    <option value="female">Féminin</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -183,7 +197,7 @@
                                         <div class="col-6">
                                             <div class="mb-3 mt-3">
                                                 <button type="button" class="btn btn-lg btn-primary"
-                                                   style="width: 400px ;" >Annuler</button>
+                                                    style="width: 400px ;">Annuler</button>
                                             </div>
                                         </div>
                                         <div class="col-6">

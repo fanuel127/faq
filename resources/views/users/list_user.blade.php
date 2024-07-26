@@ -351,7 +351,7 @@
                 <br>
                 <br>
                 <div class="table-responsive">
-                    <table class="table">
+                    <table class="table" border="1">
                         <thead style="color: #fff; background-color:black;">
                             <tr>
                                 <th>#</th>
@@ -361,8 +361,10 @@
                                 <th>Email</th>
                                 <th>Numero</th>
                                 <th>Statut</th>
+                                <th>role</th>
                                 <th>Actions</th>
                             </tr>
+                            @foreach ($users as $user)
                         </thead>
                         <tbody>
                             {{-- <tr>
@@ -421,6 +423,18 @@
                                     <a href="" title="Delete User"><button class="btn btn-danger"><i class="fa fa-eye" aria-hidden="true"></i>Delete</button></a>
                                 </td>
                             </tr> --}}
+                            <tr>
+                                <td>{{ $user->id }}</td>
+                                <td>{{ $user->firstName }}</td>
+                                <td>{{ $user->lastName }}</td>
+                                <td>{{ $user->gender }}</td>
+                                <td>{{ $user->email }}</td>
+                                <td>{{ $user->phoneNumber }}</td>
+                                <td>{{ $user->status }}</td>
+                                <td>{{ $user->role_id }}</td>
+                                    <td> <a href="{{ route('/users/update/'.$user->id ) }}">Edit</a> </td>
+                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
