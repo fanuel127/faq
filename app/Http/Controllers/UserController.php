@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use App\Models\Role;
+use GrahamCampbell\ResultType\Success;
 
 class UserController extends  Controller
 {
@@ -19,13 +20,13 @@ class UserController extends  Controller
     {
         $users = User::all();
         return view('users.list_user')->with('users', $users);
+        return view ('users.list_user' , ['users' => $users]);
     }
 
     public function listRole()
     {
         $roles = Role::all();
         return view('users.list_user')->with('roles', $roles);
-
     }
 
     /**
@@ -52,22 +53,23 @@ class UserController extends  Controller
             'gender' => 'required|in:male,female',
             'phoneNumber' => 'required|unique:users,phoneNumber',
             'password' => 'required|max:8|confirmed',
-            'email' => 'required|email|unique',
+            'email' => 'required|email|unique:users,email',
             'role_id' => 'required|exists:role,id',
 
         ]);
 
         User::create([
-            'firstname' => $request['firstname'],
-            'lastName' => $request['lastname'],
+            'firstName' => $request['firstName'],
+            'lastName' => $request['lastName'],
             'gender' => $request['gender'],
             'phoneNumber' => $request['phoneNumber'],
             'role_id' =>  $request['role_id'],
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
+            'password' => $request['password'],
         ]);
 
-        return redirect('users.list_user')->with('success', 'Utilisateur Ajouter!');
+        return redirect(route('users.list_user'))->with('success', 'Utilisateur Ajouter!');
     }
 
     /**
@@ -87,19 +89,55 @@ class UserController extends  Controller
         return view('users.show_user', compact('user'));
     }
 
+       public function update(string $id , Request $request)
+       {
+           $data = $request->validate([
+               'firstName' => 'required|string',
+               'lastName',
+               'gender' => 'required|in:male,female',
+               'phoneNumber' => 'required',
+               'password' => 'required|max:8|confirmed',
+               'email' => 'required|email|unique:users,email',
+               'role_id' => 'required|exists:role,id',
+
+           ]);
+           $user = User::find($id);
+           $user-> update($data);
+           return redirect(route('users.list_user'))-> with('Success','user update sucessfully');
+       }
+    //  public function update(User $user , Request $request)
+    //  {
+    //      $data = $request->validate([
+    //          'firstName' => 'required|string',
+    //          'lastName',
+    //          'gender' => 'required|in:male,female',
+    //          'phoneNumber' => 'required',
+    //          'password' => 'required|max:8|confirmed',
+    //          'email' => 'required|email|unique:users,email',
+    //          'role_id' => 'required|exists:role,id',
+
+    //      ]);
+    //      $user -> update($data);
+    //      return redirect(route('users.list_user'))->with('success','utilisateur modifier');
+    //  }
+
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
+    //  public function edit(User $user)
+    //  {
+    //      return view('users.edit_user',['user' => $user]);
+    //  }
+      public function edit(string $id)
+      {
 
-        $user = User::find($id);
+          $user = User::find($id);
 
-        return view('users.edit_user',compact('user'));
-    }
+          return view('users.edit_user', compact('user'));
+      }
 
     /**
      * Update the specified resource in storage.
@@ -108,11 +146,11 @@ class UserController extends  Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function toggleStatus( $id){
+    public function toggleStatus(string $id)
+    {
         $user = User::FindOrFail($id);
-        $user->status= !$user->status;
+        $user->status = !$user->status;
         $user->save();
         return redirect('users.list_user')->with('success', 'Utilisateur active!');
-
     }
 }

@@ -17,23 +17,37 @@
         }
 
         input,
-        select {
+        select,
+        button {
             height: 60px;
         }
     </style>
 </head>
 
 <body>
+
+    <div>
+        @if ($errors->any())
+        <ul>
+            @foreach ($errors->all() as $error )
+            <li>{{ $error }}</li>
+                
+            @endforeach
+        </ul>
+            
+        @endif
+    </div>
     <section class="vh-100 gradient-custom">
         <div class="container py-2 h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-12 col-md-5 col-lg-12 col-xl-8">
-                    <div class="card bg-secondary text-white" style="border-radius: 1rem;">
-                        <form action="{{ URL('users.store') }}">
-                            @csrf
+                    <div class="card bg-dark text-white" style="border-radius: 1rem;">
+                        <form action="{{ route('users.store') }}" method="post">
+                            {!! csrf_field() !!}
+                            @method('post')
                             <div class="card-body px-4">
 
-                        <div class="mb-md-5 mt-md-4 pb-2">
+                                {{-- <div class="mb-md-5 mt-md-4 pb-2">
 
                           <h2 class="fw-bold mb-4 text-uppercase" style="border-radius: 25%; color: orange"> <p> <u>Ajouter un Utilisateur</u> </p> </h2>
 
@@ -54,14 +68,14 @@
                                 <option value="féminin">Féminin</option>
                               </select>
                           </div>
-                          {{-- <div>
+                          <div>
                             <label for="floatingSelect"> <h5>Role</h5> </label>
                             <select class="form-select" name="role_id" id="floatingSelect">
-                                @foreach ($roles as $role )
+                                @foreach ($roles as $role)
                                     <option value={{ $role->value }}>{{ $role->role_name }}</option>
                                 @endforeach
                             </select>
-                        </div> --}}
+                        </div>
 
                           <div class="mb-3">
                               <label for="exampleFormControlInput2" class="form-label"> <h5>Adresse Email</h5> </label>
@@ -93,7 +107,7 @@
 
                       </div>
                 </form>
-              </div>
+              </div> --}}
                                 <div class="mb-md-8 mt-md-4 pb-2">
 
                                     <h2 class="fw-bold mb-4 text-uppercase" style="border-radius: 25%; color: orange">
@@ -103,25 +117,26 @@
                                         <div class="col-6">
                                             <div class="mb-3 mt-3">
                                                 <label for="exampleFormControlInput1" class="form-label">
-                                                    <h5>Nom</h5>
+                                                    <h5>Nom<span class="text-danger">*</span></h5>
                                                 </label>
                                                 <input type="text" name="firstName" class="form-control"
                                                     id="exampleFormControlInput1">
                                             </div>
                                             <div class="mb-3 mt-3">
                                                 <label for="floatingSelect">
-                                                    <h5>Genre</h5>
+                                                    <h5>Genre<span class="text-danger">*</span></h5>
                                                 </label>
                                                 <select class="form-select" name="gender" id="floatingSelect">
-                                                    <option value="masculin">Masculin</option>
-                                                    <option value="féminin">Féminin</option>
+                                                    <option selected disabled>entrer votre genre</option>
+                                                    <option value="male">Masculin</option>
+                                                    <option value="female">Féminin</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="col-6">
                                             <div class="mb-3 mt-3">
                                                 <label for="exampleFormControlInput1" class="form-label">
-                                                    <h5>Prenom</h5>
+                                                    <h5>Prenom<span class="text-danger">*</span></h5>
                                                 </label>
                                                 <input type="text" name="lastName" class="form-control"
                                                     id="exampleFormControlInput1">
@@ -129,12 +144,13 @@
                                             <div class="mb-3 mt-3">
                                                 <div>
                                                     <label for="floatingSelect">
-                                                        <h5>Role</h5>
+                                                        <h5>Role<span class="text-danger">*</span></h5>
                                                     </label>
                                                     <select class="form-select" name="role_id" id="floatingSelect">
                                                         {{-- @foreach ($roles as $role)
                                                         <option value="{{ $role->value }}" class="form-control">{{ $role->role_name }}</option>
                                                         @endforeach --}}
+                                                        <option selected disabled>entrer votre role</option>
                                                         <option value="1">Admin</option>
                                                         <option value="2">SimpleUser</option>
                                                     </select>
@@ -146,7 +162,7 @@
                                         <div class="col-6">
                                             <div class="mb-3 mt-3">
                                                 <label for="exampleFormControlInput3" class="form-label">
-                                                    <h5>Mot de passe</h5>
+                                                    <h5>Mot de passe<span class="text-danger">*</span></h5>
                                                 </label>
                                                 <input type="password" name="password" class="form-control"
                                                     id="exampleFormControlInput3">
@@ -154,7 +170,7 @@
 
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput4" class="form-label">
-                                                    <h5>Téléphone</h5>
+                                                    <h5>Téléphone<span class="text-danger">*</span></h5>
                                                 </label>
                                                 <input type="text" name="phoneNumber" class="form-control"
                                                     id="exampleFormControlInput4">
@@ -163,14 +179,14 @@
                                         <div class="col-6">
                                             <div class="mb-3 mt-3">
                                                 <label for="exampleFormControlInput3" class="form-label">
-                                                    <h5>Confirmation mot de passe</h5>
+                                                    <h5>Confirmation mot de passe<span class="text-danger">*</span></h5>
                                                 </label>
                                                 <input type="password" name="password_confirmation" class="form-control"
                                                     id="exampleFormControlInput3">
                                             </div>
                                             <div class="mb-3 mt-3">
                                                 <label for="exampleFormControlInput2" class="form-label">
-                                                    <h5>Adresse Email</h5>
+                                                    <h5>Adresse Email<span class="text-danger">*</span></h5>
                                                 </label>
                                                 <input type="email" name="email" class="form-control"
                                                     id="exampleFormControlInput2" placeholder="name@example.com">
@@ -180,13 +196,13 @@
                                     <div class="row">
                                         <div class="col-6">
                                             <div class="mb-3 mt-3">
-                                                <button type="submit" class="btn btn-lg rounded-pill btn-primary"
-                                                   style="width: 400px ;" >Annuler</button>
+                                                <button type="button" class="btn btn-lg btn-primary"
+                                                    style="width: 400px ;">Annuler</button>
                                             </div>
                                         </div>
                                         <div class="col-6">
                                             <div class="mb-3 mt-3">
-                                                <button type="submit" class="btn btn-lg rounded-pill"
+                                                <button type="submit" class="btn btn-lg"
                                                     style="width: 400px ; color: black;background-color:orange">Enregistrer</button>
                                             </div>
                                         </div>
