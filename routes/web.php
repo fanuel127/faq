@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\TestController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Question\QuestionController;
 /*
@@ -15,7 +15,14 @@ use App\Http\Controllers\Question\QuestionController;
 |
 */
 //test
-Route::get('/usercontroller',[UserController::class,'index']);
+Route::get('/test',[TestController::class,'index'])->name('Test.index');
+Route::get('/test/create',[TestController::class,'create'])->name('Test.create');
+Route::post('/test',[TestController::class,'store'])->name('Test.store');
+Route::get('/test/{test}/edit',[TestController::class,'edit'])->name('Test.edit');
+Route::put('/test/update',[TestController::class,'update'])->name('Test.update');
+
+
+
 // route view for user
 Route::get('/', function () {
     return view('welcome');

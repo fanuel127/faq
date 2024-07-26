@@ -50,7 +50,7 @@ class UserController extends  Controller
             'firstName' => 'required|string',
             'lastName',
             'gender' => 'required|in:male,female',
-            'phoneNumber' => 'required',
+            'phoneNumber' => 'required|unique:users,phoneNumber',
             'password' => 'required|max:8|confirmed',
             'email' => 'required|email|unique',
             'role_id' => 'required|exists:role,id',
