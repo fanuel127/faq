@@ -168,7 +168,7 @@
                             </td>
                             <td>
                                 <div class="d-flex text-center">
-                                    <a href="edit_user" class="btn btn-warning">
+                                    <a href="{{ url('list_user/'.$item->id.'/edit') }}" class="btn btn-warning">
                                         modifier
                                     </a>
                                     <button id="open-panel-btn" class="btn btn-info mx-3">details</button>

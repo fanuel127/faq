@@ -51,7 +51,7 @@ class UserController extends  Controller
             'firstName' => 'required|string',
             'lastName',
             'gender' => 'required|in:male,female',
-            'phoneNumber' => 'required',
+            'phoneNumber' => 'required|unique:users,phoneNumber',
             'password' => 'required|max:8|confirmed',
             'email' => 'required|email|unique:users,email',
             'role_id' => 'required|exists:role,id',
@@ -134,10 +134,9 @@ class UserController extends  Controller
     public function edit(string $id)
     {
 
-        $user = User::find($id);
-
-        return view('users.edit_user', compact('user'));
-    }
+          $user = User::find($id);
+          return view('users.edit_user', compact('user'));
+      }
 
     /**
      * Update the specified resource in storage.
