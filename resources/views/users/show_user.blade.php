@@ -20,7 +20,7 @@
         }
 
         td button {
-            margin: 5px;
+            margin: 10px;
         }
 
         td button {
@@ -105,7 +105,7 @@
             border: none;
             outline: none;
             background: transparent;
-            border-bottom: 2px solid orange;
+            border-bottom: 3px groove orange;
         }
 
         .modal-footer .submit {
@@ -286,7 +286,7 @@
         </div>
     </div>  --}}
 
-    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#readData" style="margin-left: 28%; margin-top:28%"><i
+    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#readData" style="margin-left: 45%; margin-top:20%;width:150px;height:70px;"><i
         class="bi bi-eye"></i></button>
 
     <div class="modal fade" id="readData">
@@ -302,9 +302,9 @@
 
                     <form action="#" id="myForm">
 
-                        <div class="card imgholder">
+                        {{-- <div class="card imgholder">
                             <img src="{{ asset('image/user.png') }}" width="200" height="200">
-                        </div>
+                        </div> --}}
 
                         <div class="inputField">
                             <div>
@@ -383,5 +383,5 @@
 
 </body>
 
-</html> 
+</html>
 

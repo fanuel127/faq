@@ -96,7 +96,7 @@
                                     <div class="row">
                                         <div class="col-6">
                                             <div class="mb-3 mt-3">
-                                                <button type="submit" class="btn btn-lg btn-primary"
+                                                <button type="button" class="btn btn-lg btn-primary"
                                                    style="width: 400px ;" >Annuler</button>
                                             </div>
                                         </div>

@@ -24,10 +24,6 @@ Route::get('/', function () {
 Route::get('/user/add_user', function () {
     return view('users.add_user');
 });
-//store
-Route::get('/user/store', function () {
-    return view('users.list_user');
-});
 
 Route::resource("/user", UserController::class);
 
@@ -41,6 +37,14 @@ Route::get('/user/list_user', function () {
 Route::get('/users/show_user', function () {
     return view('users.show_user');
 });
+//store
+Route::get('/user/store', function () {
+    return view('users.list_user');
+});
+//update
+// Route::get('/users/update/{id}', function() {
+//     return view('users.list_user');
+// });
 
 // route view for question
 Route::get('/', function () {

@@ -16,14 +16,14 @@ class QuestionController extends Controller
     public function index()
     {
         $questions = Question::all();
-        return view ('question.list_question')->with('questions', $questions);
+        return view ('questions.list_question')->with('questions', $questions);
 
     }
     public function listCategory()
     {
 
         $categories=Category::all();
-        return view('question.list_question')->with('categories', $categories);
+        return view('questions.list_question')->with('categories', $categories);
     }
 
 
@@ -45,7 +45,7 @@ class QuestionController extends Controller
         ]);
         $input = $request->all();
         Question::create($input);
-        return redirect('question.add_question')->with('flash_message', 'Question created successfully.');
+        return redirect('questions.add_question')->with('flash_message', 'Question created successfully.');
     }
 
     /**
