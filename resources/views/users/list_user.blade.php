@@ -60,6 +60,21 @@
                             @foreach ($users as $user)
                         </thead>
                         <tbody>
+
+                            {{-- <tr>
+                                <td>1</td>
+                                <td>ken</td>
+                                <td>fanuel</td>
+                                <td>masculin</td>
+                                <td>ken@gmail.com</td>
+                                <td>377893619</td>
+                                <td>Activer</td>
+                                <td>
+                                    <a href="" title="Details User"><button class="btn btn-info"><i class="fa fa-eye" aria-hidden="true"></i>Details</button></a>
+                                    <a href="" title="Edit User"><button class="btn btn-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</button></a>
+                                    <a href="" title="Delete User"><button class="btn btn-danger"><i class="fa fa-eye" aria-hidden="true"></i>Delete</button></a>
+                                </td>
+                            </tr> --}}
                             <tr>
                                 <td>{{ $user->id }}</td>
                                 <td>{{ $user->firstName }}</td>
@@ -69,7 +84,7 @@
                                 <td>{{ $user->phoneNumber }}</td>
                                 <td>{{ $user->status }}</td>
                                 <td>{{ $user->role_id }}</td>
-                                    <td> <a href="{{ route('/users/update/'.$user->id ) }}">Edit</a> </td>
+                                <td> <a href="{{ route('/users/update/'.$user->id ) }}">Edit</a> </td>
                             </tr>
                             @endforeach
                         </tbody>

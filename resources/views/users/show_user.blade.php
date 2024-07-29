@@ -20,7 +20,7 @@
         }
 
         td button {
-            margin: 5px;
+            margin: 10px;
         }
 
         td button {
@@ -105,7 +105,7 @@
             border: none;
             outline: none;
             background: transparent;
-            border-bottom: 2px solid orange;
+            border-bottom: 3px groove orange;
         }
 
         .modal-footer .submit {
@@ -121,7 +121,174 @@
 </head>
 
 <body>
-    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#readData" style="margin-left: 28%; margin-top:28%"><i
+    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#readData" style="margin-left: 28%; margin-top:28"></button>
+
+    {{-- <section class="p-3">
+
+        <div class="row">
+            <div class="col-12">
+                <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#userForm">Nouvel Utilisateur <i
+                        class="bi bi-people"></i> </button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-striped table-hover mt-3 text-center table-bordered">
+
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Image</th>
+                            <th>Nom</th>
+                            <th>Prenom</th>
+                            <th>Genre</th>
+                            <th>Email</th>
+                            <th>Telephone</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="data">
+                        <tr>
+                            <td>1</td>
+                            <td> <img src="{{ asset('image/image1.png') }}" width="50" height="50"></td>
+                            <td>Sounna</td>
+                            <td>Silva</td>
+                            <td>Masculin</td>
+                            <td>Silva@gmail.com</td>
+                            <td>682720464</td>
+                            <td>Activer</td>
+                            <td>
+                                <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#readData"><i
+                                        class="bi bi-eye"></i></button>
+                                <button class="btn btn-primary"><i class="bi bi-pencil-square"></i></button>
+                                <button class="btn btn-danger"><i class="bi bi-trash"></i></button>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>2</td>
+                            <td> <img src="{{ asset('image/image1.png') }}" width="50" height="50"></td>
+                            <td>Sounna</td>
+                            <td>Silva</td>
+                            <td>Masculin</td>
+                            <td>Silva@gmail.com</td>
+                            <td>682720464</td>
+                            <td>Activer</td>
+                            <td>
+                                <button class="btn btn-success"><i class="bi bi-eye"></i></button>
+                                <button class="btn btn-primary"><i class="bi bi-pencil-square"></i></button>
+                                <button class="btn btn-danger"><i class="bi bi-trash"></i></button>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>3</td>
+                            <td> <img src="{{ asset('image/image1.png') }}" width="50" height="50"></td>
+                            <td>Sounna</td>
+                            <td>Silva</td>
+                            <td>Masculin</td>
+                            <td>Silva@gmail.com</td>
+                            <td>682720464</td>
+                            <td>Activer</td>
+                            <td>
+                                <button class="btn btn-success"><i class="bi bi-eye"></i></button>
+                                <button class="btn btn-primary"><i class="bi bi-pencil-square"></i></button>
+                                <button class="btn btn-danger"><i class="bi bi-trash"></i></button>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>4</td>
+                            <td> <img src="{{ asset('image/image1.png') }}" width="50" height="50"></td>
+                            <td>Sounna</td>
+                            <td>Silva</td>
+                            <td>Masculin</td>
+                            <td>Silva@gmail.com</td>
+                            <td>682720464</td>
+                            <td>Activer</td>
+                            <td>
+                                <button class="btn btn-success"><i class="bi bi-eye"></i></button>
+                                <button class="btn btn-primary"><i class="bi bi-pencil-square"></i></button>
+                                <button class="btn btn-danger"><i class="bi bi-trash"></i></button>
+
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+
+    </section>
+
+    <div class="modal fade" id="userForm">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h4 class="modal-title">remplir le formulaire</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+
+                    <form action="#" id="myForm">
+
+                        <div class="card imgholder">
+                            <label for="imgInput" class="upload">
+                                <input type="file" name="" id="imgInput">
+                                <i class="bi bi-plus-circle"></i>
+                            </label>
+                            <img src="{{ asset('image/user.png') }}" width="200" height="200">
+                        </div>
+
+                        <div class="inputField">
+                            <div>
+                                <label for="name">Nom</label>
+                                <input type="text" name="" id="name">
+                            </div>
+                            <div>
+                                <label for="prenom">Prenom</label>
+                                <input type="text" name="" id="prenom">
+                            </div>
+                            <div>
+                                <label for="genre">Genre</label>
+                                <input type="text" name="" id="genre">
+                            </div>
+                            <div>
+                                <label for="email">Email</label>
+                                <input type="email" name="" id="email">
+                            </div>
+                            <div>
+                                <label for="phone">Telephone</label>
+                                <input type="text" name="" id="phone" minlength="11" maxlength="11">
+                            </div>
+                            <div>
+                                <label for="status">Status</label>
+                                <input type="text" name="" id="status">
+                            </div>
+                        </div>
+
+                    </form>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" form="myForm" class="btn btn-warning submit">Enregistrer</button>
+                </div>
+
+            </div>
+        </div>
+    </div>  --}}
+
+    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#readData" style="margin-left: 45%; margin-top:20%;width:150px;height:70px;"><i
+
         class="bi bi-eye"></i></button>
 
     <div class="modal fade" id="readData">
@@ -137,9 +304,9 @@
 
                     <form action="#" id="myForm">
 
-                        <div class="card imgholder">
+                        {{-- <div class="card imgholder">
                             <img src="{{ asset('image/user.png') }}" width="200" height="200">
-                        </div>
+                        </div> --}}
 
                         <div class="inputField">
                             <div>

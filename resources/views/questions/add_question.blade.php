@@ -21,6 +21,10 @@
         textarea {
             height: 60px;
         }
+        a {
+            text-decoration: 0;
+            color: white;
+        }
     </style>
 </head>
 
@@ -97,12 +101,12 @@
                                     <div class="col-6">
                                         <div class="mb-3 mt-3">
                                             <button type="button" class="btn btn-lg rounded-pill btn-primary"
-                                                style="width: 450px ; color: black;">Annuler</button>
+                                                style="width: 450px ; color: black;"><a href="{{ url('questions/list_question') }}">Annuler</a></button>
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="mb-3 mt-3">
-                                            <button type="button" class="btn btn-lg rounded-pill"
+                                            <button type="submit" class="btn btn-lg rounded-pill"
                                                 style="width: 450px ; color: black;background-color:orange">Enregistrer</button>
                                         </div>
                                     </div>

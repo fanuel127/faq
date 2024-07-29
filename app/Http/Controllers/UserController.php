@@ -20,7 +20,7 @@ class UserController extends  Controller
     {
         $users = User::all();
         return view('users.list_user')->with('users', $users);
-        return view ('users.list_user' , ['users' => $users]);
+        return view('users.list_user', ['users' => $users]);
     }
 
     public function listRole()
@@ -89,22 +89,22 @@ class UserController extends  Controller
         return view('users.show_user', compact('user'));
     }
 
-       public function update(string $id , Request $request)
-       {
-           $data = $request->validate([
-               'firstName' => 'required|string',
-               'lastName',
-               'gender' => 'required|in:male,female',
-               'phoneNumber' => 'required',
-               'password' => 'required|max:8|confirmed',
-               'email' => 'required|email|unique:users,email',
-               'role_id' => 'required|exists:role,id',
+    public function update(string $id, Request $request)
+    {
+        $data = $request->validate([
+            'firstName' => 'required|string',
+            'lastName',
+            'gender' => 'required|in:male,female',
+            'phoneNumber' => 'required',
+            'password' => 'required|max:8|confirmed',
+            'email' => 'required|email|unique:users,email',
+            'role_id' => 'required|exists:role,id',
 
-           ]);
-           $user = User::find($id);
-           $user-> update($data);
-           return redirect(route('users.list_user'))-> with('Success','user update sucessfully');
-       }
+        ]);
+        $user = User::find($id);
+        $user->update($data);
+        return redirect(route('users.list_user'))->with('Success', 'user update sucessfully');
+    }
     //  public function update(User $user , Request $request)
     //  {
     //      $data = $request->validate([
@@ -131,10 +131,10 @@ class UserController extends  Controller
     //  {
     //      return view('users.edit_user',['user' => $user]);
     //  }
-      public function edit(string $id)
-      {
+    public function edit(string $id)
+    {
 
-          $user = User::find($id);     
+          $user = User::find($id);
           return view('users.edit_user', compact('user'));
       }
 
