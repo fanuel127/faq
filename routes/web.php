@@ -18,7 +18,7 @@ use App\Http\Controllers\Question\QuestionController;
 Route::get('/test',[TestController::class,'index'])->name('Test.index');
 Route::get('/test/create',[TestController::class,'create'])->name('Test.create');
 Route::post('/test',[TestController::class,'store'])->name('Test.store');
-Route::get('/test/{test}/edit',[TestController::class,'edit'])->name('Test.edit');
+Route::get('/test/{id}/edit',[TestController::class,'edit'])->name('Test.edit');
 Route::put('/test/update',[TestController::class,'update'])->name('Test.update');
 
 
@@ -73,7 +73,7 @@ Route::get('/questions/show_question', function () {
 
 Route::post('/user', [UserController::class, 'store'])->name('users.store');
 Route::get('/list_user', [UserController::class, 'index'])->name('users.list_user');
-Route::get('/edit_user', [UserController::class, 'edit'])->name('users.edit_user');
+Route::get('/{id}/edit_user', [UserController::class, 'edit'])->name('users.edit_user');
 Route::put('/users/update/{id}', [UserController::class, 'update'])->name('users.update');
 
 
