@@ -20,6 +20,9 @@
         select,button {
             height: 60px;
         }
+        a {
+            text-decoration: 0;
+        }
     </style>
 </head>
 
@@ -40,7 +43,7 @@
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-12 col-md-5 col-lg-12 col-xl-8">
                     <div class="card bg-secondary text-white" style="border-radius: 1rem;">
-                        <form action="{{ route('users.update',['user' => $users]) }}" method="post">
+                        <form action="{{ url('/edit_user/'.$users->id ) }}" method="post">
                             @csrf
                             @method('put')
                             <div class="card-body px-4">
@@ -50,6 +53,12 @@
                                     <h2 class="fw-bold mb-4 text-uppercase" style="border-radius: 25%; color: orange">
                                         <p> <u>Modifier un Utilisateur</u> </p>
                                     </h2>
+                                    @if (Session::has('success'))
+                                    <div class="alert alert-success" role="alert">
+                                        {{ Session::get('success') }}
+                                    </div>
+                                    @endif
+                                    <input type="hidden" name="id" value="{{ $users->id }}">
                                     <div class="row">
                                         <div class="col-6">
                                             <div class="mb-3 mt-3">
@@ -72,12 +81,33 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-6">
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput4" class="form-label">
-                                                    <h5>Téléphone</h5>
-                                                </label>
-                                                <input type="text" name="phoneNumber" class="form-control"
-                                                    id="exampleFormControlInput4" value="{{ $users->phoneNumber }}">
+                                            <div class="col-6">
+                                                <div class="mb-3">
+                                                    <label for="exampleFormControlInput4" class="form-label">
+                                                        <h5>Téléphone</h5>
+                                                    </label>
+                                                    <input type="text" name="phoneNumber" class="form-control"
+                                                        id="exampleFormControlInput4" value="{{ $users->phoneNumber }}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="mb-3 mt-3">
+                                                <div>
+                                                    <label for="floatingSelect">
+                                                        <h5>Role</h5>
+                                                    </label>
+                                                    <select class="form-select" name="role_id" id="floatingSelect" value="{{ $users->role_id }}">
+                                                        {{-- @foreach ($roles as $role)
+                                                        <option value="{{ $role->value }}" class="form-control">{{ $role->role_name }}</option>
+                                                        @endforeach --}}
+                                                        <option selected disabled>entrer votre role</option>
+                                                        <option value="1">Admin</option>
+                                                        <option value="2">SimpleUser</option>
+                                                    </select>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-6">
@@ -87,8 +117,8 @@
                                                 </label>
                                                 <select class="form-select" name="gender" id="floatingSelect" value="{{ $users->gender }}">
                                                     <option selected disabled>entrer votre genre</option>
-                                                    <option value="masculin">Masculin</option>
-                                                    <option value="féminin">Féminin</option>
+                                                    <option value="male">Masculin</option>
+                                                    <option value="female">Féminin</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -97,13 +127,13 @@
                                         <div class="col-6">
                                             <div class="mb-3 mt-3">
                                                 <button type="button" class="btn btn-lg btn-primary"
-                                                   style="width: 400px ;" >Annuler</button>
+                                                   style="width: 400px ;" ><a href="{{ url('/users/list_user') }}" style="color: black;">Back</a></button>
                                             </div>
                                         </div>
                                         <div class="col-6">
                                             <div class="mb-3 mt-3">
-                                                <button type="submit" class="btn btn-lg"
-                                                    style="width: 400px ; color: black;background-color:orange">Modifier</button>
+                                                <button type="submit" value="modifier" class="btn btn-lg"
+                                                    style="width: 400px ; color: black;background-color:orange">modifier</button>
                                             </div>
                                         </div>
                                     </div>

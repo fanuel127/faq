@@ -21,7 +21,7 @@
     <td>{{ $test->id }}</td>
     <td>{{ $test->firstName }}</td>
     <td>{{ $test->description}}</td>
-    <td><a href="{{ route('Test.edit',['test'=> $test ]) }}">Edit</a></td>
+    <td><a href="{{ route('/Test.edit/'.$test->id) }}">Edit</a></td>
 </tr>
         @endforeach
     </table>
