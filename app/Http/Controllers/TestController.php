@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\test;
-use Laravel\Ui\Presets\React;
+//use Laravel\Ui\Presets\React;
 
 class TestController extends Controller
 {
