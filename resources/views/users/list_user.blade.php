@@ -390,7 +390,7 @@
                                 <td>{{ $user->phoneNumber }}</td>
                                 <td>{{ $user->status }}</td>
                                 <td>{{ $user->role_id }}</td>
-                                <td> <a href="{{ route('/users/update/'.$user->id ) }}">Edit</a> </td>
+                                <td> <a href="{{ url('/users/update/'.$user->id ) }}">Edit</a> </td>
                             </tr>
                             @endforeach
                         </tbody>

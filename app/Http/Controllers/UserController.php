@@ -20,7 +20,7 @@ class UserController extends  Controller
     {
         $users = User::all();
         return view('users.list_user')->with('users', $users);
-        return view('users.list_user', ['users' => $users]);
+        // return view('users.list_user', ['users' => $users]);
     }
 
     public function listRole()
@@ -83,27 +83,26 @@ class UserController extends  Controller
         $user = User::find($id);
         return view('users.show_user')->with('users', $user);
     }*/
-    public function show(User $user)
+    public function show(User $users)
     {
 
-        return view('users.show_user', compact('user'));
+        return view('users.show_user', compact('users'));
     }
 
     public function update(string $id, Request $request)
     {
+        $users = User::find($id);
         $data = $request->validate([
             'firstName' => 'required|string',
             'lastName',
             'gender' => 'required|in:male,female',
             'phoneNumber' => 'required',
-            'password' => 'required|max:8|confirmed',
-            'email' => 'required|email|unique:users,email',
             'role_id' => 'required|exists:role,id',
 
         ]);
-        $user = User::find($id);
-        $user->update($data);
-        return redirect(route('users.list_user'))->with('Success', 'user update sucessfully');
+
+        $users->update($data);
+        return redirect('users.list_user')->with('Success', 'user update sucessfully');
     }
     //  public function update(User $user , Request $request)
     //  {
@@ -131,11 +130,11 @@ class UserController extends  Controller
     //  {
     //      return view('users.edit_user',['user' => $user]);
     //  }
-    public function edit(string $id)
+    public function edit($id)
     {
 
-          $user = User::find($id);
-          return view('users.edit_user', compact('user'));
+          $users = User::find($id);
+          return view('users.edit_user', compact('users'));
       }
 
     /**
@@ -147,9 +146,9 @@ class UserController extends  Controller
      */
     public function toggleStatus(string $id)
     {
-        $user = User::FindOrFail($id);
-        $user->status = !$user->status;
-        $user->save();
+        $users = User::FindOrFail($id);
+        $users->status = !$users->status;
+        $users->save();
         return redirect('users.list_user')->with('success', 'Utilisateur active!');
     }
 }

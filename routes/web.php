@@ -49,9 +49,9 @@ Route::get('/user/store', function () {
     return view('users.list_user');
 });
 //update
-// Route::get('/users/update/{id}', function() {
-//     return view('users.list_user');
-// });
+//  Route::get('/users/update/{id}', function() {
+//      return view('users.list_user');
+//  });
 
 // route view for question
 Route::get('/', function () {
@@ -77,8 +77,8 @@ Route::get('/questions/show_question', function () {
 
 Route::post('/user', [UserController::class, 'store'])->name('users.store');
 Route::get('/list_user', [UserController::class, 'index'])->name('users.list_user');
-Route::get('/{id}/edit_user', [UserController::class, 'edit'])->name('users.edit_user');
-Route::put('/users/update/{id}', [UserController::class, 'update'])->name('users.update');
+Route::put('/edit_user/{id}', [UserController::class, 'update'])->name('users.list_user');
+Route::get('/users/update/{id}', [UserController::class, 'edit'])->name('users.update');
 
 
 // Routes for Users
