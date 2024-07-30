@@ -35,6 +35,12 @@
             @endforeach
         </ul>
 
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+
         @endif
     </div>
     <section class="vh-100 gradient-custom">
@@ -46,68 +52,6 @@
                             {!! csrf_field() !!}
                             @method('post')
                             <div class="card-body px-4">
-
-                                {{-- <div class="mb-md-5 mt-md-4 pb-2">
-
-                          <h2 class="fw-bold mb-4 text-uppercase" style="border-radius: 25%; color: orange"> <p> <u>Ajouter un Utilisateur</u> </p> </h2>
-
-                          <div class="mb-3 mt-3">
-                              <label for="exampleFormControlInput" class="form-label"> <h5>Prénom</h5> </label>
-                              <input type="text" name="lastName" class="form-control" name="lastName" id="exampleFormControlInput">
-                          </div>
-
-                          <div class="mb-3 mt-3">
-                              <label for="exampleFormControlInput1" class="form-label"> <h5>Nom</h5> </label>
-                              <input type="text" name="firstName" class="form-control" id="exampleFormControlInput1">
-                          </div>
-
-                          <div>
-                              <label for="floatingSelect"> <h5>Genre</h5> </label>
-                              <select class="form-select" name="gender" id="floatingSelect">
-                                <option value="masculin">Masculin</option>
-                                <option value="féminin">Féminin</option>
-                              </select>
-                          </div>
-                          <div>
-                            <label for="floatingSelect"> <h5>Role</h5> </label>
-                            <select class="form-select" name="role_id" id="floatingSelect">
-                                @foreach ($roles as $role)
-                                    <option value={{ $role->value }}>{{ $role->role_name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-
-                          <div class="mb-3">
-                              <label for="exampleFormControlInput2" class="form-label"> <h5>Adresse Email</h5> </label>
-                              <input type="email" name="email" class="form-control" id="exampleFormControlInput2" placeholder="name@example.com">
-                          </div>
-
-                          <div class="mb-3">
-                              <label for="exampleFormControlInput3" class="form-label"> <h5>Mot de passe</h5> </label>
-                              <input type="password" name="password" class="form-control" id="exampleFormControlInput3" >
-                          </div>
-
-                          <div class="mb-3">
-                              <label for="exampleFormControlInput3" class="form-label"> <h5>Confirmation mot de passe</h5> </label>
-                              <input type="password" name="password_confirmation" class="form-control" id="exampleFormControlInput3" >
-                          </div>
-                          <div class="mb-3">
-                              <label for="email" class="form-label"> <h5>Confirmation mot de passe</h5> </label>
-                              <input type="email" name="email" class="form-control" id="email" >
-                          </div>
-
-                          <div class="mb-3">
-                              <label for="exampleFormControlInput4" class="form-label"> <h5>Téléphone</h5> </label>
-                              <input type="text" name="phoneNumber" class="form-control" id="exampleFormControlInput4">
-                          </div>
-
-                          <div class="mb-3">
-                              <button type="submit" class="btn btn-lg rounded-pill" style="width: 200px ; color: black;background-color:orange">Enregistrer</button>
-                          </div>
-
-                      </div>
-                </form>
-              </div> --}}
                                 <div class="mb-md-8 mt-md-4 pb-2">
 
                                     <h2 class="fw-bold mb-4 text-uppercase" style="border-radius: 25%; color: orange">
@@ -196,14 +140,12 @@
                                     <div class="row">
                                         <div class="col-6">
                                             <div class="mb-3 mt-3">
-                                                <button type="button" class="btn btn-lg btn-primary"
-                                                    style="width: 400px ;"><a href="{{ url('/users/list_user') }}" style="text-decoration: 0; color:black;">Annuler</a></button>
+                                                <button type="button" class="btn btn-lg btn-primary"style="width: 400px ;">Annuler</button>
                                             </div>
                                         </div>
                                         <div class="col-6">
                                             <div class="mb-3 mt-3">
-                                                <button type="submit" class="btn btn-lg"
-                                                    style="width: 400px ; color: black;background-color:orange">Enregistrer</button>
+                                                <button type="submit" class="btn btn-lg"style="width: 400px ; color: black;background-color:orange">Enregistrer</button>
                                             </div>
                                         </div>
                                     </div>

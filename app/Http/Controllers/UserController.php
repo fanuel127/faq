@@ -94,7 +94,7 @@ class UserController extends  Controller
         $users = User::find($id);
         $data = $request->validate([
             'firstName' => 'required|string',
-            'lastName',
+            'lastName' => 'required',
             'gender' => 'required|in:male,female',
             'phoneNumber' => 'required',
             'role_id' => 'required|exists:role,id',
@@ -102,7 +102,8 @@ class UserController extends  Controller
         ]);
 
         $users->update($data);
-        return redirect('users.list_user')->with('Success', 'user update sucessfully');
+        $users->save();
+        return redirect()->route('users.list_user')->with('Success', 'utilisateur modifier');
     }
     //  public function update(User $user , Request $request)
     //  {
