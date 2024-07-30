@@ -25,93 +25,6 @@
             background-image: url('{{ asset('image/streaming5.png') }}');
             font-size: 25px;
         }
-
-        /* table tr td {
-            vertical-align: middle;
-        }
-
-        td button {
-            margin: 10px;
-        }
-
-        td button {
-            font-size: 20px;
-        } */
-
-        /* .modal-header {
-            background: orange;
-            color: black;
-        }
-
-        .modal-body form {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            padding: 0;
-        }
-
-        .modal-body form .imgholder {
-            width: 200px;
-            height: 200px;
-            position: relative;
-            border-radius: 20px;
-            overflow: hidden;
-        }
-
-        .upload i {
-            color: #fff;
-            font-size: 35px;
-        }
-
-        .imgholder .upload input {
-            display: none;
-        }
-
-        .imgholder:hover .upload {
-            display: flex;
-        }
-
-        .modal-body form .inputField {
-            flex-basis: 68%;
-            border-left: 5px groove orange;
-            padding-left: 20px;
-        }
-
-        form .inputField>div {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        form .inputField>div label {
-            font-size: 20px;
-            font-weight: 500;
-        }
-
-        #userForm form .inputField>div label::after {
-            content: "*";
-            color: red;
-        }
-
-        form .inputField>div input {
-            width: 75%;
-            padding: 10px;
-            border: none;
-            outline: none;
-            background: transparent;
-            border-bottom: 3px groove orange;
-        }
-
-        .modal-footer .submit {
-            font-size: 18px;
-        }
-
-        #readData form .inputField>div input {
-            color: #000;
-            font-size: 18px;
-        } */
     </style>
 
 </head>
@@ -152,21 +65,6 @@
                             @foreach ($users as $user)
                         </thead>
                         <tbody>
-
-                            {{-- <tr>
-                                <td>1</td>
-                                <td>ken</td>
-                                <td>fanuel</td>
-                                <td>masculin</td>
-                                <td>ken@gmail.com</td>
-                                <td>377893619</td>
-                                <td>Activer</td>
-                                <td>
-                                    <a href="" title="Details User"><button class="btn btn-info"><i class="fa fa-eye" aria-hidden="true"></i>Details</button></a>
-                                    <a href="" title="Edit User"><button class="btn btn-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</button></a>
-                                    <a href="" title="Delete User"><button class="btn btn-danger"><i class="fa fa-eye" aria-hidden="true"></i>Delete</button></a>
-                                </td>
-                            </tr> --}}
                             <tr>
                                 <td>{{ $user->id }}</td>
                                 <td>{{ $user->firstName }}</td>
@@ -193,63 +91,6 @@
             </div>
         </div>
     </div>
-
-    {{-- <div class="modal fade" id="readData">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content">
-
-                <div class="modal-header">
-                    <h4 class="modal-title">Profile</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-
-                <div class="modal-body">
-
-                    <form action="#" id="myForm">
-
-                        <div class="card imgholder">
-                            <img src="{{ asset('image/user.png') }}" width="200" height="200">
-                        </div>
-
-                        <div class="inputField">
-                            <div>
-                                <label for="name">Nom : {{ $users->firstName }} </label>
-                                <input type="text" name="" id="name" >
-                            </div>
-                            <div>
-                                <label for="prenom">Prenom : {{ $users->lastName }} </label>
-                                {{-- <input type="text" name="" id="prenom">
-                            </div>
-                            <div>
-                                <label for="genre">Genre : {{ $users->gender }} </label>
-                                <input type="text" name="" id="genre">
-                            </div>
-                            <div>
-                                <label for="email">Email : {{ $users->email }}</label>
-                                {{-- <input type="email" name="" id="email">
-                            </div>
-                            <div>
-                                <label for="role">role : {{ $users->role_id }}</label>
-                                {{-- <input type="text" name="" id="role">
-                            </div>
-                            <div>
-                                <label for="phone">Telephone :{{ $users->phoneNumber }}</label>
-                                {{-- <input type="text" name="" id="phone" minlength="11" maxlength="11"
-                                >
-                            </div>
-                            <div>
-                                <label for="status">Status : {{ $users->status }}</label>
-                                {{-- <input type="text" name="" id="status">
-                            </div>
-                        </div>
-
-                    </form>
-
-                </div>
-
-            </div>
-        </div>
-    </div> --}}
 
 </body>
 
