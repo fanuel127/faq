@@ -75,10 +75,11 @@ Route::get('/questions/show_question', function () {
 });
 
 
-Route::post('/user', [UserController::class, 'store'])->name('users.store');
+Route::post('/users/list_user', [UserController::class, 'store'])->name('users.store');
 Route::get('/list_user', [UserController::class, 'index'])->name('users.list_user');
 Route::put('/edit_user/{id}', [UserController::class, 'update'])->name('users.list_user');
 Route::get('/users/update/{id}', [UserController::class, 'edit'])->name('users.update');
+Route::get('/users/show_user/{id}', [UserController::class, 'show'])->name('users.show_user');
 
 
 // Routes for Users

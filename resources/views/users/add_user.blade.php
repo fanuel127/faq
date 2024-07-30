@@ -31,10 +31,10 @@
         <ul>
             @foreach ($errors->all() as $error )
             <li>{{ $error }}</li>
-                
+
             @endforeach
         </ul>
-            
+
         @endif
     </div>
     <section class="vh-100 gradient-custom">
@@ -197,7 +197,7 @@
                                         <div class="col-6">
                                             <div class="mb-3 mt-3">
                                                 <button type="button" class="btn btn-lg btn-primary"
-                                                    style="width: 400px ;">Annuler</button>
+                                                    style="width: 400px ;"><a href="{{ url('/users/list_user') }}" style="text-decoration: 0; color:black;">Annuler</a></button>
                                             </div>
                                         </div>
                                         <div class="col-6">

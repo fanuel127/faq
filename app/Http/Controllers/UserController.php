@@ -78,16 +78,16 @@ class UserController extends  Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    /*public function show($id)
-    {
-        $user = User::find($id);
-        return view('users.show_user')->with('users', $user);
-    }*/
-    public function show(User $users)
-    {
+     public function show($id)
+     {
+         $users = User::find($id);
+         return view('users.show_user')->with('users', $users);
+     }
+    //  public function show(User $users)
+    //  {
 
-        return view('users.show_user', compact('users'));
-    }
+    //      return view('users.show_user', compact('users'));
+    //  }
 
     public function update(string $id, Request $request)
     {
