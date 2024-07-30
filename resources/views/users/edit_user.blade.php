@@ -43,7 +43,7 @@
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-12 col-md-5 col-lg-12 col-xl-8">
                     <div class="card bg-secondary text-white" style="border-radius: 1rem;">
-                        <form action="{{ url('users/update'.$users->id ) }}" method="post">
+                        <form action="{{ url('/users/edit_user/'.$users->id ) }}" method="post">
                             @csrf
                             @method('put')
                             <div class="card-body px-4">
