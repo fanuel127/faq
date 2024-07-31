@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,30 +14,54 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
     <style>
-        p {
-            font-size: 30px;
+        p,
+        th {
+            font-size: 40px;
+        }
+
+        body {
+            background-color: rgb(62, 61, 61);
+        }
+        .col-6 {
+            margin-left: 26%;
+            margin-top: 7%;
+        }
+        button {
+            margin-left: 20%;
         }
     </style>
 </head>
+
 <body>
     <div class="container py-5">
-        <table class="table" style="border: 2px">
-            <tr>
-                <td>
-                    <p> ID : <b> {{ $users->id }}</b> </p>
-                    <p> Nom : <b> {{ $users->firstName }}</b> </p>
-                    <p> Prenom : <b> {{ $users->lastName }}</b> </p>
-                    <p> Genre : <b> {{ $users->gender }}</b> </p>
-                    <p> Email : <b> {{ $users->email }}</b> </p>
-                    <p> Numero : <b> {{ $users->phoneNumber }}</b> </p>
-                    <p> Role : <b> {{ $users->role_id }}</b> </p>
-                </td>
-            </tr>
-        </table>
-        <div class="mb-3 mt-3">
-            <button type="button" class="btn btn-lg btn-primary"
-               style="width: 400px ;" ><a href="{{ url('/users/list_user') }}" style="color: black;text-decoration:0;">Annuler</a></button>
+        <div class="row">
+            <div class="col-6">
+                <table class="table table-striped table-hover" style="border: 2px">
+                    <thead class="table-warning" style="text-align:center;">
+                        <tr>
+                            <th>Informations de : {{ $users->firstName }} </th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white">
+                        <tr>
+                            <td>
+                                <p> Id : <b> {{ $users->id }}</b> </p>
+                                <p> Nom : <b> {{ $users->firstName }}</b> </p>
+                                <p> Prenom : <b> {{ $users->lastName }}</b> </p>
+                                <p> Genre : <b> {{ $users->gender }}</b> </p>
+                                <p> Email : <b> {{ $users->email }}</b> </p>
+                                <p> Numero : <b> {{ $users->phoneNumber }}</b> </p>
+                                <p> Role : <b> {{ $users->role_id }}</b> </p>
+                                <p> <button type="button" class="btn btn-lg btn-warning" style="width: 400px ;"><a
+                                    href="{{ url('/users/list_user') }}" style="color: black;text-decoration:0;">Retour</a>
+                                </button> </p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </body>
+
 </html>

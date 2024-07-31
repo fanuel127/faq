@@ -50,7 +50,7 @@ class UserController extends  Controller
         $request->validate([
             'firstName' => 'required|string',
             'lastName',
-            'gender' => 'required|in:male,female',
+            'gender' => 'required|in:masculin,feminin',
             'phoneNumber' => 'required|unique:users,phoneNumber',
             'password' => 'required|max:8|confirmed',
             'email' => 'required|email|unique:users,email',
@@ -95,7 +95,7 @@ class UserController extends  Controller
         $data = $request->validate([
             'firstName' => 'required|string',
             'lastName' => 'required',
-            'gender' => 'required|in:male,female',
+            'gender' => 'required|in:masculin,feminin',
             'phoneNumber' => 'required',
             'role_id' => 'required|exists:role,id',
 

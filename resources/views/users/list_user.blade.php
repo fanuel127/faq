@@ -49,8 +49,8 @@
                 <br>
                 <br>
                 <div class="table-responsive">
-                    <table class="table" border="1">
-                        <thead style="color: #fff; background-color:black;">
+                    <table class="table table-striped table-hover table-bordered" border="1">
+                        <thead class="table-dark" style="color: #fff; background-color:black;">
                             <tr>
                                 <th>#</th>
                                 <th>Nom</th>
@@ -75,7 +75,7 @@
                                 <td>{{ $user->status }}</td>
                                 <td>{{ $user->role_id }}</td>
                                 <td>
-                                    <a href="{{ url('/users/update/' . $user->id) }}" class="btn btn-primary"style="text-decoration: 0;color:black;">Edit</a>
+                                    <a href="{{ url('/users/update/' . $user->id) }}" class="btn btn-primary"style="text-decoration: 0;color:black; width:80px">Edit</a>
                                 </td>
                                 <td>
                                     <form method="POST">

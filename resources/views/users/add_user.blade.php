@@ -15,6 +15,9 @@
         body {
             background-color: white;
         }
+        a {
+            text-decoration: 0;
+        }
 
         input,
         select,
@@ -72,8 +75,8 @@
                                                 </label>
                                                 <select class="form-select" name="gender" id="floatingSelect">
                                                     <option selected disabled>entrer votre genre</option>
-                                                    <option value="male">Masculin</option>
-                                                    <option value="female">Féminin</option>
+                                                    <option value="masculin">Masculin</option>
+                                                    <option value="feminin">Féminin</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -140,7 +143,9 @@
                                     <div class="row">
                                         <div class="col-6">
                                             <div class="mb-3 mt-3">
-                                                <button type="button" class="btn btn-lg btn-primary"style="width: 400px ;">Annuler</button>
+                                                <button type="button" class="btn btn-lg btn-primary"style="width: 400px ;">
+                                                    <a href="{{ url('/users/list_user') }}" style="color: black;">Annuler</a>
+                                                </button>
                                             </div>
                                         </div>
                                         <div class="col-6">

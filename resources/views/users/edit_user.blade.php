@@ -117,8 +117,8 @@
                                                 </label>
                                                 <select class="form-select" name="gender" id="floatingSelect" value="{{ $users->gender }}">
                                                     <option selected disabled>entrer votre genre</option>
-                                                    <option value="male">Masculin</option>
-                                                    <option value="female">Féminin</option>
+                                                    <option value="masculin">Masculin</option>
+                                                    <option value="feminin">Féminin</option>
                                                 </select>
                                             </div>
                                         </div>
