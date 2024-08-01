@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\UserController;
@@ -73,6 +74,12 @@ Route::get('/questions/edit_question', function () {
 Route::get('/questions/show_question', function () {
     return view('questions.show_question');
 });
+
+Route::get('/dashboard',function() {
+    return view('admin.dashboard');
+} )->name('admin.dashboard');
+
+
 
 
 Route::post('/user/list_user', [UserController::class, 'store'])->name('users.store');
