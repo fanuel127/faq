@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -32,7 +32,11 @@
     </style>
 </head>
 
-<body>
+<body> --}}
+
+@extends('layouts.admin')
+
+@section('content')
     <div class="container py-5">
         <div class="row">
             <div class="col-6">
@@ -62,6 +66,7 @@
             </div>
         </div>
     </div>
-</body>
+@endsection
+{{-- </body>
 
-</html>
+</html> --}}

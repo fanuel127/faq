@@ -18,11 +18,11 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 |
 */
 //test
-Route::get('/test',[TestController::class,'index'])->name('Test.index');
-Route::get('/test/create',[TestController::class,'create'])->name('Test.create');
-Route::post('/test',[TestController::class,'store'])->name('Test.store');
-Route::get('/test/{id}/edit',[TestController::class,'edit'])->name('Test.edit');
-Route::put('/test/update',[TestController::class,'update'])->name('Test.update');
+Route::get('/test', [TestController::class, 'index'])->name('Test.index');
+Route::get('/test/create', [TestController::class, 'create'])->name('Test.create');
+Route::post('/test', [TestController::class, 'store'])->name('Test.store');
+Route::get('/test/{id}/edit', [TestController::class, 'edit'])->name('Test.edit');
+Route::put('/test/update', [TestController::class, 'update'])->name('Test.update');
 
 // route view for user
 Route::get('/', function () {
@@ -76,6 +76,12 @@ Route::get('/questions/show_question', function () {
 });
 
 
+Route::get('/dashboard', function () {
+    return view('admin.dashboard');
+})->name('admin.dashboard');
+
+
+
 Route::post('/user/list_user', [UserController::class, 'store'])->name('users.store');
 Route::get('/list_user', [UserController::class, 'index'])->name('users.list_user');
 Route::put('/users/edit_user/{id}', [UserController::class, 'update'])->name('users.update');
@@ -90,8 +96,6 @@ Route::group(['prefix' => 'users', 'as' => 'users.'], function () {
     Route::post('/', [UserController::class, 'store'])->name('users.store');
     Route::get('/show_user', [UserController::class, 'show'])->name('users.show_user');
     Route::put('/toggleStatus/{id}', [UserController::class, 'toggleStatus'])->name('users.list_user');
-
-
 });
 
 // routes for questions
