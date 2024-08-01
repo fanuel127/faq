@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Question\QuestionController;
 use App\Models\Role;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
@@ -24,8 +23,7 @@ Route::get('/test/create',[TestController::class,'create'])->name('Test.create')
 Route::post('/test',[TestController::class,'store'])->name('Test.store');
 Route::get('/test/{id}/edit',[TestController::class,'edit'])->name('Test.edit');
 Route::put('/test/update',[TestController::class,'update'])->name('Test.update');
-//admin
-Route::get('/admin',[AdminController::class, 'index'])->name('admin.index');
+
 
 
 // route view for user
