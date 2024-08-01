@@ -18,10 +18,17 @@ class UserController extends  Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::paginate(3);
         return view('users.list_user')->with('users', $users);
         // return view('users.list_user', ['users' => $users]);
+
     }
+
+    // public function search(Request $request)
+    // {
+    //     $posts = User::all();
+    //     return view('users.list_user',compact('users','query'));
+    // }
 
     public function listRole()
     {
@@ -78,11 +85,11 @@ class UserController extends  Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-     public function show($id)
-     {
-         $users = User::find($id);
-         return view('users.show_user')->with('users', $users);
-     }
+    public function show($id)
+    {
+        $users = User::find($id);
+        return view('users.show_user')->with('users', $users);
+    }
     //  public function show(User $users)
     //  {
 
@@ -134,9 +141,9 @@ class UserController extends  Controller
     public function edit($id)
     {
 
-          $users = User::find($id);
-          return view('users.edit_user', compact('users'));
-      }
+        $users = User::find($id);
+        return view('users.edit_user', compact('users'));
+    }
 
     /**
      * Update the specified resource in storage.

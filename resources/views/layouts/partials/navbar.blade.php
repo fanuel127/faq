@@ -1,10 +1,4 @@
-{{-- <div class="d-flex" id="wrapper">
 
-    <div id="page-content-wrapper">
-
-
-    </div>
-</div> --}}
 <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
     <div class="d-flex align-items-center">
         <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
@@ -21,7 +15,7 @@
             <li class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle second-text fw-bold" id="navbarDropdown"
                 data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fas fa-user me-2"></i>John Doe
+                    <i class="fas fa-user me-2"></i>Silva
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <li><a href="#" class="dropdown-item">Profile</a></li>
@@ -34,3 +28,4 @@
     </div>
 
 </nav>
+

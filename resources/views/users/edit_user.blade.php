@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -26,7 +26,11 @@
     </style>
 </head>
 
-<body>
+<body> --}}
+
+@extends('layouts.admin')
+
+@section('content')
     <div>
         @if ($errors->any())
         <ul>
@@ -145,6 +149,7 @@
             </div>
         </div>
     </section>
-</body>
+@endsection
+{{-- </body>
 
-</html>
+</html> --}}

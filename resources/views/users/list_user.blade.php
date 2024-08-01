@@ -1,4 +1,4 @@
-
+{{--
 
 <!DOCTYPE html>
 <html lang="en">
@@ -29,12 +29,27 @@
 
 </head>
 
-<body>
-    <div class="row" style="margin: 25px;">
+<body> --}}
+
+@extends('layouts.admin')
+
+@section('content')
+    <div style="display:flex; justify-content:space-between;margin: 30px;background-color:#fff;">
+        <h4>Gestions des utilisateurs</h4>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">Accueil</li>
+                <li class="breadcrumb-item">Utilisateurs</li>
+                <li class="breadcrumb-item active" aria-current="page">Liste des utilisateurs</li>
+            </ol>
+        </nav>
+
+    </div>
+    <div class="row" style="margin: 10px;">
         <div class="col-12">
             <div class="card card-sm">
                 <div class="card-header">
-                    <h2 style="text-align: center;">Liste Des Utilisateurs</h2>
+                    <h2>Liste des utilisateurs</h2>
                 </div>
             </div>
         </div>
@@ -43,13 +58,20 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <a href="{{ url('/users/add_user') }}" class="btn btn-warning btn-lg" title="Add New User">
-                    Add New
-                </a>
                 <br>
+                <div style="display:flex; justify-content:space-between;">
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="height: 60px ; width:280px;">
+                        <button class="btn btn-outline-light btn-success" type="submit" style="width:150px;">Search</button>
+                    </form>
+                    <a href="{{ url('/users/add_user') }}" class="btn btn-warning btn-lg"
+                        title="Add New User">
+                        <i class="bi bi-plus-square-fill me-2"></i>Ajouter
+                    </a>
+                </div>
                 <br>
                 <div class="table-responsive">
-                    <table class="table table-striped table-hover table-bordered" border="1">
+                    <table class="table table-striped table-hover" border="1">
                         <thead class="table-dark" style="color: #fff; background-color:black;">
                             <tr>
                                 <th>#</th>
@@ -75,23 +97,27 @@
                                 <td>{{ $user->status }}</td>
                                 <td>{{ $user->role_id }}</td>
                                 <td>
-                                    <a href="{{ url('/users/update/' . $user->id) }}" class="btn btn-primary"style="text-decoration: 0;color:black; width:80px">Edit</a>
+                                    <a href="{{ url('/users/update/' . $user->id) }}"
+                                        class="btn btn-primary"style="text-decoration: 0;color:black; width:80px">Edit</a>
                                 </td>
                                 <td>
                                     <form method="POST">
-                                        <a class="btn btn-success" href="{{ url('/users/show_user/' . $user->id) }}"style="text-decoration: 0;color:black;">Details</a>
+                                        <a class="btn btn-success"
+                                            href="{{ url('/users/show_user/' . $user->id) }}"style="text-decoration: 0;color:black;">Details</a>
                                     </form>
                                 </td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
+                    {{ $users->links() }}
+
                 </div>
 
             </div>
         </div>
     </div>
+@endsection
+{{-- </body>
 
-</body>
-
-</html>
+</html> --}}

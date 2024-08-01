@@ -1,8 +1,16 @@
 @extends('layouts.admin')
 
 @section('content')
-
+    
     <div class="row g-3 my-2">
+            <div className="container-fluid">
+                <div className="row d-flex justify-content-between">
+                        <h1>Tableau de bord</h1>
+                        <ol className="breadcrumb">
+                            <li className="breadcrumb-item active">Accueil</li>
+                        </ol>
+                </div>
+            </div>
         <div class="col-md-3">
             <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
                 <div>
@@ -135,6 +143,5 @@
             </table>
         </div>
     </div> --}}
-
-
+    <a href="{{ url('users/list_user') }}"></a>
 @endsection
