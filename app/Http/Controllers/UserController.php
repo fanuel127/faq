@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Pagination\Paginator;
 use App\Models\Role;
 use GrahamCampbell\ResultType\Success;
 
@@ -18,9 +19,10 @@ class UserController extends  Controller
      */
     public function index()
     {
-        $users = User::paginate(3);
+        $users = User::all();
         return view('users.list_user')->with('users', $users);
         // return view('users.list_user', ['users' => $users]);
+
 
     }
 
@@ -28,6 +30,69 @@ class UserController extends  Controller
     // {
     //     $posts = User::all();
     //     return view('users.list_user',compact('users','query'));
+    // }
+    // public function search(Request $request)
+    // {
+    //     $users = User::all();
+
+    //     if ($request->has('search')) {
+    //         $users = $users->filter(function ($user) use ($request) {
+    //             return stripos($user->firstName, $request->input('search')) !== false
+    //                 || stripos($user->gender, $request->input('search')) !== false;
+    //         });
+    //     }
+
+    //     return view('users.list_user', compact('users'));
+    // }
+
+    public function total(Request $request)
+    {
+        $users = User::all();
+
+        if ($request->has('search')) {
+            $users = $users->filter(function ($user) use ($request) {
+                return stripos($user->firstName, $request->input('search')) !== false
+                    || stripos($user->gender, $request->input('search')) !== false;
+            });
+        }
+
+        $usersCount = $users->count();
+        if ($request->has('search')) {
+            $users = $users->filter(function ($user) use ($request) {
+                return stripos($user->firstName, $request->input('search')) !== false
+                    || stripos($user->gender, $request->input('search')) !== false;
+            });
+        }
+
+        if ($request->has('sort') && $request->input('sort') === 'asc') {
+            $users = $users->sortBy('firstName');
+        } elseif ($request->has('sort') && $request->input('sort') === 'desc') {
+            $users = $users->sortByDesc('firstName');
+        }
+
+        return view('users.list_user', compact('users', 'usersCount'));
+    }
+
+    // public function ordre(Request $request)
+    // {
+    //     $users = User::all();
+
+    //     if ($request->has('search')) {
+    //         $users = $users->filter(function ($user) use ($request) {
+    //             return stripos($user->firstName, $request->input('search')) !== false
+    //                 || stripos($user->email, $request->input('search')) !== false;
+    //         });
+    //     }
+
+    //     if ($request->has('sort') && $request->input('sort') === 'asc') {
+    //         $users = $users->sortBy('firstName');
+    //     } elseif ($request->has('sort') && $request->input('sort') === 'desc') {
+    //         $users = $users->sortByDesc('firstName');
+    //     }
+
+    //     $usersCount = $users->count();
+
+    //     return view('users.list_user', compact('users', 'usersCount'));
     // }
 
     public function listRole()
@@ -157,6 +222,6 @@ class UserController extends  Controller
         $users = User::FindOrFail($id);
         $users->status = !$users->status;
         $users->save();
-        return redirect('users.list_user')->with('success', 'Utilisateur active!');
+        return redirect('users.update')->with('success', 'Utilisateur active!');
     }
 }
