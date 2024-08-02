@@ -1,33 +1,3 @@
-{{-- <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Add_User</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-    </script>
-    <style>
-        body {
-            background-color: white;
-        }
-        a {
-            text-decoration: 0;
-        }
-
-        input,
-        select,
-        button {
-            height: 60px;
-        }
-    </style>
-</head>
-
-<body> --}}
 
 @extends('layouts.admin')
 
@@ -137,7 +107,8 @@
                         <label for="exampleFormControlInput3" class="form-label">
                             <h3>Confirmation mot de passe<span class="text-danger">*</span></h3>
                         </label>
-                        <input type="password" name="password_confirmation" class="form-control" id="exampleFormControlInput3">
+                        <input type="password" name="password_confirmation" class="form-control"
+                            id="exampleFormControlInput3">
                     </div>
                 </div>
 
@@ -150,7 +121,8 @@
 
                     <div>
                         <button type="submit"
-                            class="btn btn-lg"style="width: 200px ; color: black;background-color:orange">Enregistrer
+                            class="btn btn-lg"style="width: 200px ; color: black;background-color:orange">
+                            Enregistrer
                         </button>
                     </div>
                 </div>

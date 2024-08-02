@@ -1,35 +1,3 @@
-{{--
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="Detailsport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>List_User</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-    </script>
-    <style>
-        th {
-            font-size: 30px;
-        }
-
-        body {
-            background-image: url('{{ asset('image/streaming5.png') }}');
-            font-size: 25px;
-        }
-    </style>
-
-</head>
-
-<body> --}}
 
 @extends('layouts.admin')
 
@@ -45,102 +13,136 @@
         </nav>
 
     </div>
-    <div class="row" style="margin: 10px;">
-        <div class="col-12">
-            <div class="card card-sm">
-                <div class="card-header">
-                    <h2>Liste des utilisateurs</h2>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <br>
-                <div style="display:flex; justify-content:space-between;">
-                    <form class="d-flex" action="{{ route('users.total') }}" method="GET">
-                        <input class="form-control me-2" type="search" name="search" placeholder="Search"
-                            aria-label="Search" style="height: 60px ; width:280px;">
-                        <button class="btn btn-outline-light btn-success" type="submit"
-                            style="width:150px;">Search</button>
-                    </form>
-                    <form action="{{ route('users.total') }}" method="GET" style="display:flex; justify-content:space-between;">
+
+                {{-- <form action="{{ route('users.total') }}" method="GET"
+                        style="display:flex; justify-content:space-between;">
                         <div class="form-group">
                             <label for="sort">Trier par :</label>
-                            <select name="sort" id="sort" class="form-control">
+                            <select name="sort" id="sort" class="form-control" style="width: 180px;">
                                 <option value="">Sélectionner un tri</option>
                                 <option value="asc">Ordre croissant</option>
                                 <option value="desc">Ordre décroissant</option>
                             </select>
                         </div>
-                        <button type="submit" class="btn btn-primary" style="width: 90px;">Classer</button>
-                    </form>
+                        <button type="submit" class="btn btn-primary" style="width: 150px;">Classer</button>
+                    </form> --}}
 
-                    {{-- <h2>Totale des utilisateurs : ({{ $usersCount }}) </h2> --}}
-                    <a href="{{ url('/users/add_user') }}" class="btn btn-warning btn-lg" title="Add New User">
-                        <i class="bi bi-plus-square-fill me-2"></i>Ajouter
-                    </a>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <div class="d-flex justify-content-between ">
+                                <h4 class="text-center">Liste des utilisateurs</h4>
+                                <a href="{{ url('/users/add_user') }}" class="btn btn-warning"
+                                    title="Ajouter un nouveau utilisateur">
+                                    <i class="fas fa-plus"></i>
+                                    Ajouter
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="filter-bar d-flex justify-content-between">
+                            <div class="order">
+                                <label for="order">Trie par..</label>
+                                <select class="filtered" name="" id="order">
+                                    <option value="" selected desabled>--</option>
+                                    <option value="asc">Ordre croissant</option>
+                                    <option value="desc">Ordre decroissant</option>
+                                </select>
+                            </div>
+                            <div class="sort">
+                                <label for="sort">De..</label>
+                                <select class="filtered" name="sort" id="sort">
+                                    <option value="" selected desabled>--</option>
+                                    <option value="firstname">Nom</option>
+                                    <option value="lastname">Prenom</option>
+                                    <option value="email">Email</option>
+                                </select>
+                            </div>
+                            <div class="gender">
+                                <label for="gender">Genre..</label>
+                                <select class="filtered" name="gender" id="gender">
+                                    <option value="" selected desabled>--</option>
+                                    <option value="male">Masculin</option>
+                                    <option value="female">Feminin</option>
+                                </select>
+                            </div>
+                            <div class="status">
+                                <label for="status">Statut..</label>
+                                <select class="filtered" name="status" id="status">
+                                    <option value="" selected desabled>--</option>
+                                    <option value="male">Actif</option>
+                                    <option value="female">Inactif</option>
+                                </select>
+                            </div>
+                            <div class="search">
+                                {{-- <input class="form-control search-input filtered" type="search" placeholder="Taper.." aria-label="Search">
+                                <button class="btn btn-outline-success filtered" type="submit">Search</button> --}}
+                                <form class="search-form d-flex" action="{{ route('users.total') }}" method="GET">
+                                    <input class=" search-input filtered" type="search" name="search"
+                                        placeholder="Recherche..." aria-label="Search">
+                                </form>
+                            </div>
+                        </div>
+                        <div class="datatable">
+                            <table id="example" class="table table-striped table-hover">
+                                <thead class="table-dark">
+                                    <tr class="">
+                                        <th>#</th>
+                                        <th>Nom</th>
+                                        <th>Prenom</th>
+                                        <th>Genre</th>
+                                        <th>Email</th>
+                                        <th>Telephone</th>
+                                        <th>Statut</th>
+                                        <th>Role</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                    @php
+                                        $i = 0;
+                                    @endphp
+                                    @foreach ($users as $user)
+                                        @php
+                                            $i++;
+                                        @endphp
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{ $i }}</td>
+                                        <td>{{ $user->firstName }}</td>
+                                        <td>{{ $user->lastName }}</td>
+                                        <td>{{ $user->gender }}</td>
+                                        <td>{{ $user->email }}</td>
+                                        <td>{{ $user->phoneNumber }}</td>
+                                        <td
+                                            class={{ $user->status === 0 ? 'badge rounded-pill bg-danger text-light px-1' : 'badge rounded-pill bg-success text-light px-1' }}>
+                                            {{ $user->status === 0 ? 'Desactive' : 'Active' }}
+                                        </td>
+                                        <td>{{ $user->role_id === 1 ? 'Admin' : 'Gestionnaire' }}</td>
+                                        <td class="d-flex ">
+                                            <a href="{{ url('/users/update/' . $user->id) }}" title="Modifier"
+                                                class="btn btn-warning btn-sm ">
+                                                <i class="fas fa-edit "></i>
+                                            </a>
+                                            <form method="POST">
+                                                <a class="btn btn-primary mx-3 btn-sm" title="Voir plus"
+                                                    href="{{ url('/users/show_user/' . $user->id) }}"style="text-decoration: 0;color:black;">
+                                                    <i class="fas fa-eye"></i>
+                                                </a>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
                 </div>
-                <br>
-                <div class="table-responsive">
-                    <table class="table table-striped table-bordered table-hover" border="1">
-                        <thead class="table-dark" style="color: #fff; background-color:black;">
-                            <tr>
-                                <th>#</th>
-                                <th>Nom</th>
-                                <th>Prenom</th>
-                                <th>Genre</th>
-                                <th>Email</th>
-                                <th>Numero</th>
-                                <th>Statut</th>
-                                <th>role</th>
-                                <th colspan="3">Actions</th>
-                            </tr>
-                            @foreach ($users as $user)
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>{{ $user->id }}</td>
-                                <td>{{ $user->firstName }}</td>
-                                <td>{{ $user->lastName }}</td>
-                                <td>{{ $user->gender }}</td>
-                                <td>{{ $user->email }}</td>
-                                <td>{{ $user->phoneNumber }}</td>
-                                <td>{{ $user->status }}</td>
-                                <td>{{ $user->role_id }}</td>
-                                <td>
-                                    <a href="{{ url('/users/update/' . $user->id) }}"
-                                        class="btn btn-primary"style="text-decoration: 0;color:black; width:80px">Edit</a>
-                                </td>
-                                <td>
-                                    <form method="POST">
-                                        <a class="btn btn-success"
-                                            href="{{ url('/users/show_user/' . $user->id) }}"style="text-decoration: 0;color:black;">Details</a>
-                                    </form>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                    {{-- {{ $users->links() }} --}}
-                    {{-- <nav aria-label="Page navigation example">
-                        <ul class="pagination justify-content-end pagination-lg">
-                          <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                          </li>
-                          <li class="page-item"><a class="page-link" href="#">1</a></li>
-                          <li class="page-item"><a class="page-link" href="#">2</a></li>
-                          <li class="page-item"><a class="page-link" href="#">3</a></li>
-                          <li class="page-item">
-                            <a class="page-link" href="#">Next</a>
-                          </li>
-                        </ul>
-                      </nav> --}}
-
-                </div>
-
             </div>
         </div>
     </div>
