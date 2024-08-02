@@ -23,7 +23,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables.net-bs5/2.1.2/dataTables.bootstrap5.min.js"
     integrity="sha512-Cwi0jz7fz7mrX990DlJ1+rmiH/D9/rjfOoEex8C9qrPRDDqwMPdWV7pJFKzhM10gAAPlufZcWhfMuPN699Ej0w=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    
+
     <style>
         /* add_user css */
         a {
@@ -42,21 +42,22 @@
         select,button {
             height: 60px;
         }
-        input , select {
-            width: 500px;
-        }
+        /* input , select {
+            width: 800px;
+        } */
 
         /*list_user css*/
 
         body {
             /* background-image: url('{{ asset('image/streaming5.png') }}'); */
             font-size: 22px;
+            /* background-color: rgb(239, 184, 113); */
         }
 
         /* show_user css */
         p,
         th {
-            font-size: 40px;
+            font-size: 30px;
         }
 
         button {

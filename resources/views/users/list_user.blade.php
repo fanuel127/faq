@@ -60,18 +60,32 @@
             <div class="col-12">
                 <br>
                 <div style="display:flex; justify-content:space-between;">
-                    <form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="height: 60px ; width:280px;">
-                        <button class="btn btn-outline-light btn-success" type="submit" style="width:150px;">Search</button>
+                    <form class="d-flex" action="{{ route('users.total') }}" method="GET">
+                        <input class="form-control me-2" type="search" name="search" placeholder="Search"
+                            aria-label="Search" style="height: 60px ; width:280px;">
+                        <button class="btn btn-outline-light btn-success" type="submit"
+                            style="width:150px;">Search</button>
                     </form>
-                    <a href="{{ url('/users/add_user') }}" class="btn btn-warning btn-lg"
-                        title="Add New User">
+                    <form action="{{ route('users.total') }}" method="GET" style="display:flex; justify-content:space-between;">
+                        <div class="form-group">
+                            <label for="sort">Trier par :</label>
+                            <select name="sort" id="sort" class="form-control">
+                                <option value="">Sélectionner un tri</option>
+                                <option value="asc">Ordre croissant</option>
+                                <option value="desc">Ordre décroissant</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 90px;">Classer</button>
+                    </form>
+
+                    {{-- <h2>Totale des utilisateurs : ({{ $usersCount }}) </h2> --}}
+                    <a href="{{ url('/users/add_user') }}" class="btn btn-warning btn-lg" title="Add New User">
                         <i class="bi bi-plus-square-fill me-2"></i>Ajouter
                     </a>
                 </div>
                 <br>
                 <div class="table-responsive">
-                    <table class="table table-striped table-hover" border="1">
+                    <table class="table table-striped table-bordered table-hover" border="1">
                         <thead class="table-dark" style="color: #fff; background-color:black;">
                             <tr>
                                 <th>#</th>
@@ -110,7 +124,20 @@
                             @endforeach
                         </tbody>
                     </table>
-                    {{ $users->links() }}
+                    {{-- {{ $users->links() }} --}}
+                    {{-- <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-end pagination-lg">
+                          <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                          </li>
+                          <li class="page-item"><a class="page-link" href="#">1</a></li>
+                          <li class="page-item"><a class="page-link" href="#">2</a></li>
+                          <li class="page-item"><a class="page-link" href="#">3</a></li>
+                          <li class="page-item">
+                            <a class="page-link" href="#">Next</a>
+                          </li>
+                        </ul>
+                      </nav> --}}
 
                 </div>
 

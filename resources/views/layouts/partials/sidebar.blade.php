@@ -5,7 +5,7 @@
     <div class="bg-white" id="sidebar-wrapper">
 
         <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom">
-            <i class="fas fa-user-secret me-2"></i> Admin
+            <i class="fas fa-user-secret me-2"> <a href="{{ url('/dashboard') }}"></a></i> Admin
         </div>
 
         <div class="list-group list-group-flush my-3">
