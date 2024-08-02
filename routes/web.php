@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\UserController;
@@ -24,8 +23,6 @@ Route::get('/test/create', [TestController::class, 'create'])->name('Test.create
 Route::post('/test', [TestController::class, 'store'])->name('Test.store');
 Route::get('/test/{id}/edit', [TestController::class, 'edit'])->name('Test.edit');
 Route::put('/test/update', [TestController::class, 'update'])->name('Test.update');
-
-
 
 // route view for user
 Route::get('/', function () {
@@ -78,11 +75,10 @@ Route::get('/questions/show_question', function () {
     return view('questions.show_question');
 });
 
+
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
 })->name('admin.dashboard');
-
-
 
 
 
