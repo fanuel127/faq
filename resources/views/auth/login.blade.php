@@ -92,7 +92,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <form method="POST" action="{{ route('login') }}">
+                            <form method="POST" action="{{ route('admin.login') }}">
                                 @csrf
                                 <div class="row gy-3 overflow-hidden">
                                     <div class="col-12">

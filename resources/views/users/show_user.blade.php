@@ -55,7 +55,7 @@
                                 <p> Genre : <b> {{ $users->gender }}</b> </p>
                                 <p> Email : <b> {{ $users->email }}</b> </p>
                                 <p> Numero : <b> {{ $users->phoneNumber }}</b> </p>
-                                <p> Role : <b> {{ $users->role_id }}</b> </p>
+                                <p> Role : <b> {{ $users->role_id === 1 ? 'Admin' : 'Gestionnaire' }}</b> </p>
                                 <p> <button type="button" class="btn btn-lg btn-warning" style="width: 400px ;"><a
                                     href="{{ url('/users/list_user') }}" style="color: black;text-decoration:0;">Retour</a>
                                 </button> </p>

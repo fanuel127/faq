@@ -79,8 +79,11 @@ Route::get('/questions/show_question', function () {
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
 })->name('admin.dashboard');
-
-
+Route::get('/login', function () {
+    return view('auth.login');
+})->name('admin.login');
+// pour le status
+Route::get('/{i}', [UserController::class, 'status']);
 
 Route::post('/user/list_user', [UserController::class, 'store'])->name('users.store');
 Route::get('/list_user', [UserController::class, 'index'])->name('users.list_user');

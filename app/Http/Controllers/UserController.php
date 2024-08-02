@@ -26,6 +26,8 @@ class UserController extends  Controller
 
     }
 
+
+
     // public function search(Request $request)
     // {
     //     $posts = User::all();
@@ -223,5 +225,25 @@ class UserController extends  Controller
         $users->status = !$users->status;
         $users->save();
         return redirect('users.update')->with('success', 'Utilisateur active!');
+    }
+
+    public function status($userId)
+    {
+        $user = User::find($userId);
+
+        if($user)
+        {
+            if($user->status) {
+                $user->status = 1 ;
+            }
+            else
+            {
+                $user->status = 0 ;
+            }
+            $user->save();
+        }
+
+        return back();
+
     }
 }

@@ -2,14 +2,14 @@
 
     <!-- sidebar starts here -->
 
-    <div class="bg-white" id="sidebar-wrapper">
+    <div class="bg-secondary" id="sidebar-wrapper">
 
-        <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom">
-            <i class="fas fa-user-secret me-2"> <a href="{{ url('/dashboard') }}"></a></i> Admin
+        <div class="sidebar-heading text-center py-4 success-text fs-4 fw-bold text-uppercase border-bottom">
+            <i class="fas fa-user-secret me-2"> <a href="{{ url('/dashboard') }}" style="color: whitesmoke;">Admin</a></i>
         </div>
 
         <div class="list-group list-group-flush my-3">
-            <a href="{{ url('/dashboard') }}" class="bg-warning" style="margin-bottom: 20px; padding-top:20px; margin-top:0;padding-bottom:20px;">
+            <a href="{{ url('/dashboard') }}" class="bg-warning" style="margin-bottom: 20px; padding-top:20px; margin-top:0;padding-bottom:20px;color:white;">
                 <h5><i class="fas fa-tachometer-alt me-2"></i>Tableau de Bord</h5>
             </a>
             <br>
@@ -54,9 +54,9 @@
                     </li>
                 </ul>
             </aside>
-            <a href="#" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold">
+            {{-- <a href="#" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold">
                 <i class="fas fa-project-diagram me-2"></i>Logout
-            </a>
+            </a> --}}
         </div>
 
     </div>

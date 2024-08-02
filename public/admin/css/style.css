@@ -1,6 +1,6 @@
 :root {
-    --main-bg-color: #00ee97;
-    --main-text-color:#00ee97;
+    --main-bg-color: orange;
+    --main-text-color:orange;
     --second-text-color:#bbbec5;
     --second-bg-color:#c1efde;
 }
@@ -44,7 +44,7 @@
 
 #sidebar-wrapper {
     min-height: 100vh;
-    width: 25vh;
+    width: 22vh;
     margin-left: -15rem;
     transition: margin 0.25s ease-out;
 }
@@ -52,6 +52,7 @@
 #sidebar-wrapper .sidebar-heading {
     padding: 0.875rem 1.25rem;
     font-size: 1.2rem;
+    color: var(--main-text-color);
 }
 
 #sidebar-wrapper .list-group {

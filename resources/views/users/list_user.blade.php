@@ -1,8 +1,7 @@
-
 @extends('layouts.admin')
 
 @section('content')
-    <div style="display:flex; justify-content:space-between;margin: 30px;background-color:#fff;">
+    <div style="display:flex; justify-content:space-between;margin: 30px;">
         <h4>Gestions des utilisateurs</h4>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
@@ -88,8 +87,8 @@
                                 </form>
                             </div>
                         </div>
-                        <div class="datatable">
-                            <table id="example" class="table table-striped table-hover">
+                        <div class="">
+                            <table id="example" class="table" style="width:100%">
                                 <thead class="table-dark">
                                     <tr class="">
                                         <th>#</th>
@@ -118,9 +117,13 @@
                                         <td>{{ $user->gender }}</td>
                                         <td>{{ $user->email }}</td>
                                         <td>{{ $user->phoneNumber }}</td>
-                                        <td
-                                            class={{ $user->status === 0 ? 'badge rounded-pill bg-danger text-light px-1' : 'badge rounded-pill bg-success text-light px-1' }}>
-                                            {{ $user->status === 0 ? 'Desactive' : 'Active' }}
+                                        <td>
+                                            <a href="{{ $user->i }}" class="btn btn-sm btn-{{ $user->status ? 'success' : 'danger' }}">
+                                                {{ $user->status ? 'Active' : 'Desactive' }}
+                                            </a>
+                                            {{-- class={{ $user->status === 0 ? 'badge rounded-pill bg-danger text-light px-1' : 'badge rounded-pill bg-success text-light px-1' }}> --}}
+
+                                            {{-- {{ $user->status === 0 ? 'Desactive' : 'Active' }} --}}
                                         </td>
                                         <td>{{ $user->role_id === 1 ? 'Admin' : 'Gestionnaire' }}</td>
                                         <td class="d-flex ">
@@ -134,6 +137,10 @@
                                                     <i class="fas fa-eye"></i>
                                                 </a>
                                             </form>
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" role="switch"
+                                                    id="flexSwitchCheckChecked">
+                                            </div>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -150,3 +157,4 @@
 {{-- </body>
 
 </html> --}}
+{{-- <button id="myButton" class="btn btn-sm btn-success switch-button">Activer</button> --}}
