@@ -35,7 +35,7 @@
             </div>
             <div class="card bg-light">
                 <div class="card-header bg-secondary">
-                    <h2 style="color: whitesmoke;">Ajouter un utilisateur</h2>
+                    <h2 style="color: whitesmoke;"><i class="bi bi-plus-square me-2"></i>Ajouter un utilisateur</h2>
                 </div>
                 <h4>les champs marqués d'un Astérix <span class="text-danger">(*)</span> sont obligatoires</h4>
                 <div class="card-body" style="display: flex; justify-content:space-around; margin-bottom:25px">
@@ -111,14 +111,14 @@
                 </div>
                 <div style="display: flex; justify-content:space-around; margin-bottom:80px;">
                     <div>
-                        <button type="button" class="btn btn-lg btn-primary"style="width: 200px ; margin-left:5px;">
-                            <a href="{{ url('/users/list_user') }}" style="color: black;">Annuler</a>
+                        <button type="button" class="btn btn-lg btn-danger"style="width: 200px ; margin-left:5px;">
+                            <a href="{{ url('/users/list_user') }}" style="color: black;"><i class="bi bi-backspace-fill me-2"></i>Annuler</a>
                         </button>
                     </div>
                     <div>
                         <button type="submit"
                             class="btn btn-lg"style="width: 200px ; color: black;background-color:orange;margin-left:1300px;">
-                            Enregistrer
+                            <i class="bi bi-save me-2"></i>Enregistrer
                         </button>
                     </div>
                 </div>

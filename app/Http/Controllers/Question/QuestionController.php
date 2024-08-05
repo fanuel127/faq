@@ -13,13 +13,13 @@ class QuestionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function indexQuestion()
     {
         $questions = Question::all();
         return view ('questions.list_question')->with('questions', $questions);
 
     }
-    public function listCategory()
+    public function listCategoryQuestion()
     {
 
         $categories=Category::all();
@@ -33,7 +33,7 @@ class QuestionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function storeQuestion(Request $request)
     {
         $input = $request->validate([
             'questionName'=> 'required',
@@ -45,11 +45,11 @@ class QuestionController extends Controller
             'user_id' => 'required|exists:user,id',
         ]);
         $input = $request->all();
-        Question::create($input);
+        Question::createQuestion($input);
         return redirect('questions.list_question')->with('flash_message', 'Question created successfully.');
     }
 
-    public function create()
+    public function createQuestion()
     {
         return view('questions.add_question');
     }
@@ -60,7 +60,7 @@ class QuestionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function showQuestion($id)
     {
         $question = Question::find($id);
         $answers = $question->answers;
@@ -73,7 +73,7 @@ class QuestionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function editQuestion($id)
     {
         $question = Question::find($id);
         return view('questions.edit_question')->with('questions', $question);

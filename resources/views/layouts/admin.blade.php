@@ -98,6 +98,53 @@
             outline: none;
             padding-right: -60px;
         } */
+
+        /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 30%;
+    }
+
+     /* Sidebar styles */
+     /* .sidebar {
+      height: 100%;
+      width: 200px;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: #f1f1f1;
+      overflow-x: hidden;
+      padding-top: 20px;
+    } */
+
+    .sidebar a {
+      padding: 6px 8px 6px 16px;
+      text-decoration: none;
+      font-size: 20px;
+      /* color: #818181; */
+      display: block;
+    }
+
+    .sidebar a:hover {
+      color: #000;
+    }
+
     </style>
     <link rel="stylesheet" href="{{ asset('admin/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/datatables.min.css') }}">
@@ -137,6 +184,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.datatables.net/2.1.3/js/dataTables.js"></script>
+    <script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
     <script src="https://cdn.datatables.net/2.1.3/js/dataTables.bootstrap5.js"></script>
     <script src="https://cdn.datatables.net/responsive/3.0.2/js/dataTables.responsive.js"></script>
     <script src="https://cdn.datatables.net/responsive/3.0.2/js/responsive.bootstrap5.js"></script>
@@ -158,22 +206,46 @@
         });
     </script>
     <script>
-        // document.getElementById('flexSwitchCheckChecked').addEventListener('change', function() {
-        //     var button = document.getElementById('myButton');
-        //     if (this.checked) {
-        //         button.classList.remove('btn-success');
-        //         button.classList.add('btn-danger');
-        //         button.textContent = 'Désactivé';
-        //         this.parentElement.classList.add('checkbox-red');
-        //         this.parentElement.classList.remove('checkbox-green');
-        //     } else {
-        //         button.classList.remove('btn-danger');
-        //         button.classList.add('btn-success');
-        //         button.textContent = 'Activé';
-        //         this.parentElement.classList.add('checkbox-green');
-        //         this.parentElement.classList.remove('checkbox-red');
-        //     }
-        // });
+        document.getElementById("loginLink").addEventListener("click", openModal);
+    document.getElementById("submitRole").addEventListener("click", submitRole);
+    document.getElementById("closeModal").addEventListener("click", closeModal);
+    document.addEventListener("click", function(event) {
+      if (event.target == document.getElementById("roleModal")) {
+        closeModal();
+      }
+    });
+
+    function openModal() {
+      document.getElementById("roleModal").style.display = "block";
+    }
+
+    function closeModal() {
+      document.getElementById("roleModal").style.display = "none";
+    }
+
+    function submitRole() {
+      var roleSelect = document.getElementById("roleSelect");
+      var selectedRole = roleSelect.value;
+
+      if (selectedRole === "admin") {
+        document.getElementById("adminSidebar").style.display = "block";
+      } else {
+        document.getElementById("adminSidebar").style.display = "none";
+      }
+
+      closeModal();
+      // Save the selected role in localStorage or sessionStorage
+      localStorage.setItem("selectedRole", selectedRole);
+    }
+
+    // Load the selected role from localStorage or sessionStorage
+    var selectedRole = localStorage.getItem("selectedRole");
+    if (selectedRole === "admin") {
+      document.getElementById("adminSidebar").style.display = "block";
+    } else {
+      document.getElementById("adminSidebar").style.display = "none";
+    }
+
     </script>
 </body>
 </html>

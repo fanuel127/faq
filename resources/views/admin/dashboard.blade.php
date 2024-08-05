@@ -16,8 +16,8 @@
         <div class="col-md-3">
             <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
                 <div>
-                    <h3 class="fs-2">720</h3>
-                    <p class="fs-5">Products</p>
+                    <h3 class="fs-2">{{ $totalAllUsers }}</h3>
+                    <p class="fs-5">totale des utilisateurs</p>
                 </div>
                 <i class="fas fa-gift fs-1 primary-text border rounded-full secondary-bg p-3"></i>
             </div>
@@ -25,8 +25,8 @@
         <div class="col-md-3">
             <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
                 <div>
-                    <h3 class="fs-2">4920</h3>
-                    <p class="fs-5">Sales</p>
+                    <h3 class="fs-2">{{ $totalAdmin }}</h3>
+                    <p class="fs-5">Administrateur</p>
                 </div>
                 <i class="fas fa-hand-holding fs-1 primary-text border rounded-full secondary-bg p-3"></i>
             </div>
@@ -34,8 +34,8 @@
         <div class="col-md-3">
             <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
                 <div>
-                    <h3 class="fs-2">3899</h3>
-                    <p class="fs-5">Delivery</p>
+                    <h3 class="fs-2">{{ $totalUser }}</h3>
+                    <p class="fs-5">Gestionnaire</p>
                 </div>
                 <i class="fas fa-truck fs-1 primary-text border rounded-full secondary-bg p-3"></i>
             </div>
@@ -43,107 +43,46 @@
         <div class="col-md-3">
             <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
                 <div>
-                    <h3 class="fs-2">%25</h3>
-                    <p class="fs-5">Increase</p>
+                    <h3 class="fs-2">{{ $totalQuestion }}</h3>
+                    <p class="fs-5">totale questions</p>
                 </div>
                 <i class="fas fa-chart-line fs-1 primary-text border rounded-full secondary-bg p-3"></i>
             </div>
         </div>
     </div>
-    {{-- <div class="row my-5">
-        <h3 class="fs-4 mb-3">Recent Orders</h3>
-        <div class="col">
-            <table class="table bg-white table-striped rounded shadow-sm table-hover">
-                <thead class="table-dark">
-                    <tr>
-                        <th scope="col" width="50">#</th>
-                        <th scope="col">Products</th>
-                        <th scope="col">Customer</th>
-                        <th scope="col">Price</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Television</td>
-                        <td>Jonny</td>
-                        <td>$1200</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Television</td>
-                        <td>Jonny</td>
-                        <td>$1200</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Television</td>
-                        <td>Jonny</td>
-                        <td>$1200</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">4</th>
-                        <td>Television</td>
-                        <td>Jonny</td>
-                        <td>$1200</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">5</th>
-                        <td>Television</td>
-                        <td>Jonny</td>
-                        <td>$1200</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">6</th>
-                        <td>Television</td>
-                        <td>Jonny</td>
-                        <td>$1200</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">7</th>
-                        <td>Television</td>
-                        <td>Jonny</td>
-                        <td>$1200</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">8</th>
-                        <td>Television</td>
-                        <td>Jonny</td>
-                        <td>$1200</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">9</th>
-                        <td>Television</td>
-                        <td>Jonny</td>
-                        <td>$1200</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">10</th>
-                        <td>Television</td>
-                        <td>Jonny</td>
-                        <td>$1200</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">11</th>
-                        <td>Television</td>
-                        <td>Jonny</td>
-                        <td>$1200</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">12</th>
-                        <td>Television</td>
-                        <td>Jonny</td>
-                        <td>$1200</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">13</th>
-                        <td>Television</td>
-                        <td>Jonny</td>
-                        <td>$1200</td>
-                    </tr>
-                </tbody>
-            </table>
+
+
+    {{-- <h3>Tableau de Bord</h3>
+    <br>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card card-body bg-primary text-white mb-3">
+                <label style="font-size: 20px;">Totale Utilisateur</label>
+                <h1 style="font-size: 50px">{{ $totalAllUsers }} <i class="bi bi-people-fill me-2"
+                        style="font-size:90px ; margin-left:250px;"></i></h1>
+            </div>
         </div>
-    </div> --}}
-    <a href="{{ url('users/list_user') }}"></a>
+        <div class="col-md-3">
+            <div class="card card-body bg-success text-white mb-3">
+                <label style="font-size: 20px;">Totale Administrateur</label>
+                <h1>{{ $totalUser }} <i class="bi bi-people-fill me-2" style="font-size:90px ; margin-left:250px;"></i>
+                </h1>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card card-body bg-danger text-white mb-3">
+                <label>Totale Gestionnaire</label>
+                <h1>{{ $totalAdmin }} <i class="bi bi-people-fill me-2" style="font-size:90px ; margin-left:250px;"></i>
+                </h1>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card card-body bg-warning text-white mb-3">
+                <label style="font-size: 20px;">Totale Questions</label>
+                <h1 style="font-size: 50px">{{ $totalQuestion }} <i class="bi bi-question-octagon-fill me-2"
+                        style="font-size:90px ; margin-left:250px;"></i></h1>
+            </div>
+        </div> --}}
+    </div>
+
 @endsection

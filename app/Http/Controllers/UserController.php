@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Http\Controllers\Controller;
+use App\Models\Question;
 use Illuminate\Pagination\Paginator;
 use App\Models\Role;
 use GrahamCampbell\ResultType\Success;
@@ -24,6 +25,21 @@ class UserController extends  Controller
         // return view('users.list_user', ['users' => $users]);
 
 
+    }
+
+    public function nombre()
+    {
+        $totalQuestion = Question::count();
+        $totalAllUsers = User::count();
+        $totalUser = User::where('role_id','2')->count();
+        $totalAdmin = User::where('role_id','1')->count();
+
+        return view('admin.dashboard',[
+            'totalAllUsers' => $totalAllUsers ,
+            'totalQuestion' => $totalQuestion ,
+            'totalAdmin' => $totalAdmin ,
+            'totalUser' => $totalUser
+        ]);
     }
 
 

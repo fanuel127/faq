@@ -75,13 +75,16 @@ Route::get('/questions/show_question', function () {
     return view('questions.show_question');
 });
 
-
+//Route dashboard 1
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
 })->name('admin.dashboard');
 Route::get('/login', function () {
     return view('auth.login');
 })->name('admin.login');
+
+Route::get('/dashboard', [UserController::class, 'nombre']);
+
 // pour le status
 Route::get('/{i}', [UserController::class, 'status']);
 
@@ -94,8 +97,8 @@ Route::get('/users/update/{id}', [UserController::class, 'edit'])->name('users.e
 Route::get('/users/show_user/{id}', [UserController::class, 'show'])->name('users.show_user');
 
 //Route pour les questions
-Route::post('/questions/list_question', [QuestionController::class, 'store'])->name('questions.store');
-Route::get('/list_question', [QuestionController::class, 'index'])->name('questions.list_question');
+Route::post('/questions/list_question', [QuestionController::class, 'storeQuestion'])->name('questions.store');
+Route::get('/list_question', [QuestionController::class, 'indexQuestion'])->name('questions.list_question');
 
 
 // Routes for Users
@@ -109,11 +112,11 @@ Route::group(['prefix' => 'users', 'as' => 'users.'], function () {
 
 // routes for questions
 Route::group(['prefix' => 'questions', 'as' => 'questions.'], function () {
-    Route::get('/list_question', [QuestionController::class, 'index'])->name('questions.list_question');
-    Route::get('/add_question', [QuestionController::class, 'create'])->name('add_question');
-    Route::post('/', [QuestionController::class, 'store'])->name('questions.store');
-    Route::get('/{question}', [QuestionController::class, 'show'])->name('show_question');
-    Route::put('/{question}/edit_question', [QuestionController::class, 'edit_question'])->name('edit');
+    Route::get('/list_question', [QuestionController::class, 'indexQuestion'])->name('questions.list_question');
+    Route::get('/add_question', [QuestionController::class, 'createQuestion'])->name('add_question');
+    Route::post('/', [QuestionController::class, 'storeQuestion'])->name('questions.store');
+    Route::get('/{question}', [QuestionController::class, 'showQuestion'])->name('show_question');
+    Route::put('/{question}/edit_question', [QuestionController::class, 'editQuestion'])->name('edit');
 });
 
 

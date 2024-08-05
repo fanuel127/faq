@@ -34,7 +34,7 @@
                     <div class="card-header">
                         <div class="card-title">
                             <div class="d-flex justify-content-between ">
-                                <h4 class="text-center">Liste des utilisateurs</h4>
+                                <h4 class="text-center"><i class="bi bi-list-ul me-2"></i>Liste des utilisateurs</h4>
                                 <a href="{{ url('/users/add_user') }}" class="btn btn-warning"
                                     title="Ajouter un nouveau utilisateur">
                                     <i class="fas fa-plus"></i>
@@ -44,7 +44,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <div class="filter-bar d-flex justify-content-between">
+                        <div class="filter-bar d-flex justify-content-between bg-light">
                             <div class="order">
                                 <label for="order">Trie par..</label>
                                 <select class="filtered" name="" id="order">

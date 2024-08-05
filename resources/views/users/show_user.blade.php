@@ -57,15 +57,13 @@
             <div class="card-body">
                 <h3> Id : <b> {{ $users->id }}</b> </h3>
                 <br>
-                <h3> Nom : <b> {{ $users->firstName }}</b> </h3>
-                <br>
-                <h3> Prenom : <b> {{ $users->lastName }}</b> </h3>
+                <h3> <b> {{ $users->firstName }}</b> <b> {{ $users->lastName }}</b> </h3>
                 <br>
                 <h3> Genre : <b> {{ $users->gender }}</b> </h3>
                 <br>
-                <h3> Email : <b> {{ $users->email }}</b> </h3>
+                <h3> <i class="bi bi-envelope-fill"></i> : <b> {{ $users->email }}</b> </h3>
                 <br>
-                <h3> Numero : <b> {{ $users->phoneNumber }}</b> </h3>
+                <h3> <i class="bi bi-telephone-fill"></i> : <b> {{ $users->phoneNumber }}</b> </h3>
                 <br>
                 <h3> Role : <b> {{ $users->role_id === 1 ? 'Admin' : 'Gestionnaire' }}</b> </h3>
                 <br>

@@ -58,7 +58,7 @@
             </div>
             <div class="card bg-light">
                 <div class="card-header bg-secondary">
-                    <h2 style="color: whitesmoke;">Modifier l'utilisateur : {{ $users->firstName }}</h2>
+                    <h2 style="color: whitesmoke;"><i class="bi bi-pen-fill me-2"></i>Modifier l'utilisateur : {{ $users->firstName }}</h2>
                 </div>
                 <div class="card-body" style="display: flex; justify-content:space-around; margin-top:3%;">
                     <div>
@@ -84,7 +84,7 @@
                         </label>
                         <select class="form-select" name="gender" id="floatingSelect" value="{{ $users->gender }}"
                             style="width: 850px;">
-                            <option selected disabled>entrer votre genre</option>
+                            <option selected disabled>selectionner votre genre</option>
                             <option value="masculin">Masculin</option>
                             <option value="feminin">Féminin</option>
                         </select>
@@ -98,7 +98,7 @@
                             {{-- @foreach ($roles as $role)
                             <option value="{{ $role->value }}" class="form-control">{{ $role->role_name }}</option>
                             @endforeach --}}
-                            <option selected disabled>entrer votre role</option>
+                            <option selected disabled>selectionner votre role</option>
                             <option value="1">Admin</option>
                             <option value="2">SimpleUser</option>
                         </select>
@@ -108,18 +108,20 @@
                     <label for="exampleFormControlInput4" class="form-label">
                         <h4>Téléphone</h4>
                     </label>
-                    <input type="text" name="phoneNumber" class="form-control" id="exampleFormControlInput4"
-                        value="{{ $users->phoneNumber }}" style="width: 1780px;">
+                    <input type="number" name="phoneNumber" class="form-control" id="exampleFormControlInput4"
+                        value="{{ $users->phoneNumber }}" style="width: 1700px;">
                 </div>
 
                 <div style="display: flex; justify-content:space-around; margin-top:2%; margin-bottom:80px;">
                     <div>
-                        <button type="button" class="btn btn-primary" style="width: 200px;margin-top:50px;margin-left:10px;"><a href="{{ url('/users/list_user') }}"
-                                style="color: black;">Back</a></button>
+                        <button type="button" class="btn btn-danger" style="width: 200px;margin-top:50px;margin-left:10px;"><a href="{{ url('/users/list_user') }}"
+                                style="color: black;"><i class="bi bi-backspace-fill me-2"></i>Annuler</a></button>
                     </div>
                     <div>
                         <button type="submit" value="modifier" class="btn"
-                            style="width: 200px;margin-top:50px;color: black;background-color:orange;margin-left:1300px;">modifier</button>
+                            style="width: 200px;margin-top:50px;color: black;background-color:orange;margin-left:1300px;">
+                            <i class="bi bi-pencil-fill me-2"></i>modifier
+                        </button>
                     </div>
                 </div>
             </div>
