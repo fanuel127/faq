@@ -1,16 +1,18 @@
 @extends('layouts.admin')
 
 @section('content')
-    
     <div class="row g-3 my-2">
-            <div className="container-fluid">
-                <div className="row d-flex justify-content-between">
-                        <h1>Tableau de bord</h1>
-                        <ol className="breadcrumb">
-                            <li className="breadcrumb-item active">Accueil</li>
-                        </ol>
-                </div>
+        <div className="container-fluid">
+            <div style="display:flex; justify-content:space-between;margin: 30px;">
+                <h1>Tableau de bord</h1>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">Accueil</li>
+                        <li class="breadcrumb-item active" aria-current="page">tableau de bord</li>
+                    </ol>
+                </nav>
             </div>
+        </div>
         <div class="col-md-3">
             <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
                 <div>

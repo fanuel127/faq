@@ -1,70 +1,89 @@
+@extends('layouts.admin')
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="Detailsport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>List_Question</title>
+@section('content')
+    <div style="display:flex; justify-content:space-between;margin: 30px;">
+        <h4>Gestions des questions</h4>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}" style="color: black;">Accueil</a></li>
+                <li class="breadcrumb-item">Questions</li>
+                <li class="breadcrumb-item active" aria-current="page">Liste des questions</li>
+            </ol>
+        </nav>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-    </script>
-    <style>
-        th {
-            font-size: 30px;
-        }
-        body {
-            /* background-image: url('{{ asset('image/streaming5.png') }}'); */
-            font-size: 25px;
-        }
-    </style>
-
-</head>
-<body>
-    <div class="row" style="margin: 25px;">
-        <div class="col-12">
-            <div class="card card-sm">
-                <div class="card-header">
-                    <h2 style="text-align: center;">Liste Des Questions</h2>
-                </div>
-            </div>
-        </div>
     </div>
-
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <a href="{{ url('/questions/add_question') }}" class="btn btn-warning btn-lg" title="Add New Question">
-                    Add Question
-                </a>
-                <br>
-                <br>
-                <div class="table-responsive">
-                    <table class="table" border="1">
-                        <thead style="color: #fff; background-color:black;">
-                            <tr>
-                                <th>#</th>
-                                <th>Nom</th>
-                                <th>Categorie</th>
-                                <th>Description</th>
-                                <th>Image</th>
-                                <th>Video</th>
-                                <th>Solution</th>
-                                <th>Actions</th>
-                            </tr>
-                            {{-- @foreach ($users as $user) --}}
-                        </thead>
-                        <tbody>
-                            {{-- @endforeach --}}
-                        </tbody>
-                    </table>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <div class="d-flex justify-content-between ">
+                                <h4>Liste des questions</h4>
+                                <a href="{{ url('/questions/add_question') }}" class="btn btn-warning"
+                                    title="Ajouter une nouvelle question">
+                                    <i class="fas fa-plus"></i>
+                                    Ajouter
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <table id="example" class="table" style="width:100%">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Nom</th>
+                                        <th>Categorie</th>
+                                        <th>Description</th>
+                                        <th>Image</th>
+                                        <th>Video</th>
+                                        <th>Solution</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                    @php
+                                        $i = 0;
+                                    @endphp
+                                    @foreach ($questions as $question)
+                                        @php
+                                            $i++;
+                                        @endphp
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{ $i }}</td>
+                                        <td>{{ $question->questionName }}</td>
+                                        <td>{{ $question->category_id }}</td>
+                                        <td>{{ $question->description }}</td>
+                                        <td>{{ $question->photo }}</td>
+                                        <td>{{ $question->video }}</td>
+                                        <td>{{ $question->answer }}</td>
+                                        <td class="d-flex ">
+                                            <a href="#" title="Modifier"
+                                                class="btn btn-warning ">
+                                                <i class="fas fa-edit "></i>
+                                            </a>
+                                            <form method="POST">
+                                                <a class="btn btn-primary mx-3" title="Voir plus"
+                                                    href="#"style="text-decoration: 0;color:black;">
+                                                    <i class="fas fa-eye"></i>
+                                                </a>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+@endsection
+{{-- </body>
 
-</body>
-</html>
+</html> --}}
+{{-- <button id="myButton" class="btn btn-sm btn-success switch-button">Activer</button> --}}

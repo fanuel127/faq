@@ -22,72 +22,69 @@
         <form action="{{ route('users.store') }}" method="post">
             {!! csrf_field() !!}
             @method('post')
-            <div class="card-body bg-light">
-                <div style="display:flex; justify-content:space-between;margin: 30px;background-color:#fff;">
-                    <h4>Gestions des utilisateurs</h4>
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item">Accueil</li>
-                            <li class="breadcrumb-item">Utilisateurs</li>
-                            <li class="breadcrumb-item active" aria-current="page">Ajouter un utilisateur</li>
-                        </ol>
-                    </nav>
+            <div style="display:flex; justify-content:space-between;margin: 30px;">
+                <h4>Gestions des utilisateurs</h4>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}" style="color: black;">Accueil</a></li>
+                        <li class="breadcrumb-item"><a href="{{ url('/users/add_user') }}" style="color: black;">Utilisateur</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Ajouter un utilisateur</li>
+                    </ol>
+                </nav>
 
+            </div>
+            <div class="card bg-light">
+                <div class="card-header bg-secondary">
+                    <h2 style="color: whitesmoke;">Ajouter un utilisateur</h2>
                 </div>
-                <div class="row" style="margin: 10px;">
-                    <div class="col-12">
-                        <div class="card card-sm">
-                            <div class="card-header bg-warning">
-                                <h2 style="text-align:center;">Ajouter un utilisateur</h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div style="display: flex; justify-content:space-around; margin-top:3%;">
+                <h4>les champs marqués d'un Astérix <span class="text-danger">(*)</span> sont obligatoires</h4>
+                <div class="card-body" style="display: flex; justify-content:space-around; margin-bottom:25px">
                     <div>
                         <label for="exampleFormControlInput1" class="form-label">
-                            <h3>Nom<span class="text-danger">*</span></h3>
+                            <h5>Nom<span class="text-danger">*</span></h5>
                         </label>
-                        <input type="text" name="firstName" class="form-control" id="exampleFormControlInput1">
+                        <input type="text" name="firstName" class="form-control" id="exampleFormControlInput1" style="width: 850px;">
                     </div>
                     <div>
-                        <label for="floatingSelect">
-                            <h3>Genre<span class="text-danger">*</span></h3>
+                        <label for="exampleFormControlInput2" class="form-label">
+                            <h5>Adresse Email<span class="text-danger">*</span></h5>
                         </label>
-                        <select class="form-select" name="gender" id="floatingSelect">
+                        <input type="email" name="email" class="form-control" id="exampleFormControlInput2"
+                            placeholder="name@example.com" style="width: 850px;">
+                    </div>
+                </div>
+
+                <div style="display: flex; justify-content:space-around; margin-bottom:25px">
+                    <div>
+                        <label for="exampleFormControlInput1" class="form-label">
+                            <h5>Prenom<span class="text-danger">*</span></h5>
+                        </label>
+                        <input type="text" name="lastName" class="form-control" id="exampleFormControlInput1" style="width: 850px;">
+                    </div>
+                    <div>
+                        <label for="exampleFormControlInput4" class="form-label">
+                            <h5>Téléphone<span class="text-danger">*</span></h5>
+                        </label>
+                        <input type="text" name="phoneNumber" class="form-control" id="exampleFormControlInput4" style="width: 850px;">
+                    </div>
+                </div>
+
+                <div style="display: flex; justify-content:space-around; margin-bottom:25px">
+                    <div>
+                        <label for="floatingSelect">
+                            <h5>Genre<span class="text-danger">*</span></h5>
+                        </label>
+                        <select class="form-select" name="gender" id="floatingSelect" style="width: 850px;">
                             <option selected disabled>entrer votre genre</option>
                             <option value="masculin">Masculin</option>
                             <option value="feminin">Féminin</option>
                         </select>
                     </div>
                     <div>
-                        <label for="exampleFormControlInput2" class="form-label">
-                            <h3>Adresse Email<span class="text-danger">*</span></h3>
-                        </label>
-                        <input type="email" name="email" class="form-control" id="exampleFormControlInput2"
-                            placeholder="name@example.com">
-                    </div>
-                    <div>
-                        <label for="exampleFormControlInput3" class="form-label">
-                            <h3>Mot de passe<span class="text-danger">*</span></h3>
-                        </label>
-                        <input type="password" name="password" class="form-control" id="exampleFormControlInput3">
-                    </div>
-
-                </div>
-
-                <div style="display: flex; justify-content:space-around; margin-top:2%;">
-                    <div>
-                        <label for="exampleFormControlInput1" class="form-label">
-                            <h3>Prenom<span class="text-danger">*</span></h3>
-                        </label>
-                        <input type="text" name="lastName" class="form-control" id="exampleFormControlInput1">
-                    </div>
-                    <div>
                         <label for="floatingSelect">
-                            <h3>Role<span class="text-danger">*</span></h3>
+                            <h5>Role<span class="text-danger">*</span></h5>
                         </label>
-                        <select class="form-select" name="role_id" id="floatingSelect">
+                        <select class="form-select" name="role_id" id="floatingSelect" style="width: 850px;">
                             {{-- @foreach ($roles as $role)
                                                         <option value="{{ $role->value }}" class="form-control">{{ $role->role_name }}</option>
                                                         @endforeach --}}
@@ -96,38 +93,35 @@
                             <option value="2">SimpleUser</option>
                         </select>
                     </div>
-                    <div>
-                        <label for="exampleFormControlInput4" class="form-label">
-                            <h3>Téléphone<span class="text-danger">*</span></h3>
-                        </label>
-                        <input type="text" name="phoneNumber" class="form-control" id="exampleFormControlInput4">
-                    </div>
-
+                </div>
+                <div style="display: flex; justify-content:space-around; margin-bottom:25px;">
                     <div>
                         <label for="exampleFormControlInput3" class="form-label">
-                            <h3>Confirmation mot de passe<span class="text-danger">*</span></h3>
+                            <h5>Mot de passe<span class="text-danger">*</span></h5>
+                        </label>
+                        <input type="password" name="password" class="form-control" id="exampleFormControlInput3" style="width: 850px;">
+                    </div>
+                    <div>
+                        <label for="exampleFormControlInput3" class="form-label">
+                            <h5>Confirmation mot de passe<span class="text-danger">*</span></h5>
                         </label>
                         <input type="password" name="password_confirmation" class="form-control"
-                            id="exampleFormControlInput3">
+                            id="exampleFormControlInput3" style="width: 850px;">
                     </div>
                 </div>
-
-                <div style="display: flex; justify-content:space-evenly; margin-top:2%;">
+                <div style="display: flex; justify-content:space-around; margin-bottom:80px;">
                     <div>
-                        <button type="button" class="btn btn-lg btn-primary"style="width: 200px ;">
+                        <button type="button" class="btn btn-lg btn-primary"style="width: 200px ; margin-left:5px;">
                             <a href="{{ url('/users/list_user') }}" style="color: black;">Annuler</a>
                         </button>
                     </div>
-
                     <div>
                         <button type="submit"
-                            class="btn btn-lg"style="width: 200px ; color: black;background-color:orange">
+                            class="btn btn-lg"style="width: 200px ; color: black;background-color:orange;margin-left:1300px;">
                             Enregistrer
                         </button>
                     </div>
                 </div>
-
-
             </div>
         </form>
     </section>

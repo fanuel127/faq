@@ -18,17 +18,17 @@
                     <li class="sidebar-item">
                         <a href="#" class="sidebar-link has-dropdown collapsed list-group-item list-group-item-action bg-transparent second-text fw-bold"
                         data-bs-toggle="collapse" data-bs-target="#auth" aria-expanded="false" aria-controls="auth">
-                            <i class="bi bi-people-fill me-2"></i>Utilisateur
+                            <i class="bi bi-people-fill me-2" style="color: orange;"></i>Utilisateur
                         </a>
                         <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
                                 <a href="{{ url('/users/add_user') }}" class="dashboard-link sidebar-link bg-transparent second-text fw-bold" style="margin-left: 20%">
-                                    <i class="bi bi-person-fill-add me-2"></i>Ajouter
+                                    <i class="bi bi-person-fill-add me-2" style="color: orange;"></i>Ajouter
                                 </a>
                             </li>
                             <li class="sidebar-item">
                                 <a href="{{ url('/users/list_user') }}" class="dashboard-link sidebar-link bg-transparent second-text fw-bold" style="margin-left: 20%">
-                                    <i class="bi bi-person-lines-fill me-2"></i>Liste
+                                    <i class="bi bi-person-lines-fill me-2" style="color: orange;"></i>Liste
                                 </a>
                             </li>
                         </ul>
@@ -38,17 +38,18 @@
                         <a href="#"
                             class="sidebar-link has-dropdown collapsed list-group-item list-group-item-action bg-transparent second-text fw-bold"
                             data-bs-toggle="collapse" data-bs-target="#quest" aria-expanded="false"
-                            aria-controls="quest"> <i class="bi bi-question-diamond-fill me-2"></i>Questions
+                            aria-controls="quest"> <i class="bi bi-question-diamond-fill me-2" style="color: orange;"></i>Questions
                         </a>
                         <ul id="quest" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="#" class="sidebar-limk bg-transparent text-info fw-bold" style="margin-left: 20%">Ajouter</a>
+                                <a href="{{ url('/questions/add_question') }}" class="sidebar-limk bg-transparent second-text fw-bold" style="margin-left: 20%">
+                                    <i class="bi bi-plus-circle-fill me-2" style="color: orange;"></i>Ajouter
+                                </a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="#" class="sidebar-link bg-transparent text-info fw-bold" style="margin-left: 20%">Modifier</a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="#" class="sidebar-link bg-transparent text-info fw-bold" style="margin-left: 20%">Liste</a>
+                                <a href="{{ url('/questions/list_question') }}" class="sidebar-link bg-transparent second-text fw-bold" style="margin-left: 20%">
+                                    <i class="bi bi-list-task  me-2" style="color: orange;"></i>Liste
+                                </a>
                             </li>
                         </ul>
                     </li>

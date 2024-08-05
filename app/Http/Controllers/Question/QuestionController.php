@@ -40,12 +40,18 @@ class QuestionController extends Controller
             'category_id'=>'required|unique|exists:user,id',
             'description'=> 'required',
             'answer' => 'required',
+            'video' => 'required' ,
             'photo'=>'required|unique',
             'user_id' => 'required|exists:user,id',
         ]);
         $input = $request->all();
         Question::create($input);
-        return redirect('questions.add_question')->with('flash_message', 'Question created successfully.');
+        return redirect('questions.list_question')->with('flash_message', 'Question created successfully.');
+    }
+
+    public function create()
+    {
+        return view('questions.add_question');
     }
 
     /**

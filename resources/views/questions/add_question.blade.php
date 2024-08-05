@@ -1,124 +1,106 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.admin')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ajouter une question</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-    </script>
-    <style>
-        body {
-            background-color: white;
-            color: black;
-        }
+@section('content')
 
-        input,
-        textarea {
-            height: 60px;
-        }
-        a {
-            text-decoration: 0;
-            color: white;
-        }
-    </style>
-</head>
+    <div>
+        @if ($errors->any())
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
 
-<body>
-    <section class="vh-100 gradient-custom">
-        <div class="container py-1 h-100">
-            <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col-12 col-md-4 col-lg-8 col-xl-9">
-                    <div class="card bg-dark text-white" style="border-radius: 1rem;">
-                        <div class="card-body p-4">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        @endif
+    </div>
+    <section class="gradient-custom">
+        <form action="{{ route('questions.store') }}" method="post">
+            {!! csrf_field() !!}
+            @method('post')
+            <div style="display:flex; justify-content:space-between;margin: 30px;">
+                <h4>Gestions des questions</h4>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}" style="color: black;">Accueil</a></li>
+                        <li class="breadcrumb-item">Questions</li>
+                        <li class="breadcrumb-item active" aria-current="page">Ajouter une question</li>
+                    </ol>
+                </nav>
 
-                            <div class="mb-md-4 mt-md-3 pb-2">
+            </div>
+            <div class="card bg-light">
+                <div class="card-header bg-warning">
+                    <h2>Ajouter une question</h2>
+                </div>
+                <div class="card-body" style="display: flex; justify-content:space-around; margin-top:3%;">
+                    <div>
+                        <label for="exampleFormControlTextarea1" class="form-label">
+                            <h4>Nom de la question<span class="text-danger">*</span></h4>
+                        </label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" style="width: 800px;"></textarea>
+                    </div>
+                    <div>
+                        <label for="exampleFormControlTextarea2 form-group col-md-6 mb-3"
+                            class="form-label">
+                            <h4>Description de la question<span class="text-danger">*</span></h4>
+                        </label>
+                        <textarea class="form-control" id="exampleFormControlTextarea2" rows="3" style="width: 800px;"></textarea>
+                    </div>
+                </div>
 
-                                <h1 style="text-align :center ; color: orange; padding-bottom:10px;">
-                                    <p> <u> <strong>Ajouter une question</strong> </u> </p>
-                                </h1>
-                                <div class="row">
-                                    <div class="col-6">
-                                        <div class="mb-3 mt-3">
-                                            <label for="exampleFormControlTextarea1" class="form-label">
-                                                <h4>Nom de la question<span class="text-danger">*</span></h4>
-                                            </label>
-                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="mb-3 mt-3">
-                                            <label for="exampleFormControlTextarea2 form-group col-md-6 mb-3"
-                                                class="form-label">
-                                                <h4>Description de la question<span class="text-danger">*</span></h4>
-                                            </label>
-                                            <textarea class="form-control" id="exampleFormControlTextarea2" rows="3"></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-6">
-                                        <div class="mb-3 mt-3">
-                                            <label for="formFile" class="form-label">
-                                                <h4>Image de la question<span class="text-danger">*</span></h4>
-                                            </label>
-                                            <input class="form-control" type="file" id="formFile">
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="mb-3 mt-3">
-                                            <label for="formFileMultiple" class="form-label">
-                                                <h4>Video de la question</h4>
-                                            </label>
-                                            <input class="form-control" type="file" id="formFileMultiple" multiple>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-6">
-                                        <div class="mb-3 mt-3">
-                                            <label for="exampleFormControlTextarea3 form-group col-md-6 mb-3"
-                                                class="form-label">
-                                                <h4>Categorie de la question<span class="text-danger">*</span></h4>
-                                            </label>
-                                            <textarea class="form-control" id="exampleFormControlTextarea3" rows="3"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="mb-3 mt-3">
-                                            <label for="exampleFormControlTextarea1" class="form-label">
-                                                <h4>Solution à la question<span class="text-danger">*</span></h4>
-                                            </label>
-                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-6">
-                                        <div class="mb-3 mt-3">
-                                            <button type="button" class="btn btn-lg rounded-pill btn-primary"
-                                                style="width: 450px ; color: black;"><a href="{{ url('questions/list_question') }}">Annuler</a></button>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="mb-3 mt-3">
-                                            <button type="submit" class="btn btn-lg rounded-pill"
-                                                style="width: 450px ; color: black;background-color:orange">Enregistrer</button>
-                                        </div>
-                                    </div>
-                                </div>
+                <div style="display: flex; justify-content:space-around; margin-top:2%;">
+                    <div>
+                        <label for="formFile" class="form-label">
+                            <h4>Image de la question<span class="text-danger">*</span></h4>
+                        </label>
+                        <input class="form-control" type="file" id="formFile" style="width: 800px;">
+                    </div>
+                    <div>
+                        <label for="formFileMultiple" class="form-label">
+                            <h4>Video de la question</h4>
+                        </label>
+                        <input class="form-control" type="file" id="formFileMultiple" style="width: 800px;" multiple>
+                    </div>
+                </div>
 
-                            </div>
-                        </div>
+                <div style="display: flex; justify-content:space-around; margin-top:2%; margin-bottom:80px;">
+                    <div>
+                        <label for="exampleFormControlTextarea3 form-group col-md-6 mb-3"
+                            class="form-label">
+                            <h4>Categorie de la question<span class="text-danger">*</span></h4>
+                        </label>
+                        <textarea class="form-control" id="exampleFormControlTextarea3" rows="3" style="width: 800px;"></textarea>
+                    </div>
+                    <div>
+                        <label for="exampleFormControlTextarea1" class="form-label">
+                            <h4>Solution à la question<span class="text-danger">*</span></h4>
+                        </label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" style="width: 800px;"></textarea>
+                    </div>
+                </div>
+
+                <div style="display: flex; justify-content:space-around; margin-top:25px; margin-bottom:80px;">
+                    <div>
+                        <button type="submit"
+                            class="btn btn-lg"style="width: 800px ; color: black;background-color:orange;margin-left:10px;">
+                            Enregistrer
+                        </button>
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-lg btn-primary"style="width: 800px ;margin-left:25px;">
+                            <a href="{{ url('/questions/list_question') }}" style="color: black;">Annuler</a>
+                        </button>
                     </div>
                 </div>
             </div>
+        </form>
     </section>
+@endsection
+{{-- </body>
 
-</body>
+</html> --}}
 
-</html>

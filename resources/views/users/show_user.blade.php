@@ -37,35 +37,47 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="container py-5">
-        <div class="row">
-            <div class="col-6">
-                <table class="table table-striped table-hover" style="border: 2px">
-                    <thead class="table-warning" style="text-align:center;">
-                        <tr>
-                            <th>Informations de : {{ $users->firstName }} </th>
-                        </tr>
-                    </thead>
-                    <tbody class="bg-white">
-                        <tr>
-                            <td>
-                                <p> Id : <b> {{ $users->id }}</b> </p>
-                                <p> Nom : <b> {{ $users->firstName }}</b> </p>
-                                <p> Prenom : <b> {{ $users->lastName }}</b> </p>
-                                <p> Genre : <b> {{ $users->gender }}</b> </p>
-                                <p> Email : <b> {{ $users->email }}</b> </p>
-                                <p> Numero : <b> {{ $users->phoneNumber }}</b> </p>
-                                <p> Role : <b> {{ $users->role_id === 1 ? 'Admin' : 'Gestionnaire' }}</b> </p>
-                                <p> <button type="button" class="btn btn-lg btn-warning" style="width: 400px ;"><a
-                                    href="{{ url('/users/list_user') }}" style="color: black;text-decoration:0;">Retour</a>
-                                </button> </p>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+    <section class="gradient-custom">
+        <div style="display:flex; justify-content:space-between;margin: 30px;">
+            <h4>Details d'un utilisateur</h4>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}" style="color: black;">Accueil</a></li>
+                    <li class="breadcrumb-item"><a href="{{ url('/users/show_user') }}" style="color: black;">Utilisateur</a></li>
+                    <li class="breadcrumb-item"><a href="{{ url('/users/list_user') }}" style="color: black;">Liste des utilisatuers</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Details d'un utilisateur</li>
+                </ol>
+            </nav>
+
+        </div>
+        <div class="card bg-light">
+            <div class="card-header bg-secondary">
+                <h2 style="color: whitesmoke;">Informations de l'utilisateur : {{ $users->firstName }} </h2>
+            </div>
+            <div class="card-body">
+                <h3> Id : <b> {{ $users->id }}</b> </h3>
+                <br>
+                <h3> Nom : <b> {{ $users->firstName }}</b> </h3>
+                <br>
+                <h3> Prenom : <b> {{ $users->lastName }}</b> </h3>
+                <br>
+                <h3> Genre : <b> {{ $users->gender }}</b> </h3>
+                <br>
+                <h3> Email : <b> {{ $users->email }}</b> </h3>
+                <br>
+                <h3> Numero : <b> {{ $users->phoneNumber }}</b> </h3>
+                <br>
+                <h3> Role : <b> {{ $users->role_id === 1 ? 'Admin' : 'Gestionnaire' }}</b> </h3>
+                <br>
+                <h3> <button type="button" class="btn btn-lg btn-warning" style="width: 400px ;">
+                        <a href="{{ url('/users/list_user') }}" style="color: black;text-decoration:0;">
+                            Retour
+                        </a>
+                    </button>
+                </h3>
             </div>
         </div>
-    </div>
+    </section>
 @endsection
 {{-- </body>
 

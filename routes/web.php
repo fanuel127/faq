@@ -85,13 +85,17 @@ Route::get('/login', function () {
 // pour le status
 Route::get('/{i}', [UserController::class, 'status']);
 
-Route::post('/user/list_user', [UserController::class, 'store'])->name('users.store');
+Route::post('/users/list_user', [UserController::class, 'store'])->name('users.store');
 Route::get('/list_user', [UserController::class, 'index'])->name('users.list_user');
 Route::get('/list_user', [UserController::class, 'total'])->name('users.total');
 // Route::get('/list_user', [UserController::class, 'ordre'])->name('users.ordre');
 Route::put('/users/edit_user/{id}', [UserController::class, 'update'])->name('users.update');
 Route::get('/users/update/{id}', [UserController::class, 'edit'])->name('users.edit_user');
 Route::get('/users/show_user/{id}', [UserController::class, 'show'])->name('users.show_user');
+
+//Route pour les questions
+Route::post('/questions/list_question', [QuestionController::class, 'store'])->name('questions.store');
+Route::get('/list_question', [QuestionController::class, 'index'])->name('questions.list_question');
 
 
 // Routes for Users
@@ -105,9 +109,9 @@ Route::group(['prefix' => 'users', 'as' => 'users.'], function () {
 
 // routes for questions
 Route::group(['prefix' => 'questions', 'as' => 'questions.'], function () {
-    Route::get('/', [QuestionController::class, 'index'])->name('list_question');
-    Route::get('/create', [QuestionController::class, 'create'])->name('add_question');
-    Route::post('/', [QuestionController::class, 'store'])->name('store');
+    Route::get('/list_question', [QuestionController::class, 'index'])->name('questions.list_question');
+    Route::get('/add_question', [QuestionController::class, 'create'])->name('add_question');
+    Route::post('/', [QuestionController::class, 'store'])->name('questions.store');
     Route::get('/{question}', [QuestionController::class, 'show'])->name('show_question');
     Route::put('/{question}/edit_question', [QuestionController::class, 'edit_question'])->name('edit');
 });

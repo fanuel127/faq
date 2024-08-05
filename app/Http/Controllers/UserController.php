@@ -143,7 +143,7 @@ class UserController extends  Controller
             'password' => $request['password'],
         ]);
 
-        return redirect(route('users.list_user'))->with('success', 'Utilisateur Ajouter!');
+        return redirect('users.list_user')->with('success', 'Utilisateur Ajouter!');
     }
 
     /**
@@ -219,11 +219,11 @@ class UserController extends  Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function toggleStatus(string $id)
+    public function toggleStatus(string $i)
     {
-        $users = User::FindOrFail($id);
-        $users->status = !$users->status;
-        $users->save();
+        $user = User::FindOrFail($i);
+        $user->status = !$user->status;
+        $user->save();
         return redirect('users.update')->with('success', 'Utilisateur active!');
     }
 
@@ -234,16 +234,16 @@ class UserController extends  Controller
         if($user)
         {
             if($user->status) {
-                $user->status = 1 ;
+                $user->status = 0 ;
             }
             else
             {
-                $user->status = 0 ;
+                $user->status = 1 ;
             }
             $user->save();
         }
 
-        return back();
+        return redirect('users.list_user');
 
     }
 }

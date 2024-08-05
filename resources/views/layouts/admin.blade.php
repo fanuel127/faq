@@ -19,7 +19,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.3/css/dataTables.dataTables.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.3/css/dataTables.dataTables.css"/>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/2.1.3/css/dataTables.bootstrap5.css">
@@ -34,11 +34,11 @@
             text-decoration: 0;
         }
 
-        input,
+        /* input,
         select,
         button {
             height: 60px;
-        }
+        } */
 
         /* edit_user css*/
 
@@ -56,7 +56,7 @@
 
         body {
             font-size: 16px;
-            background-color: rgb(233, 227, 227);
+            background-color: rgba(248, 237, 237, 0.648);
         }
 
         /* show_user css */

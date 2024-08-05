@@ -5,8 +5,8 @@
         <h4>Gestions des utilisateurs</h4>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item">Accueil</li>
-                <li class="breadcrumb-item">Utilisateurs</li>
+                <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}" style="color: black;">Accueil</a></li>
+                <li class="breadcrumb-item">Utilisateur</li>
                 <li class="breadcrumb-item active" aria-current="page">Liste des utilisateurs</li>
             </ol>
         </nav>
@@ -118,12 +118,9 @@
                                         <td>{{ $user->email }}</td>
                                         <td>{{ $user->phoneNumber }}</td>
                                         <td>
-                                            <a href="{{ $user->i }}" class="btn btn-sm btn-{{ $user->status ? 'success' : 'danger' }}">
-                                                {{ $user->status ? 'Active' : 'Desactive' }}
+                                            <a href="{{ $user->i }}" class="btn btn-sm btn-{{ $user->status ? 'danger' : 'success' }}">
+                                                {{ $user->status ? 'Desactive' : 'Active' }}
                                             </a>
-                                            {{-- class={{ $user->status === 0 ? 'badge rounded-pill bg-danger text-light px-1' : 'badge rounded-pill bg-success text-light px-1' }}> --}}
-
-                                            {{-- {{ $user->status === 0 ? 'Desactive' : 'Active' }} --}}
                                         </td>
                                         <td>{{ $user->role_id === 1 ? 'Admin' : 'Gestionnaire' }}</td>
                                         <td class="d-flex ">
