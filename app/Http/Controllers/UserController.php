@@ -204,6 +204,7 @@ class UserController extends  Controller
             'phoneNumber' => 'required',
             'role_id' => 'required|exists:role,id',
 
+
         ]);
 
         $users->update($data);
@@ -236,14 +237,25 @@ class UserController extends  Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function Status(string $id)
+    // public function toggleStatus(string $i)
+    // {
+    //     $user = User::FindOrFail($i);
+    //     $user->status = !$user->status;
+    //     $user->save();
+    //     return redirect('users.update')->with('success', 'Utilisateur active!');
+    // }
+
+    public function status($id)
     {
-        $user = User::Find($id);
-        $user->status = !$user->status;
-        if ($user->save()) {
-            return back();
-        } else {
-            return redirect(route('status'));
-        }
+       $user = User::find($id);
+       $user->status =!$user->status;
+      if( $user->save()){
+             return back();
+        }else{
+          return redirect(route('status'));
+
+      };
+
+
     }
 }

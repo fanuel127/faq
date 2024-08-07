@@ -129,16 +129,27 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function Status(string $id)
+    // public function toggleStatus(string $id)
+    // {
+    //     $users = User::FindOrFail($id);
+    //     $users->status = !$users->status;
+    //     $users->save();
+    //     return redirect('users.list_user')->with('success', 'Utilisateur active!');
+    // }
+    public function status($id)
     {
-        $user = User::Find($id);
-        $user->status = !$user->status;
-        if($user->save()){
-            return back();
+       $user = User::find($id);
+    //    $status = optional($i)->status; // Cela retourne null si $objet est null
+       $user->status =!$user->status;
+      if( $user->save()){
+
+          return redirect(route('users.list_user'))->with('success', 'Utilisateur active!');
         }else{
-            return redirect(route('status'));
-        }
-    }
+          return redirect(route('status'));
+
+      };
+
+
 
     public function search(Request $request)
     {

@@ -105,16 +105,12 @@ Route::post('password/reset/{token}', 'Auth\ResetPasswordController@postReset')-
 
 Route::get('/dashboard', [UserController::class, 'nombre']);
 
-
-Route::get('/users/list_user', [UserController::class, 'search'])->name('users.search');
-
 // pour le status
-
 Route::get('/users/status/{id}', [UserController::class, 'status'])->name('status');
+
 Route::post('/users/list_user', [UserController::class, 'store'])->name('users.store');
 Route::get('/users/list_user', [UserController::class, 'index'])->name('users.list_user');
 Route::get('/list_user', [UserController::class, 'total'])->name('users.total');
-// Route::get('/list_user', [UserController::class, 'ordre'])->name('users.ordre');
 Route::put('/users/edit_user/{id}', [UserController::class, 'update'])->name('users.update');
 Route::get('/users/update/{id}', [UserController::class, 'edit'])->name('users.edit_user');
 Route::get('/users/show_user/{id}', [UserController::class, 'show'])->name('users.show_user');
@@ -130,7 +126,7 @@ Route::group(['prefix' => 'users', 'as' => 'users.'], function () {
     Route::get('/add_user', [UserController::class, 'create'])->name('users.add_user');
     Route::post('/', [UserController::class, 'store'])->name('users.store');
     Route::get('/show_user', [UserController::class, 'show'])->name('users.show_user');
-    Route::put('/toggleStatus/{id}', [UserController::class, 'toggleStatus'])->name('users.list_user');
+
 });
 
 // routes for questions

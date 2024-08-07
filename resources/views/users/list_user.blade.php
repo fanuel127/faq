@@ -119,14 +119,16 @@
                                         <td>{{ $user->gender }}</td>
                                         <td>{{ $user->email }}</td>
                                         <td>{{ $user->phoneNumber }}</td>
-                                        <td>
-                                            {{-- <span class="badge bg-{{ $user->status ? 'danger' : 'success' }}">
+                                        {{-- <td>
+                                            <a href="{{ $user->i }}" class="btn btn-sm btn-{{ $user->status ? 'danger' : 'success' }}">
                                                 {{ $user->status ? 'Desactive' : 'Active' }}
-                                            </span> --}}
-                                            @if ($user->status == 1)
-                                                <span class="badge text-bg-success" id="mybutton">Activé</span>
-                                            @else
-                                                <span class="badge text-bg-danger" id="mybutton">Désactivé</span>
+                                            </a>
+                                        </td> --}}
+                                        <td>
+                                            @if ($user->status== 1)
+                                               Activé
+                                             @else
+                                              Desactivé
                                             @endif
                                         </td>
                                         <td>{{ $user->role_id === 1 ? 'Admin' : 'Gestionnaire' }}</td>
@@ -142,16 +144,13 @@
                                                 </a>
                                             </form>
                                             {{-- <div class="form-check form-switch">
-                                                <label class="switch"></label>
                                                 <input class="form-check-input" type="checkbox" role="switch"
                                                     id="flexSwitchCheckChecked">
                                             </div> --}}
-                                            @if ($user->status == 1)
-                                                <a href="{{ route('status', $user->id) }}" id="mybutton"
-                                                    class="btn btn-sm btn-danger">Désactivé</a>
-                                            @else
-                                                <a href="{{ route('status', $user->id) }}" id="mybutton"
-                                                    class="btn btn-sm btn-success">Activé</a>
+                                            @if ($user->status== 1)
+                                                        <a href="{{route('status', $user->id)}}" class="btn btn-danger">Desactivé</a>
+                                             @else
+                                                 <a href="{{route('status', $user->id)}}" class="btn btn-success">Activé</a>
                                             @endif
                                         </td>
                                     </tr>
