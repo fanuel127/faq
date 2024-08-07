@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Question\QuestionController;
 use App\Models\Role;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
@@ -29,6 +30,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/', function () {
+    return view('layouts.app');
+});
+
 Route::get('/user/add_user', function () {
     return view('users.add_user');
 });
@@ -38,7 +43,7 @@ Route::resource("/user", UserController::class);
 Route::get('/users/edit_user', function () {
     return view('users.edit_user');
 });
-Route::get('/user/list_user', function () {
+Route::get('/users/list_user', function () {
     return view('users.list_user');
 });
 
@@ -79,17 +84,35 @@ Route::get('/questions/show_question', function () {
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
 })->name('admin.dashboard');
+
+
 Route::get('/login', function () {
     return view('auth.login');
-})->name('admin.login');
+})->name('auth.login');
+
+Route::get('/register', function () {
+    return view('auth.register');
+})->name('auth.register');
+
+
+// Password reset link request routes...
+Route::get('password/email', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.email');
+Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
+
+// Password reset routes...
+Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.request');
+Route::post('password/reset/{token}', 'Auth\ResetPasswordController@postReset')->name('password.reset');
 
 Route::get('/dashboard', [UserController::class, 'nombre']);
 
-// pour le status
-Route::get('/{i}', [UserController::class, 'status']);
 
+Route::get('/users/list_user', [UserController::class, 'search'])->name('users.search');
+
+// pour le status
+
+Route::get('/users/status/{id}', [UserController::class, 'status'])->name('status');
 Route::post('/users/list_user', [UserController::class, 'store'])->name('users.store');
-Route::get('/list_user', [UserController::class, 'index'])->name('users.list_user');
+Route::get('/users/list_user', [UserController::class, 'index'])->name('users.list_user');
 Route::get('/list_user', [UserController::class, 'total'])->name('users.total');
 // Route::get('/list_user', [UserController::class, 'ordre'])->name('users.ordre');
 Route::put('/users/edit_user/{id}', [UserController::class, 'update'])->name('users.update');

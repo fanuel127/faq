@@ -5,20 +5,20 @@
     <div class="bg-secondary" id="sidebar-wrapper">
 
         <div class="sidebar-heading text-center py-4 success-text fs-4 fw-bold text-uppercase border-bottom">
-            <i class="fas fa-user-secret me-2"> <a href="{{ url('/dashboard') }}" style="color: whitesmoke;">FAQ</a></i>
+            <i class="fas fa-user-secret me-2"> <a href="{{ url('/dashboard') }}" id="liens">FAQ</a></i>
         </div>
 
         <div class="list-group list-group-flush my-3">
-            <a href="{{ url('/dashboard') }}" class="bg-warning"
+            <a href="{{ url('/dashboard') }}" class="bg-warning" id="liens"
                 style="margin-bottom: 20px; padding-top:20px; margin-top:0;padding-bottom:20px;color:white;">
-                <h5><i class="fas fa-tachometer-alt me-2"></i>Tableau de Bord</h5>
+                <h4><i class="fas fa-tachometer-alt me-2"></i>Tableau de Bord</h4>
             </a>
             <br>
             <aside id="sidebar">
                 <ul class="sidebar-nav">
                     <li class="sidebar sidebar-item" id="adminSidebar">
                         <h4 class="fw-bold" style="color: whitesmoke;">Gestions des utilisateurs</h4>
-                        <a href="#"
+                        <a href="#" id="bord"
                             class="sidebar-link has-dropdown collapsed list-group-item list-group-item-action bg-transparent second-text fw-bold"
                             data-bs-toggle="collapse" data-bs-target="#auth" aria-expanded="false" aria-controls="auth">
                             <i class="bi bi-people-fill me-2" style="color: orange; margin-left:15px"></i>Utilisateur
@@ -44,11 +44,10 @@
                     <br>
                     <li class="sidebar-item">
                         <h4 class="fw-bold" style="color: whitesmoke;">Gestions des questions</h4>
-                        <a href="#"
+                        <a href="#" id="bord"
                             class="sidebar-link has-dropdown collapsed list-group-item list-group-item-action bg-transparent second-text fw-bold"
-                            data-bs-toggle="collapse" data-bs-target="#quest" aria-expanded="false"
-                            aria-controls="quest"> <i class="bi bi-question-diamond-fill me-2"
-                                style="color: orange;"></i>Questions
+                            data-bs-toggle="collapse" data-bs-target="#quest" aria-expanded="false" aria-controls="quest">
+                            <i class="bi bi-question-diamond-fill me-2" style="color: orange;"></i>Questions
                         </a>
                         <ul id="quest" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">

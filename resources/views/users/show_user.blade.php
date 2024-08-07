@@ -42,37 +42,34 @@
             <h4>Details d'un utilisateur</h4>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}" style="color: black;">Accueil</a></li>
-                    <li class="breadcrumb-item"><a href="{{ url('/users/show_user') }}" style="color: black;">Utilisateur</a></li>
-                    <li class="breadcrumb-item"><a href="{{ url('/users/list_user') }}" style="color: black;">Liste des utilisatuers</a></li>
+                    <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}" id="lien">Accueil</a></li>
+                    <li class="breadcrumb-item"><a href="{{ url('/users/show_user') }}" id="lien">Utilisateur</a>
+                    </li>
                     <li class="breadcrumb-item active" aria-current="page">Details d'un utilisateur</li>
                 </ol>
             </nav>
 
         </div>
-        <div class="card bg-light">
-            <div class="card-header bg-secondary">
+        <div class="card bg-light" id="mybutton">
+            <div class="card-header bg-secondary d-flex justify-content-between">
                 <h2 style="color: whitesmoke;">Informations de l'utilisateur : {{ $users->firstName }} </h2>
+                <a class="btn btn-warning" id="mybutton" href="{{ url('/users/list_user') }}">
+                    <i class="bi bi-arrow-return-left me-2"></i>Retour
+                </a>
             </div>
             <div class="card-body">
-                <h3> Id : <b> {{ $users->id }}</b> </h3>
+                <div class="vertical-line"></div>
+                <h3 id="showdeplace"> Id : <b> {{ $users->id }}</b> </h3>
                 <br>
-                <h3> <b> {{ $users->firstName }}</b> <b> {{ $users->lastName }}</b> </h3>
+                <h3 id="showdeplace"> <b> {{ $users->firstName }}</b> <b> {{ $users->lastName }}</b> </h3>
                 <br>
-                <h3> Genre : <b> {{ $users->gender }}</b> </h3>
+                <h3 id="showdeplace"> Genre : <b> {{ $users->gender }}</b> </h3>
                 <br>
-                <h3> <i class="bi bi-envelope-fill"></i> : <b> {{ $users->email }}</b> </h3>
+                <h3 id="showdeplace"> <i class="bi bi-envelope-fill"></i> : <b> {{ $users->email }}</b> </h3>
                 <br>
-                <h3> <i class="bi bi-telephone-fill"></i> : <b> {{ $users->phoneNumber }}</b> </h3>
+                <h3 id="showdeplace"> <i class="bi bi-telephone-fill"></i> : <b> {{ $users->phoneNumber }}</b> </h3>
                 <br>
-                <h3> Role : <b> {{ $users->role_id === 1 ? 'Admin' : 'Gestionnaire' }}</b> </h3>
-                <br>
-                <h3> <button type="button" class="btn btn-lg btn-warning" style="width: 400px ;">
-                        <a href="{{ url('/users/list_user') }}" style="color: black;text-decoration:0;">
-                            Retour
-                        </a>
-                    </button>
-                </h3>
+                <h3 id="showdeplace"> Role : <b> {{ $users->role_id === 1 ? 'Admin' : 'Gestionnaire' }}</b> </h3>
             </div>
         </div>
     </section>

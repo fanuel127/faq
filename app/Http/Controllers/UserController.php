@@ -20,7 +20,7 @@ class UserController extends  Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::paginate(10);
         return view('users.list_user')->with('users', $users);
         // return view('users.list_user', ['users' => $users]);
 
@@ -31,13 +31,13 @@ class UserController extends  Controller
     {
         $totalQuestion = Question::count();
         $totalAllUsers = User::count();
-        $totalUser = User::where('role_id','2')->count();
-        $totalAdmin = User::where('role_id','1')->count();
+        $totalUser = User::where('role_id', '2')->count();
+        $totalAdmin = User::where('role_id', '1')->count();
 
-        return view('admin.dashboard',[
-            'totalAllUsers' => $totalAllUsers ,
-            'totalQuestion' => $totalQuestion ,
-            'totalAdmin' => $totalAdmin ,
+        return view('admin.dashboard', [
+            'totalAllUsers' => $totalAllUsers,
+            'totalQuestion' => $totalQuestion,
+            'totalAdmin' => $totalAdmin,
             'totalUser' => $totalUser
         ]);
     }
@@ -89,6 +89,21 @@ class UserController extends  Controller
         }
 
         return view('users.list_user', compact('users', 'usersCount'));
+    }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+        // Effectuer la recherche dans votre base de données ou autre logique
+        $results = User::where('firstName', 'LIKE', "%{$query}%")->paginate(10);
+
+        return response()->json([
+            'data' => $results->items(),
+            'current_page' => $results->currentPage(),
+            'last_page' => $results->lastPage(),
+            'total' => $results->total(),
+            'links' => $results->links('pagination::bootstrap-4')->toHtml()
+        ]);
     }
 
     // public function ordre(Request $request)
@@ -159,7 +174,7 @@ class UserController extends  Controller
             'password' => $request['password'],
         ]);
 
-        return redirect('users.list_user')->with('success', 'Utilisateur Ajouter!');
+        return redirect(url('users/list_user'))->with('success', 'Utilisateur Ajouter!');
     }
 
     /**
@@ -179,7 +194,7 @@ class UserController extends  Controller
     //      return view('users.show_user', compact('users'));
     //  }
 
-    public function update(string $id, Request $request)
+    public function update($id, Request $request)
     {
         $users = User::find($id);
         $data = $request->validate([
@@ -193,23 +208,9 @@ class UserController extends  Controller
 
         $users->update($data);
         $users->save();
-        return redirect()->route('users.list_user')->with('Success', 'utilisateur modifier');
+        return redirect()->url('users/list_user')->with('Success', 'utilisateur modifier');
     }
-    //  public function update(User $user , Request $request)
-    //  {
-    //      $data = $request->validate([
-    //          'firstName' => 'required|string',
-    //          'lastName',
-    //          'gender' => 'required|in:male,female',
-    //          'phoneNumber' => 'required',
-    //          'password' => 'required|max:8|confirmed',
-    //          'email' => 'required|email|unique:users,email',
-    //          'role_id' => 'required|exists:role,id',
 
-    //      ]);
-    //      $user -> update($data);
-    //      return redirect(route('users.list_user'))->with('success','utilisateur modifier');
-    //  }
 
     /**
      * Show the form for editing the specified resource.
@@ -235,31 +236,14 @@ class UserController extends  Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function toggleStatus(string $i)
+    public function Status(string $id)
     {
-        $user = User::FindOrFail($i);
+        $user = User::Find($id);
         $user->status = !$user->status;
-        $user->save();
-        return redirect('users.update')->with('success', 'Utilisateur active!');
-    }
-
-    public function status($userId)
-    {
-        $user = User::find($userId);
-
-        if($user)
-        {
-            if($user->status) {
-                $user->status = 0 ;
-            }
-            else
-            {
-                $user->status = 1 ;
-            }
-            $user->save();
+        if ($user->save()) {
+            return back();
+        } else {
+            return redirect(route('status'));
         }
-
-        return redirect('users.list_user');
-
     }
 }

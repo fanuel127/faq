@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
     <div class="d-flex align-items-center">
         <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
-        <h5 class="m-0 home-name"><a href="{{ url('/dashboard') }}" style="color: black;">Accueil</a></h5>
+        <h5 class="m-0 home-name"><a href="{{ url('/dashboard') }}" id="lien">Accueil</a></h5>
     </div>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"

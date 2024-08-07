@@ -19,8 +19,8 @@ class User extends Model
      *
      * @var array<int, string>
      */
-    protected $table = "users" ;
-    protected $primarykey = "id" ;
+    protected $table = "users";
+    protected $primarykey = "id";
     protected $fillable = [
         'firstName',
         'lastName',
@@ -59,5 +59,35 @@ class User extends Model
     {
 
         return $this->hasMany(Question::class);
+    }
+
+    /**
+     * Indique si l'utilisateur est actif ou non.
+     *
+     * @var bool
+     */
+    protected $attributes = [
+        'status' => 0, // 0 = actif, 1 = inactif
+    ];
+
+    /**
+     * Obtenir l'état de l'utilisateur.
+     *
+     * @return bool
+     */
+    public function getIsActiveAttribute()
+    {
+        return $this->attributes['status'] === 0;
+    }
+
+    /**
+     * Définir l'état de l'utilisateur.
+     *
+     * @param  bool  $value
+     * @return void
+     */
+    public function setIsActiveAttribute($value)
+    {
+        $this->attributes['status'] = $value ? 0 : 1;
     }
 }

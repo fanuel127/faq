@@ -15,8 +15,7 @@ class AdminController extends Controller
 {
     public function index()
     {
-
-        $users = User::all();
+        $users = User::paginate(10);
         return view('admin.index')->with('users', $users);
     }
 
@@ -130,12 +129,15 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function toggleStatus(string $id)
+    public function Status(string $id)
     {
-        $users = User::FindOrFail($id);
-        $users->status = !$users->status;
-        $users->save();
-        return redirect('users.list_user')->with('success', 'Utilisateur active!');
+        $user = User::Find($id);
+        $user->status = !$user->status;
+        if($user->save()){
+            return back();
+        }else{
+            return redirect(route('status'));
+        }
     }
 
     public function search(Request $request)
