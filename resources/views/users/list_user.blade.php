@@ -117,10 +117,17 @@
                                         <td>{{ $user->gender }}</td>
                                         <td>{{ $user->email }}</td>
                                         <td>{{ $user->phoneNumber }}</td>
-                                        <td>
+                                        {{-- <td>
                                             <a href="{{ $user->i }}" class="btn btn-sm btn-{{ $user->status ? 'danger' : 'success' }}">
                                                 {{ $user->status ? 'Desactive' : 'Active' }}
                                             </a>
+                                        </td> --}}
+                                        <td>
+                                            @if ($user->status== 1)
+                                               Activé
+                                             @else
+                                              Desactivé
+                                            @endif
                                         </td>
                                         <td>{{ $user->role_id === 1 ? 'Admin' : 'Gestionnaire' }}</td>
                                         <td class="d-flex ">
@@ -134,10 +141,15 @@
                                                     <i class="fas fa-eye"></i>
                                                 </a>
                                             </form>
-                                            <div class="form-check form-switch">
+                                            {{-- <div class="form-check form-switch">
                                                 <input class="form-check-input" type="checkbox" role="switch"
                                                     id="flexSwitchCheckChecked">
-                                            </div>
+                                            </div> --}}
+                                            @if ($user->status== 1)
+                                                        <a href="{{route('status', $user->id)}}" class="btn btn-danger">Desactivé</a>
+                                             @else
+                                                 <a href="{{route('status', $user->id)}}" class="btn btn-success">Activé</a>
+                                            @endif
                                         </td>
                                     </tr>
                                     @endforeach

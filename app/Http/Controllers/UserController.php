@@ -188,6 +188,7 @@ class UserController extends  Controller
             'gender' => 'required|in:masculin,feminin',
             'phoneNumber' => 'required',
             'role_id' => 'required|exists:role,id',
+            
 
         ]);
 
@@ -235,31 +236,25 @@ class UserController extends  Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function toggleStatus(string $i)
+    // public function toggleStatus(string $i)
+    // {
+    //     $user = User::FindOrFail($i);
+    //     $user->status = !$user->status;
+    //     $user->save();
+    //     return redirect('users.update')->with('success', 'Utilisateur active!');
+    // }
+
+    public function status($id)
     {
-        $user = User::FindOrFail($i);
-        $user->status = !$user->status;
-        $user->save();
-        return redirect('users.update')->with('success', 'Utilisateur active!');
-    }
+       $user = User::find($id);
+       $user->status =!$user->status;
+      if( $user->save()){
+             return back();
+        }else{
+          return redirect(route('status'));
 
-    public function status($userId)
-    {
-        $user = User::find($userId);
-
-        if($user)
-        {
-            if($user->status) {
-                $user->status = 0 ;
-            }
-            else
-            {
-                $user->status = 1 ;
-            }
-            $user->save();
-        }
-
-        return redirect('users.list_user');
+      };
+       
 
     }
 }
