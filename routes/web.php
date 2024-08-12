@@ -27,7 +27,7 @@ Route::put('/test/update', [TestController::class, 'update'])->name('Test.update
 
 // route view for user
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::get('/', function () {
@@ -60,9 +60,9 @@ Route::get('/user/store', function () {
 //  });
 
 // route view for question
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/questions/add_question', function () {
     return view('questions.add_question');

@@ -23,15 +23,67 @@
     @viteReactRefresh
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
+
+<style>
+#email{
+background-color:white;
+            font-size: 18px;
+            
+            border-radius: 0;
+            border: 0;
+            height: 70px;
+        
+}
+#password{
+    background-color:white;
+
+            font-size: 18px;
+            border-radius: 0;
+            height: 70px;
+            border: 0;
+}
+#href{
+    text-decoration: 0;
+            color: orange;
+            border: none;
+            border-radius: 0;
+}
+.form-check-input{
+/* color:orange; */
+border: 1px solid #ff8c00;
+border-radius: none;
+
+}
+#btn{
+    color:orange; 
+    height: 50px;
+    border: 0px;
+
+
+}
+.form-check-input:checked{
+    background-color:orange;
+    border: 1px solid #ff8c00;
+
+}
+body{
+    background-color:whitesmoke;
+  
+}
+#con{
+    border:none;
+}
+
+</style>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        {{-- <nav class="navbar navbar-expand-md navbar-light bg-secondary shadow-sm"> --}}
             <div class="container">
                 {{-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button> --}}
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                {{-- <div class="collapse navbar-collapse" id="navbarSupportedContent"> --}}
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
 
@@ -74,9 +126,9 @@
                     </ul>
                 </div>
             </div>
-        </nav>
+        {{-- </nav> --}}
 
-        <main class="py-4">
+       <main class="py-4" id="con"> 
             @yield('content')
         </main>
     </div>

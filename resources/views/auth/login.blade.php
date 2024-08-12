@@ -79,16 +79,16 @@
     </div> --}}
 
     <!-- Login 6 - Bootstrap Brain Component -->
-    <section class="bg-secondary mt-5 p-3 p-md-4 p-xl-5">
+    <section class=" mt-5 p-3 p-md-4 p-xl-5">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12 col-md-9 col-lg-7 col-xl-6 col-xxl-5">
-                    <div class="card border-0 shadow-sm rounded-4">
+                    <div class="card ">
                         <div class="card-body p-3 p-md-4 p-xl-5">
                             <div class="row">
                                 <div class="col-12">
                                     <div class="mb-5">
-                                        <h3>Log in</h3>
+                                        <h3 class="text-center text-dark fw-bold "> Se Connecte</h3>
                                     </div>
                                 </div>
                             </div>
@@ -96,12 +96,13 @@
                                 @csrf
                                 <div class="row gy-3 overflow-hidden">
                                     <div class="col-12">
-                                        <div class="form-floating mb-3">
+                                        <div class="form-group mb-3">
 
+                                     
+                                            {{-- <label for="email" class="form-label">Adress Email</label> --}}
                                             <input type="email" class="form-control @error('email') is-invalid @enderror"
-                                                name="email" id="email" value="{{ old('email') }}" required
-                                                autocomplete="email" autofocus>
-                                            <label for="email" class="form-label">Email</label>
+                                            name="email" id="email" value="{{ old('email') }}" required
+                                            autocomplete="email" autofocus placeholder="Adress Email">
                                             @error('email')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -110,12 +111,13 @@
                                         </div>
                                     </div>
                                     <div class="col-12">
-                                        <div class="form-floating mb-3">
+                                        <div class="form-group mb-3">
 
                                             <input id="password" type="password"
                                                 class="form-control @error('password') is-invalid @enderror" name="password"
-                                                required autocomplete="current-password">
-                                            <label for="password" class="form-label">Password</label>
+                                                required autocomplete="current-password" placeholder="mot de passe">
+                                            {{-- <label for="password" class="form-label"><h4>mot de passe</h4></label> --}}
+
                                             @error('password')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -134,19 +136,19 @@
                                                 </label>
                                                 <label class="form-check-label" for="remember">
                                             </div>
-                                            <a class="btn btn-link"class="link-primary text-decoration-none"
+                                            <a class="btn btn-link"class="link-warning text-decoration-none"
                                                 href="{{ url('password/reset/{token}') }}">
 
                                             </a>
                                             @if (Route::has('password.request'))
-                                                <a class="btn btn-link" href="{{ url('password/reset/{token}') }}">
+                                                <a class="btn btn-link" id="href" href="{{ url('password/reset/{token}') }}">
                                                     Mot de passe oublié?
                                                 </a>
                                         </div>
                                     </div>
                                     <div class="col-12">
-                                        <div class="d-grid">
-                                            <button class="btn bsb-btn-2xl btn-primary" type="submit">Login</button>
+                                        <div class="d-grid" >
+                                            <button class="btn bsb-btn-2xl btn-warning" id="btn" type="submit" style="color:white; "><h5>Connecte</h5></button>
                                         </div>
                                         @endif
                                     </div>
