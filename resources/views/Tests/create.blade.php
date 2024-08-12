@@ -31,7 +31,7 @@
 
         <h2 class="text-center text-info">FORM</h2>
         <div class="row">
-            <div class="col-md 4 d-flex justify-content-center">
+             <div class="col-md 4 d-flex justify-content-center">
 
                 <div class="form-action  bg-info rounded-2 ">
                     <div class="form-control-lg">

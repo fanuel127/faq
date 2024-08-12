@@ -20,12 +20,28 @@ class TestController extends Controller
     }
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'firstName' => 'required',
-            'description' => 'required',
+       
+        $request->validate([
+            'firstName' => 'required|string',
+            'lastName',
+            'gender' => 'required|in:masculin,feminin',
+            'phoneNumber' => 'required|unique:users,phoneNumber',
+            'password' => 'required|max:8|confirmed',
+            'email' => 'required|email|unique:users,email',
+            'role_id' => 'required|exists:role,id',
 
         ]);
-        $newTest = test::create($data);
+
+        Test::create([
+            'firstName' => $request['firstName'],
+            'lastName' => $request['lastName'],
+            'gender' => $request['gender'],
+            'phoneNumber' => $request['phoneNumber'],
+            'role_id' =>  $request['role_id'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+            'password' => $request['password'],
+        ]);
         return redirect(route('Test.index'));
     }
 
@@ -36,11 +52,19 @@ public function edit(Test $test)
 }
 public function update(Test $test, Request $request)
 {
+   
+    $test = Test::find($id);
     $data = $request->validate([
-        'firstName' => 'required',
-        'description' => 'required',
+        'firstName' => 'required|string',
+        'lastName' => 'required',
+        'gender' => 'required|in:masculin,feminin',
+        'phoneNumber' => 'required',
+        'role_id' => 'required|exists:role,id',
+
 
     ]);
+
+    $test->save();
     $test->update($data);
     return redirect(route('Test.index'))->with('success','test update sucessfully');
 
