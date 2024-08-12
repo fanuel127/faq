@@ -76,8 +76,96 @@ body{
 
 </style>
 <body>
+    <style> 
+       #myinput {
+        font-size: 18px;
+        border-radius: 0;
+        height: 70px;
+        border:none;
+        background-color:white; 
+      }
+      #email{
+        font-size: 18px;
+        border-radius: 0;
+        border:none;
+        height: 60px;
+        background-color:white; 
+     
+      }
+      #password{
+        font-size: 18px;
+        border-radius: 0;
+        height: 60px;
+        border:none;
+        background-color:white; 
+      }
+      #password-confirm{
+        font-size: 18px;
+        border-radius: 0;
+        height: 60px;
+        border:none;
+        background-color:white; 
+      }
+      #name{
+        font-size: 18px;
+        border-radius: 0;
+        height: 60px;
+        border:none;
+        background-color:white; 
+     }
+      
+
+     /*     
+     #bt{
+        font-size: 18px;
+        border-radius: 0;
+        border:none;
+        height: 60px;
+        color:white;
+     }
+    
+      */
+     .card {
+            border-radius: 0;
+            height: 70vh;
+            color: black;
+        }
+     
+      body{
+           background-color: whitesmoke;
+
+      }
+      .card-body{
+        background-color: warning;
+
+      }
+      a{
+        background-color:orange;
+      }
+      .form-check-input{
+        border:1px solid #ff8c00;
+        border-radius:0px;
+      }
+      .form-check-input:checked{
+        border:1px solid #ff8c00;
+        background-color: #ff8c00;
+     
+      }
+      input{
+        appearance:none;
+        -webkit-appearance:none;
+        -moz-appearance:none;
+        outline:none;
+        background-color:transparent;
+      }
+
+    </style>
     <div id="app">
+<<<<<<< Updated upstream
         {{-- <nav class="navbar navbar-expand-md navbar-light bg-secondary shadow-sm"> --}}
+=======
+        {{-- <nav class="navbar navbar-expand-md navbar-light bg-warning shadow-sm"> --}}
+>>>>>>> Stashed changes
             <div class="container">
                 {{-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -124,13 +212,19 @@ body{
                             </li>
                         @endguest
                     </ul>
-                </div>
+               
             </div>
+<<<<<<< Updated upstream
         {{-- </nav> --}}
 
        <main class="py-4" id="con"> 
+=======
+     
+
+    
+>>>>>>> Stashed changes
             @yield('content')
-        </main>
+       
     </div>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>

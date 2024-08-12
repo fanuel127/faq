@@ -20,7 +20,7 @@
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <li><a href="#" class="dropdown-item">Profile</a></li>
                     <li><a href="#" class="dropdown-item">Settings</a></li>
-                    <li><a href="#" class="dropdown-item">Logout</a></li>
+                    <li><a href="{{ url('/login') }}"class="dropdown-item">Logout</a></li>
                 </ul>
             </li>
 

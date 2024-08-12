@@ -4,8 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Auth\loginController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Question\QuestionController;
-use App\Models\Role;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -30,9 +32,9 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::get('/', function () {
-    return view('layouts.app');
-});
+// Route::get('/', function () {
+//     return view('layouts.app');
+// });
 
 Route::get('/user/add_user', function () {
     return view('users.add_user');
@@ -60,9 +62,12 @@ Route::get('/user/store', function () {
 //  });
 
 // route view for question
+<<<<<<< Updated upstream
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+=======
+>>>>>>> Stashed changes
 
 Route::get('/questions/add_question', function () {
     return view('questions.add_question');
@@ -79,7 +84,7 @@ Route::get('/questions/edit_question', function () {
 Route::get('/questions/show_question', function () {
     return view('questions.show_question');
 });
-
+// Auth: routes();
 //Route dashboard 1
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
@@ -104,6 +109,39 @@ Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm
 Route::post('password/reset/{token}', 'Auth\ResetPasswordController@postReset')->name('password.reset');
 
 Route::get('/dashboard', [UserController::class, 'nombre']);
+
+
+//   Auth::routes();
+// //log
+ Route::get('/login', [LoginController::class, 'login'])->name('login');
+ Route::get('/login', [LoginController::class, 'Authenticate']);
+
+// Route::get('/home', [HomeController::class, 'adminHome'])->name('Home');
+//register
+
+Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('auth.register');
+Route::post('/register', [RegisterController::class, 'register'])->name('auth.register');
+
+ Route::get('/login', [LoginController::class, 'authenticate']);
+ Route::post('/login', [LoginController::class, 'login']);
+
+
+// //admin
+// Route::middleware(['auth', 'use-role:admin'])->group(function () {
+//     Route::get('/home', [AdminController::class, 'adminHome'])->name('Home');
+// });
+// //user
+// Route::middleware(['auth', 'use-role:user'])->group(function () {
+//     Route::get('/user/home', [AdminController::class, 'userHome'])->name('Home.user');
+// });
+
+
+
+
+
+
+
+
 
 // pour le status
 Route::get('/users/status/{id}', [UserController::class, 'status'])->name('status');
