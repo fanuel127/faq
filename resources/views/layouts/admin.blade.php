@@ -27,7 +27,7 @@
             font-weight: bold;
         }
 
-        #filter-bar {
+        #filter-bar , #span {
             border-radius: 0;
         }
 

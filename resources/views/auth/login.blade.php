@@ -119,32 +119,22 @@
                                 <div class="col-12 ">
                                     <div class="mb-5 fs-4 fw-bold"style=" color:black;">
                                         <h2>Se Connecter</h2>
->>>>>>> Stashed changes
+
                                     </div>
                                 </div>
                             </div>
-                            <form method="post" action="">
+
+
+                            <form method="GET" action="{{ route('auth.login') }}">
+
                                 @csrf
                                 <div class="row gy-3 overflow-hidden">
                                     <div class="col-12">
                                         <div class="form-group mb-3">
 
-<<<<<<< Updated upstream
+
                                      
-                                            {{-- <label for="email" class="form-label">Adress Email</label> --}}
-                                            <input type="email" class="form-control @error('email') is-invalid @enderror"
-                                            name="email" id="email" value="{{ old('email') }}" required
-                                            autocomplete="email" autofocus placeholder="Adress Email">
-                                            @error('email')
-=======
-                                            {{-- <input  type="email"  class="form-control border-radius:0; @error('email') is-invalid @enderror"
-                                                name="email" id="email" value="{{ old('email') }}" required
-                                                autocomplete="email" autofocus>
-                                            <label for="email" class="form-label">Email</label>
-                                            --}}
-                                        
-                                            <label for="email" class="form-label">
-                                                <h5></h5>
+                          
                                             </label>
                                             <input type="email" name="email" class="form-control 
                                              @error('email') is-invalid @enderror"
@@ -154,44 +144,16 @@
                                                 <h5>Adresse Email</h5> --}}
                                             </label>
                                                 @error('email')
->>>>>>> Stashed changes
+
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
                                             @enderror
                                         </div>
                                     </div>
-<<<<<<< Updated upstream
-                                    <div class="col-12">
-                                        <div class="form-group mb-3">
 
-                                            <input id="password" type="password"
-                                                class="form-control @error('password') is-invalid @enderror" name="password"
-                                                required autocomplete="current-password" placeholder="mot de passe">
-                                            {{-- <label for="password" class="form-label"><h4>mot de passe</h4></label> --}}
-
-                                            @error('password')
-=======
-                                    {{-- <div class="col-12">
-                                        <div class="form-group mb-3">
-                                            <div id="roleModal" >
-                                                                                                                                          
-                                                <select  class="form-select @error('role_id') is-invalid @enderror" name="role_id" id="myinput" required >                                             
-                                                   <option selected disabled >selectionner votre role</option>
-                                                    <option value="1" >Admin</option>
-                                                    <option value="2" >Gestionaire</option>
-                                                
-                                                    </label>
-                                                </select>
-                                            </div>
-                                            @error('role_id')
->>>>>>> Stashed changes
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div> --}}
+                                   
+                                 
                                     <div class="col-12">
                                         <div class="form-group mb-3">
                                             <input id="password" type="password"
@@ -222,23 +184,19 @@
 
                                             </a>
                                             @if (Route::has('password.request'))
-<<<<<<< Updated upstream
-                                                <a class="btn btn-link" id="href" href="{{ url('password/reset/{token}') }}">
-=======
+
+
                                                 <a class="btn btn-link"style=" color:orange;" href="{{ url('password/reset/{token}') }}">
->>>>>>> Stashed changes
+
                                                     Mot de passe oublié?
                                                 </a>
                                         </div>
                                     </div>
                                     <div class="col-12">
-<<<<<<< Updated upstream
-                                        <div class="d-grid" >
-                                            <button class="btn bsb-btn-2xl btn-warning" id="btn" type="submit" style="color:white; "><h5>Connecte</h5></button>
-=======
+
                                         <div class="d-grid" >                                       
                                              <button class="btn bsb-btn-2xl btn-warning" style="border-radius:0px;" type="submit" ><h5 style="color:white; ">connecter</h5></button> 
->>>>>>> Stashed changes
+
                                         </div>
                                         @endif
                                     </div>

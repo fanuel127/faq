@@ -151,6 +151,7 @@ class AdminController extends Controller
 
 
     }
+
     public function search(Request $request)
     {
         $query = $request->input('query');
