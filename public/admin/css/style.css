@@ -1,0 +1,134 @@
+:root {
+    --main-bg-color: orange;
+    --main-text-color:orange;
+    --second-text-color:#ecf0f9;
+    --second-bg-color:#c1efde;
+}
+
+.primary-text {
+    color: var(--main-text-color);
+}
+
+.second-text {
+    color: var(--second-text-color);
+}
+
+.primary-bg {
+    background-color: var(--main-bg-color);
+}
+
+.secondary-bg {
+    background-color: var(--second-bg-color);
+}
+
+.rounded-full {
+    border-radius: 100%;
+}
+
+#wrapper {
+    overflow: hidden;
+    background-color: rgba(29, 27, 27, 0.131);
+    /* background-image: linear-gradient(
+        to right,
+        /* #c2f5de,
+        #cbf7e4,
+        #d4f8ea,
+        /* orange,
+        /* #c2f5de
+        /* #c2ce
+        orange,
+        #baf3d7,
+        #ddfaef
+        /* orange
+    ); */
+}
+
+#sidebar-wrapper {
+    min-height: 110vh;
+    width: 30vh;
+    margin-left: -15rem;
+    transition: margin 0.25s ease-out;
+    border: none;
+}
+
+#sidebar-wrapper .sidebar-heading {
+    padding: 0.875rem 1.25rem;
+    font-size: 1.2rem;
+    color: var(--main-text-color);
+    border: none;
+}
+
+#sidebar-wrapper .list-group {
+    width: 30rem;
+    border: none;
+}
+
+#page-content-wrapper {
+    min-width: 100vw;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    margin-left: 0;
+}
+
+#menu-toggle {
+    cursor: pointer;
+}
+
+.list-group-item {
+    border: none;
+    padding: 20px 30px;
+}
+
+.list-group-item.active {
+    background-color: transparent;
+    color: var(--main-text-color);
+    font-weight: bold ;
+    border: none;
+}
+
+@media(min-width: 768px) {
+    #sidebar-wrapper {
+        margin-left: 0;
+    }
+
+    #page-content-wrapper {
+        min-width: 0;
+        width: 100%;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        margin-left: -15rem;
+    }
+}
+
+::after ,
+::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: 0;
+}
+
+li {
+    list-style: none;
+}
+
+/* #sidebar.expand .sidebar-link[data-bs-toggle="collapse"].collapsed::after {
+    transform: rotate(45deg);
+    transition: all .2s ease-out;
+} */
+
+
+/* navbar css  */
+.user-connected{
+    font-size: 15px;
+    font-weight:800;
+}
+.home-name{
+    font-size: 23px;
+    font-weight:800;
+}

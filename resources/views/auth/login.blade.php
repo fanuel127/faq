@@ -79,7 +79,7 @@
     </div> --}}
 
     <!-- Login 6 - Bootstrap Brain Component -->
-    <section class="bg-primary p-3 p-md-4 p-xl-5">
+    <section class="bg-secondary mt-5 p-3 p-md-4 p-xl-5">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12 col-md-9 col-lg-7 col-xl-6 col-xxl-5">
@@ -92,7 +92,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <form method="POST" action="{{ route('login') }}">
+                            <form method="POST" action="{{ route('auth.login') }}">
                                 @csrf
                                 <div class="row gy-3 overflow-hidden">
                                     <div class="col-12">
@@ -135,11 +135,11 @@
                                                 <label class="form-check-label" for="remember">
                                             </div>
                                             <a class="btn btn-link"class="link-primary text-decoration-none"
-                                                href="{{ route('password.request') }}">
+                                                href="{{ url('password/reset/{token}') }}">
 
                                             </a>
                                             @if (Route::has('password.request'))
-                                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                                                <a class="btn btn-link" href="{{ url('password/reset/{token}') }}">
                                                     Mot de passe oublié?
                                                 </a>
                                         </div>

@@ -3,9 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\Role;
-use App\Models\User;
 use App\Models\Category;
-use App\Models\Question;
+
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -18,11 +17,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+     
         $this->call([
             CategoryTableSeeder::class,
-            QuestionTableSeeder::class,
+
             RoleTableSeeder::class,
-            UserTableSeeder::class,
+
         ]);
     }
 }
