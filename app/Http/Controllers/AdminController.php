@@ -138,17 +138,16 @@ class AdminController extends Controller
     // }
     public function status($id)
     {
-       $user = User::find($id);
-    //    $status = optional($i)->status; // Cela retourne null si $objet est null
-       $user->status =!$user->status;
-      if( $user->save()){
+        $user = User::find($id);
+        //    $status = optional($i)->status; // Cela retourne null si $objet est null
+        $user->status = !$user->status;
+        if ($user->save()) {
 
-          return redirect(route('users.list_user'))->with('success', 'Utilisateur active!');
-        }else{
-          return redirect(route('status'));
-
-      };
-
+            return redirect(route('users.list_user'))->with('success', 'Utilisateur active!');
+        } else {
+            return redirect(route('status'));
+        };
+    }
 
 
     public function search(Request $request)
@@ -174,13 +173,12 @@ class AdminController extends Controller
     public function indexQuestion()
     {
         $questions = Question::all();
-        return view ('questions.list_question')->with('questions', $questions);
-
+        return view('questions.list_question')->with('questions', $questions);
     }
     public function listCategoryQuestion()
     {
 
-        $categories=Category::all();
+        $categories = Category::all();
         return view('questions.list_question')->with('categories', $categories);
     }
 
@@ -194,12 +192,12 @@ class AdminController extends Controller
     public function storeQuestion(Request $request)
     {
         $input = $request->validate([
-            'questionName'=> 'required',
-            'category_id'=>'required|unique|exists:user,id',
-            'description'=> 'required',
+            'questionName' => 'required',
+            'category_id' => 'required|unique|exists:user,id',
+            'description' => 'required',
             'answer' => 'required',
-            'video' => 'required' ,
-            'photo'=>'required|unique',
+            'video' => 'required',
+            'photo' => 'required|unique',
             'user_id' => 'required|exists:user,id',
         ]);
         $input = $request->all();
@@ -222,7 +220,7 @@ class AdminController extends Controller
     {
         $question = Question::find($id);
         $answers = $question->answers;
-        return view('questions.show_question')->with( $question , $answers);
+        return view('questions.show_question')->with($question, $answers);
     }
 
     /**
