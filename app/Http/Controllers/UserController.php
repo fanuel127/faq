@@ -70,7 +70,9 @@ class UserController extends  Controller
         if ($request->has('search')) {
             $users = $users->filter(function ($user) use ($request) {
                 return stripos($user->firstName, $request->input('search')) !== false
-                    || stripos($user->gender, $request->input('search')) !== false;
+                    || stripos($user->lastName, $request->input('search')) !== false
+                    || stripos($user->gender, $request->input('search')) !== false
+                    || stripos($user->email, $request->input('search')) !== false;
             });
         }
 
@@ -78,7 +80,9 @@ class UserController extends  Controller
         if ($request->has('search')) {
             $users = $users->filter(function ($user) use ($request) {
                 return stripos($user->firstName, $request->input('search')) !== false
-                    || stripos($user->gender, $request->input('search')) !== false;
+                || stripos($user->lastName, $request->input('search')) !== false
+                || stripos($user->gender, $request->input('search')) !== false
+                || stripos($user->email, $request->input('search')) !== false;
             });
         }
 

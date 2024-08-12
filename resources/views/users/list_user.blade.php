@@ -45,50 +45,52 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <div class="filter-bar d-flex justify-content-between bg-light mt-3 mb-4" id="filter-bar"
-                            style="padding-top: 10px; padding-bottom:10px; border-raduis:0;">
-                            <div class="order mt-3 mb-3">
-                                <label for="myinputs">Trie par..</label>
-                                <select class="filtered" name="" id="myinputs">
-                                    <option value="" selected desabled>--</option>
-                                    <option value="asc">Ordre croissant</option>
-                                    <option value="desc">Ordre decroissant</option>
-                                </select>
-                            </div>
-                            <div class="sort mt-3 mb-3">
-                                <label for="myinputs">De..</label>
-                                <select class="filtered" name="sort" id="myinputs">
-                                    <option value="" selected desabled>--</option>
-                                    <option value="firstname">Nom</option>
-                                    <option value="lastname">Prenom</option>
-                                    <option value="email">Email</option>
-                                </select>
-                            </div>
-                            <div class="gender mt-3 mb-3">
-                                <label for="myinputs">Genre..</label>
-                                <select class="filtered" name="gender" id="myinputs">
-                                    <option value="" selected desabled>--</option>
-                                    <option value="male">Masculin</option>
-                                    <option value="female">Feminin</option>
-                                </select>
-                            </div>
-                            <div class="status mt-3 mb-3">
-                                <label for="myinputs">Statut..</label>
-                                <select class="filtered" name="status" id="myinputs">
-                                    <option value="" selected desabled>--</option>
-                                    <option value="male">Actif</option>
-                                    <option value="female">Inactif</option>
-                                </select>
-                            </div>
-                            <div class="search mt-3 mb-3">
-                                {{-- <input class="form-control search-input filtered" type="search" placeholder="Taper.." aria-label="Search">
+                        <form action="{{ route('users.total') }}" method="GET">
+                            <div class="filter-bar d-flex justify-content-between bg-light mt-3 mb-4" id="filter-bar"
+                                style="padding-top: 10px; padding-bottom:10px; border-raduis:0;">
+                                <div class="order mt-3 mb-3">
+                                    <label for="myinputs">Trie par..</label>
+                                    <select class="filtered" name="sort" id="myinputs">
+                                        <option value="" selected desabled>--</option>
+                                        <option value="asc">Ordre croissant</option>
+                                        <option value="desc">Ordre decroissant</option>
+                                    </select>
+                                </div>
+                                <div class="sort mt-3 mb-3">
+                                    <label for="myinputs">De..</label>
+                                    <select class="filtered" name="sort" id="myinputs">
+                                        <option value="" selected desabled>--</option>
+                                        <option value="firstname">Nom</option>
+                                        <option value="lastname">Prenom</option>
+                                        <option value="email">Email</option>
+                                    </select>
+                                </div>
+                                <div class="gender mt-3 mb-3">
+                                    <label for="myinputs">Genre..</label>
+                                    <select class="filtered" name="gender" id="myinputs">
+                                        <option value="" selected desabled>--</option>
+                                        <option value="male">Masculin</option>
+                                        <option value="female">Feminin</option>
+                                    </select>
+                                </div>
+                                <div class="status mt-3 mb-3">
+                                    <label for="myinputs">Statut..</label>
+                                    <select class="filtered" name="status" id="myinputs">
+                                        <option value="" selected desabled>--</option>
+                                        <option value="male">Actif</option>
+                                        <option value="female">Inactif</option>
+                                    </select>
+                                </div>
+                                <div class="search mt-3 mb-3">
+                                    {{-- <input class="form-control search-input filtered" type="search" placeholder="Taper.." aria-label="Search">
                                 <button class="btn btn-outline-success filtered" type="submit">Search</button> --}}
-                                <form class="search-form d-flex" action="{{ route('users.total') }}" method="GET">
-                                    <input class=" search-input filtered" type="search" id="myinpu" name="search"
-                                        placeholder="Recherche..." aria-label="Search">
-                                </form>
+                                    <form class="search-form d-flex" action="{{ route('users.total') }}" method="GET">
+                                        <input class=" search-input filtered" type="search" id="myinpu" name="search"
+                                            placeholder="Recherche..." aria-label="Search">
+                                    </form>
+                                </div>
                             </div>
-                        </div>
+                        </form>
                         <div>
                             <table id="example" class="table text-center" style="width:100%">
                                 <thead class="table-dark">
@@ -125,10 +127,10 @@
                                             </a>
                                         </td> --}}
                                         <td>
-                                            @if ($user->status== 1)
-                                               Activé
-                                             @else
-                                              Desactivé
+                                            @if ($user->status == 1)
+                                                <span class="btn btn-success" id="span">Activé</span>
+                                            @else
+                                                <span class="btn btn-danger" id="span">Désactivé</span>
                                             @endif
                                         </td>
                                         <td>{{ $user->role_id === 1 ? 'Admin' : 'Gestionnaire' }}</td>
@@ -147,10 +149,12 @@
                                                 <input class="form-check-input" type="checkbox" role="switch"
                                                     id="flexSwitchCheckChecked">
                                             </div> --}}
-                                            @if ($user->status== 1)
-                                                        <a href="{{route('status', $user->id)}}" class="btn btn-danger">Desactivé</a>
-                                             @else
-                                                 <a href="{{route('status', $user->id)}}" class="btn btn-success">Activé</a>
+                                            @if ($user->status == 1)
+                                                <a href="{{ route('status', $user->id) }}" class="btn btn-danger"
+                                                    id="span">Désactivé</a>
+                                            @else
+                                                <a href="{{ route('status', $user->id) }}" class="btn btn-success"
+                                                    id="span">Activé</a>
                                             @endif
                                         </td>
                                     </tr>
@@ -179,7 +183,7 @@
                                 $(document).ready(function() {
                                     function fetchResults(query, page = 1) {
                                         $.ajax({
-                                            url: '{{ url("users/list_user") }}',
+                                            url: '{{ url('users/list_user') }}',
                                             type: 'GET',
                                             data: {
                                                 query: query,
@@ -198,7 +202,7 @@
                                                             $('#pagination').append(
                                                                 '<button class="page-link" data-page="' + link.url
                                                                 .split('page=')[1] + '">' + link.label + '</button>'
-                                                                );
+                                                            );
                                                         } else {
                                                             $('#pagination').append('<span>' + link.label + '</span>');
                                                         }
