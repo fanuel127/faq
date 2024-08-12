@@ -62,12 +62,7 @@ Route::get('/user/store', function () {
 //  });
 
 // route view for question
-<<<<<<< Updated upstream
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-=======
->>>>>>> Stashed changes
+
 
 Route::get('/questions/add_question', function () {
     return view('questions.add_question');
