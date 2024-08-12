@@ -3,16 +3,18 @@
 namespace App\Models;
 
 use App\Models\Role;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Model
+
+class User extends Authenticatable implements AuthenticatableContract
 {
     use HasApiTokens, HasFactory, Notifiable;
+
 
     /**
      * The attributes that are mass assignable.
@@ -38,16 +40,16 @@ class User extends Model
      *
      * @var array<int, string>
      */
-    protected $hidden = [
-        'password',
 
+    // Cacher les attributs de tableau pour ne pas les inclure dans les tableaux de sortie
+    protected $hidden = [
+        'password', 'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
+    // Caster les attributs pour qu'ils aient le bon type
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
 
 
     public function Role()
@@ -55,6 +57,7 @@ class User extends Model
 
         return $this->belongsTo(Role::class);
     }
+    
     public function Question()
     {
 

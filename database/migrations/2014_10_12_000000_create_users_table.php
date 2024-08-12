@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id('id');
-            $table->string('firstname');
-            $table->string('lastname');
+            $table->string('firstName');
+            $table->string('lastName');
             $table->string('gender');
             $table->string('email');
             $table->string('password',8);
             $table->integer('phoneNumber');
             $table->boolean('status')->default('1');
-            $table->unsignedBigInteger('role_id')->default(0);
+            $table->unsignedBigInteger('role_id')->default(1);
             $table->foreign('role_id')->constrained()->references('id')->on('role')
             ->onUpdate('cascade')
             ->onDelete('cascade');

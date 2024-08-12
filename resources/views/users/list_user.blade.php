@@ -150,7 +150,7 @@
                                                     id="flexSwitchCheckChecked">
                                             </div> --}}
 
-                                           
+
                                             @if ($user->status == 1)
                                                 <a href="{{ route('status', $user->id) }}" class="btn btn-danger"
                                                     id="span">Désactivé</a>

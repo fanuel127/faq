@@ -15,7 +15,7 @@ class CreateUserSeeder extends Seeder
      */
     public function run()
     {
-        $users= [ 
+        $users= [
             [
             'name'=>'User',
             'email'=>'User@gmail.com',
@@ -30,10 +30,10 @@ class CreateUserSeeder extends Seeder
             'role'=>1
 
             ],
-      
-            ];
-            foreach($users as user){
-                User::create($user);
-            }
+        ];
+        foreach($users as user){
+            User::create($user);
+        }
+
     }
 }

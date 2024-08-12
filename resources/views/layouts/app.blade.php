@@ -8,170 +8,26 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
-    {{-- styles --}}
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
-{{-- Bootstrap CSS --}}
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
- rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
     <!-- Scripts -->
-    @viteReactRefresh
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
-
-<style>
-#email{
-background-color:white;
-            font-size: 18px;
-            
-            border-radius: 0;
-            border: 0;
-            height: 70px;
-        
-}
-#password{
-    background-color:white;
-
-            font-size: 18px;
-            border-radius: 0;
-            height: 70px;
-            border: 0;
-}
-#href{
-    text-decoration: 0;
-            color: orange;
-            border: none;
-            border-radius: 0;
-}
-.form-check-input{
-/* color:orange; */
-border: 1px solid #ff8c00;
-border-radius: none;
-
-}
-#btn{
-    color:orange; 
-    height: 50px;
-    border: 0px;
-
-
-}
-.form-check-input:checked{
-    background-color:orange;
-    border: 1px solid #ff8c00;
-
-}
-body{
-    background-color:whitesmoke;
-  
-}
-#con{
-    border:none;
-}
-
-</style>
 <body>
-    <style> 
-       #myinput {
-        font-size: 18px;
-        border-radius: 0;
-        height: 70px;
-        border:none;
-        background-color:white; 
-      }
-      #email{
-        font-size: 18px;
-        border-radius: 0;
-        border:none;
-        height: 60px;
-        background-color:white; 
-     
-      }
-      #password{
-        font-size: 18px;
-        border-radius: 0;
-        height: 60px;
-        border:none;
-        background-color:white; 
-      }
-      #password-confirm{
-        font-size: 18px;
-        border-radius: 0;
-        height: 60px;
-        border:none;
-        background-color:white; 
-      }
-      #name{
-        font-size: 18px;
-        border-radius: 0;
-        height: 60px;
-        border:none;
-        background-color:white; 
-     }
-      
-
-     /*     
-     #bt{
-        font-size: 18px;
-        border-radius: 0;
-        border:none;
-        height: 60px;
-        color:white;
-     }
-    
-      */
-     .card {
-            border-radius: 0;
-            height: 70vh;
-            color: black;
-        }
-     
-      body{
-           background-color: whitesmoke;
-
-      }
-      .card-body{
-        background-color: warning;
-
-      }
-      a{
-        background-color:orange;
-      }
-      .form-check-input{
-        border:1px solid #ff8c00;
-        border-radius:0px;
-      }
-      .form-check-input:checked{
-        border:1px solid #ff8c00;
-        background-color: #ff8c00;
-     
-      }
-      input{
-        appearance:none;
-        -webkit-appearance:none;
-        -moz-appearance:none;
-        outline:none;
-        background-color:transparent;
-      }
-
-    </style>
     <div id="app">
-<<<<<<< Updated upstream
-        {{-- <nav class="navbar navbar-expand-md navbar-light bg-secondary shadow-sm"> --}}
-=======
-        {{-- <nav class="navbar navbar-expand-md navbar-light bg-warning shadow-sm"> --}}
->>>>>>> Stashed changes
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                {{-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    {{ config('app.name', 'Laravel') }}
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
-                </button> --}}
+                </button>
 
-                {{-- <div class="collapse navbar-collapse" id="navbarSupportedContent"> --}}
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
 
@@ -183,13 +39,13 @@ body{
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('auth.login') }}">{{ __('Login') }}</a>
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
                             @endif
 
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('auth.register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else
@@ -212,28 +68,13 @@ body{
                             </li>
                         @endguest
                     </ul>
-               
+                </div>
             </div>
-<<<<<<< Updated upstream
-        {{-- </nav> --}}
+        </nav>
 
-       <main class="py-4" id="con"> 
-=======
-     
-
-    
->>>>>>> Stashed changes
+        <main class="py-4">
             @yield('content')
-       
+        </main>
     </div>
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-
-    <!-- Additional JavaScript -->
-    @yield('scripts')
-
 </body>
 </html>

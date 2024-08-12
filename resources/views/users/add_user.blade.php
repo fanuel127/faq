@@ -98,7 +98,7 @@
                                                         @endforeach --}}
                             <option selected disabled>selectionner votre role</option>
                             <option value="1">Admin</option>
-                            <option value="2">SimpleUser</option>
+                            <option value="2">Gestionnaire</option>
                         </select>
                     </div>
                 </div>

@@ -4,8 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Http\Request;
-use Auth;
+
 class LoginController extends Controller
 {
     /*
@@ -37,41 +36,5 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
         $this->middleware('auth')->only('logout');
-    }
-    
-    public function login()
-    {
-        return view('auth.login');
-    }
-
-    public function Authenticate(Request $request)
-    {
-        // Validate the login credentials
-        $input = $request->all();
-        $this ->validate( $request,[
-            'email' => ['required', 'email'],
-            'password' => ['required'],
-        ]);
-
-       if(auth()->attempt([ 'email'=>  $input["email"],'password'=>  $input["password"]]));
-    
-        if(Auth()->user()->role == 'admin')
-        {
-            return redirect()->route('admin.dashboard');
-        }
-        else
-        if(Auth()->user()->role == 'user')
-        {
-            return redirect()->route('admin.dashboard');
-        }
-        // else
-        // {
-        //     return redirect()->route('home');
-        // }
-          else
-        {
-            return redirect()->route('auth.login')->with("error",'incorrect email or password');
-        }
-
     }
 }

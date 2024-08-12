@@ -1,24 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container mt-5 p-3 p-md-4 p-xl-5 ">
+<div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-9">
+        <div class="col-md-8">
             <div class="card">
-                {{-- <div class="card-header">{{ __('Register') }}</div> --}}
+                <div class="card-header">{{ __('Register') }}</div>
 
-                <div class="card-body p-md-5">
-                    <div class="row">
-                        <div class="col-12 ">
-                            <div class="mb-5 fs-4 fw-bold"style=" color:black;">
-                                <h2>Enregistre</h2>
-                            </div>
-                        </div>
-                    </div>
-                    {{-- <form method="POST" action="{{ route('auth.register') }}"> --}}
-                        <form method="POST" action="{{ route('auth.register') }}">
-                           
-
+                <div class="card-body">
+                    <form method="POST" action="{{ route('register') }}">
                         @csrf
 
                         <div class="row mb-3">
@@ -73,9 +63,8 @@
 
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn bsb-btn-2xl btn-warning">
-                                    <h5 style="color:white; ">Enregistre</h5>
-                                    {{-- {{ __('Register') }} --}}
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('Register') }}
                                 </button>
                             </div>
                         </div>

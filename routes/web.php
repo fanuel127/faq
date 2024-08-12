@@ -20,6 +20,11 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
 //test
 Route::get('/test', [TestController::class, 'index'])->name('Test.index');
 Route::get('/test/create', [TestController::class, 'create'])->name('Test.create');
@@ -27,14 +32,7 @@ Route::post('/test', [TestController::class, 'store'])->name('Test.store');
 Route::get('/test/{id}/edit', [TestController::class, 'edit'])->name('Test.edit');
 Route::put('/test/update', [TestController::class, 'update'])->name('Test.update');
 
-// route view for user
-Route::get('/', function () {
-    return view('auth.login');
-});
 
-// Route::get('/', function () {
-//     return view('layouts.app');
-// });
 
 Route::get('/user/add_user', function () {
     return view('users.add_user');
@@ -79,46 +77,31 @@ Route::get('/questions/edit_question', function () {
 Route::get('/questions/show_question', function () {
     return view('questions.show_question');
 });
-// Auth: routes();
-//Route dashboard 1
-Route::get('/dashboard', function () {
-    return view('admin.dashboard');
-})->name('admin.dashboard');
+// // Auth: routes();
+// //Route dashboard 1
+// Route::get('/dashboard', function () {
+//     return view('admin.dashboard');
+// })->name('admin.dashboard');
 
 
-Route::get('/login', function () {
-    return view('auth.login');
-})->name('auth.login');
+// Route::get('/login', function () {
+//     return view('auth.login');
+// })->name('auth.login');
 
-Route::get('/register', function () {
-    return view('auth.register');
-})->name('auth.register');
-
-
-// Password reset link request routes...
-Route::get('password/email', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.email');
-Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
-
-// Password reset routes...
-Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.request');
-Route::post('password/reset/{token}', 'Auth\ResetPasswordController@postReset')->name('password.reset');
-
-Route::get('/dashboard', [UserController::class, 'nombre']);
+// Route::get('/register', function () {
+//     return view('auth.register');
+// })->name('auth.register');
 
 
-//   Auth::routes();
-// //log
- Route::get('/login', [LoginController::class, 'login'])->name('login');
- Route::get('/login', [LoginController::class, 'Authenticate']);
+// // Password reset link request routes...
+// Route::get('password/email', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.email');
+// Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
 
-// Route::get('/home', [HomeController::class, 'adminHome'])->name('Home');
-//register
+// // Password reset routes...
+// Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.request');
+// Route::post('password/reset/{token}', 'Auth\ResetPasswordController@postReset')->name('password.reset');
 
-Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('auth.register');
-Route::post('/register', [RegisterController::class, 'register'])->name('auth.register');
-
- Route::get('/login', [LoginController::class, 'authenticate']);
- Route::post('/login', [LoginController::class, 'login']);
+// Route::get('/dashboard', [UserController::class, 'nombre']);
 
 
 // //admin
@@ -129,12 +112,6 @@ Route::post('/register', [RegisterController::class, 'register'])->name('auth.re
 // Route::middleware(['auth', 'use-role:user'])->group(function () {
 //     Route::get('/user/home', [AdminController::class, 'userHome'])->name('Home.user');
 // });
-
-
-
-
-
-
 
 
 
@@ -153,7 +130,6 @@ Route::group(['prefix' => 'users', 'as' => 'users.'], function () {
     Route::get('/add_user', [UserController::class, 'create'])->name('users.add_user');
     Route::post('/', [UserController::class, 'store'])->name('users.store');
     Route::get('/show_user', [UserController::class, 'show'])->name('users.show_user');
-
 });
 //Route pour les questions
 Route::post('/questions/list_question', [QuestionController::class, 'storeQuestion'])->name('questions.store');
@@ -168,7 +144,6 @@ Route::group(['prefix' => 'questions', 'as' => 'questions.'], function () {
     Route::put('/{question}/edit_question', [QuestionController::class, 'editQuestion'])->name('edit');
 });
 
+Auth::routes();
 
-
-
-// route controller
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

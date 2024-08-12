@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
+use Illuminate\Support\Facades\Auth;
 
 class Authenticate extends Middleware
 {
@@ -19,9 +20,9 @@ class Authenticate extends Middleware
     //     }
     // }
     public function redirectTo($request)
-    {  
-        $request->validate([  
-          
+    {
+        $request->validate([
+
             'email' => 'required|email', 'max:255', 'unique:users',
             'password' => 'required', 'string', 'min:8', 'confirmed',
 
@@ -37,7 +38,7 @@ class Authenticate extends Middleware
                 return redirect()->route('admin.dashboard');
             } elseif ($role == 'Gestionnaire') {
                 return redirect()->route('gestionnaire.dashboard');
-         
+
             } else {
                 // If the user's role is not recognized, log them out and redirect to the login page
                 Auth::logout();

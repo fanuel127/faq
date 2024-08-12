@@ -27,6 +27,11 @@ class AdminController extends Controller
         return view('users.list_user')->with('roles', $roles);
     }
 
+    public function dashboard()
+    {
+        return view('admin.dashboard');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -139,7 +144,7 @@ class AdminController extends Controller
     public function status($id)
     {
        $user = User::find($id);
-    //    $status = optional($i)->status; // Cela retourne null si $objet est null
+        //    $status = optional($i)->status; // Cela retourne null si $objet est null
        $user->status =!$user->status;
       if( $user->save()){
 
