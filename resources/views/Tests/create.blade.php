@@ -35,7 +35,7 @@
 
                 <div class="form-action  bg-info rounded-2 ">
                     <div class="form-control-lg">
-                        <!--name-->
+                        <!--name--> 
                         <div class="mb-3 mt-3 ">
                             <label for="firstName" class="form-label">firstName:</label>
                             <input type="text" name="firstName" class="form-control" id="firstName" placeholder="Enter your firstName">

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     use HasFactory;
+<<<<<<< Updated upstream
     protected $table = "category";
     protected $primarykey = 'id';
     protected $fillable = [
@@ -20,3 +21,14 @@ class Category extends Model
     }
 }
 
+=======
+    protected $table = "Category";
+    protected $primarykey = 'id';
+    protected $fillable = [
+'category'
+    ];
+    public function question(){
+        return $this->hasMany(Question::class);
+    }
+}
+>>>>>>> Stashed changes
