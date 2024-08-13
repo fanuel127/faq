@@ -78,40 +78,17 @@ Route::get('/questions/show_question', function () {
     return view('questions.show_question');
 });
 // // Auth: routes();
-// //Route dashboard 1
-// Route::get('/dashboard', function () {
-//     return view('admin.dashboard');
-// })->name('admin.dashboard');
+Route::get('/dashboard', function () {
+    return view('admin.dashboard');
+})->middleware('auth')->name('admin.dashboard');
 
 
-// Route::get('/login', function () {
-//     return view('auth.login');
-// })->name('auth.login');
-
-// Route::get('/register', function () {
-//     return view('auth.register');
-// })->name('auth.register');
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('showlogin');
+Route::post('/login', [LoginController::class, 'login'])->name('login');
+// Route::post('/login', 'Auth\LoginController@login')->name('login');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
-// // Password reset link request routes...
-// Route::get('password/email', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.email');
-// Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
-
-// // Password reset routes...
-// Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.request');
-// Route::post('password/reset/{token}', 'Auth\ResetPasswordController@postReset')->name('password.reset');
-
-// Route::get('/dashboard', [UserController::class, 'nombre']);
-
-
-// //admin
-// Route::middleware(['auth', 'use-role:admin'])->group(function () {
-//     Route::get('/home', [AdminController::class, 'adminHome'])->name('Home');
-// });
-// //user
-// Route::middleware(['auth', 'use-role:user'])->group(function () {
-//     Route::get('/user/home', [AdminController::class, 'userHome'])->name('Home.user');
-// });
 
 
 

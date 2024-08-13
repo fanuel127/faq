@@ -19,6 +19,17 @@ class AdminController extends Controller
         return view('admin.index')->with('users', $users);
     }
 
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('guest')->except('logout');
+        $this->middleware('auth')->only('logout');
+    }
+
     //user
 
     public function listRole()
@@ -69,7 +80,6 @@ class AdminController extends Controller
             'role_id' =>  $request['role_id'],
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
-            'password' => $request['password'],
         ]);
 
         return redirect(route('users.list_user'))->with('success', 'Utilisateur Ajouter!');

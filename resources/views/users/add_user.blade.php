@@ -73,7 +73,7 @@
                         <label for="myinput" class="form-label">
                             <h5>Téléphone<span class="text-danger">*</span></h5>
                         </label>
-                        <input type="text" name="phoneNumber" class="form-control" id="myinput" style="width: 850px;">
+                        <input type="number" name="phoneNumber" class="form-control" id="myinput" style="width: 850px;">
                     </div>
                 </div>
 

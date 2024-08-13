@@ -27,7 +27,9 @@
             font-weight: bold;
         }
 
-        #filter-bar , #span {
+        #filter-bar,
+        .modal,
+        #span {
             border-radius: 0;
         }
 
@@ -53,9 +55,17 @@
 
         .vertical-line {
             border-left: 8px solid orange;
-            height: 80%;
+            height: 81%;
             position: absolute;
-            left: 10%;
+            /* left: 10%; */
+            transform: translateX(-50%);
+        }
+
+        .verticaline {
+            border-left: 12px solid orange;
+            height: 95%;
+            position: absolute;
+            /* left: 10%; */
             transform: translateX(-50%);
         }
 
@@ -89,6 +99,7 @@
             text-decoration: 0;
             color: black;
         }
+
         #liens {
             text-decoration: 0;
             color: whitesmoke;
@@ -153,6 +164,7 @@
             height: 100%;
             overflow: auto;
             background-color: rgba(0, 0, 0, 0.4);
+            border-radius: 0;
         }
 
         .modal-content {
@@ -161,6 +173,7 @@
             padding: 20px;
             border: 1px solid #888;
             width: 30%;
+            border-radius: 0;
         }
 
         /* Sidebar styles */
@@ -220,6 +233,44 @@
 
             <div class="container-fluid px-4">
                 @yield('content')
+
+                <!-- Modal -->
+                <div class="modal fade modal-lg " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content rounded-0">
+                            <div class="modal-header rounded-0 bg-secondary">
+                                <h1 class="modal-title fs-5 text-light" id="staticBackdropLabel">Utilisateur Connecter
+                                </h1>
+                                <button type="button" class="btn-close bg-warning" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body d-flex justify-content-around">
+                                <img src="{{ Auth::user()->image }}">
+                                <div class="verticaline"></div>
+                                <div>
+                                    <h3 id="showdeplace"> Id : <b> {{ Auth::user()->id }}</b> </h3>
+                                    <br>
+                                    <h3 id="showdeplace"> <b> {{ Auth::user()->firstName }}</b> <b>
+                                            {{ Auth::user()->lastName }}</b>
+                                    </h3>
+                                    <br>
+                                    <h3 id="showdeplace"> Genre : <b> {{ Auth::user()->gender }}</b> </h3>
+                                    <br>
+                                    <h3 id="showdeplace"> <i class="bi bi-envelope-fill"></i> : <b>
+                                            {{ Auth::user()->email }}</b>
+                                    </h3>
+                                    <br>
+                                    <h3 id="showdeplace"> <i class="bi bi-telephone-fill"></i> : <b>
+                                            {{ Auth::user()->phoneNumber }}</b> </h3>
+                                    <br>
+                                    <h3 id="showdeplace"> Role : <b>
+                                            {{ Auth::user()->role_id === 1 ? 'Admin' : 'Gestionnaire' }}</b> </h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
         </div>

@@ -57,9 +57,11 @@
                     <i class="bi bi-arrow-return-left me-2"></i>Retour
                 </a>
             </div>
-            <div class="card-body">
+            <div class="card-body d-flex justify-content-evenly">
                 <div class="vertical-line"></div>
-                <h3 id="showdeplace"> Id : <b> {{ $users->id }}</b> </h3>
+                <img src="{{ asset('image/' .$image) }}">
+                <div>
+                    <h3 id="showdeplace"> Id : <b> {{ $users->id }}</b> </h3>
                 <br>
                 <h3 id="showdeplace"> <b> {{ $users->firstName }}</b> <b> {{ $users->lastName }}</b> </h3>
                 <br>
@@ -70,6 +72,7 @@
                 <h3 id="showdeplace"> <i class="bi bi-telephone-fill"></i> : <b> {{ $users->phoneNumber }}</b> </h3>
                 <br>
                 <h3 id="showdeplace"> Role : <b> {{ $users->role_id === 1 ? 'Admin' : 'Gestionnaire' }}</b> </h3>
+                </div>
             </div>
         </div>
     </section>

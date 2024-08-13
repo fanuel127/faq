@@ -126,12 +126,8 @@
                                                 {{ $user->status ? 'Desactive' : 'Active' }}
                                             </a>
                                         </td> --}}
-                                        <td>
-                                            @if ($user->status == 1)
-                                                <span class="btn btn-success" id="span">Activé</span>
-                                            @else
-                                                <span class="btn btn-danger" id="span">Désactivé</span>
-                                            @endif
+                                        <td class={{ $user->status == 0 ? 'badge badge-danger' : 'badge badge-success' }}>
+                                            {{ $user->status == 0 ? 'Désactivé' : 'Activé' }}
                                         </td>
                                         <td>{{ $user->role_id === 1 ? 'Admin' : 'Gestionnaire' }}</td>
                                         <td class="d-flex ">
@@ -157,7 +153,6 @@
                                             @else
                                                 <a href="{{ route('status', $user->id) }}" class="btn btn-success"
                                                     id="span">Activé</a>
-
                                             @endif
                                         </td>
                                     </tr>

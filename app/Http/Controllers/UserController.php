@@ -175,7 +175,6 @@ class UserController extends  Controller
             'role_id' =>  $request['role_id'],
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
-            'password' => $request['password'],
         ]);
 
         return redirect(url('users/list_user'))->with('success', 'Utilisateur Ajouter!');
@@ -187,11 +186,26 @@ class UserController extends  Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    // public function show($id)
+    // {
+    //     $users = User::find($id);
+    //     return view('users.show_user')->with('users', $users);
+    // }
+
     public function show($id)
-    {
-        $users = User::find($id);
-        return view('users.show_user')->with('users', $users);
+{
+    $users = User::findOrFail($id);
+
+    // Détermine l'image à afficher en fonction du genre
+    if ($users->gender == 'masculin') {
+        $image = 'homme.png';
+    } else {
+        $image = 'fille.png';
     }
+
+    return view('users.show_user', compact('users','image'));
+}
+
     //  public function show(User $users)
     //  {
 
@@ -206,7 +220,7 @@ class UserController extends  Controller
             'lastName' => 'required',
             'gender' => 'required|in:masculin,feminin',
             'phoneNumber' => 'required',
-            'role_id' => 'required|exists:role,id',
+            'role_id' => 'required|exists:role_name,id',
 
 
         ]);
