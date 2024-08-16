@@ -13,7 +13,7 @@
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item dropdown">
                 @guest
-                    @if (Route::has('login'))
+                    {{-- @if (Route::has('login'))
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                 </li>
@@ -23,7 +23,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                     </li>
-                @endif
+                @endif --}}
             @else
                 {{-- <li><a href="#" class="dropdown-item">Profile</a></li> --}}
                 <li class="nav-item dropdown">
@@ -39,7 +39,7 @@
                             {{ __('Logout') }}
                         </a>
 
-                        <a href="#" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Profile</a>
+                        <a href="{{ url('/users/profile_user') }}" class="dropdown-item">Profile</a>
 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                             @csrf

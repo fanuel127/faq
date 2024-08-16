@@ -16,7 +16,7 @@
         <div class="col-md-3" id="mybutton">
             <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
                 <div>
-                    <h3 class="fs-2"></h3>
+                    <h3 class="fs-2">{{ $totalAllUsers }}</h3>
                     <p class="fs-5">totale des utilisateurs</p>
                 </div>
                 <i class="fas fa-gift fs-1 primary-text border rounded-full secondary-bg p-3"></i>
@@ -25,7 +25,7 @@
         <div class="col-md-3" id="mybutton">
             <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
                 <div>
-                    <h3 class="fs-2"></h3>
+                    <h3 class="fs-2">{{ $totalAdmin }}</h3>
                     <p class="fs-5">Administrateur</p>
                 </div>
                 <i class="fas fa-hand-holding fs-1 primary-text border rounded-full secondary-bg p-3"></i>
@@ -34,7 +34,7 @@
         <div class="col-md-3" id="mybutton">
             <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
                 <div>
-                    <h3 class="fs-2"></h3>
+                    <h3 class="fs-2">{{ $totalUser }}</h3>
                     <p class="fs-5">Gestionnaire</p>
                 </div>
                 <i class="fas fa-truck fs-1 primary-text border rounded-full secondary-bg p-3"></i>
@@ -43,7 +43,7 @@
         <div class="col-md-3" id="mybutton">
             <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
                 <div>
-                    <h3 class="fs-2"></h3>
+                    <h3 class="fs-2">{{ $totalQuestion }}</h3>
                     <p class="fs-5">totale questions</p>
                 </div>
                 <i class="fas fa-chart-line fs-1 primary-text border rounded-full secondary-bg p-3"></i>
@@ -84,5 +84,4 @@
             </div>
         </div> --}}
     </div>
-
 @endsection

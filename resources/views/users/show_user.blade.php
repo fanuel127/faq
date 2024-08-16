@@ -52,26 +52,37 @@
         </div>
         <div class="card bg-light" id="mybutton">
             <div class="card-header bg-secondary d-flex justify-content-between">
-                <h2 style="color: whitesmoke;">Informations de l'utilisateur : {{ $users->firstName }} </h2>
+                <h2 style="color: whitesmoke;">Informations de l'utilisateur : {{ $users->lastName }} </h2>
                 <a class="btn btn-warning" id="mybutton" href="{{ url('/users/list_user') }}">
                     <i class="bi bi-arrow-return-left me-2"></i>Retour
                 </a>
             </div>
-            <div class="card-body d-flex justify-content-evenly">
-                <div class="vertical-line"></div>
-                <img src="{{ asset('image/' .$image) }}">
-                <div>
-                    <h3 id="showdeplace"> Id : <b> {{ $users->id }}</b> </h3>
-                <br>
-                <h3 id="showdeplace"> <b> {{ $users->firstName }}</b> <b> {{ $users->lastName }}</b> </h3>
-                <br>
-                <h3 id="showdeplace"> Genre : <b> {{ $users->gender }}</b> </h3>
-                <br>
-                <h3 id="showdeplace"> <i class="bi bi-envelope-fill"></i> : <b> {{ $users->email }}</b> </h3>
-                <br>
-                <h3 id="showdeplace"> <i class="bi bi-telephone-fill"></i> : <b> {{ $users->phoneNumber }}</b> </h3>
-                <br>
-                <h3 id="showdeplace"> Role : <b> {{ $users->role_id === 1 ? 'Admin' : 'Gestionnaire' }}</b> </h3>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-3" style="width: 300px;">
+                        <img src="{{ asset('image/' . $image) }}">
+                    </div>
+                    <div class="col-3">
+                        <div class="vertical-line" style="margin-left: 400px;"></div>
+                    </div>
+                    <div class="col-6">
+                        <h3> Id : <b> {{ $users->id }}</b> </h3>
+                        <br>
+                        <hr>
+                        <h3> <b> {{ $users->firstName }}</b> <b> {{ $users->lastName }}</b> </h3>
+                        <br>
+                        <hr>
+                        <h3> Genre : <b> {{ $users->gender }}</b> </h3>
+                        <br>
+                        <hr>
+                        <h3> <i class="bi bi-envelope-fill"></i> : <b> {{ $users->email }}</b> </h3>
+                        <br>
+                        <hr>
+                        <h3> <i class="bi bi-telephone-fill"></i> : <b> {{ $users->phoneNumber }}</b> </h3>
+                        <br>
+                        <hr>
+                        <h3> Role : <b> {{ $users->role_id === 1 ? 'Admin' : 'Gestionnaire' }}</b> </h3>
+                    </div>
                 </div>
             </div>
         </div>

@@ -59,7 +59,7 @@ class LoginController extends Controller
 
         if (Auth::attempt(['email' => $email, 'password' => $password])) {
             // Authentification réussie
-            return redirect()->route('admin.dashboard');
+            return redirect()->intended('/dashboard');
         } else {
             // Authentification échouée
             return back()->withErrors(['email' => 'Les informations d\'identification ne correspondent pas.']);

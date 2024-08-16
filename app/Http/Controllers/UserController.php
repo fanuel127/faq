@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\Question;
 use Illuminate\Pagination\Paginator;
@@ -26,6 +27,29 @@ class UserController extends  Controller
 
 
     }
+
+    //modifier le mot de passe de l'utilisateur connecter dans la page profile_user
+    public function updatePassword(Request $request)
+    {
+        $user = Auth::user();
+        $old_password = $request->input('old_password');
+        $new_password = $request->input('new_password');
+        $confirm_new_password = $request->input('confirm_new_password');
+
+        if (!Hash::check($old_password, $user->password)) {
+            return back()->withErrors(['old_password' => 'L\'ancien mot de passe est incorrect.']);
+        }
+
+        if ($new_password !== $confirm_new_password) {
+            return back()->withErrors(['new_password' => 'Les deux nouveaux mots de passe ne correspondent pas.']);
+        }
+
+        $user->password = bcrypt($new_password);
+        $user->save();
+
+        return back()->with('success', 'Le mot de passe a été modifié avec succès.');
+    }
+
 
     public function nombre()
     {
@@ -80,9 +104,9 @@ class UserController extends  Controller
         if ($request->has('search')) {
             $users = $users->filter(function ($user) use ($request) {
                 return stripos($user->firstName, $request->input('search')) !== false
-                || stripos($user->lastName, $request->input('search')) !== false
-                || stripos($user->gender, $request->input('search')) !== false
-                || stripos($user->email, $request->input('search')) !== false;
+                    || stripos($user->lastName, $request->input('search')) !== false
+                    || stripos($user->gender, $request->input('search')) !== false
+                    || stripos($user->email, $request->input('search')) !== false;
             });
         }
 
@@ -193,18 +217,32 @@ class UserController extends  Controller
     // }
 
     public function show($id)
-{
-    $users = User::findOrFail($id);
+    {
+        $users = User::findOrFail($id);
 
-    // Détermine l'image à afficher en fonction du genre
-    if ($users->gender == 'masculin') {
-        $image = 'homme.png';
-    } else {
-        $image = 'fille.png';
+        // Détermine l'image à afficher en fonction du genre
+        if ($users->gender == 'masculin') {
+            $image = 'homme.png';
+        } else {
+            $image = 'fille.png';
+        }
+
+        return view('users.show_user', compact('users', 'image'));
     }
+    
+    public function showp($id)
+    {
+        $users = User::findOrFail($id);
 
-    return view('users.show_user', compact('users','image'));
-}
+        // Détermine l'image à afficher en fonction du genre
+        if ($users->gender == 'masculin') {
+            $image = 'homme.png';
+        } else {
+            $image = 'fille.png';
+        }
+
+        return view('users.show_user', compact('users', 'image'));
+    }
 
     //  public function show(User $users)
     //  {
@@ -265,15 +303,12 @@ class UserController extends  Controller
 
     public function status($id)
     {
-       $user = User::find($id);
-       $user->status =!$user->status;
-      if( $user->save()){
-             return back();
-        }else{
-          return redirect(route('status'));
-
-      };
-
-
+        $user = User::find($id);
+        $user->status = !$user->status;
+        if ($user->save()) {
+            return back();
+        } else {
+            return redirect(route('status'));
+        };
     }
 }

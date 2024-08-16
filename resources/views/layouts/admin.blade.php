@@ -234,43 +234,6 @@
             <div class="container-fluid px-4">
                 @yield('content')
 
-                <!-- Modal -->
-                <div class="modal fade modal-lg " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
-                    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content rounded-0">
-                            <div class="modal-header rounded-0 bg-secondary">
-                                <h1 class="modal-title fs-5 text-light" id="staticBackdropLabel">Utilisateur Connecter
-                                </h1>
-                                <button type="button" class="btn-close bg-warning" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body d-flex justify-content-around">
-                                <img src="{{ Auth::user()->image }}">
-                                <div class="verticaline"></div>
-                                <div>
-                                    <h3 id="showdeplace"> Id : <b> {{ Auth::user()->id }}</b> </h3>
-                                    <br>
-                                    <h3 id="showdeplace"> <b> {{ Auth::user()->firstName }}</b> <b>
-                                            {{ Auth::user()->lastName }}</b>
-                                    </h3>
-                                    <br>
-                                    <h3 id="showdeplace"> Genre : <b> {{ Auth::user()->gender }}</b> </h3>
-                                    <br>
-                                    <h3 id="showdeplace"> <i class="bi bi-envelope-fill"></i> : <b>
-                                            {{ Auth::user()->email }}</b>
-                                    </h3>
-                                    <br>
-                                    <h3 id="showdeplace"> <i class="bi bi-telephone-fill"></i> : <b>
-                                            {{ Auth::user()->phoneNumber }}</b> </h3>
-                                    <br>
-                                    <h3 id="showdeplace"> Role : <b>
-                                            {{ Auth::user()->role_id === 1 ? 'Admin' : 'Gestionnaire' }}</b> </h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
 
         </div>

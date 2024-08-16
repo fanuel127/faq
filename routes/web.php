@@ -38,6 +38,10 @@ Route::get('/user/add_user', function () {
     return view('users.add_user');
 });
 
+Route::get('/users/profile_user', function () {
+    return view('users.profile_user');
+});
+
 Route::resource("/user", UserController::class);
 
 Route::get('/users/edit_user', function () {
@@ -80,13 +84,24 @@ Route::get('/questions/show_question', function () {
 // // Auth: routes();
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
-})->middleware('auth')->name('admin.dashboard');
+})->middleware('auth');
 
+Route::get('/dashboard', function () {
+    return view('admin.dashboard');
+})->name('admin.dashboard');
+
+Route::get('/dashboard', [UserController::class, 'nombre'])->name('users.nombre');
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('showlogin');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 // Route::post('/login', 'Auth\LoginController@login')->name('login');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+
+//profile
+// Route::post('/update/password', 'UserController@updatePassword')->name('update.password');
+Route::post('/update/password', [UserController::class, 'updatePassword'])->name('update.password');
+
 
 
 
@@ -100,6 +115,7 @@ Route::get('/list_user', [UserController::class, 'total'])->name('users.total');
 Route::put('/users/edit_user/{id}', [UserController::class, 'update'])->name('users.update');
 Route::get('/users/update/{id}', [UserController::class, 'edit'])->name('users.edit_user');
 Route::get('/users/show_user/{id}', [UserController::class, 'show'])->name('users.show_user');
+Route::get('/users/profile_user/{id}', [UserController::class, 'showp'])->name('users.profile_user');
 
 // Routes for Users
 Route::group(['prefix' => 'users', 'as' => 'users.'], function () {

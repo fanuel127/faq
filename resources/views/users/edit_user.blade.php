@@ -41,9 +41,9 @@
         @endif
     </div>
     <section class="gradient-custom">
-        <form action="{{ route('users.store') }}" method="post">
+        <form action="{{ url('/users/edit_user/{id}') }}" method="put">
             {!! csrf_field() !!}
-            @method('post')
+            @method('put')
             <div style="display:flex; justify-content:space-between;margin: 30px;">
                 <h4>Modifier un utilisateur</h4>
                 <nav aria-label="breadcrumb">
