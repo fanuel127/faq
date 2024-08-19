@@ -1,9 +1,9 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="row g-3 my-2">
+    <div class="row g-3 my-2" id="mybutton">
         <div className="container-fluid">
-            <div style="display:flex; justify-content:space-between;margin: 30px;">
+            <div class="d-flex justify-content-between">
                 <h1>Tableau de bord</h1>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
@@ -13,7 +13,7 @@
                 </nav>
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-3" id="mybutton">
             <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
                 <div>
                     <h3 class="fs-2">{{ $totalAllUsers }}</h3>
@@ -22,7 +22,7 @@
                 <i class="fas fa-gift fs-1 primary-text border rounded-full secondary-bg p-3"></i>
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-3" id="mybutton">
             <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
                 <div>
                     <h3 class="fs-2">{{ $totalAdmin }}</h3>
@@ -31,7 +31,7 @@
                 <i class="fas fa-hand-holding fs-1 primary-text border rounded-full secondary-bg p-3"></i>
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-3" id="mybutton">
             <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
                 <div>
                     <h3 class="fs-2">{{ $totalUser }}</h3>
@@ -40,7 +40,7 @@
                 <i class="fas fa-truck fs-1 primary-text border rounded-full secondary-bg p-3"></i>
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-3" id="mybutton">
             <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
                 <div>
                     <h3 class="fs-2">{{ $totalQuestion }}</h3>

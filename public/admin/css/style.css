@@ -27,6 +27,7 @@
 
 #wrapper {
     overflow: hidden;
+    background-color: rgba(29, 27, 27, 0.131);
     /* background-image: linear-gradient(
         to right,
         /* #c2f5de,
@@ -43,20 +44,23 @@
 }
 
 #sidebar-wrapper {
-    min-height: 100vh;
+    min-height: 110vh;
     width: 30vh;
     margin-left: -15rem;
     transition: margin 0.25s ease-out;
+    border: none;
 }
 
 #sidebar-wrapper .sidebar-heading {
     padding: 0.875rem 1.25rem;
     font-size: 1.2rem;
     color: var(--main-text-color);
+    border: none;
 }
 
 #sidebar-wrapper .list-group {
     width: 30rem;
+    border: none;
 }
 
 #page-content-wrapper {
@@ -106,7 +110,7 @@
 }
 
 a {
-    text-decoration: none;
+    text-decoration: 0;
 }
 
 li {

@@ -48,41 +48,52 @@
                 <h4>Modifier un utilisateur</h4>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}" style="color: black;">Accueil</a></li>
-                        <li class="breadcrumb-item"><a href="{{ url('/users/update') }}" style="color: black;">Utilisateur</a></li>
-                        <li class="breadcrumb-item"><a href="{{ url('/users/list_user') }}" style="color: black;">Liste des utilisateurs</a></li>
+                        <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}" id="lien">Accueil</a></li>
+                        <li class="breadcrumb-item"><a href="{{ url('/users/update') }}"
+                            id="lien">Utilisateur</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Modifier un utilisateur</li>
                     </ol>
                 </nav>
 
             </div>
-            <div class="card bg-light">
+            <div class="card bg-light" id="mybutton">
                 <div class="card-header bg-secondary">
-                    <h2 style="color: whitesmoke;"><i class="bi bi-pen-fill me-2"></i>Modifier l'utilisateur : {{ $users->firstName }}</h2>
+
+                    <div class="card-title">
+                        <div class="d-flex justify-content-between ">
+                            <h4 class="text-center text-light pt-3"><i class="bi bi-pen-fill text-warning me-2"></i>Modifier
+                                l'utilisateur : {{ $users->firstName }} </h4>
+                            <a href="{{ url('/users/list_user') }}" id="mybutton" class="btn btn-primary mt-2">
+                                <i class="bi bi-arrow-return-left me-2"></i>
+                                Retour
+                            </a>
+                        </div>
+
+                    </div>
                 </div>
-                <div class="card-body" style="display: flex; justify-content:space-around; margin-top:3%;">
+                <div class="d-flex justify-content-around mt-4">
                     <div>
-                        <label for="exampleFormControlInput1" class="form-label">
+                        <label for="myinput" class="form-label">
                             <h4>Nom</h4>
                         </label>
-                        <input type="text" name="firstName" class="form-control" id="exampleFormControlInput1"
+                        <input type="text" name="firstName" class="form-control" id="myinput"
                             value="{{ $users->firstName }}" style="width: 850px;">
                     </div>
                     <div>
-                        <label for="exampleFormControlInput1" class="form-label">
+                        <label for="myinput" class="form-label">
                             <h4>Prenom</h4>
                         </label>
-                        <input type="text" name="lastName" class="form-control" id="exampleFormControlInput1"
+                        <input type="text" name="lastName" class="form-control" id="myinput"
                             value="{{ $users->lastName }}" style="width: 850px;">
                     </div>
                 </div>
 
-                <div style="display: flex; justify-content:space-around; margin-top:2%; margin-bottom:25px">
+                <div class="d-flex justify-content-around mt-4">
                     <div>
-                        <label for="floatingSelect">
+                        <label for="myinput">
                             <h4>Genre</h4>
                         </label>
-                        <select class="form-select" name="gender" id="floatingSelect" value="{{ $users->gender }}"
+                        <select class="form-select" name="gender" id="myinput" value="{{ $users->gender }}"
                             style="width: 850px;">
                             <option selected disabled>selectionner votre genre</option>
                             <option value="masculin">Masculin</option>
@@ -90,10 +101,10 @@
                         </select>
                     </div>
                     <div>
-                        <label for="floatingSelect">
+                        <label for="myinput">
                             <h4>Role</h4>
                         </label>
-                        <select class="form-select" name="role_id" id="floatingSelect" value="{{ $users->role_id }}"
+                        <select class="form-select" name="role_id" id="myinput" value="{{ $users->role_id }}"
                             style="width: 850px;">
                             {{-- @foreach ($roles as $role)
                             <option value="{{ $role->value }}" class="form-control">{{ $role->role_name }}</option>
@@ -104,25 +115,22 @@
                         </select>
                     </div>
                 </div>
-                <div style="margin-left: 35px;">
-                    <label for="exampleFormControlInput4" class="form-label">
-                        <h4>Téléphone</h4>
+                <div class="mt-4">
+                    <label for="myinput" class="form-label">
+                        <h4 class="ms-3">Téléphone</h4>
                     </label>
-                    <input type="number" name="phoneNumber" class="form-control" id="exampleFormControlInput4"
-                        value="{{ $users->phoneNumber }}" style="width: 1700px;">
+                    <input type="number" name="phoneNumber" class="form-control" id="myinput"
+                        value="{{ $users->phoneNumber }}" style="width: 1722px; margin-left:13px;">
                 </div>
 
-                <div style="display: flex; justify-content:space-around; margin-top:2%; margin-bottom:80px;">
-                    <div>
-                        <button type="button" class="btn btn-danger" style="width: 200px;margin-top:50px;margin-left:10px;"><a href="{{ url('/users/list_user') }}"
-                                style="color: black;"><i class="bi bi-backspace-fill me-2"></i>Annuler</a></button>
-                    </div>
-                    <div>
-                        <button type="submit" value="modifier" class="btn"
-                            style="width: 200px;margin-top:50px;color: black;background-color:orange;margin-left:1300px;">
-                            <i class="bi bi-pencil-fill me-2"></i>modifier
-                        </button>
-                    </div>
+                <div class="mt-4 justify-content-between d-flex mb-4">
+                    <button type="reset" id="mybutton" class="btn btn-danger button ms-3">
+                        <i class="bi bi-backspace-fill me-2"></i>Annuler
+                    </button>
+
+                    <button type="submit" id="mybutton" class="btn btn-warning button me-3">
+                        <i class="bi bi-pencil-fill me-2 button "></i>modifier
+                    </button>
                 </div>
             </div>
         </form>
