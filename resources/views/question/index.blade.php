@@ -1,44 +1,3 @@
-{{-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-<h1>Users Lists</h1>
-<div>
-    <table>
-        <tr>
-            <th>id</th>
-            <th>FirstName</th>
-            <th>LastName</th>
-            <th>Genre</th>
-            <th>Email</th>
-            <th>Phone Number</th>
-            <th>Statut</th>
-            <th>Actions</th>
-        </tr>
-        @foreach ($Test as $test)
-<tr>
-    <td>{{ $test->id }}</td>
-    <td>{{ $test->firstName }}</td>
-    <td>{{ $test->lastName }}</td>
-    <td>{{ $test->gender }}</td>
-    <td>{{ $test->email }}</td>
-    <td>{{ $test->phoneNumber }}</td>
-    <td>
-
-
-
-    <td><a href="{{ route('/Test.edit/'.$test->id) }}">Edit</a></td>
-</tr>
-        @endforeach
-    </table>
-</div>
-</body>
-</html> --}}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -60,7 +19,7 @@
     <title>Document</title>
 </head>
 <style>
-       body {
+    body {
         font-size: 20px;
         background-color: rgba(248, 237, 237, 0.648);
 
@@ -78,12 +37,10 @@
         color: white;
 
     }
+
     /* .card{
         margin-left: 400px;
     } */
-
-
-
 </style>
 
 <body>
@@ -95,8 +52,8 @@
                 <div class="card mt-4 text-center">
                     <div class="card-header ">
                         <div class="card-title d-flex justify-content-between">
-                            <h4><i class="bi bi-list-ul me-2"></i>Users Lists</h4>
-                            <a href="{{ url('/test/create') }}" class="btn btn-warning" title="add a user">
+                            <h4><i class="bi bi-list-ul me-2"></i> Lists Questions</h4>
+                            <a href="{{ url('/question/create') }}" class="btn btn-warning" title="add a question">
                                 <i class="bi bi-plus"></i>
                                 Add
                             </a>
@@ -107,12 +64,12 @@
                             <thead class="table-danger">
                                 <tr>
                                     <th>#</th>
-                                    <th>LastName</th>
-                                    <th>FirstName</th>
-                                    <th>Gender</th>
-                                    <th>Email</th>
-                                    <th>Phone Number</th>
-                                    <th>Statut</th>
+                                    <th>QuestionName</th>
+                                    <th>Description</th>
+                                    <th>Category</th>
+                                    <th>Answer</th>
+                                    <th>Photo</th>
+                                    <th>Video</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -126,32 +83,30 @@
                             <tbody>
                                 <tr>
                                     <td>{{ $i }}</td>
-                                    <td>samira </td>
-                                    <td> kamsou </td>
-                                    <td> female </td>
-                                    <td> samira@gmail.com </td>
-                                    <td> 67898565 </td>
-                                    <td> enable </td>
-                                    <td>  <a href="" title="Modify"
-                                        class="btn btn-warning btn-sm ">
-                                        <i class="fas fa-edit "></i>
-                                    </a> </td>
+                                    <td> </td>
+                                    <td> </td>
+                                    <td> </td>
+                                    <td> </td>
+                                    <td> </td>
+                                    <td> </td>
+                                    <td> </td>
+
 
                                 </tr>
                                 <tr>
                                     <td>2</td>
-                                    <td>samira </td>
-                                    <td> kamsou </td>
-                                    <td> female </td>
-                                    <td> samira@gmail.com </td>
-                                    <td> 67898565 </td>
-                                    <td> enable </td>
-                                    <td> edit </td>
+                                    <td> </td>
+                                    <td> </td>
+                                    <td> </td>
+                                    <td> </td>
+                                    <td> </td>
+                                    <td> </td>
+                                    <td> </td>
                                 </tr>
 
                             </tbody>
 
-                            {{-- {{ url('/test/edit/' . $test->id) }} --}}
+
                         </table>
                     </div>
                 </div>

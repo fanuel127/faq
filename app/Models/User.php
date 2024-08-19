@@ -25,7 +25,6 @@ class User extends Model
         'firstName',
         'lastName',
         'gender',
-        'email',
         'status',
         'password',
         'phoneNumber',
@@ -48,7 +47,6 @@ class User extends Model
      *
      * @var array<string, string>
      */
-<<<<<<< Updated upstream
 
 
     public function Role()
@@ -61,13 +59,5 @@ class User extends Model
 
         return $this->hasMany(Question::class);
     }
-=======
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
 
-    public function Role(){
-        return $this->belongsTo(Role::class);
-    }
->>>>>>> Stashed changes
 }

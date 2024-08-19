@@ -53,7 +53,7 @@
                             placeholder="name@example.com" style="width: 850px;">
                     </div>
                 </div>
-
+ v
                 <div style="display: flex; justify-content:space-around; margin-bottom:25px">
                     <div>
                         <label for="exampleFormControlInput1" class="form-label">

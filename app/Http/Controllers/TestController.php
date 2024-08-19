@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\test;
+use Illuminate\Support\Facades\Hash;
+
 //use Laravel\Ui\Presets\React;
 
 class TestController extends Controller
@@ -11,7 +13,7 @@ class TestController extends Controller
     public function index()
     {
         $test = test::all();
-        return view('Tests.index', ['Tests' => $test]);
+        return view('Tests.index', ['Test' => $test]);
     }
     public function create()
     {
@@ -20,7 +22,7 @@ class TestController extends Controller
     }
     public function store(Request $request)
     {
-       
+
         $request->validate([
             'firstName' => 'required|string',
             'lastName',
@@ -42,7 +44,7 @@ class TestController extends Controller
             'password' => Hash::make($request['password']),
             'password' => $request['password'],
         ]);
-        return redirect(route('Test.index'));
+        return redirect(route('Tests.index'));
     }
 
 public function edit(Test $test)
@@ -52,8 +54,8 @@ public function edit(Test $test)
 }
 public function update(Test $test, Request $request)
 {
-   
-    $test = Test::find($id);
+
+    $test = Test::find($test);
     $data = $request->validate([
         'firstName' => 'required|string',
         'lastName' => 'required',
@@ -69,5 +71,16 @@ public function update(Test $test, Request $request)
     return redirect(route('Test.index'))->with('success','test update sucessfully');
 
 
+}
+public function show($id)
+{
+    $test = Test::find($id);
+    if ($test->gender =='male'){
+        $image ='male.png';
+    }else{
+        $image = 'female.png';
+    }
+
+    return view('Tests.show' ,compact('test', 'image'));
 }
 }

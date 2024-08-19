@@ -4,8 +4,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Question\QuestionController;
-use App\Models\Role;
-use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,11 +16,33 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 |
 */
 //test
-Route::get('/test', [TestController::class, 'index'])->name('Test.index');
-Route::get('/test/create', [TestController::class, 'create'])->name('Test.create');
-Route::post('/test', [TestController::class, 'store'])->name('Test.store');
-Route::get('/test/{id}/edit', [TestController::class, 'edit'])->name('Test.edit');
-Route::put('/test/update', [TestController::class, 'update'])->name('Test.update');
+Route::get('/test', [TestController::class, 'index'])->name('Tests.index');
+Route::get('/test/create', [TestController::class, 'create'])->name('Tests.create');
+Route::post('/test', [TestController::class, 'store'])->name('Tests.store');
+Route::get('/test/show/{id}', [TestController::class, 'show'])->name('Tests.show');
+
+Route::get('/question', [QuestionController::class, 'indexQuestion'])->name('question.index');
+
+// Route::put('/test/{id}/edit', [TestController::class, 'edit'])->name('Test.edit');
+Route::put('/test/edit', [TestController::class, 'update'])->name('Tests.edit');
+
+//route view test
+
+Route::get('/test/edit', function () {
+    return view('tests.edit');
+});
+Route::get('/test/create', function () {
+    return view('tests.create');
+});
+Route::get('/test/show', function () {
+    return view('tests.show');
+});
+Route::get('/test', function () {
+    return view('tests.index');
+});
+Route::get('/question', function () {
+    return view('question.index');
+});
 
 // route view for user
 Route::get('/', function () {
