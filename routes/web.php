@@ -50,6 +50,9 @@ Route::get('/question/create', function () {
 Route::get('/question/edit', function () {
     return view('question.edit');
 });
+Route::get('/question/show', function () {
+    return view('question.show');
+});
 
 // route view for user
 Route::get('/', function () {

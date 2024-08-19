@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Question;
+
 class QuestionController extends Controller
 {
     /**
@@ -16,13 +17,12 @@ class QuestionController extends Controller
     public function indexQuestion()
     {
         $questions = Question::all();
-        return view ('questions.list_question')->with('questions', $questions);
-
+        return view('questions.list_question')->with('questions', $questions);
     }
     public function listCategoryQuestion()
     {
 
-        $categories=Category::all();
+        $categories = Category::all();
         return view('questions.list_question')->with('categories', $categories);
     }
 
@@ -36,12 +36,12 @@ class QuestionController extends Controller
     public function storeQuestion(Request $request)
     {
         $input = $request->validate([
-            'questionName'=> 'required',
-            'category_id'=>'required|unique|exists:user,id',
-            'description'=> 'required',
+            'questionName' => 'required',
+            'category_id' => 'required|unique|exists:user,id',
+            'description' => 'required',
             'answer' => 'required',
-            'video' => 'required' ,
-            'photo'=>'required|unique',
+            'video' => 'required',
+            'photo' => 'required|unique',
             'user_id' => 'required|exists:user,id',
         ]);
         $input = $request->all();
@@ -62,9 +62,15 @@ class QuestionController extends Controller
      */
     public function showQuestion($id)
     {
-        $question = Question::find($id);
+        // $question = Question::find($id);
+        // Retrieving a question by its ID
+        $question = Question::with('user')->find($id);
         $answers = $question->answers;
-        return view('questions.show_question')->with( $question , $answers);
+        $photo = $question->photo;
+        $video = $question->video;
+        // Accessing the user who created the question
+        $user = $question->user;
+        return view('questions.show_question', compact($question, $answers, $photo, $video, $user));
     }
 
     /**
@@ -78,6 +84,4 @@ class QuestionController extends Controller
         $question = Question::find($id);
         return view('questions.edit_question')->with('questions', $question);
     }
-
-
 }
