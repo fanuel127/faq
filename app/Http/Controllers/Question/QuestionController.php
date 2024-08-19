@@ -37,11 +37,11 @@ class QuestionController extends Controller
     {
         $input = $request->validate([
             'questionName' => 'required',
-            'category_id' => 'required|unique|exists:user,id',
-            'description' => 'required',
-            'answer' => 'required',
-            'video' => 'required',
-            'photo' => 'required|unique',
+            'category_id' => 'required|exists:Category,id',
+            'description' => 'required|string',
+            'answer' => 'required|string',
+            'video' => 'required|string',
+            'photo' => 'required',
             'user_id' => 'required|exists:user,id',
         ]);
         $input = $request->all();

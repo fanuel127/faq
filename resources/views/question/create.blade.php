@@ -47,6 +47,12 @@
     span {
         font-weight: 900;
     }
+    textarea{
+        height: 5vh;
+    }
+    select{
+        height: 5vh;
+    }
 </style>
 
 <body>
@@ -96,9 +102,9 @@
                                                     *
                                                 </span>
                                             </label>
-                                            <textarea type="text" name="firstname" class="form-control form-control-lg" id="firstname">
+                                            <input type="text" name="firstname" class="form-control form-control-lg" id="firstname">
 
-                                            </textarea>
+                                            </input>
                                         </div>
                                         <div class="form-group">
 
@@ -127,8 +133,11 @@
                                                     *
                                                 </span>
                                             </label>
-                                            <textarea type="text" name="category" class="form-control form-control-lg " id="category">
-                                                    </textarea>
+                                            <select class="form-select" name="category" id="category">
+                                                <option selected disabled>select the Category  </option>
+                                                <option value=""></option>
+                                                <option value=""></option>
+                                            </select>
                                         </div>
 
                                         <div class="form-group">
@@ -139,8 +148,8 @@
                                                     *
                                                 </span>
                                             </label>
-                                            <textarea type="text" name="Answer" class="form-control  form-control-lg" id="Answer">
-                                                    </textarea>
+                                            <input type="text" name="Answer" class="form-control  form-control-lg" id="Answer">
+                                                    </input>
                                         </div>
                                         <div class="form-group">
 
@@ -174,7 +183,7 @@
                 </div>
             </div>
         </div>
-      
+
     </form>
 
 </body>

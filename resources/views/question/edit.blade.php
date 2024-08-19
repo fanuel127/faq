@@ -47,6 +47,12 @@
         span {
             font-weight: 900;
         }
+        textarea{
+        height: 5vh;
+    }
+    select{
+        height: 5vh;
+    }
     </style>
 
     <body>
@@ -55,7 +61,7 @@
             <ul>
                 @foreach ($errors->all() as $error)
                 <li>{{ $error}}</li>
-    
+
                 @endforeach
             </ul>
             @endif
@@ -90,25 +96,25 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-    
+
                                                 <label for="firstname" class="form-label mt-3">
                                                     Question
                                                     <span class="text-danger">
                                                         *
                                                     </span>
                                                 </label>
-                                                <textarea type="text" name="firstname" class="form-control form-control-lg" id="firstname">
-    
-                                                </textarea>
+                                                <input type="text" name="firstname" class="form-control form-control-lg" id="firstname">
+
+                                                </input>
                                             </div>
                                             <div class="form-group">
-    
+
                                                 <label for="Description" class="form-label mt-3">
                                                     Description
-    
+
                                                 </label>
                                                 <textarea type="Description" name="Description" class="form-control form-control-lg" id="Description">
-    
+
                                                     </textarea>
                                                 <div class="form-group">
                                                     <label for="Video" class="form-label mt-3">
@@ -120,7 +126,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-    
+
                                             <div class="form-group">
                                                 <label for="category" class="form-label mt-3">
                                                     Category
@@ -128,12 +134,15 @@
                                                         *
                                                     </span>
                                                 </label>
-                                                <textarea type="text" name="category" class="form-control form-control-lg " id="category">
-                                                        </textarea>
+                                                <select class="form-select" name="category" id="category">
+                                                    <option selected disabled>select the Category  </option>
+                                                    <option value=""></option>
+                                                    <option value=""></option>
+                                                </select>
                                             </div>
-    
+
                                             <div class="form-group">
-    
+
                                                 <label for="text" class="form-label mt-3">
                                                     Answer
                                                     <span class="text-danger">
@@ -144,7 +153,7 @@
                                                         </textarea>
                                             </div>
                                             <div class="form-group">
-    
+
                                                 <label for="Photo" class="form-label mt-3">
                                                     Photo
                                                     <span class="text-danger">
@@ -156,7 +165,7 @@
                                             </div>
                                         </div>
                                         {{-- <div class="form-group">
-    
+
                                         </div> --}}
                                         <div class="btn mt-3 d-flex justify-content-between">
                                             <button type="reset" class="btn btn-danger btn-lg " id="btn">
