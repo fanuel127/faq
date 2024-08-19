@@ -54,16 +54,21 @@
                                     <tr>
                                         <td>{{ $i }}</td>
                                         <td>{{ $question->questionName }}</td>
-                                        <td>{{ $question->category_id }}</td>
+                                        <td>{{ $question->category_id === 1 ? 'Probleme Serveur' : 'Difficulte de lecture' }}</td>
                                         <td>{{ $question->description }}</td>
-                                        <td>{{ $question->photo }}</td>
+                                        <td>
+                                            @if ($question->photo)
+                                                <img src="{{ asset('image/' . $question->photo) }}"
+                                                    alt="{{ $question->questionName }}">
+                                            @endif
+                                        </td>
                                         <td>{{ $question->video }}</td>
                                         <td>{{ $question->answer }}</td>
                                         <td class="d-flex ">
-                                            <a href="#" title="Modifier"
-                                                class="btn btn-warning ">
+                                            <a href="{{ url('/questions/update/' .$question->id) }}" title="Modifier" class="btn btn-warning ">
                                                 <i class="fas fa-edit "></i>
                                             </a>
+                                            
                                             <form method="POST">
                                                 <a class="btn btn-primary mx-3" title="Voir plus"
                                                     href="#"style="text-decoration: 0;color:black;">

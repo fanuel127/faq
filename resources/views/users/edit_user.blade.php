@@ -104,7 +104,7 @@
                         <label for="myinput">
                             <h4>Role</h4>
                         </label>
-                        <select class="form-select" name="role_id" id="myinput" value="{{ $users->role_id }}"
+                        <select class="form-select" name="role_id" id="myinput"
                             style="width: 850px;">
                             {{-- @foreach ($roles as $role)
                             <option value="{{ $role->value }}" class="form-control">{{ $role->role_name }}</option>

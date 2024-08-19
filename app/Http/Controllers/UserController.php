@@ -159,7 +159,7 @@ class UserController extends  Controller
     public function listRole()
     {
         $roles = Role::all();
-        return view('users.list_user')->with('roles', $roles);
+        return view('users.add_user', compact("role"));
     }
 
     /**
@@ -229,7 +229,7 @@ class UserController extends  Controller
 
         return view('users.show_user', compact('users', 'image'));
     }
-    
+
     public function showp($id)
     {
         $users = User::findOrFail($id);

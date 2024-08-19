@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('lastName');
             $table->string('gender');
             $table->string('email');
-            $table->string('password',8);
+            $table->string('password',255);
             $table->integer('phoneNumber');
             $table->boolean('status')->default('1');
             $table->unsignedBigInteger('role_id')->default(1);

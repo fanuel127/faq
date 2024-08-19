@@ -126,8 +126,15 @@
                                                 {{ $user->status ? 'Desactive' : 'Active' }}
                                             </a>
                                         </td> --}}
-                                        <td class={{ $user->status == 0 ? 'badge badge-danger' : 'badge badge-success' }}>
+                                        {{-- <td class={{ $user->status == 0 ? 'badge' : 'badge bg-success' }}>
                                             {{ $user->status == 0 ? 'Désactivé' : 'Activé' }}
+                                        </td> --}}
+                                        <td>
+                                            @if ($user->status == 0)
+                                                <span class="badge bg-danger">Désactivé</span>
+                                            @else
+                                                <span class="badge bg-success">Activé</span>
+                                            @endif
                                         </td>
                                         <td>{{ $user->role_id === 1 ? 'Admin' : 'Gestionnaire' }}</td>
                                         <td class="d-flex ">

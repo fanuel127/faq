@@ -41,11 +41,10 @@
                         <label for="exampleFormControlTextarea1" class="form-label">
                             <h4>Nom de la question<span class="text-danger">*</span></h4>
                         </label>
-                        <textarea class="form-control" name="questionName" id="exampleFormControlTextarea1" rows="3" style="width: 800px;"></textarea>
+                        <input class="form-control" name="questionName" id="exampleFormControlTextarea1">
                     </div>
                     <div>
-                        <label for="exampleFormControlTextarea2 form-group col-md-6 mb-3"
-                            class="form-label">
+                        <label for="exampleFormControlTextarea2 form-group col-md-6 mb-3" class="form-label">
                             <h4>Description de la question<span class="text-danger">*</span></h4>
                         </label>
                         <textarea class="form-control" name="description" id="exampleFormControlTextarea2" rows="3" style="width: 800px;"></textarea>
@@ -63,17 +62,23 @@
                         <label for="formFileMultiple" class="form-label">
                             <h4>Video de la question</h4>
                         </label>
-                        <input class="form-control" name="video" type="file" id="formFileMultiple" style="width: 800px;" multiple>
+                        <input class="form-control" name="video" type="file" id="formFileMultiple"
+                            style="width: 800px;" multiple>
                     </div>
                 </div>
 
                 <div style="display: flex; justify-content:space-around; margin-top:2%; margin-bottom:80px;">
                     <div>
-                        <label for="exampleFormControlTextarea3 form-group col-md-6 mb-3"
-                            class="form-label">
+                        <label for="exampleFormControlTextarea3 form-group col-md-6 mb-3" class="form-label">
                             <h4>Categorie de la question<span class="text-danger">*</span></h4>
                         </label>
-                        <textarea class="form-control" name="category_id" id="exampleFormControlTextarea3" rows="3" style="width: 800px;"></textarea>
+                        <select class="form-select" name="category_id" style="width: 800px;">
+                            {{-- <option selected disabled>selectionner votre genre</option> --}}
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->value }}</option>
+                            @endforeach
+
+                        </select>
                     </div>
                     <div>
                         <label for="exampleFormControlTextarea1" class="form-label">
@@ -86,7 +91,8 @@
                 <div style="display: flex; justify-content:space-around; margin-top:25px; margin-bottom:80px;">
                     <div>
                         <button type="button" class="btn btn-lg btn-primary"style="width: 800px ;margin-left:25px;">
-                            <a href="{{ url('/questions/list_question') }}" style="color: black;"><i class="bi bi-backspace-fill me-2"></i>Annuler</a>
+                            <a href="{{ url('/questions/list_question') }}" style="color: black;"><i
+                                    class="bi bi-backspace-fill me-2"></i>Annuler</a>
                         </button>
                     </div>
                     <div>
@@ -103,4 +109,3 @@
 {{-- </body>
 
 </html> --}}
-

@@ -27,6 +27,10 @@
             font-weight: bold;
         }
 
+        #largequestion {
+            height: 5vh;
+        }
+
         #filter-bar,
         .modal,
         #span {

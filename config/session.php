@@ -4,6 +4,12 @@ use Illuminate\Support\Str;
 
 return [
 
+
+    'remember_me' =>
+    [
+        'expire' => 43200, // durée en minutes, ici 30 jours
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Default Session Driver
@@ -128,7 +134,7 @@ return [
 
     'cookie' => env(
         'SESSION_COOKIE',
-        Str::slug(env('APP_NAME', 'laravel'), '_').'_session'
+        Str::slug(env('APP_NAME', 'laravel'), '_') . '_session'
     ),
 
     /*
