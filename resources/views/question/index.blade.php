@@ -16,7 +16,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-    <title>Document</title>
+    <title>list</title>
 </head>
 <style>
     body {
@@ -44,8 +44,6 @@
 </style>
 
 <body>
-
-
     <div class="container-fluid p-5 ">
         <div class="row">
             <div class="col-md-12">
@@ -64,7 +62,7 @@
                             <thead class="table-danger">
                                 <tr>
                                     <th>#</th>
-                                    <th>QuestionName</th>
+                                    <th>Question</th>
                                     <th>Description</th>
                                     <th>Category</th>
                                     <th>Answer</th>

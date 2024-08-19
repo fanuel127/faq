@@ -12,8 +12,8 @@ class TestController extends Controller
 {
     public function index()
     {
-        $test = test::all();
-        return view('Tests.index', ['Test' => $test]);
+        $tests = test::all();
+        return view('Tests.index', ['Tests' => $tests]);
     }
     public function create()
     {
@@ -47,15 +47,16 @@ class TestController extends Controller
         return redirect(route('Tests.index'));
     }
 
-public function edit(Test $test)
+public function edit( $id)
 {
+    $tests = Test::find($id);
 
-    return view('tests.edit',['Test' => $test]);
+    return view('tests.edit',['Tests' => $tests]);
 }
-public function update(Test $test, Request $request)
+public function update( $id, Request $request)
 {
 
-    $test = Test::find($test);
+    $tests = Test::find($id);
     $data = $request->validate([
         'firstName' => 'required|string',
         'lastName' => 'required',
@@ -66,16 +67,16 @@ public function update(Test $test, Request $request)
 
     ]);
 
-    $test->save();
-    $test->update($data);
-    return redirect(route('Test.index'))->with('success','test update sucessfully');
+    $tests->save();
+    $tests->update($data);
+    return redirect(route('Test.index'))->with('success','User update sucessfully');
 
 
 }
 public function show($id)
 {
-    $test = Test::find($id);
-    if ($test->gender =='male'){
+    $tests = Test::find($id);
+    if ($tests->gender =='male'){
         $image ='male.png';
     }else{
         $image = 'female.png';

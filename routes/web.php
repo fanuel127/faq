@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Question\QuestionController;
 
 /*
@@ -16,7 +15,7 @@ use App\Http\Controllers\Question\QuestionController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-//test
+//route controller test
 Route::get('/test', [TestController::class, 'index'])->name('Tests.index');
 Route::get('/test/create', [TestController::class, 'create'])->name('Tests.create');
 Route::post('/test', [TestController::class, 'store'])->name('Tests.store');
@@ -41,8 +40,15 @@ Route::get('/test/show', function () {
 Route::get('/test', function () {
     return view('tests.index');
 });
+//question
 Route::get('/question', function () {
     return view('question.index');
+});
+Route::get('/question/create', function () {
+    return view('question.create');
+});
+Route::get('/question/edit', function () {
+    return view('question.edit');
 });
 
 // route view for user

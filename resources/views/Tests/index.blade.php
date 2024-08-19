@@ -62,13 +62,14 @@
 <style>
        body {
         font-size: 20px;
-        background-color: rgba(248, 237, 237, 0.648);
+        /* background-color:  rgb(177, 199, 212); */
+         background-color:  white;
 
     }
 
 
     .card-body {
-        background-color: rgb(177, 199, 212);
+        background-color: whitesmoke;
         border: none;
 
     }
@@ -104,7 +105,7 @@
                     </div>
                     <div class="card-body ">
                         <table class="table table-striped">
-                            <thead class="table-danger">
+                            <thead class="table-danger ">
                                 <tr>
                                     <th>#</th>
                                     <th>LastName</th>
@@ -132,10 +133,12 @@
                                     <td> samira@gmail.com </td>
                                     <td> 67898565 </td>
                                     <td> enable </td>
-                                    <td>  <a href="" title="Modify"
+                                    {{-- <td>  <a href="" title="Modify"
                                         class="btn btn-warning btn-sm ">
-                                        <i class="fas fa-edit "></i>
-                                    </a> </td>
+                                        <i class="fas fa-edit "></i>edit
+                                    </a> </td> --}}
+                                    <td>edit </td>
+
 
                                 </tr>
                                 <tr>
