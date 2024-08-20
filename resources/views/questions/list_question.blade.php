@@ -5,7 +5,7 @@
         <h4>Gestions des questions</h4>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}" style="color: black;">Accueil</a></li>
+                <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}" style="color: black;text-decoration:0;">Accueil</a></li>
                 <li class="breadcrumb-item">Questions</li>
                 <li class="breadcrumb-item active" aria-current="page">Liste des questions</li>
             </ol>
@@ -15,13 +15,14 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <div class="card">
-                    <div class="card-header">
+                <div class="card rounded-0">
+                    <div class="card-header bg-secondary">
                         <div class="card-title">
                             <div class="d-flex justify-content-between ">
-                                <h4>Liste des questions</h4>
-                                <a href="{{ url('/questions/add_question') }}" class="btn btn-warning"
-                                    title="Ajouter une nouvelle question">
+                                <h4 class="text-center text-light  pt-3"><i
+                                        class="bi bi-list-ul text-warning me-2"></i>Liste des questions</h4>
+                                <a href="{{ url('/questions/add_question') }}" id="mybutton"
+                                    class="btn btn-warning pt-2 mt-2 text-center rounded-0">
                                     <i class="fas fa-plus"></i>
                                     Ajouter
                                 </a>
@@ -29,8 +30,36 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <div>
-                            <table id="example" class="table" style="width:100%">
+                        <form action="{{ route('questions.total') }}" method="GET">
+                            <div class="filter-bar d-flex justify-content-between bg-light mt-3 mb-4 rounded-0" id="filter-bar"
+                                style="padding-top: 10px; padding-bottom:10px;">
+                                <div class="order mt-3 mb-3">
+                                    <label for="myinputs">Trie par..</label>
+                                    <select class="filtered" name="sort" id="myinputs">
+                                        <option value="" selected desabled>--</option>
+                                        <option value="asc">Ordre croissant</option>
+                                        <option value="desc">Ordre decroissant</option>
+                                    </select>
+                                </div>
+                                <div class="sort mt-3 mb-3">
+                                    <label for="myinputs">De..</label>
+                                    <select class="filtered" name="sort" id="myinputs">
+                                        <option value="" selected desabled>--</option>
+                                        <option value="questionName">Nom</option>
+                                        <option value="description">description</option>
+                                        <option value="name">categorie</option>
+                                    </select>
+                                </div>
+                                <div class="search mt-3 mb-3">
+                                    <form class="search-form d-flex" action="{{ route('questions.total') }}" method="GET">
+                                        <input class=" search-input filtered" type="search" id="myinpu" name="search"
+                                            placeholder="Recherche..." aria-label="Search">
+                                    </form>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="table-responsive">
+                            <table id="example" class="table align-middle" style="width:100%">
                                 <thead class="table-dark">
                                     <tr>
                                         <th>#</th>
@@ -42,6 +71,8 @@
                                         <th>Solution</th>
                                         <th>Actions</th>
                                     </tr>
+                                </thead>
+                                <tbody>
                                     @php
                                         $i = 0;
                                     @endphp
@@ -49,29 +80,26 @@
                                         @php
                                             $i++;
                                         @endphp
-                                </thead>
-                                <tbody>
                                     <tr>
                                         <td>{{ $i }}</td>
                                         <td>{{ $question->questionName }}</td>
-                                        <td>{{ $question->category_id === 1 ? 'Probleme Serveur' : 'Difficulte de lecture' }}</td>
+                                        <td>{{ $question->name}}</td>
                                         <td>{{ $question->description }}</td>
                                         <td>
                                             @if ($question->photo)
-                                                <img src="{{ asset('image/' . $question->photo) }}"
-                                                    alt="{{ $question->questionName }}">
+                                                <img src="{{ asset('image/' . $question->photo) }}">
                                             @endif
                                         </td>
                                         <td>{{ $question->video }}</td>
                                         <td>{{ $question->answer }}</td>
-                                        <td class="d-flex ">
-                                            <a href="{{ url('/questions/update/' .$question->id) }}" title="Modifier" class="btn btn-warning ">
+                                        <td class="d-flex align-middle">
+                                            <a href="{{ url('/questions/update/' .$question->id) }}" title="Modifier" class="btn btn-warning rounded-0 ">
                                                 <i class="fas fa-edit "></i>
                                             </a>
-                                            
+
                                             <form method="POST">
-                                                <a class="btn btn-primary mx-3" title="Voir plus"
-                                                    href="#"style="text-decoration: 0;color:black;">
+                                                <a class="btn btn-primary mx-3 rounded-0" title="Voir plus"
+                                                    href="{{ url('/questions/show_question/' .$question->id) }}"style="text-decoration: 0;color:black;">
                                                     <i class="fas fa-eye"></i>
                                                 </a>
                                             </form>

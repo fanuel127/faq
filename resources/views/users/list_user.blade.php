@@ -16,20 +16,6 @@
         <div class="row">
             <div class="col-12">
 
-                {{-- <form action="{{ route('users.total') }}" method="GET"
-                        style="display:flex; justify-content:space-between;">
-                        <div class="form-group">
-                            <label for="sort">Trier par :</label>
-                            <select name="sort" id="sort" class="form-control" style="width: 180px;">
-                                <option value="">Sélectionner un tri</option>
-                                <option value="asc">Ordre croissant</option>
-                                <option value="desc">Ordre décroissant</option>
-                            </select>
-                        </div>
-                        <button type="submit" class="btn btn-primary" style="width: 150px;">Classer</button>
-                    </form> --}}
-
-
                 <div class="card" id="mybutton">
                     <div class="card-header bg-secondary">
                         <div class="card-title">
@@ -82,8 +68,6 @@
                                     </select>
                                 </div>
                                 <div class="search mt-3 mb-3">
-                                    {{-- <input class="form-control search-input filtered" type="search" placeholder="Taper.." aria-label="Search">
-                                <button class="btn btn-outline-success filtered" type="submit">Search</button> --}}
                                     <form class="search-form d-flex" action="{{ route('users.total') }}" method="GET">
                                         <input class=" search-input filtered" type="search" id="myinpu" name="search"
                                             placeholder="Recherche..." aria-label="Search">
@@ -101,10 +85,12 @@
                                         <th>Genre</th>
                                         <th>Email</th>
                                         <th>Telephone</th>
-                                        <th>Statut</th>
                                         <th>Role</th>
+                                        <th>Statut</th>
                                         <th>Actions</th>
                                     </tr>
+                                </thead>
+                                <tbody>
                                     @php
                                         $i = 0;
                                     @endphp
@@ -112,8 +98,6 @@
                                         @php
                                             $i++;
                                         @endphp
-                                </thead>
-                                <tbody>
                                     <tr>
                                         <td>{{ $i }}</td>
                                         <td>{{ $user->firstName }}</td>
@@ -121,23 +105,15 @@
                                         <td>{{ $user->gender }}</td>
                                         <td>{{ $user->email }}</td>
                                         <td>{{ $user->phoneNumber }}</td>
-                                        {{-- <td>
-                                            <a href="{{ $user->i }}" class="btn btn-sm btn-{{ $user->status ? 'danger' : 'success' }}">
-                                                {{ $user->status ? 'Desactive' : 'Active' }}
-                                            </a>
-                                        </td> --}}
-                                        {{-- <td class={{ $user->status == 0 ? 'badge' : 'badge bg-success' }}>
-                                            {{ $user->status == 0 ? 'Désactivé' : 'Activé' }}
-                                        </td> --}}
+                                        <td>{{ $user->role_name }}</td>
                                         <td>
                                             @if ($user->status == 0)
-                                                <span class="badge bg-danger">Désactivé</span>
+                                            <span class="badge bg-danger">Désactivé</span>
                                             @else
-                                                <span class="badge bg-success">Activé</span>
+                                            <span class="badge bg-success">Activé</span>
                                             @endif
                                         </td>
-                                        <td>{{ $user->role_id === 1 ? 'Admin' : 'Gestionnaire' }}</td>
-                                        <td class="d-flex ">
+                                        <td class="d-flex justify-content-center ">
                                             <a href="{{ url('/users/update/' . $user->id) }}" id="mybutton"
                                                 title="Modifier" class="btn btn-warning">
                                                 <i class="fas fa-edit " style="color: whitesmoke;"></i>
@@ -148,11 +124,6 @@
                                                     <i class="fas fa-eye" style="color: whitesmoke;"></i>
                                                 </a>
                                             </form>
-                                            {{-- <div class="form-check form-switch">
-                                                <input class="form-check-input" type="checkbox" role="switch"
-                                                    id="flexSwitchCheckChecked">
-                                            </div> --}}
-
 
                                             @if ($user->status == 1)
                                                 <a href="{{ route('status', $user->id) }}" class="btn btn-danger"
@@ -166,9 +137,9 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                            <div id="pagination">
-                                {{-- {{ $users->links() }} --}}
-                            </div>
+                            {{-- <div id="pagination">
+                                {{ $users->links() }}
+                            </div> --}}
                             {{-- <nav aria-label="Page navigation example">
                                 <ul class="pagination justify-content-end">
                                   <li class="page-item disabled">

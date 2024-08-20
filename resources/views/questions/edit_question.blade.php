@@ -18,9 +18,10 @@
         @endif
     </div>
     <section class="gradient-custom">
-        <form action="{{ url('/questions/edit_question/{id}') }}" method="POST">
-            {!! csrf_field() !!}
-            @method('put')
+        <form action="{{ route('questions.update',$questions->id) }}" method="POST" enctype="multipart/form-data">
+            {{-- {!! csrf_field() !!} --}}
+            @csrf
+            @method('PUT')
             <div style="display:flex; justify-content:space-between;margin: 30px;">
                 <h4>Gestions des questions</h4>
                 <nav aria-label="breadcrumb">
@@ -53,21 +54,15 @@
                                 <input class="form-control rounded-0" id="largequestion" name="questionName"
                                     value="{{ $questions->questionName }}">
                             </div>
-                            <div class="mt-3">
-                                <label for="largequestion" class="form-label">
-                                    <h4>Video de la question</h4>
-                                </label>
-                                <input class="form-control rounded-0" type="file" id="largequestion" name="video"
-                                    value="{{ $questions->video }}" multiple>
-                            </div>
+
                             <div class="mt-3">
                                 <label for="largequestion form-group mb-3" class="form-label">
                                     <h4>Categorie de la question<span class="text-danger">*</span></h4>
                                 </label>
                                 <select class="form-select rounded-0" name="category_id" id="largequestion">
                                     <option selected disabled>selectionner votre genre</option>
-                                    @foreach ($categorie as $category)
-                                        <option value="{{ $category->id }}">{{ $category->value }}</option>
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -79,13 +74,7 @@
                                 </label>
                                 <textarea class="form-control rounded-0" id="largequestion" name="description">{{ $questions->description }}</textarea>
                             </div>
-                            <div class="mt-3">
-                                <label for="largequestion" class="form-label">
-                                    <h4>Image de la question</h4>
-                                </label>
-                                <input class="form-control rounded-0" type="file" id="largequestion" name="photo"
-                                    value="{{ $questions->photo }}">
-                            </div>
+
                             <div class="mt-3">
                                 <label for="largequestion" class="form-label">
                                     <h4>Solution à la question</h4>

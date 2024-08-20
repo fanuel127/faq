@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Question;
+use Illuminate\Support\Facades\DB;
+
 class QuestionController extends Controller
 {
     /**
@@ -13,23 +15,81 @@ class QuestionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function indexQuestions()
     {
-        $questions = Question::paginate(10);
-        return view ('questions.list_question')->with('questions', $questions);
+        // $questions = Question::paginate(10);
+        // return view ('questions.list_question')->with('questions', $questions);
+        $questions = Question::join('category', 'question.category_id', '=', 'category.id')
+            ->select(
+                'question.category_id',
+                'question.id',
+                'question.questionName',
+                'question.description',
+                'question.photo',
+                'question.video',
+                'question.answer',
+                'question.updated_at',
+                'question.created_at',
+                'category.name'
+            )
+            ->orderBy('question.questionName', 'asc')
+            ->get();
+        return view('questions.list_question')->with('questions', $questions);
+    }
 
-    }
-    public function listCategoryEdit()
+    public function showQuestions($id)
     {
-        $categories = Category::all();
-        return view('questions.edit_question' , compact('categories'));
+        // $questions = Question::paginate(10);
+        // return view ('questions.list_question')->with('questions', $questions);
+        $questions = Question::join('category', 'question.category_id', '=', 'category.id')
+            ->select(
+                'question.category_id',
+                'question.id',
+                'question.questionName',
+                'question.description',
+                'question.photo',
+                'question.video',
+                'question.answer',
+                'question.updated_at',
+                'question.created_at',
+                'category.name'
+            )
+            ->orderBy('question.questionName', 'asc')
+            ->where('question.id',$id)
+            ->first();
+        return view('questions.show_question')->with('questions', $questions);
     }
 
-    public function listCategoryAdd()
+    public function totalQuestions(Request $request)
     {
-        $categories = Category::all();
-        return view('questions.add_question' , compact('categories'));
+        $questions = Question::all();
+
+        if ($request->has('search')) {
+            $questions = $questions->filter(function ($question) use ($request) {
+                return stripos($question->questionName, $request->input('search')) !== false
+                    || stripos($question->description, $request->input('search')) !== false
+                    || stripos($question->name, $request->input('search')) !== false;
+            });
+        }
+
+        $questionsCount = $questions->count();
+        if ($request->has('search')) {
+            $questions = $questions->filter(function ($question) use ($request) {
+                return stripos($question->questionName, $request->input('search')) !== false
+                    || stripos($question->description, $request->input('search')) !== false
+                    || stripos($question->name, $request->input('search')) !== false;
+            });
+        }
+
+        if ($request->has('sort') && $request->input('sort') === 'asc') {
+            $questions = $questions->sortBy('questionName');
+        } elseif ($request->has('sort') && $request->input('sort') === 'desc') {
+            $questions = $questions->sortByDesc('questionName');
+        }
+
+        return view('questions.list_question', compact('questions', 'questionsCount'));
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -37,45 +97,37 @@ class QuestionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function storeQuestion(Request $request)
+    public function storeQuestions(Request $request)
     {
         $request->validate([
-            'questionName'=> 'required|string|max:255',
-            'category_id'=>'required|string|exists:category,id',
-            'description'=> 'required',
+            'questionName' => 'required|string|max:255',
+            'category_id' => 'required|string|exists:category,id',
+            'description' => 'required',
             'answer' => 'required',
-            'video' => 'nullable' ,
-            'photo'=>'required',
+            'video' => 'nullable',
+            'photo' => 'required',
         ]);
 
-        // $imagePath =
-        // $request->file('image') ?
-        // $request->file('image')->store('images','public') :
-        // $videoPath =
-        // $request->file('video') ?
-        // $request->file('video')->store('videos','public') : null ;
 
         Question::create([
-            'questionName' => $request->questionName,
-            'category_id' => $request->category_id,
-            'description' => $request->description,
-            'answer' => $request->answer,
-            'photo' =>  $request->photo,
-            'video' =>  $request->video,
+            'questionName' => $request['questionName'],
+            'category_id' => $request['category_id'],
+            'description' => $request['description'],
+            'answer' => $request['answer'],
+            'photo' =>  $request['photo'],
+            'video' =>  $request['video'],
         ]);
 
         return redirect(url('questions/list_question'))->with('success', 'Questions Ajouter!');
     }
 
-    public function update($id, Request $request)
+    public function updateQuestions($id, Request $request)
     {
         $data = $request->validate([
             'questionName' => 'required|string',
             'category_id' => 'required|exists:category,id',
             'description' => 'required',
             'answer' => 'required',
-            'photo' => 'required',
-            'video' =>  'required',
         ]);
 
         Question::whereId($id)->update($data);
@@ -85,9 +137,11 @@ class QuestionController extends Controller
 
     }
 
-    public function createQuestion()
+
+    public function createQuestions()
     {
-        return view('questions.add_question');
+        $categories = Category::all();
+        return view('questions.add_question', compact('categories'));
     }
 
     /**
@@ -96,11 +150,10 @@ class QuestionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function sowQuestions($id)
     {
         $questions = Question::find($id);
-        $answers = $questions->answers;
-        return view('questions.show_question')->with( $questions , $answers);
+        return view('questions.show_question',compact('questions'));
     }
 
     /**
@@ -109,11 +162,10 @@ class QuestionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function editQuestions($id)
     {
+        $categories = Category::all();
         $questions = Question::find($id);
-        return view('questions.edit_question',compact('questions'));
+        return view('questions.edit_question', compact('questions', 'categories'));
     }
-
-
 }

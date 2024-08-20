@@ -11,7 +11,8 @@ class Category extends Model
     protected $table = "category";
     protected $primarykey = 'id';
     protected $fillable = [
-        'category'
+        'name',
+        'value'
     ];
     public function question(){
 

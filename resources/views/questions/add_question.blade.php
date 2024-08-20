@@ -72,10 +72,10 @@
                         <label for="exampleFormControlTextarea3 form-group col-md-6 mb-3" class="form-label">
                             <h4>Categorie de la question<span class="text-danger">*</span></h4>
                         </label>
-                        <select class="form-select" name="category_id" style="width: 800px;">
-                            {{-- <option selected disabled>selectionner votre genre</option> --}}
+                        <select class="form-select" name="category_id" style="width: 800px;" id="category">
+                            <option value="" selected disabled>selectionner votre categorie</option>
                             @foreach ($categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->value }}</option>
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
                             @endforeach
 
                         </select>

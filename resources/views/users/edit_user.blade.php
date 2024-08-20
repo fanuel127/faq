@@ -41,9 +41,9 @@
         @endif
     </div>
     <section class="gradient-custom">
-        <form action="{{ url('/users/edit_user/{id}') }}" method="put">
-            {!! csrf_field() !!}
-            @method('put')
+        <form action="{{ route('users.update',$users->id) }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            @method('PUT')
             <div style="display:flex; justify-content:space-between;margin: 30px;">
                 <h4>Modifier un utilisateur</h4>
                 <nav aria-label="breadcrumb">
@@ -106,12 +106,10 @@
                         </label>
                         <select class="form-select" name="role_id" id="myinput"
                             style="width: 850px;">
-                            {{-- @foreach ($roles as $role)
-                            <option value="{{ $role->value }}" class="form-control">{{ $role->role_name }}</option>
-                            @endforeach --}}
-                            <option selected disabled>selectionner votre role</option>
-                            <option value="1">Admin</option>
-                            <option value="2">SimpleUser</option>
+                            <option value="" selected disabled>Selectionner</option>
+                            @foreach ($roles as $role)
+                            <option value="{{ $role->id }}" class="form-control">{{ $role->role_name }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>

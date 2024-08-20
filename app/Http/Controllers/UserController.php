@@ -11,6 +11,7 @@ use App\Models\Question;
 use Illuminate\Pagination\Paginator;
 use App\Models\Role;
 use GrahamCampbell\ResultType\Success;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends  Controller
 {
@@ -21,11 +22,26 @@ class UserController extends  Controller
      */
     public function index()
     {
-        $users = User::paginate(10);
+        // $users = User::paginate(10);
+        // return view('users.list_user')->with('users', $users);
+
+        $users = User::join('role', 'users.role_id', '=', 'role.id')
+            ->select(
+                'users.role_id',
+                'users.id',
+                'users.firstName',
+                'users.lastName',
+                'users.email',
+                'users.gender',
+                'users.phoneNumber',
+                'users.status',
+                'users.updated_at',
+                'users.created_at',
+                'role.role_name as role_name'
+            )
+            ->orderBy('users.firstName','asc')
+            ->get();
         return view('users.list_user')->with('users', $users);
-        // return view('users.list_user', ['users' => $users]);
-
-
     }
 
     //modifier le mot de passe de l'utilisateur connecter dans la page profile_user
@@ -45,7 +61,6 @@ class UserController extends  Controller
         }
 
         $user->password = bcrypt($new_password);
-        $user->save();
 
         return back()->with('success', 'Le mot de passe a été modifié avec succès.');
     }
@@ -65,27 +80,6 @@ class UserController extends  Controller
             'totalUser' => $totalUser
         ]);
     }
-
-
-
-    // public function search(Request $request)
-    // {
-    //     $posts = User::all();
-    //     return view('users.list_user',compact('users','query'));
-    // }
-    // public function search(Request $request)
-    // {
-    //     $users = User::all();
-
-    //     if ($request->has('search')) {
-    //         $users = $users->filter(function ($user) use ($request) {
-    //             return stripos($user->firstName, $request->input('search')) !== false
-    //                 || stripos($user->gender, $request->input('search')) !== false;
-    //         });
-    //     }
-
-    //     return view('users.list_user', compact('users'));
-    // }
 
     public function total(Request $request)
     {
@@ -134,32 +128,11 @@ class UserController extends  Controller
         ]);
     }
 
-    // public function ordre(Request $request)
-    // {
-    //     $users = User::all();
-
-    //     if ($request->has('search')) {
-    //         $users = $users->filter(function ($user) use ($request) {
-    //             return stripos($user->firstName, $request->input('search')) !== false
-    //                 || stripos($user->email, $request->input('search')) !== false;
-    //         });
-    //     }
-
-    //     if ($request->has('sort') && $request->input('sort') === 'asc') {
-    //         $users = $users->sortBy('firstName');
-    //     } elseif ($request->has('sort') && $request->input('sort') === 'desc') {
-    //         $users = $users->sortByDesc('firstName');
-    //     }
-
-    //     $usersCount = $users->count();
-
-    //     return view('users.list_user', compact('users', 'usersCount'));
-    // }
 
     public function listRole()
     {
         $roles = Role::all();
-        return view('users.add_user', compact("role"));
+        return view('users.add_user', compact('roles'));
     }
 
     /**
@@ -169,7 +142,8 @@ class UserController extends  Controller
      */
     public function create()
     {
-        return view('users.add_user');
+        $roles = Role::all();
+        return view('users.add_user', compact('roles'));
     }
 
     /**
@@ -230,19 +204,19 @@ class UserController extends  Controller
         return view('users.show_user', compact('users', 'image'));
     }
 
-    public function showp($id)
-    {
-        $users = User::findOrFail($id);
+    // public function showp($id)
+    // {
+    //     $users = User::findOrFail($id);
 
-        // Détermine l'image à afficher en fonction du genre
-        if ($users->gender == 'masculin') {
-            $image = 'homme.png';
-        } else {
-            $image = 'fille.png';
-        }
+    //     // Détermine l'image à afficher en fonction du genre
+    //     if ($users->gender == 'masculin') {
+    //         $image = 'homme.png';
+    //     } else {
+    //         $image = 'fille.png';
+    //     }
 
-        return view('users.show_user', compact('users', 'image'));
-    }
+    //     return view('users.profile_user', compact('users', 'image'));
+    // }
 
     //  public function show(User $users)
     //  {
@@ -252,20 +226,19 @@ class UserController extends  Controller
 
     public function update($id, Request $request)
     {
-        $users = User::find($id);
         $data = $request->validate([
             'firstName' => 'required|string',
             'lastName' => 'required',
             'gender' => 'required|in:masculin,feminin',
             'phoneNumber' => 'required',
-            'role_id' => 'required|exists:role_name,id',
+            'role_id' => 'required|exists:role,id',
 
 
         ]);
 
-        $users->update($data);
-        $users->save();
-        return redirect()->url('users/list_user')->with('Success', 'utilisateur modifier');
+        User::whereId($id)->update($data);
+        return redirect('users/list_user')->with('Success', 'utilisateur modifier');
+
     }
 
 
@@ -281,9 +254,9 @@ class UserController extends  Controller
     //  }
     public function edit($id)
     {
-
+        $roles = Role::all();
         $users = User::find($id);
-        return view('users.edit_user', compact('users'));
+        return view('users.edit_user', compact('users', 'roles'));
     }
 
     /**
