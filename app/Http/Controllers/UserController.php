@@ -8,9 +8,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\Question;
-use Illuminate\Pagination\Paginator;
 use App\Models\Role;
-use GrahamCampbell\ResultType\Success;
 
 class UserController extends  Controller
 {
