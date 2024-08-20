@@ -57,13 +57,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-    <title>Document</title>
+    <title>list</title>
 </head>
 <style>
-       body {
+    body {
         font-size: 20px;
         /* background-color:  rgb(177, 199, 212); */
-         background-color:  white;
+        background-color: white;
 
     }
 
@@ -79,17 +79,13 @@
         color: white;
 
     }
+
     /* .card{
         margin-left: 400px;
     } */
-
-
-
 </style>
 
 <body>
-
-
     <div class="container-fluid p-5 ">
         <div class="row">
             <div class="col-md-12">
@@ -117,27 +113,25 @@
                                     <th>Actions</th>
                                 </tr>
                             </thead>
-                            @php
-                                $i = 0;
-                            @endphp
 
-                            @php
-                                $i++;
-                            @endphp
                             <tbody>
                                 <tr>
-                                    <td>{{ $i }}</td>
+                                    <td>1</td>
                                     <td>samira </td>
                                     <td> kamsou </td>
                                     <td> female </td>
                                     <td> samira@gmail.com </td>
                                     <td> 67898565 </td>
                                     <td> enable </td>
-                                    {{-- <td>  <a href="" title="Modify"
-                                        class="btn btn-warning btn-sm ">
-                                        <i class="fas fa-edit "></i>edit
-                                    </a> </td> --}}
-                                    <td>edit </td>
+                                    <td>
+                                        <button class="btn btn-warning btn-ml" title="Modify">
+                                            <i class="fas fa-edit "></i>edit
+                                        </button>
+                                        <button class="btn btn-info btn-ml" title="show"><i class="fa fa-eye"></i>
+                                            View
+                                        </button>
+
+                                    </td>
 
 
                                 </tr>
@@ -149,12 +143,104 @@
                                     <td> samira@gmail.com </td>
                                     <td> 67898565 </td>
                                     <td> enable </td>
-                                    <td> edit </td>
+                                    <td>
+                                        <button class="btn btn-warning btn-ml" title="Modify">
+                                            <i class="fas fa-edit "></i>edit
+                                        </button>
+                                        <button class="btn btn-info btn-ml" title="show"><i class="fa fa-eye"></i>
+                                            View
+                                        </button>
+                                    </td>
                                 </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>samira </td>
+                                    <td> kamsou </td>
+                                    <td> female </td>
+                                    <td> samira@gmail.com </td>
+                                    <td> 67898565 </td>
+                                    <td> enable </td>
+                                    <td>
+                                        <button class="btn btn-warning btn-ml" title="Modify">
+                                            <i class="fas fa-edit "></i>edit
+                                        </button>
+                                        <button class="btn btn-info btn-ml" title="show"><i class="fa fa-eye"></i>
+                                            View
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>samira </td>
+                                    <td> kamsou </td>
+                                    <td> female </td>
+                                    <td> samira@gmail.com </td>
+                                    <td> 67898565 </td>
+                                    <td> enable </td>
+                                    <td>
+                                        <button class="btn btn-warning btn-ml" title="Modify">
+                                            <i class="fas fa-edit "></i>edit
+                                        </button>
+                                        <button class="btn btn-info btn-ml" title="show"><i class="fa fa-eye"></i>
+                                            View
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>samira </td>
+                                    <td> kamsou </td>
+                                    <td> female </td>
+                                    <td> samira@gmail.com </td>
+                                    <td> 67898565 </td>
+                                    <td> enable </td>
+                                    <td>
+                                        <button class="btn btn-warning btn-ml" title="Modify">
+                                            <i class="fas fa-edit "></i>edit
+                                        </button>
+                                        <button class="btn btn-info btn-ml" title="show"><i class="fa fa-eye"></i>
+                                            View
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>samira </td>
+                                    <td> kamsou </td>
+                                    <td> female </td>
+                                    <td> samira@gmail.com </td>
+                                    <td> 67898565 </td>
+                                    <td> enable </td>
+                                    <td>
+                                        <button class="btn btn-warning btn-ml" title="Modify">
+                                            <i class="fas fa-edit "></i>edit
+                                        </button>
+                                        <button class="btn btn-info btn-ml" title="show"><i class="fa fa-eye"></i>
+                                            View
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>samira </td>
+                                    <td> kamsou </td>
+                                    <td> female </td>
+                                    <td> samira@gmail.com </td>
+                                    <td> 67898565 </td>
+                                    <td> enable </td>
+                                    <td>
+                                        <button class="btn btn-warning btn-ml" title="Modify">
+                                            <i class="fas fa-edit "></i>edit
+                                        </button>
+                                        <button class="btn btn-info btn-ml" title="show"><i class="fa fa-eye"></i>
+                                            View
+                                        </button>
+                                    </td>
+                                </tr>
+
 
                             </tbody>
 
-                            {{-- {{ url('/test/edit/' . $test->id) }} --}}
                         </table>
                     </div>
                 </div>

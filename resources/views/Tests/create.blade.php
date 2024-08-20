@@ -61,9 +61,9 @@
         @endif
     </div> --}}
     {{-- {{ route('Test.store') }} --}}
-    <form action="" method="post">
+    <form action="" method="">
         @csrf
-        @method('post')
+        @method('')
         <div class="container-fluid p-5">
             <div class="row">
                 <div class="col-md-12">

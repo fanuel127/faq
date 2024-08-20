@@ -67,9 +67,7 @@
             @endif
         </div> --}}
         {{-- {{ route('question.store') }} --}}
-        <form action="" method="post">
-            @csrf
-            @method('post')
+        <form action="" method="">
             <div class="container-fluid p-5">
                 <div class="row">
                     <div class="col-md-12">

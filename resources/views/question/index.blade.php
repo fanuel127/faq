@@ -71,37 +71,17 @@
                                     <th>Actions</th>
                                 </tr>
                             </thead>
-                            @php
-                                $i = 0;
-                            @endphp
-
-                            @php
-                                $i++;
-                            @endphp
                             <tbody>
                                 <tr>
-                                    <td>{{ $i }}</td>
-                                    <td> </td>
-                                    <td> </td>
-                                    <td> </td>
-                                    <td> </td>
-                                    <td> </td>
-                                    <td> </td>
-                                    <td> </td>
-
-
+                                    <td>1</td>
+                                    <td> hdfhtgrf</td>
+                                    <td>jhtdggh </td>
+                                    <td>ghvjhgfyu </td>
+                                    <td>jhgdutf </td>
+                                    <td> hgfyt</td>
+                                    <td> jhgfuyt</td>
+                                    <td> jhgfuyt</td>
                                 </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td> </td>
-                                    <td> </td>
-                                    <td> </td>
-                                    <td> </td>
-                                    <td> </td>
-                                    <td> </td>
-                                    <td> </td>
-                                </tr>
-
                             </tbody>
 
 

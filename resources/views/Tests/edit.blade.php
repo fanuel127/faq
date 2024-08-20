@@ -43,13 +43,7 @@
 
 <body>
     <div>
-        @if ($errors->any())
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        @endif
+
     </div>
     {{-- {{ route('Test.edit', ['Test' => $Test]) }} --}}
     <form method="" action="">
@@ -61,15 +55,12 @@
                     <div class="card bg-light">
                         <div class="card-header ">
                             <div class="card-title  d-flex justify-content-between text-center">
-
-                                <h3 ><i class="bi bi-pen-fill me-2"></i>Edit User</h3>
-
+                                <h3><i class="bi bi-pen-fill me-2"></i>Edit User</h3>
                                 <button class="btn btn-info btn-lg">
                                     <i class="bi bi-plus"></i>
                                     Return
                                 </button>
                             </div>
-
                         </div>
                         <div class="card-body ">
                             <div class="fw-bold">
@@ -79,7 +70,6 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-
                                             <label for="firstname" class="form-label mt-3">
                                                 First Name
                                                 <span class="text-danger">
@@ -88,7 +78,6 @@
                                             </label>
                                             <input type="text" name="firstname" class="form-control form-control-lg"
                                                 id="firstname">
-
                                         </div>
 
                                     </div>
