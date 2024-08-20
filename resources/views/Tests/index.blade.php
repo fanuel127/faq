@@ -122,7 +122,8 @@
                                     <td> female </td>
                                     <td> samira@gmail.com </td>
                                     <td> 67898565 </td>
-                                    <td> enable </td>
+                                    <td> <span class="badge text-bg-danger">disable</span>
+                                    </td>
                                     <td>
                                         <button class="btn btn-warning btn-ml" title="Modify">
                                             <i class="fas fa-edit "></i>edit
@@ -142,7 +143,8 @@
                                     <td> female </td>
                                     <td> samira@gmail.com </td>
                                     <td> 67898565 </td>
-                                    <td> enable </td>
+                                    <td> <span class="badge text-bg-success">enable</span>
+                                    </td>
                                     <td>
                                         <button class="btn btn-warning btn-ml" title="Modify">
                                             <i class="fas fa-edit "></i>edit
@@ -154,12 +156,13 @@
                                 </tr>
                                 <tr>
                                     <td>3</td>
-                                    <td>samira </td>
+                                    <td>vincent </td>
                                     <td> kamsou </td>
-                                    <td> female </td>
-                                    <td> samira@gmail.com </td>
-                                    <td> 67898565 </td>
-                                    <td> enable </td>
+                                    <td> male </td>
+                                    <td> vincent@gmail.com </td>
+                                    <td> 6780903 </td>
+                                    <td> <span class="badge text-bg-success">enable</span>
+                                    </td>
                                     <td>
                                         <button class="btn btn-warning btn-ml" title="Modify">
                                             <i class="fas fa-edit "></i>edit
@@ -176,7 +179,8 @@
                                     <td> female </td>
                                     <td> samira@gmail.com </td>
                                     <td> 67898565 </td>
-                                    <td> enable </td>
+                                    <td> <span class="badge text-bg-danger">disable</span>
+                                    </td>
                                     <td>
                                         <button class="btn btn-warning btn-ml" title="Modify">
                                             <i class="fas fa-edit "></i>edit
@@ -193,7 +197,8 @@
                                     <td> female </td>
                                     <td> samira@gmail.com </td>
                                     <td> 67898565 </td>
-                                    <td> enable </td>
+                                    <td> <span class="badge text-bg-success">enable</span>
+                                    </td>
                                     <td>
                                         <button class="btn btn-warning btn-ml" title="Modify">
                                             <i class="fas fa-edit "></i>edit
@@ -205,12 +210,13 @@
                                 </tr>
                                 <tr>
                                     <td>6</td>
-                                    <td>samira </td>
-                                    <td> kamsou </td>
-                                    <td> female </td>
-                                    <td> samira@gmail.com </td>
+                                    <td>arnord </td>
+                                    <td> Tammo </td>
+                                    <td> male </td>
+                                    <td> arnord@gmail.com </td>
                                     <td> 67898565 </td>
-                                    <td> enable </td>
+                                    <td> <span class="badge text-bg-success">enable</span>
+                                    </td>
                                     <td>
                                         <button class="btn btn-warning btn-ml" title="Modify">
                                             <i class="fas fa-edit "></i>edit
@@ -227,7 +233,8 @@
                                     <td> female </td>
                                     <td> samira@gmail.com </td>
                                     <td> 67898565 </td>
-                                    <td> enable </td>
+                                    <td> <span class="badge text-bg-success">enable</span>
+                                    </td>
                                     <td>
                                         <button class="btn btn-warning btn-ml" title="Modify">
                                             <i class="fas fa-edit "></i>edit
