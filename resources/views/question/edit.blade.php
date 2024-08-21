@@ -10,11 +10,7 @@
         <script src="./bootstrap-5.3.3-dist/js/bootstrap.js"></script> --}}
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
             rel="stylesheet"YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH crossorigin="anonymous">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables.net-bs5/2.1.2/dataTables.bootstrap5.min.js"
-            integrity="sha512-Cwi0jz7fz7mrX990DlJ1+rmiH/D9/rjfOoEex8C9qrPRDDqwMPdWV7pJFKzhM10gAAPlufZcWhfMuPN699Ej0w=="
-            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -23,7 +19,7 @@
     </head>
     <style>
         body {
-            font-size: 18px;
+            /* font-size: 18px; */
             background-color: rgba(248, 237, 237, 0.648);
         }
 
@@ -40,6 +36,10 @@
             border-radius: 0px;
         }
 
+        .form-select {
+            border-radius: 0px;
+        }
+
         .btn {
             border-radius: 0px;
         }
@@ -47,26 +47,10 @@
         span {
             font-weight: 900;
         }
-        textarea{
-        height: 5vh;
-    }
-    select{
-        height: 5vh;
-    }
     </style>
 
     <body>
-        {{-- <div>
-            @if ($errors->any())
-            <ul>
-                @foreach ($errors->all() as $error)
-                <li>{{ $error}}</li>
 
-                @endforeach
-            </ul>
-            @endif
-        </div> --}}
-        {{-- {{ route('question.store') }} --}}
         <form action="" method="">
             <div class="container-fluid p-5">
                 <div class="row">
@@ -75,13 +59,13 @@
                             <div class="card-header text-center">
                                 <div class="card-title  d-flex justify-content-between">
                                     <div class=" text-center">
-                                        <h3>
+                                        <h5>
                                             <i class="bi bi-pen-fill text-warning me-2"></i>Edit Question
-                                        </h3>
+                                        </h5>
                                     </div>
-                                    {{-- < class="btn btn-info btn-lg text-center"> --}}
-                                    <a href="{{ url('/question') }}" class="btn btn-warning" title="add a Question"> <i
-                                            class="bi bi-arrow-return-left"></i>
+                                    {{-- < class="btn btn-info btn-sm text-center"> --}}
+                                    <a href="{{ url('/question') }}" class="btn btn-primary btn-sm"
+                                        title="add a Question"> <i class="bi bi-arrow-return-left"></i>
                                         Return
                                     </a>
                                 </div>
@@ -101,30 +85,40 @@
                                                         *
                                                     </span>
                                                 </label>
-                                                <input type="text" name="firstname" class="form-control form-control-lg" id="firstname">
-
+                                                <input type="text" name="firstname" class="form-control"
+                                                    value=" Which movie is recommended for me based on my preferences?"
+                                                    id="firstname">
                                                 </input>
                                             </div>
-                                            <div class="form-group">
-
-                                                <label for="Description" class="form-label mt-3">
-                                                    Description
-
-                                                </label>
-                                                <textarea type="Description" name="Description" class="form-control form-control-lg" id="Description">
-
-                                                    </textarea>
-                                                <div class="form-group">
-                                                    <label for="Video" class="form-label mt-3">
-                                                        Video
-                                                    </label>
-                                                    <input type="file" name="Video"
-                                                        class="form-control form-control-lg" id="Video">
+                                            <div class="col-12">
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <div class="form-group">
+                                                            <label for="Video" class="form-label mt-3">
+                                                                Video
+                                                            </label>
+                                                            <input type="file" name="Video" class="form-control"
+                                                                id="Video">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group">
+                                                            <label for="Photo" class="form-label mt-3">
+                                                                Photo
+                                                                <span class="text-danger">
+                                                                    *
+                                                                </span>
+                                                            </label>
+                                                            <input type="file" name="Photo" class="form-control"  
+                                                                id="Photo">
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
+
+
                                         </div>
                                         <div class="col-md-6">
-
                                             <div class="form-group">
                                                 <label for="category" class="form-label mt-3">
                                                     Category
@@ -133,9 +127,9 @@
                                                     </span>
                                                 </label>
                                                 <select class="form-select" name="category" id="category">
-                                                    <option selected disabled>select the Category  </option>
-                                                    <option value=""></option>
-                                                    <option value=""></option>
+                                                    <option selected disabled>select the Category </option>
+                                                    <option value="">Server Problem</option>
+                                                    <option value="">Connection Problem</option>
                                                 </select>
                                             </div>
 
@@ -147,29 +141,30 @@
                                                         *
                                                     </span>
                                                 </label>
-                                                <textarea type="text" name="Answer" class="form-control  form-control-lg" id="Answer">
-                                                        </textarea>
+                                                <input type="text" name="Answer" class="form-control"
+                                                    value="The user wants a personalized movie recommendation, based on their specific tastes, previously viewed movies, and favorite genres."
+                                                    id="Answer">
+                                                </input>
                                             </div>
-                                            <div class="form-group">
 
-                                                <label for="Photo" class="form-label mt-3">
-                                                    Photo
-                                                    <span class="text-danger">
-                                                        *
-                                                    </span>
-                                                </label>
-                                                <input type="file" name="Photo" class="form-control form-control-lg"
-                                                    id="Photo">
-                                            </div>
                                         </div>
-                                        {{-- <div class="form-group">
 
-                                        </div> --}}
+                                        <div class="form-group">
+
+                                            <label for="Description" class="form-label mt-3">
+                                                Description
+
+                                            </label>
+                                            <textarea type="Description" name="Description" class="form-control form-control-sm"  value="The user wants a personalized movie recommendation, based on their specific tastes, previously viewed movies, and favorite genres."
+                                             id="Description">
+                                                </textarea>
+
+                                        </div>
                                         <div class="btn mt-3 d-flex justify-content-between">
-                                            <button type="reset" class="btn btn-danger btn-lg " id="btn">
+                                            <button type="reset" class="btn btn-danger btn-sm " id="btn">
                                                 <i class="bi bi-backspace-fill me-2"></i>Cancel
                                             </button>
-                                            <button type="submit" class="btn btn-primary btn-lg" id="btn">
+                                            <button type="submit" class="btn btn-warning btn-sm" id="btn">
                                                 <i class="bi bi-save me-2"></i>update
                                             </button>
                                         </div>

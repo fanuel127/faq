@@ -20,37 +20,37 @@
 </head>
 
 <body>
-    <div class="container mt-1">
+    <div class="container-fluid mt-3">
         <div class="card">
             <div class="card-header d-flex justify-content-between  bg-secondary">
                 <div class="card-title text-center ">
-                    <h3> <i class="bi bi-question-diamond me-2"></i>Question Details</h3>
+                    <h4> <i class="bi bi-question-diamond me-2"></i>Question Details</h4>
                 </div>
-                <a href="{{ url('/question') }}" class="btn btn-info" title="add a question">
+                <a href="{{ url('/question') }}" class="btn btn-info btn-sm" >
 
                     <i class="bi bi-arrow-return-left"></i> Return
                 </a>
             </div>
             <div class="card-body">
                 <div class="question-detail">
-                    <h1 class="question-title"> Question Title</h1>
+                    <h4 class="question-title"> Question Title</h4>
                     <p class="question-description">This is an example of a detailed description that explains the
                         context and
                         content of the question in full.</p>
                     <p class="question-category"><strong>Category:</strong> server problem
                     </p>
                     <div class="media-gallery">
-                        <h4>Photo</h4>
+                        <h5>Photo</h5>
                         <div class="photos">
                             <img src="{{ asset('image/img4.png') }}" alt="Sample Photo 1" class="photo">
                         </div>
 
-                        <h4>Video</h4>
+                        <h5>Video</h5>
                         <div class="videos">
                             <iframe src="{{ asset('video/video1.mp4') }}" frameborder="0" allowfullscreen></iframe>
                         </div>
                         <div class="question-answer">
-                            <h4>Answer</h4>
+                            <h5>Answer</h5>
                             <p>This area provides a comprehensive answer to the question posed, detailing all relevant
                                 information.
                             </p>
@@ -61,7 +61,7 @@
         </div>
     </div>
 
-    <style>
+    {{-- <style>
         .card-body {
             background: #ddd7d7;
             padding: 20px;
@@ -120,7 +120,7 @@
 
         @media (max-width: 500px) {
             .question-title {
-                font-size: 2em;
+                font-size: 1em;
             }
 
             .question-description,
@@ -128,7 +128,7 @@
                 font-size: 0.9em;
             }
         }
-    </style>
+    </style> --}}
 </body>
 
 </html>

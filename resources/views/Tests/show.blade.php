@@ -22,7 +22,7 @@
 <style>
     .card {
         margin: 8%;
-        height: 50vh;
+        height: 40vh;
 
     }
 
@@ -35,17 +35,17 @@
 
     i {
         color: orange;
+
     }
 </style>
 
 <body>
     <div class="card">
-        <div class="card-header d-flex justify-content-between  bg-secondary">
+        <div class="card-header d-flex justify-content-between  bg-secondary text-center ">
             <div class="card-title text-center ">
-                <h3> <i class="bi bi-person-fill me-2"></i>User Details</h3>
+                <h4> <i class="bi bi-person-fill me-2"></i>User Details</h3>
             </div>
-            <a href="{{ url('/test') }}" class="btn btn-warning" title="add a user">
-
+            <a href="{{ url('/test') }}" class="btn btn-warning btn-sm" title="add a user">
                 <i class="bi bi-arrow-return-left"></i> Return
             </a>
         </div>
