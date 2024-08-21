@@ -23,6 +23,11 @@
 
         }
 
+        #myinputs {
+            box-shadow: none;
+            font-size: 14px;
+        }
+
 
         .card-body {
             border: none;
@@ -77,7 +82,7 @@
                                     id="filter-bar">
                                     <div class="order mt-3 mb-3">
                                         <label for="sort">Sort by..</label>
-                                        <select class="filter" id="sort">
+                                        <select class="filter" id="myinputs">
                                             <option value="" selected desabled>--</option>
                                             <option value="asc">ascending order</option>
                                             <option value="desc">descending order </option>
@@ -91,9 +96,16 @@
                                             <option value="category">Category</option>
                                         </select>
                                     </div>
-
+                                    <div class="category mt-3 mb-3">
+                                        <label for="">Category..</label>
+                                        <select class="filter" name="category" id="myinputs">
+                                            <option value="" selected desabled>--</option>
+                                            <option value="">Server Problem</option>
+                                            <option value="">Connection Problem</option>
+                                        </select>
+                                    </div>
                                     <div class="search mt-3 mb-3">
-                                        <input class="filter" type="search" id="search" name="search"
+                                        <input class="filter" type="search" id="myinputs" name="search"
                                             placeholder="Search...">
                                     </div>
                                 </div>
@@ -128,15 +140,11 @@
                                                 title="Modify">
                                                 <i class="fas fa-edit "></i>
                                             </a>
-                                            <a href="{{ url('/question/show') }}" class="btn btn-info btn-sm"
+                                            <a href="{{ url('/question/show') }}" class="btn btn-info btn-sm mx-2"
                                                 title="show"><i class="fa fa-eye"></i>
 
                                             </a>
-                                            <div class="form-check form-switch">
-                                                <input class="form-check-input" type="checkbox" role="switch"
-                                                    id="flexSwitchCheckChecked" checked>
-                                                <label class="form-check-label" for="flexSwitchCheckChecked"></label>
-                                            </div>
+
                                         </td>
                                     </tr>
 
@@ -159,15 +167,11 @@
                                                 title="Modify">
                                                 <i class="fas fa-edit "></i>
                                             </a>
-                                            <a href="{{ url('/question/show') }}" class="btn btn-info btn-sm"
+                                            <a href="{{ url('/question/show') }}" class="btn btn-info btn-sm mx-2"
                                                 title="show"><i class="fa fa-eye"></i>
 
                                             </a>
-                                            <div class="form-check form-switch">
-                                                <input class="form-check-input" type="checkbox" role="switch"
-                                                    id="flexSwitchCheckChecked" checked>
-                                                <label class="form-check-label" for="flexSwitchCheckChecked"></label>
-                                            </div>
+
                                         </td>
                                     </tr>
                                     <tr>
@@ -189,15 +193,11 @@
                                                 title="Modify">
                                                 <i class="fas fa-edit "></i>
                                             </a>
-                                            <a href="{{ url('/question/show') }}" class="btn btn-info btn-sm"
+                                            <a href="{{ url('/question/show') }}" class="btn btn-info btn-sm mx-2"
                                                 title="show"><i class="fa fa-eye"></i>
 
                                             </a>
-                                            <div class="form-check form-switch">
-                                                <input class="form-check-input" type="checkbox" role="switch"
-                                                    id="flexSwitchCheckChecked" checked>
-                                                <label class="form-check-label" for="flexSwitchCheckChecked"></label>
-                                            </div>
+
                                         </td>
                                     </tr>
                                     <tr>
@@ -218,15 +218,111 @@
                                                 title="Modify">
                                                 <i class="fas fa-edit "></i>
                                             </a>
-                                            <a href="{{ url('/question/show') }}" class="btn btn-info btn-sm"
+                                            <a href="{{ url('/question/show') }}" class="btn btn-info btn-sm mx-2"
                                                 title="show"><i class="fa fa-eye"></i>
 
                                             </a>
-                                            <div class="form-check form-switch">
-                                                <input class="form-check-input" type="checkbox" role="switch"
-                                                    id="flexSwitchCheckChecked" checked>
-                                                <label class="form-check-label" for="flexSwitchCheckChecked"></label>
-                                            </div>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td> Which movie is recommended for me based on my preferences?
+                                        </td>
+                                        <td>The user wants a personalized movie recommendation, based on their specific
+                                            tastes, previously viewed movies, and favorite genres. </td>
+                                        <td> Personalized recommendations.
+                                        </td>
+                                        <td> Depending on your preferences for action and sci-fi films, I recommend
+                                            'Inception' and 'John Wick'
+                                        </td>
+                                        {{-- <td> <img src="{{ asset('image/img4.png') }}"style="max-width:200px;"></td>
+                                    <td> <iframe src="{{ asset('video/video1.mp4') }}"style="max-width:200px;"></iframe></td> --}}
+                                        <td class="d-flex">
+                                            <a href="{{ url('/question/edit') }}" class="btn btn-warning btn-sm"
+                                                title="Modify">
+                                                <i class="fas fa-edit "></i>
+                                            </a>
+                                            <a href="{{ url('/question/show') }}" class="btn btn-info btn-sm mx-2"
+                                                title="show"><i class="fa fa-eye"></i>
+
+                                            </a>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>6</td>
+                                        <td> Which movie is recommended for me based on my preferences?
+                                        </td>
+                                        <td>The user wants a personalized movie recommendation, based on their specific
+                                            tastes, previously viewed movies, and favorite genres. </td>
+                                        <td> Personalized recommendations.
+                                        </td>
+                                        <td> Depending on your preferences for action and sci-fi films, I recommend
+                                            'Inception' and 'John Wick'
+                                        </td>
+                                        {{-- <td> <img src="{{ asset('image/img4.png') }}"style="max-width:200px;"></td>
+                                    <td> <iframe src="{{ asset('video/video1.mp4') }}"style="max-width:200px;"></iframe></td> --}}
+                                        <td class="d-flex">
+                                            <a href="{{ url('/question/edit') }}" class="btn btn-warning btn-sm"
+                                                title="Modify">
+                                                <i class="fas fa-edit "></i>
+                                            </a>
+                                            <a href="{{ url('/question/show') }}" class="btn btn-info btn-sm mx-2"
+                                                title="show"><i class="fa fa-eye"></i>
+
+                                            </a>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>7</td>
+                                        <td> Which movie is recommended for me based on my preferences?
+                                        </td>
+                                        <td>The user wants a personalized movie recommendation, based on their specific
+                                            tastes, previously viewed movies, and favorite genres. </td>
+                                        <td> Personalized recommendations.
+                                        </td>
+                                        <td> Depending on your preferences for action and sci-fi films, I recommend
+                                            'Inception' and 'John Wick'
+                                        </td>
+                                        {{-- <td> <img src="{{ asset('image/img4.png') }}"style="max-width:200px;"></td>
+                                    <td> <iframe src="{{ asset('video/video1.mp4') }}"style="max-width:200px;"></iframe></td> --}}
+                                        <td class="d-flex">
+                                            <a href="{{ url('/question/edit') }}" class="btn btn-warning btn-sm"
+                                                title="Modify">
+                                                <i class="fas fa-edit "></i>
+                                            </a>
+                                            <a href="{{ url('/question/show') }}" class="btn btn-info btn-sm mx-2"
+                                                title="show"><i class="fa fa-eye"></i>
+
+                                            </a>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>8</td>
+                                        <td> Which movie is recommended for me based on my preferences?
+                                        </td>
+                                        <td>The user wants a personalized movie recommendation, based on their specific
+                                            tastes, previously viewed movies, and favorite genres. </td>
+                                        <td> Personalized recommendations.
+                                        </td>
+                                        <td> Depending on your preferences for action and sci-fi films, I recommend
+                                            'Inception' and 'John Wick'
+                                        </td>
+                                        {{-- <td> <img src="{{ asset('image/img4.png') }}"style="max-width:200px;"></td>
+                                    <td> <iframe src="{{ asset('video/video1.mp4') }}"style="max-width:200px;"></iframe></td> --}}
+                                        <td class="d-flex">
+                                            <a href="{{ url('/question/edit') }}" class="btn btn-warning btn-sm"
+                                                title="Modify">
+                                                <i class="fas fa-edit "></i>
+                                            </a>
+                                            <a href="{{ url('/question/show') }}" class="btn btn-info btn-sm mx-2"
+                                                title="show"><i class="fa fa-eye"></i>
+
+                                            </a>
+
                                         </td>
                                     </tr>
                                 </tbody>

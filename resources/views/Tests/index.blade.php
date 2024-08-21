@@ -140,11 +140,11 @@
                                         <td> <span class="badge text-bg-danger">disable</span>
                                         </td>
                                         <td class="d-flex  ">
-                                            <a href="{{ url('/test/edit') }}" class="btn btn-warning btn-sm"
+                                            <a href="{{ url('/test/edit') }}" class="btn btn-warning btn-sm "
                                                 title="Modify">
                                                 <i class="fas fa-edit "></i>
                                             </a>
-                                            <a href="{{ url('/test/show') }}" class="btn btn-info btn-sm"
+                                            <a href="{{ url('/test/show') }}" class="btn btn-info btn-sm mx-2"
                                                 title="show"><i class="fa fa-eye"></i>
 
                                             </a>
@@ -171,7 +171,7 @@
                                                 title="Modify">
                                                 <i class="fas fa-edit "></i>
                                             </a>
-                                            <a href="{{ url('/test/show') }}" class="btn btn-info btn-sm"
+                                            <a href="{{ url('/test/show') }}" class="btn btn-info btn-sm mx-2 "
                                                 title="show"><i class="fa fa-eye"></i>
 
                                             </a>
@@ -196,7 +196,7 @@
                                                 title="Modify">
                                                 <i class="fas fa-edit "></i>
                                             </a>
-                                            <a href="{{ url('/test/show') }}" class="btn btn-info btn-sm"
+                                            <a href="{{ url('/test/show') }}" class="btn btn-info btn-sm mx-2"
                                                 title="show"><i class="fa fa-eye"></i>
 
                                             </a>
@@ -221,7 +221,7 @@
                                                 title="Modify">
                                                 <i class="fas fa-edit "></i>
                                             </a>
-                                            <a href="{{ url('/test/show') }}" class="btn btn-info btn-sm"
+                                            <a href="{{ url('/test/show') }}" class="btn btn-info btn-sm mx-2 "
                                                 title="show"><i class="fa fa-eye"></i>
 
                                             </a>
@@ -247,7 +247,7 @@
                                                 title="Modify">
                                                 <i class="fas fa-edit "></i>
                                             </a>
-                                            <a href="{{ url('/test/show') }}" class="btn btn-info btn-sm"
+                                            <a href="{{ url('/test/show') }}" class="btn btn-info btn-sm  mx-2"
                                                 title="show"><i class="fa fa-eye"></i>
                                             </a>
 
@@ -272,7 +272,7 @@
                                                 title="Modify">
                                                 <i class="fas fa-edit "></i>
                                             </a>
-                                            <a href="{{ url('/test/show') }}" class="btn btn-info btn-sm"
+                                            <a href="{{ url('/test/show') }}" class="btn btn-info btn-sm mx-2"
                                                 title="show"><i class="fa fa-eye"></i>
 
                                             </a>
@@ -297,7 +297,7 @@
                                                 title="Modify">
                                                 <i class="fas fa-edit "></i>
                                             </a>
-                                            <a href="{{ url('/test/show') }}" class="btn btn-info btn-sm"
+                                            <a href="{{ url('/test/show') }}" class="btn btn-info btn-sm mx-2"
                                                 title="show"><i class="fa fa-eye"></i>
 
                                             </a>
