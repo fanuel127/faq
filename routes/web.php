@@ -7,8 +7,9 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\loginController;
 use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\Question\QuestionController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
+
+use App\Http\Controllers\Question\QuestionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,13 +25,44 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 Route::get('/', function () {
     return view('welcome');
 });
+//route controller test
+Route::get('/test', [TestController::class, 'index'])->name('Tests.index');
+Route::get('/test/create', [TestController::class, 'create'])->name('Tests.create');
+Route::post('/test', [TestController::class, 'store'])->name('Tests.store');
+Route::get('/test/show/{id}', [TestController::class, 'show'])->name('Tests.show');
 
-//test
-Route::get('/test', [TestController::class, 'index'])->name('Test.index');
-Route::get('/test/create', [TestController::class, 'create'])->name('Test.create');
-Route::post('/test', [TestController::class, 'store'])->name('Test.store');
-Route::get('/test/{id}/edit', [TestController::class, 'edit'])->name('Test.edit');
-Route::put('/test/update', [TestController::class, 'update'])->name('Test.update');
+Route::get('/question', [QuestionController::class, 'indexQuestion'])->name('question.index');
+
+// Route::put('/test/{id}/edit', [TestController::class, 'edit'])->name('Test.edit');
+Route::put('/test/edit', [TestController::class, 'update'])->name('Tests.edit');
+
+//route view test
+
+Route::get('/test/edit', function () {
+    return view('tests.edit');
+});
+Route::get('/test/create', function () {
+    return view('tests.create');
+});
+Route::get('/test/show', function () {
+    return view('tests.show');
+});
+Route::get('/test', function () {
+    return view('tests.index');
+});
+//question
+Route::get('/question', function () {
+    return view('question.index');
+});
+Route::get('/question/create', function () {
+    return view('question.create');
+});
+Route::get('/question/edit', function () {
+    return view('question.edit');
+});
+Route::get('/question/show', function () {
+    return view('question.show');
+});
 
 
 

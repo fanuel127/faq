@@ -12,6 +12,10 @@ class test extends Model
     protected $primarykey = 'id';
     protected  $fillable = [
         'firstName',
-        'description',
+        'lastName',
+        'gender',
+        'password',
+        'phoneNumber',
+        'email',
     ];
 }

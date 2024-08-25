@@ -164,8 +164,9 @@ class AdminController extends Controller
 
       };
 
-
     }
+
+
 
     public function search(Request $request)
     {
@@ -193,11 +194,14 @@ class AdminController extends Controller
         $questions = Question::paginate(10);
         return view ('questions.list_question')->with('questions', $questions);
 
+
     }
     public function listCategoryEdit()
     {
         $categories = Category::all();
         return view('questions.edit_question' , compact('categories'));
+
+
     }
 
     public function listCategoryAdd()
@@ -221,6 +225,8 @@ class AdminController extends Controller
             'answer' => 'required',
             'video' => 'nullable' ,
             'photo'=>'required',
+
+
         ]);
 
         // $imagePath =
@@ -276,6 +282,7 @@ class AdminController extends Controller
         $questions = Question::find($id);
         $answers = $questions->answers;
         return view('questions.show_question')->with( 'questions' , $answers);
+
     }
 
 

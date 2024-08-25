@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Question;
-use Illuminate\Support\Facades\DB;
+
 
 class QuestionController extends Controller
 {
@@ -88,6 +88,13 @@ class QuestionController extends Controller
         }
 
         return view('questions.list_question', compact('questions', 'questionsCount'));
+
+    }
+    public function listCategoryQuestion()
+    {
+
+        $categories = Category::all();
+        return view('questions.list_question')->with('categories', $categories);
     }
 
 
@@ -106,6 +113,7 @@ class QuestionController extends Controller
             'answer' => 'required',
             'video' => 'nullable',
             'photo' => 'required',
+
         ]);
 
 
@@ -154,6 +162,14 @@ class QuestionController extends Controller
     {
         $questions = Question::find($id);
         return view('questions.show_question',compact('questions'));
+// Retrieving a question by its ID
+        $question = Question::with('user')->find($id);
+        $answers = $question->answers;
+        $photo = $question->photo;
+        $video = $question->video;
+        // Accessing the user who created the question
+        $user = $question->user;
+        return view('questions.show_question', compact($question, $answers, $photo, $video, $user));
     }
 
     /**
