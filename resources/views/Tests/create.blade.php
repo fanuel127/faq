@@ -7,11 +7,8 @@
     <link rel="stylesheet" href="./bootstrap-5.3.3-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="./bootstrap-5.3.3-dist/css/bootstrap.css">
     <script src="./bootstrap-5.3.3-dist/js/bootstrap.min.js"></script>
-<<<<<<< Updated upstream
     <script src="./bootstrap-5.3.3-dist/js/bootstrap.js"></script>
-
-=======
-    <script src="./bootstrap-5.3.3-dist/js/bootstrap.js"></script> --}}
+    <script src="./bootstrap-5.3.3-dist/js/bootstrap.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
         rel="stylesheet"YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH crossorigin="anonymous">
 
@@ -22,7 +19,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
->>>>>>> Stashed changes
     <title>create test</title>
 </head>
 
