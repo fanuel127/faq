@@ -27,7 +27,6 @@ class User extends Authenticatable implements AuthenticatableContract
         'firstName',
         'lastName',
         'gender',
-        'email',
         'status',
         'password',
         'phoneNumber',
@@ -63,6 +62,8 @@ class User extends Authenticatable implements AuthenticatableContract
 
         return $this->hasMany(Question::class);
     }
+
+
 
     /**
      * Indique si l'utilisateur est actif ou non.

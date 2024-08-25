@@ -2,10 +2,14 @@
 
 namespace Database\Seeders;
 
+
 use App\Models\Category;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+
+
+
 class CategoryTableSeeder extends Seeder
 {
     /**
@@ -13,6 +17,7 @@ class CategoryTableSeeder extends Seeder
      *
      * @return void
      */
+
     public function run(): void
     {
         DB::table('category')->insert([
@@ -21,4 +26,5 @@ class CategoryTableSeeder extends Seeder
         ]);
 
     }
+
 }

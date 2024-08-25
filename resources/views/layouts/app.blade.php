@@ -33,7 +33,11 @@
 
 </head>
 
+<<<<<<< HEAD
 <body class="bg-light">
+=======
+<body>
+>>>>>>> belinda
     <div id="app">
         {{-- <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
