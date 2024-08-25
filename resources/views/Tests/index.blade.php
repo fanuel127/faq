@@ -5,7 +5,9 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+
+        <title>list</title>
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
             rel="stylesheet"YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH crossorigin="anonymous">
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
@@ -14,9 +16,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOsmASjC" crossorigin="anonymous">
-        <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-        <title>list</title>
-    </head>
+        <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">    </head>
     <style>
         body {
             /* font-size: 10px; */
@@ -26,15 +26,43 @@
 
         .card {
             font-size: 13px;
+            border-radius: 0px;
+
+
         }
 
         .table {
             font-size: 13px;
         }
+        .btn{
+            border-radius: 0px;
+        }
+        .badge{
+            border-radius: 0px;
+
+        }
 
          /* a {
             border-radius: none;
         } */
+        #myinputs {
+            font-size: 17px;
+            box-shadow: 0px;
+
+        }
+        .badge{
+            border-radius: 0px;
+
+        }
+        .badge{
+            border-radius: 0px;
+
+        }
+
+        select option {
+            font-size: 14px;
+        }
+
 
         .card-body {
             background-color: whitesmoke;
@@ -48,10 +76,10 @@
 
         }
 
-        .filter {
-            font-size: 20px;
+         /* .filter {
+            font-size: 15px;
 
-        }
+        } */
 
         /* .card{
         margin-left: 400px;
@@ -77,7 +105,7 @@
                             <div class="filter-bar d-flex justify-content-between bg-light mt-1 mb-2" id="filter-bar">
                                 <div class="order mt-3 mb-3">
                                     <label for="sort">Sort by..</label>
-                                    <select class="filter" id="sort">
+                                    <select class="filter" id="myinputs">
                                         <option value="" selected desabled>--</option>
                                         <option value="asc">ascending order</option>
                                         <option value="desc">descending order </option>
@@ -102,7 +130,7 @@
                                 </div>
                                 <div class="status mt-3 mb-3">
                                     <label for="status">Status..</label>
-                                    <select class="filter" name="status" id="status">
+                                    <select class="filter" name="status" id="myinputs">
                                         <option value="" selected desabled>--</option>
                                         <option value="male">Enable</option>
                                         <option value="female">Disable</option>
@@ -111,12 +139,12 @@
                                 <div class="search mt-3 mb-3">
                                     {{-- <input class="form-control search-input filtered" type="search" placeholder="Taper.." aria-label="Search">
                         <button class="btn btn-outline-success filtered" type="submit">Search</button> --}}
-                                    <input class="filter" type="search" id="search" name="search"
+                                    <input class="filter" type="search" id="myinputs" name="search"
                                         placeholder="Search...">
                                 </div>
                             </div>
                             <table class="table table-striped">
-                                <thead class="table-danger ">
+                                <thead class="table-dark ">
                                     <tr>
                                         <th>#</th>
                                         <th>LastName</th>

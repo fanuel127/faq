@@ -22,11 +22,24 @@
             background-color: rgba(248, 237, 237, 0.648);
 
         }
+        .btn{
+            border-radius: 0px;
+        }
+        .badge{
+            border-radius: 0px;
+   
+        }
 
         #myinputs {
-            box-shadow: none;
-            font-size: 14px;
+            font-size: 15px;
+            box-shadow: 0px;
+
         }
+
+        select option {
+            font-size: 16px;
+        }
+
 
 
         .card-body {
@@ -36,6 +49,8 @@
 
         .card {
             font-size: 15px;
+            border-radius: 0px;
+ 
         }
 
         .table {
@@ -51,7 +66,6 @@
 
         .filter {
             font-size: 20px;
-
         }
 
         /* .card{
@@ -109,7 +123,7 @@
                                             placeholder="Search...">
                                     </div>
                                 </div>
-                                <thead class="table-danger">
+                                <thead class="table-dark">
                                     <tr>
                                         <th>#</th>
                                         <th>Question</th>

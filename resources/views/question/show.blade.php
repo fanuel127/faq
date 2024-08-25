@@ -18,48 +18,119 @@
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <title>details</title>
 </head>
+<style>
+    .photo {
+        height: 180px;
+        width: 45vh;
+
+        border-radius: 0px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .photos {
+        /* flex-wrap: wrap; */
+        gap: 15px;
+        display: flex;
+    }
+
+    iframe {
+        width: 94vh;
+        height: 320px;
+        border-radius: 0px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-body {
+        border-radius: 0px;
+    }
+
+    .card-header {
+        border-radius: 0px;
+
+    }
+
+    .btn {
+        border-radius: 0px;
+        text-align: center;
+
+    }
+
+    .card {
+        border-radius: 0px;
+
+    }
+
+    .c {
+        color: orange;
+    }
+
+    /* .detail{
+        background-color: #998772;
+    } */
+</style>
 
 <body>
     <div class="container-fluid mt-3">
         <div class="card">
             <div class="card-header d-flex justify-content-between  bg-secondary">
                 <div class="card-title text-center ">
-                    <h4> <i class="bi bi-question-diamond me-2"></i>Question Details</h4>
+                    <h5 class="text-white"> <i class="c bi bi-question-diamond me-2"></i>Question Details</h5>
                 </div>
-                <a href="{{ url('/question') }}" class="btn btn-info btn-sm" >
+                <a href="{{ url('/question') }}" class=" btn btn-info btn-sm  pt-2">
 
-                    <i class="bi bi-arrow-return-left"></i> Return
+                    <i class="c bi bi-arrow-return-left"></i> Return
                 </a>
             </div>
-            <div class="card-body">
-                <div class="question-detail">
-                    <h4 class="question-title"> Question Title</h4>
-                    <p class="question-description">This is an example of a detailed description that explains the
-                        context and
-                        content of the question in full.</p>
-                    <p class="question-category"><strong>Category:</strong> server problem
-                    </p>
-                    <div class="media-gallery">
-                        <h5>Photo</h5>
-                        <div class="photos">
-                            <img src="{{ asset('image/img4.png') }}" alt="Sample Photo 1" class="photo">
-                        </div>
 
-                        <h5>Video</h5>
-                        <div class="videos">
-                            <iframe src="{{ asset('video/video1.mp4') }}" frameborder="0" allowfullscreen></iframe>
-                        </div>
-                        <div class="question-answer">
-                            <h5>Answer</h5>
-                            <p>This area provides a comprehensive answer to the question posed, detailing all relevant
-                                information.
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6 ">
+                        <div class="detail">
+                            <h5 class="question-title"> Question </h5>
+                            <p> Which movie is recommended for me based on my preferences?</p>
+                            <hr>
+                            <p class="question-category">
+                            <h5>Category</h5>
+                            <p>server problem</p>
                             </p>
+                            <hr><br>
+                            <div class="">
+                                <p class="question-description">
+                                <h5>Description</h5> This is an example of a detailed description that
+                                explains the context and content of the question in full.</p>
+                                <hr>
+                                <div class="question-answer">
+                                    <h5>Answer</h5>
+                                    <p>This area provides a comprehensive answer to the question posed, detailing all
+                                        relevant
+                                        information.
+                                    </p>
+                                    <hr>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                    <div class="col-md-6">
+                        <div class="media-gallery">
+                            <div class="videos">
+                                <iframe src="{{ asset('video/video1.mp4') }}" frameborder="0" allowfullscreen></iframe>
+                            </div>
+
+                            <div class="photos d-flex">
+                                <img src="{{ asset('image/img4.png') }}" alt="Sample Photo 1" class="photo"><br>
+                                <img src="{{ asset('image/img4.png') }}" alt="Sample Photo 1" class="photo">
+                            </div>
+                            <br>
+                            {{-- <h5>Video</h5> --}}
+
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
     </div>
+
 
     {{-- <style>
         .card-body {
@@ -87,7 +158,7 @@
             margin-bottom: 20px;
         }
 
-        /* .media-gallery h4 {
+        /* .media-gallery h5 {
             margin-top: 25px;
             font-size: 1.5em;
             color: #333;

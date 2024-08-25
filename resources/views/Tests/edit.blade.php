@@ -33,6 +33,7 @@
 
     #btn {
         color: white;
+        border-radius: 0px;
     }
 </style>
 
@@ -49,7 +50,7 @@
                         <div class="card-header ">
                             <div class="card-title  d-flex justify-content-between text-center">
                                 <h4><i class="bi bi-pen-fill me-2"></i>Edit User</h4>
-                                <a href="{{ url('/test' ) }}" class="btn btn-info btn-sm">
+                                <a href="{{ url('/test' ) }}" class="btn btn-info btn-sm rounded-0">
                                     <i  class="bi bi-arrow-return-left"></i>
                                     Return
                                 </a>
