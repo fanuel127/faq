@@ -76,6 +76,11 @@
     border: none;
   }
 
+  .img {
+    max-width: auto;
+    max-height: 50vh;
+  }
+
   @media(min-width:768px) {
     #sidebar-wrapper {
       margin-left: 0;

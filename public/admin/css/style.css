@@ -132,3 +132,15 @@ li {
     font-size: 23px;
     font-weight:800;
 }
+
+.card{
+    border-radius: 0px;
+}
+
+img{
+   cursor: pointer;
+}
+
+.imageshow {
+    margin-left: 10px;
+}

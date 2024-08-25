@@ -24,21 +24,21 @@
                         <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                     </li>
                 @endif --}}
-            @else
-                {{-- <li><a href="#" class="dropdown-item">Profile</a></li> --}}
+                @else
+                    {{-- <li><a href="#" class="dropdown-item">Profile</a></li> --}}
                 <li class="nav-item dropdown">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         {{ Auth::user()->lastName }}
                     </a>
 
-                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <div class="dropdown-menu dropdown-menu-end rounded-0" aria-labelledby="navbarDropdown">
                         <a href="{{ url('/users/profile_user') }}" class="dropdown-item">Profile</a>
-                        
+
                         <a class="dropdown-item" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
+                            {{ __('Deconnexion') }}
                         </a>
 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -47,7 +47,6 @@
                     </div>
                 </li>
             @endguest
-            {{-- <li><a href="{{ url('/login') }}"class="dropdown-item">Logout</a></li> --}}
             </li>
 
         </ul>

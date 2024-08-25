@@ -6,13 +6,9 @@
         @if ($errors->any())
             <ul>
                 @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
+                    <li>
+                        <h4><i class="bi bi-x-circle-fill me-2 text-danger"></i>{{ $error }}</h4>
+                    </li>
                 @endforeach
             </ul>
         @endif
@@ -21,7 +17,7 @@
         <form action="{{ route('questions.store') }}" method="post">
             {!! csrf_field() !!}
             @method('post')
-            <div style="display:flex; justify-content:space-between;margin: 30px;">
+            <div class=" d-flex justify-content-between">
                 <h4>Gestions des questions</h4>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
@@ -32,75 +28,87 @@
                 </nav>
 
             </div>
-            <div class="card bg-light">
-                <div class="card-header bg-secondary">
-                    <h2 style="color: whitesmoke;"><i class="bi bi-plus-square me-2"></i>Ajouter une question</h2>
+            <div class="card bg-light rounded-0">
+                <div class="card-header bg-secondary text-white d-flex justify-content-between">
+                    <h4><i class="bi bi-plus-square me-2"></i>Ajouter une question</h4>
+                    <a href="{{ url('/questions/list_question') }}" class="btn btn-lg btn-primary rounded-0 text-white"><i
+                            class="bi bi-arrow-return-left me-2"></i>Retour</a>
                 </div>
-                <div class="card-body" style="display: flex; justify-content:space-around; margin-top:3%;">
-                    <div>
-                        <label for="exampleFormControlTextarea1" class="form-label">
-                            <h4>Nom de la question<span class="text-danger">*</span></h4>
-                        </label>
-                        <input class="form-control" name="questionName" id="exampleFormControlTextarea1">
+                <div class="card-body">
+                    <div class="row">
+                        <h4 class="mt-3 ">les champs marqués d'un Astérix <span class="text-danger">(*)</span> sont
+                            obligatoires
+                        </h4>
+                        <div class="col-md-6 mt-3">
+                            <div>
+                                <label for="exampleFormControlTextarea1" class="form-label">
+                                    <h4>Nom de la question<span class="text-danger">*</span></h4>
+                                </label>
+                                <input class="form-control rounded-0" name="questionName" id="exampleFormControlTextarea1">
+                            </div>
+                            <br>
+                            <div>
+                                <label for="formFile" class="form-label">
+                                    <h4>Image de la question<span class="text-danger">*</span></h4>
+                                </label>
+                                <input class="form-control rounded-0" name="photo" type="file" id="formFile">
+                            </div>
+                            <br>
+                            <div>
+                                <label for="formFileMultiple" class="form-label">
+                                    <h4>Video de la question</h4>
+                                </label>
+                                <input class="form-control rounded-0" name="video" type="file" id="formFileMultiple"
+                                    multiple>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mt-3">
+                            <div>
+                                <label for="exampleFormControlTextarea3 form-group col-md-6 mb-3" class="form-label">
+                                    <h4>Categorie de la question<span class="text-danger">*</span></h4>
+                                </label>
+                                <select class="form-select rounded-0" name="category_id" id="category">
+                                    <option value="" selected disabled>selectionner votre categorie</option>
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    @endforeach
+
+                                </select>
+                            </div>
+                            <br>
+                            <div>
+                                <label for="formFile" class="form-label">
+                                    <h4>Image de la question<span class="text-danger">*</span></h4>
+                                </label>
+                                <input class="form-control rounded-0" name="photo2" type="file" id="formFile">
+                            </div>
+                            <br>
+                            <div>
+                                <label for="exampleFormControlTextarea1" class="form-label">
+                                    <h4>Solution à la question<span class="text-danger">*</span></h4>
+                                </label>
+                                <input class="form-control rounded-0" name="answer" id="exampleFormControlTextarea1">
+                            </div>
+
+                        </div>
                     </div>
-                    <div>
+                    <div class="mt-3">
                         <label for="exampleFormControlTextarea2 form-group col-md-6 mb-3" class="form-label">
                             <h4>Description de la question<span class="text-danger">*</span></h4>
                         </label>
-                        <textarea class="form-control" name="description" id="exampleFormControlTextarea2" rows="3" style="width: 800px;"></textarea>
+                        <textarea class="form-control rounded-0" name="description" id="exampleFormControlTextarea2"></textarea>
                     </div>
-                </div>
-
-                <div style="display: flex; justify-content:space-around; margin-top:2%;">
-                    <div>
-                        <label for="formFile" class="form-label">
-                            <h4>Image de la question<span class="text-danger">*</span></h4>
-                        </label>
-                        <input class="form-control" name="photo" type="file" id="formFile" style="width: 800px;">
-                    </div>
-                    <div>
-                        <label for="formFileMultiple" class="form-label">
-                            <h4>Video de la question</h4>
-                        </label>
-                        <input class="form-control" name="video" type="file" id="formFileMultiple"
-                            style="width: 800px;" multiple>
-                    </div>
-                </div>
-
-                <div style="display: flex; justify-content:space-around; margin-top:2%; margin-bottom:80px;">
-                    <div>
-                        <label for="exampleFormControlTextarea3 form-group col-md-6 mb-3" class="form-label">
-                            <h4>Categorie de la question<span class="text-danger">*</span></h4>
-                        </label>
-                        <select class="form-select" name="category_id" style="width: 800px;" id="category">
-                            <option value="" selected disabled>selectionner votre categorie</option>
-                            @foreach ($categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->name }}</option>
-                            @endforeach
-
-                        </select>
-                    </div>
-                    <div>
-                        <label for="exampleFormControlTextarea1" class="form-label">
-                            <h4>Solution à la question<span class="text-danger">*</span></h4>
-                        </label>
-                        <textarea class="form-control" name="answer" id="exampleFormControlTextarea1" rows="3" style="width: 800px;"></textarea>
-                    </div>
-                </div>
-
-                <div style="display: flex; justify-content:space-around; margin-top:25px; margin-bottom:80px;">
-                    <div>
-                        <button type="button" class="btn btn-lg btn-primary"style="width: 800px ;margin-left:25px;">
-                            <a href="{{ url('/questions/list_question') }}" style="color: black;"><i
-                                    class="bi bi-backspace-fill me-2"></i>Annuler</a>
+                    <div class="d-flex justify-content-between mt-3">
+                        <button type="reset" class="btn btn-danger btn-lg" id="mybutton">
+                            <i class="bi bi-backspace-fill me-2"></i>Annuler
                         </button>
+                        <div>
+                            <button type="submit" class="btn btn-lg btn-warning rounded-0 text-white">
+                                <i class="bi bi-save me-2"></i>Enregistrer
+                            </button>
+                        </div>
                     </div>
-                    <div>
-                        <button type="submit"
-                            class="btn btn-lg"style="width: 800px ; color: black;background-color:orange;margin-left:10px;">
-                            <i class="bi bi-save me-2"></i>Enregistrer
-                        </button>
-                    </div>
+
                 </div>
             </div>
         </form>

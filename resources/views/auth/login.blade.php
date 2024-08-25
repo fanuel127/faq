@@ -15,7 +15,7 @@
 
                             <div class="row mb-3 mt-4">
                                 <label for="email" class="col-md-4 col-form-label text-md-end">
-                                    <h3>{{ __('Adresse Email') }}</h3>
+                                    <h5>{{ __('Adresse Email') }}</h5>
                                 </label>
 
                                 <div class="col-md-6">
@@ -35,7 +35,7 @@
 
                             <div class="row mb-3">
                                 <label for="password" class="col-md-4 col-form-label text-md-end">
-                                    <h3>{{ __('Mot De Passe') }}</h3>
+                                    <h5>{{ __('Mot De Passe') }}</h5>
                                 </label>
 
                                 <div class="col-md-6">
@@ -58,13 +58,13 @@
                                         id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                                     <label class="form-check-label mt-4" for="remember">
-                                        <h3>{{ __('Remember Me') }}</h3>
+                                        <h5>{{ __('Remember Me') }}</h5>
                                     </label>
                                 </div>
                                 <div style="margin-left: 45vh;">
                                     @if (Route::has('password.request'))
                                         <a class="btn btn-link text-warning" href="{{ route('password.request') }}">
-                                            <h3>{{ __('Mot De Passe Oublié ?') }}</h3>
+                                            <h5>{{ __('Mot De Passe Oublié ?') }}</h5>
                                         </a>
                                     @endif
                                 </div>
@@ -72,7 +72,7 @@
                             <div class="row mb-0">
                                 <div class="col-md-8 mb-4 offset-md-4">
                                     <button type="submit" class="btn btn-warning rounded-0 text-white">
-                                        <h3>{{ __('Se Connecter') }}</h3>
+                                        <h5>{{ __('Se Connecter') }}</h5>
                                     </button>
                                 </div>
                             </div>
@@ -90,7 +90,7 @@
                 <div class="col-md-12 col-lg-10">
                     <div class="wrap d-md-flex">
                         <div class="img">
-                            <img src="{{ asset('image/img2.jpg') }}">
+                            <img src="{{ asset('image/streaming5.png') }}" height="550">
                         </div>
                         <div class="login-wrap p-4 p-md-5">
                             <div class="d-flex">
@@ -102,7 +102,7 @@
                                 @csrf
                                 <div class="form-group mb-3">
                                     <label for="email" class="col-md-4 col-form-label">
-                                        {{ __('Adresse Email') }}
+                                        <h5>{{ __('Adresse Email') }}</h5>
                                     </label>
                                     <input id="email" type="email"
                                     class="form-control bg-white rounded-0 @error('email') is-invalid @enderror" name="email"
@@ -116,7 +116,7 @@
                                 </div>
                                 <div class="form-group mb-3">
                                     <label for="password" class="col-md-4 col-form-label">
-                                        {{ __('Mot De Passe') }}
+                                        <h5>{{ __('Mot De Passe') }}</h5>
                                     </label>
                                     <input id="password" type="password"
                                         class="form-control bg-white rounded-0 @error('password') is-invalid @enderror"

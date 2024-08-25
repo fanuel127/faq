@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('description');
             $table->string('answer');
             $table->text('photo');
+            $table->text('photo2');
             $table->text('video')->nullable;
             // $table->unsignedBigInteger('user_id')->default('1');
             // $table->foreign('user_id')->constrained()->references('id')->on('users')

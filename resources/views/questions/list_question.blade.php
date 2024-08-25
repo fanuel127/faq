@@ -5,7 +5,8 @@
         <h4>Gestions des questions</h4>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}" style="color: black;text-decoration:0;">Accueil</a></li>
+                <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}"
+                        style="color: black;text-decoration:0;">Accueil</a></li>
                 <li class="breadcrumb-item">Questions</li>
                 <li class="breadcrumb-item active" aria-current="page">Liste des questions</li>
             </ol>
@@ -31,12 +32,12 @@
                     </div>
                     <div class="card-body">
                         <form action="{{ route('questions.total') }}" method="GET">
-                            <div class="filter-bar d-flex justify-content-between bg-light mt-3 mb-4 rounded-0" id="filter-bar"
-                                style="padding-top: 10px; padding-bottom:10px;">
+                            <div class="filter-bar d-flex justify-content-between bg-light mt-3 mb-4 rounded-0"
+                                id="filter-bar" style="padding-top: 10px; padding-bottom:10px;">
                                 <div class="order mt-3 mb-3">
                                     <label for="myinputs">Trie par..</label>
                                     <select class="filtered" name="sort" id="myinputs">
-                                        <option value="" selected desabled>--</option>
+                                        <option value="" selected>--</option>
                                         <option value="asc">Ordre croissant</option>
                                         <option value="desc">Ordre decroissant</option>
                                     </select>
@@ -44,10 +45,17 @@
                                 <div class="sort mt-3 mb-3">
                                     <label for="myinputs">De..</label>
                                     <select class="filtered" name="sort" id="myinputs">
+                                        <canvas value="" selected desabled>--</option>
+                                            <option value="questionName">Nom</option>
+                                            {{-- <option value="description">description</option> --}}
+                                    </select>
+                                </div>
+                                <div class="name mt-3 mb-3">
+                                    <label for="myinputs">categorie..</label>
+                                    <select class="filtered" name="mame" id="myinputs">
                                         <option value="" selected desabled>--</option>
-                                        <option value="questionName">Nom</option>
-                                        <option value="description">description</option>
-                                        <option value="name">categorie</option>
+                                        <option value="">Probleme Serveur</option>
+                                        <option value="">Difficulte de lecture</option>
                                     </select>
                                 </div>
                                 <div class="search mt-3 mb-3">
@@ -59,15 +67,13 @@
                             </div>
                         </form>
                         <div class="table-responsive">
-                            <table id="example" class="table align-middle" style="width:100%">
+                            <table id="example" class="table table-striped table-hover align-middle" style="width:100%">
                                 <thead class="table-dark">
                                     <tr>
                                         <th>#</th>
                                         <th>Nom</th>
                                         <th>Categorie</th>
                                         <th>Description</th>
-                                        <th>Image</th>
-                                        <th>Video</th>
                                         <th>Solution</th>
                                         <th>Actions</th>
                                     </tr>
@@ -80,31 +86,26 @@
                                         @php
                                             $i++;
                                         @endphp
-                                    <tr>
-                                        <td>{{ $i }}</td>
-                                        <td>{{ $question->questionName }}</td>
-                                        <td>{{ $question->name}}</td>
-                                        <td>{{ $question->description }}</td>
-                                        <td>
-                                            @if ($question->photo)
-                                                <img src="{{ asset('image/' . $question->photo) }}">
-                                            @endif
-                                        </td>
-                                        <td>{{ $question->video }}</td>
-                                        <td>{{ $question->answer }}</td>
-                                        <td class="d-flex align-middle">
-                                            <a href="{{ url('/questions/update/' .$question->id) }}" title="Modifier" class="btn btn-warning rounded-0 ">
-                                                <i class="fas fa-edit "></i>
-                                            </a>
-
-                                            <form method="POST">
-                                                <a class="btn btn-primary mx-3 rounded-0" title="Voir plus"
-                                                    href="{{ url('/questions/show_question/' .$question->id) }}"style="text-decoration: 0;color:black;">
-                                                    <i class="fas fa-eye"></i>
+                                        <tr>
+                                            <td>{{ $i }}</td>
+                                            <td>{{ $question->questionName }}</td>
+                                            <td>{{ $question->name }}</td>
+                                            <td>{{ $question->description }}</td>
+                                            <td>{{ $question->answer }}</td>
+                                            <td class="d-flex align-middle">
+                                                <a href="{{ url('/questions/update/' . $question->id) }}" title="Modifier"
+                                                    class="btn btn-warning rounded-0 ">
+                                                    <i class="fas fa-edit "></i>
                                                 </a>
-                                            </form>
-                                        </td>
-                                    </tr>
+
+                                                <form method="POST">
+                                                    <a class="btn btn-primary mx-3 rounded-0" title="Voir plus"
+                                                        href="{{ url('/questions/show_question/' . $question->id) }}"style="text-decoration: 0;color:black;">
+                                                        <i class="fas fa-eye"></i>
+                                                    </a>
+                                                </form>
+                                            </td>
+                                        </tr>
                                     @endforeach
                                 </tbody>
                             </table>

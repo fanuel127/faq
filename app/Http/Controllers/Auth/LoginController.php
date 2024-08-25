@@ -54,24 +54,20 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-        // $email = $request->input('email');
-        // $password = $request->input('password');
 
-        $credentials = $request->only('email','password');
+        $credentials = $request->only('email', 'password');
 
         $remember = $request->has('remember_me');
 
-        // if(Auth::attempt(['email' => $email, 'password' => $password] , $remember ))
-        // {
-        //     return redirect()->intended('/dashboard');
-        // }
-
-        if (Auth::attempt($credentials , $remember)) {
+        if (Auth::attempt($credentials, $remember)) {
             // Authentification réussie
             return redirect()->intended('/dashboard');
         } else {
             // Authentification échouée
-            return back()->withErrors(['email' => 'Les informations d\'identification ne correspondent pas.']);
+            return back()->withErrors([
+                'email' => 'L\'email ne correspond pas.',
+                'password' => 'Le mot de passe ne correspond pas.',
+            ]);
         }
     }
 

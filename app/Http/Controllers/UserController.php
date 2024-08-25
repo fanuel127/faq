@@ -23,7 +23,7 @@ class UserController extends  Controller
     {
         // $users = User::paginate(10);
         // return view('users.list_user')->with('users', $users);
-
+        $roles = Role::all();
         $users = User::join('role', 'users.role_id', '=', 'role.id')
             ->select(
                 'users.role_id',
@@ -38,9 +38,9 @@ class UserController extends  Controller
                 'users.created_at',
                 'role.role_name as role_name'
             )
-            ->orderBy('users.firstName','asc')
+            ->orderBy('users.firstName', 'asc')
             ->get();
-        return view('users.list_user')->with('users', $users);
+        return view('users.list_user', compact('users', 'roles'));
     }
 
     //modifier le mot de passe de l'utilisateur connecter dans la page profile_user
@@ -112,6 +112,69 @@ class UserController extends  Controller
         return view('users.list_user', compact('users', 'usersCount'));
     }
 
+    public function filter(Request $request)
+    {
+        $users = User::join('role', 'users.role_id', '=', 'role.id')
+            ->select(
+                'users.role_id',
+                'users.id',
+                'users.firstName',
+                'users.lastName',
+                'users.email',
+                'users.gender',
+                'users.phoneNumber',
+                'users.status',
+                'users.updated_at',
+                'users.created_at',
+                'role.role_name as role_name'
+            )
+            ->orderBy('users.firstName', 'asc');
+        // Début de la requête Eloquent
+
+        // Vérifier si l'utilisateur a sélectionné un ordre de tri et un champ
+        if ($request->has('order') && $request->has('sort')) {
+            $order = $request->input('order');
+            $sort = $request->input('sort');
+
+            if ($order === 'asc') {
+                $users->orderBy($sort, 'asc'); // Trie par le champ sélectionné croissant
+            } else if ($order === 'desc') {
+                $users->orderBy($sort, 'desc'); // Trie par le champ sélectionné décroissant
+            }
+        }
+
+        // Vérifier si l'utilisateur a sélectionné une role
+        if ($request->has('role')) {
+            $role = $request->input('role');
+            $users->where('role_id', $role); // Filtre par role
+            // dd($users->toSql()); // View the generated SQL query here
+
+        }
+
+        // Vérifier si l'utilisateur a sélectionné le sexe
+        if ($request->has('gender')) {
+            $gender = $request->input('gender');
+            $users->where('gender', $gender); // Filtre par sexe
+            // dd($users->toSql()); // View the generated SQL query here
+        }
+
+
+        // Vérifier si l'utilisateur a sélectionné le status
+        if ($request->has('status')) {
+            $status = $request->input('status');
+            $users->where('status', $status); // Filtre par status
+            // dd($users->toSql()); // View the generated SQL query here
+
+        }
+
+        $users =  $users->get(); //Exécute la requête et récupère les résultats
+
+        // Récupérer la liste des roles
+        $roles = Role::all();
+
+        return view('users.list_user', compact('users', 'roles')); // Envoie les données à la vue
+    }
+
     public function search(Request $request)
     {
         $query = $request->input('query');
@@ -127,18 +190,6 @@ class UserController extends  Controller
         ]);
     }
 
-
-    public function listRole()
-    {
-        $roles = Role::all();
-        return view('users.add_user', compact('roles'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $roles = Role::all();
@@ -183,45 +234,65 @@ class UserController extends  Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // public function show($id)
-    // {
-    //     $users = User::find($id);
-    //     return view('users.show_user')->with('users', $users);
-    // }
 
     public function show($id)
     {
-        $users = User::findOrFail($id);
+        // $users = User::findOrFail($id);
+        $users = User::join('role', 'users.role_id', '=', 'role.id')
+            ->select(
+                'users.role_id',
+                'users.id',
+                'users.firstName',
+                'users.lastName',
+                'users.gender',
+                'users.email',
+                'users.phoneNumber',
+                'users.status',
+                'users.updated_at',
+                'users.created_at',
+                'role.role_name'
+            )
+            ->where('users.id',$id)
+            ->first();
 
         // Détermine l'image à afficher en fonction du genre
         if ($users->gender == 'masculin') {
             $image = 'homme.png';
         } else {
-            $image = 'fille.png';
+            $image = 'female.png';
         }
 
-        return view('users.show_user', compact('users', 'image'));
+        return view('users.show_user', compact('users', 'image', $users));
     }
 
-    // public function showp($id)
-    // {
-    //     $users = User::findOrFail($id);
+    public function profil()
+    {
+        $users = User::join('role', 'users.role_id', '=', 'role.id')
+            ->select(
+                'users.role_id',
+                'users.id',
+                'users.firstName',
+                'users.lastName',
+                'users.gender',
+                'users.email',
+                'users.phoneNumber',
+                'users.status',
+                'users.updated_at',
+                'users.created_at',
+                'role.role_name'
+            )
+            ->where('users.id')
+            ->first();
 
-    //     // Détermine l'image à afficher en fonction du genre
-    //     if ($users->gender == 'masculin') {
-    //         $image = 'homme.png';
-    //     } else {
-    //         $image = 'fille.png';
-    //     }
+        // Détermine l'image à afficher en fonction du genre
+        if (Auth::user()->gender == 'masculin') {
+            $image = 'image/homme.png';
+        } else {
+            $image = 'image/female.png';
+        }
 
-    //     return view('users.profile_user', compact('users', 'image'));
-    // }
-
-    //  public function show(User $users)
-    //  {
-
-    //      return view('users.show_user', compact('users'));
-    //  }
+        return view('users.profile_user', compact('users', 'image'));
+    }
 
     public function update($id, Request $request)
     {
@@ -237,7 +308,6 @@ class UserController extends  Controller
 
         User::whereId($id)->update($data);
         return redirect('users/list_user')->with('Success', 'utilisateur modifier');
-
     }
 
 
@@ -265,13 +335,6 @@ class UserController extends  Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // public function toggleStatus(string $i)
-    // {
-    //     $user = User::FindOrFail($i);
-    //     $user->status = !$user->status;
-    //     $user->save();
-    //     return redirect('users.update')->with('success', 'Utilisateur active!');
-    // }
 
     public function status($id)
     {

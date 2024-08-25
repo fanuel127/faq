@@ -26,6 +26,7 @@ class QuestionController extends Controller
                 'question.questionName',
                 'question.description',
                 'question.photo',
+                'question.photo2',
                 'question.video',
                 'question.answer',
                 'question.updated_at',
@@ -48,6 +49,7 @@ class QuestionController extends Controller
                 'question.questionName',
                 'question.description',
                 'question.photo',
+                'question.photo2',
                 'question.video',
                 'question.answer',
                 'question.updated_at',
@@ -67,8 +69,7 @@ class QuestionController extends Controller
         if ($request->has('search')) {
             $questions = $questions->filter(function ($question) use ($request) {
                 return stripos($question->questionName, $request->input('search')) !== false
-                    || stripos($question->description, $request->input('search')) !== false
-                    || stripos($question->name, $request->input('search')) !== false;
+                    || stripos($question->description, $request->input('search')) !== false;
             });
         }
 
@@ -76,8 +77,7 @@ class QuestionController extends Controller
         if ($request->has('search')) {
             $questions = $questions->filter(function ($question) use ($request) {
                 return stripos($question->questionName, $request->input('search')) !== false
-                    || stripos($question->description, $request->input('search')) !== false
-                    || stripos($question->name, $request->input('search')) !== false;
+                    || stripos($question->description, $request->input('search')) !== false;
             });
         }
 
@@ -106,6 +106,7 @@ class QuestionController extends Controller
             'answer' => 'required',
             'video' => 'nullable',
             'photo' => 'required',
+            'photo2' => 'required',
         ]);
 
 
@@ -115,6 +116,7 @@ class QuestionController extends Controller
             'description' => $request['description'],
             'answer' => $request['answer'],
             'photo' =>  $request['photo'],
+            'photo2' =>  $request['photo2'],
             'video' =>  $request['video'],
         ]);
 
