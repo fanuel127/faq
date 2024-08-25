@@ -3,16 +3,13 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\UserController;
-<<<<<<< HEAD
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\loginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Question\QuestionController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
-=======
-use App\Http\Controllers\Question\QuestionController;
->>>>>>> belinda
+// use App\Http\Controllers\Question\QuestionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +21,6 @@ use App\Http\Controllers\Question\QuestionController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-<<<<<<< HEAD
 
 Route::get('/', function () {
     return view('welcome');
@@ -36,7 +32,6 @@ Route::get('/test/create', [TestController::class, 'create'])->name('Test.create
 Route::post('/test', [TestController::class, 'store'])->name('Test.store');
 Route::get('/test/{id}/edit', [TestController::class, 'edit'])->name('Test.edit');
 Route::put('/test/update', [TestController::class, 'update'])->name('Test.update');
-=======
 //route controller test
 Route::get('/test', [TestController::class, 'index'])->name('Tests.index');
 Route::get('/test/create', [TestController::class, 'create'])->name('Tests.create');
@@ -75,7 +70,6 @@ Route::get('/question/edit', function () {
 Route::get('/question/show', function () {
     return view('question.show');
 });
->>>>>>> belinda
 
 
 

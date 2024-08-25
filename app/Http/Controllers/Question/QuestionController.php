@@ -6,10 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Question;
-<<<<<<< HEAD
 use Illuminate\Support\Facades\DB;
-=======
->>>>>>> belinda
 
 class QuestionController extends Controller
 {
@@ -68,7 +65,6 @@ class QuestionController extends Controller
     public function totalQuestions(Request $request)
     {
         $questions = Question::all();
-<<<<<<< HEAD
 
         if ($request->has('search')) {
             $questions = $questions->filter(function ($question) use ($request) {
@@ -92,7 +88,6 @@ class QuestionController extends Controller
         }
 
         return view('questions.list_question', compact('questions', 'questionsCount'));
-=======
         return view('questions.list_question')->with('questions', $questions);
     }
     public function listCategoryQuestion()
@@ -100,7 +95,6 @@ class QuestionController extends Controller
 
         $categories = Category::all();
         return view('questions.list_question')->with('categories', $categories);
->>>>>>> belinda
     }
 
 
@@ -112,7 +106,6 @@ class QuestionController extends Controller
      */
     public function storeQuestions(Request $request)
     {
-<<<<<<< HEAD
         $request->validate([
             'questionName' => 'required|string|max:255',
             'category_id' => 'required|string|exists:category,id',
@@ -121,7 +114,7 @@ class QuestionController extends Controller
             'video' => 'nullable',
             'photo' => 'required',
             'photo2' => 'required',
-=======
+
         $input = $request->validate([
             'questionName' => 'required',
             'category_id' => 'required|exists:Category,id',
@@ -130,10 +123,8 @@ class QuestionController extends Controller
             'video' => 'required|string',
             'photo' => 'required',
             'user_id' => 'required|exists:user,id',
->>>>>>> belinda
-        ]);
-
-
+        ])
+    ]);
         Question::create([
             'questionName' => $request['questionName'],
             'category_id' => $request['category_id'],
@@ -178,10 +169,8 @@ class QuestionController extends Controller
      */
     public function sowQuestions($id)
     {
-<<<<<<< HEAD
         $questions = Question::find($id);
         return view('questions.show_question',compact('questions'));
-=======
         // $question = Question::find($id);
         // Retrieving a question by its ID
         $question = Question::with('user')->find($id);
@@ -191,7 +180,6 @@ class QuestionController extends Controller
         // Accessing the user who created the question
         $user = $question->user;
         return view('questions.show_question', compact($question, $answers, $photo, $video, $user));
->>>>>>> belinda
     }
 
     /**
