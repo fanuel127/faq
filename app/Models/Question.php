@@ -9,7 +9,7 @@ class Question extends Model
 {
     use HasFactory;
 
-    protected $table = "question";
+    protected $table = "questions";
     protected $primarykey = 'id';
     protected $fillable = [
         'questionName',
