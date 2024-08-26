@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Question;
+
+
 use Illuminate\Support\Facades\DB;
 
 class QuestionController extends Controller
@@ -88,6 +90,8 @@ class QuestionController extends Controller
         }
 
         return view('questions.list_question', compact('questions', 'questionsCount'));
+
+
         return view('questions.list_question')->with('questions', $questions);
     }
     public function listCategoryQuestion()
@@ -115,6 +119,9 @@ class QuestionController extends Controller
             'photo' => 'required',
             'photo2' => 'required',
 
+        ]);
+
+
         $input = $request->validate([
             'questionName' => 'required',
             'category_id' => 'required|exists:Category,id',
@@ -123,8 +130,8 @@ class QuestionController extends Controller
             'video' => 'required|string',
             'photo' => 'required',
             'user_id' => 'required|exists:user,id',
-        ])
-    ]);
+        ]);
+
         Question::create([
             'questionName' => $request['questionName'],
             'category_id' => $request['category_id'],
@@ -171,6 +178,8 @@ class QuestionController extends Controller
     {
         $questions = Question::find($id);
         return view('questions.show_question',compact('questions'));
+// Retrieving a question by its ID
+
         // $question = Question::find($id);
         // Retrieving a question by its ID
         $question = Question::with('user')->find($id);

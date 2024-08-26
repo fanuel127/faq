@@ -175,20 +175,20 @@ class AdminController extends Controller
         return view('users.list_user', compact('users', 'roles')); // Envoie les données à la vue
     }
 
-    public function search(Request $request)
-    {
-        $query = $request->input('query');
-        // Effectuer la recherche dans votre base de données ou autre logique
-        $results = User::where('firstName', 'LIKE', "%{$query}%")->paginate(10);
+    // public function search(Request $request)
+    // {
+    //     $query = $request->input('query');
+    //     // Effectuer la recherche dans votre base de données ou autre logique
+    //     $results = User::where('firstName', 'LIKE', "%{$query}%")->paginate(10);
 
-        return response()->json([
-            'data' => $results->items(),
-            'current_page' => $results->currentPage(),
-            'last_page' => $results->lastPage(),
-            'total' => $results->total(),
-            'links' => $results->links('pagination::bootstrap-4')->toHtml()
-        ]);
-    }
+    //     return response()->json([
+    //         'data' => $results->items(),
+    //         'current_page' => $results->currentPage(),
+    //         'last_page' => $results->lastPage(),
+    //         'total' => $results->total(),
+    //         'links' => $results->links('pagination::bootstrap-4')->toHtml()
+    //     ]);
+    // }
 
     public function create()
     {
@@ -355,39 +355,36 @@ class AdminController extends Controller
     //     return redirect('users.update')->with('success', 'Utilisateur active!');
     // }
 
-    public function status($id)
-    {
-        $user = User::find($id);
-        $user->status = !$user->status;
-        if ($user->save()) {
-            return back();
-        } else {
-            return redirect(route('status'));
-        };
-        //    $status = optional($i)->status; // Cela retourne null si $objet est null
-        $user->status = !$user->status;
-        if ($user->save()) {
-
-            return redirect(route('users.list_user'))->with('success', 'Utilisateur active!');
-        } else {
-            return redirect(route('status'));
-        };
-    }
-
-
-    // public function search(Request $request)
+    // public function status($id)
     // {
-    //     $query = $request->input('query');
 
-    //     $users = User::where('firstName', 'like', "%$query%")
-    //         ->orWhere('email', 'like', "%$query%")
-    //         ->get();
+    //     //    $status = optional($i)->status; // Cela retourne null si $objet est null
+    //     $users->status = !$users->status;
+    //     if ($users->save()) {
 
-    //     return view('admin.search', [
-    //         'users' => $users,
-    //         'query' => $query,
-    //     ]);
+    //         return redirect(route('users.list_user'))->with('success', 'Utilisateur active!');
+    //     } else {
+    //         return redirect(route('status'));
+    //     };
     // }
+
+
+
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+
+        $users = User::where('firstName', 'like', "%$query%")
+            ->orWhere('email', 'like', "%$query%")
+            ->get();
+
+        return view('admin.search', [
+            'users' => $users,
+            'query' => $query,
+        ]);
+
+    }
 
     //questions
 
@@ -398,6 +395,11 @@ class AdminController extends Controller
      */
     public function indexQuestions()
     {
+        $questions = Question::paginate(10);
+        return view ('questions.list_question')->with('questions', $questions);
+
+
+
         // $questions = Question::paginate(10);
         // return view ('questions.list_question')->with('questions', $questions);
         $questions = Question::join('category', 'question.category_id', '=', 'category.id')
@@ -446,6 +448,7 @@ class AdminController extends Controller
     public function totalQuestions(Request $request)
     {
         $questions = Question::all();
+
         if ($request->has('search')) {
             $questions = $questions->filter(function ($question) use ($request) {
                 return stripos($question->questionName, $request->input('search')) !== false
@@ -468,13 +471,16 @@ class AdminController extends Controller
         }
 
         return view('questions.list_question', compact('questions', 'questionsCount'));
+
         return view('questions.list_question')->with('questions', $questions);
     }
     public function listCategoryQuestion()
     {
 
+
         $categories = Category::all();
         return view('questions.list_question')->with('categories', $categories);
+
     }
 
 
@@ -486,14 +492,19 @@ class AdminController extends Controller
      */
     public function storeQuestions(Request $request)
     {
+
         $request->validate([
             'questionName' => 'required|string|max:255',
             'category_id' => 'required|string|exists:category,id',
             'description' => 'required',
             'answer' => 'required',
+
+
+
             'video' => 'nullable',
             'photo' => 'required',
             'photo2' => 'required',
+
         $input = $request->validate([
             'questionName' => 'required',
             'category_id' => 'required|unique|exists:user,id',
@@ -503,7 +514,8 @@ class AdminController extends Controller
             'photo' => 'required|unique',
             'user_id' => 'required|exists:user,id',
         ])
-    ]);
+
+        ]);
 
 
         Question::create([
@@ -550,11 +562,13 @@ class AdminController extends Controller
      */
     public function sowQuestions($id)
     {
-        $questions = Question::find($id);
-        return view('questions.show_question',compact('questions'));
+
+
+
         $question = Question::find($id);
         $answers = $question->answers;
         return view('questions.show_question')->with($question, $answers);
+
     }
 
     /**

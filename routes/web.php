@@ -7,8 +7,9 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\loginController;
 use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\Question\QuestionController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
+use App\Http\Controllers\Question\QuestionController;
+
 // use App\Http\Controllers\Question\QuestionController;
 
 /*
@@ -26,12 +27,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//test
-Route::get('/test', [TestController::class, 'index'])->name('Test.index');
-Route::get('/test/create', [TestController::class, 'create'])->name('Test.create');
-Route::post('/test', [TestController::class, 'store'])->name('Test.store');
-Route::get('/test/{id}/edit', [TestController::class, 'edit'])->name('Test.edit');
-Route::put('/test/update', [TestController::class, 'update'])->name('Test.update');
 //route controller test
 Route::get('/test', [TestController::class, 'index'])->name('Tests.index');
 Route::get('/test/create', [TestController::class, 'create'])->name('Tests.create');
