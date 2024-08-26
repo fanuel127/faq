@@ -32,9 +32,9 @@
                     </div>
                     <div class="card-body">
                         <form action="{{ route('questions.total') }}" method="GET">
-                            <div class="filter-bar d-flex justify-content-between bg-light mt-3 mb-4 rounded-0"
+                            <div class="filter-bar d-flex justify-content-between bg-light mt-2 mb-3 rounded-0"
                                 id="filter-bar" style="padding-top: 10px; padding-bottom:10px;">
-                                <div class="order mt-3 mb-3">
+                                <div class="order mt-3 mb-2">
                                     <label for="myinputs">Trie par..</label>
                                     <select class="filtered" name="sort" id="myinputs">
                                         <option value="" selected>--</option>
@@ -42,7 +42,7 @@
                                         <option value="desc">Ordre decroissant</option>
                                     </select>
                                 </div>
-                                <div class="sort mt-3 mb-3">
+                                <div class="sort mt-3 mb-2">
                                     <label for="myinputs">De..</label>
                                     <select class="filtered" name="sort" id="myinputs">
                                         <canvas value="" selected desabled>--</option>
@@ -50,7 +50,7 @@
                                             {{-- <option value="description">description</option> --}}
                                     </select>
                                 </div>
-                                <div class="name mt-3 mb-3">
+                                <div class="name mt-3 mb-2">
                                     <label for="myinputs">categorie..</label>
                                     <select class="filtered" name="mame" id="myinputs">
                                         <option value="" selected desabled>--</option>
@@ -58,7 +58,7 @@
                                         <option value="">Difficulte de lecture</option>
                                     </select>
                                 </div>
-                                <div class="search mt-3 mb-3">
+                                <div class="search mt-3 mb-2">
                                     <form class="search-form d-flex" action="{{ route('questions.total') }}" method="GET">
                                         <input class=" search-input filtered" type="search" id="myinpu" name="search"
                                             placeholder="Recherche..." aria-label="Search">

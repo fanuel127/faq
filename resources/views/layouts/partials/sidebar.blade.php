@@ -9,6 +9,12 @@
                 <i class="fas fa-user-secret me-2 fs-2"> <a href="{{ url('/dashboard') }}" id="liens">FAQ</a></i>
             </div>
 
+            <div class="sidebar-heading text-center py-3 success-text fs-4 fw-bold text-uppercase">
+                <marquee>
+                    <h4 id="liens"><i class="bi bi-shield-lock-fill text-warning me-2 fs-2">Admin</i></h4>
+                </marquee>
+            </div>
+
             <div class="list-group list-group-flush my-3">
                 <a href="{{ url('/dashboard') }}" class="bg-warning" id="liens"
                     style="margin-bottom: 20px; padding-top:20px; margin-top:0;padding-bottom:20px;color:white;">
@@ -88,6 +94,12 @@
 
             <div class="sidebar-heading text-center py-4 success-text fs-4 fw-bold text-uppercase">
                 <i class="fas fa-user-secret me-2 fs-2"> <a href="{{ url('/dashboard') }}" id="liens">FAQ</a></i>
+            </div>
+
+            <div class="sidebar-heading text-center py-3 success-text fs-4 fw-bold text-uppercase">
+                <marquee>
+                    <h4 id="liens"><i class="bi bi-person-fill text-warning me-2 fs-2">Gestionnaire</i></h4>
+                </marquee>
             </div>
 
             <div class="list-group list-group-flush my-3">

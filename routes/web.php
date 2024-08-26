@@ -71,8 +71,6 @@ Route::get('/question/show', function () {
     return view('question.show');
 });
 
-
-
 Route::get('/user/add_user', function () {
     return view('users.add_user');
 });
@@ -93,6 +91,8 @@ Route::get('/users/list_user', function () {
 Route::get('/users/show_user', function () {
     return view('users.show_user');
 });
+
+
 //store
 Route::get('/user/store', function () {
     return view('users.list_user');

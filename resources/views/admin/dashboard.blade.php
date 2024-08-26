@@ -64,7 +64,6 @@
                         <th>Email</th>
                         <th>Telephone</th>
                         <th>Role</th>
-                        <th>Statut</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -84,13 +83,6 @@
                             <td>{{ $user->email }}</td>
                             <td>{{ $user->phoneNumber }}</td>
                             <td>{{ $user->role->role_name }}</td>
-                            <td>
-                                @if ($user->status == 0)
-                                    <span class="badge rounded-0 bg-danger">Désactivé</span>
-                                @else
-                                    <span class="badge rounded-0 bg-success">Activé</span>
-                                @endif
-                            </td>
                         </tr>
                     @endforeach
                 </tbody>

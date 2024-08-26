@@ -23,11 +23,11 @@ class RoleTableSeeder extends Seeder
 
         DB::table('role')->insert([
             ['value' => 0, 'role_name' => 'Admin'],
-            ['value' => 1, 'role_name' => 'SimpleUser'],
+            ['value' => 1, 'role_name' => 'Gestionnaire'],
         ]);
 
      }
 
 
- 
+
 }

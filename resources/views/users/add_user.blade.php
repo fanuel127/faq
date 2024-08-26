@@ -38,10 +38,8 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <button class="bg-white border-0">
-                            <h4 class="mt-3">les champs marqués d'un Astérix <span class="text-danger">(*)</span> sont
-                                obligatoires</h4>
-                        </button>
+                        <h4 class="mt-3">les champs marqués d'un Astérix <span class="text-danger">(*)</span> sont
+                            obligatoires</h4>
                         <div class="col-md-6 mt-3">
                             <div>
                                 <label for="myinput" class="form-label">

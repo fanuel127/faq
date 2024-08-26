@@ -358,14 +358,12 @@ class AdminController extends Controller
     public function status($id)
     {
         $user = User::find($id);
-<<<<<<< HEAD
         $user->status = !$user->status;
         if ($user->save()) {
             return back();
         } else {
             return redirect(route('status'));
         };
-=======
         //    $status = optional($i)->status; // Cela retourne null si $objet est null
         $user->status = !$user->status;
         if ($user->save()) {
@@ -377,20 +375,19 @@ class AdminController extends Controller
     }
 
 
-    public function search(Request $request)
-    {
-        $query = $request->input('query');
+    // public function search(Request $request)
+    // {
+    //     $query = $request->input('query');
 
-        $users = User::where('firstName', 'like', "%$query%")
-            ->orWhere('email', 'like', "%$query%")
-            ->get();
+    //     $users = User::where('firstName', 'like', "%$query%")
+    //         ->orWhere('email', 'like', "%$query%")
+    //         ->get();
 
-        return view('admin.search', [
-            'users' => $users,
-            'query' => $query,
-        ]);
->>>>>>> belinda
-    }
+    //     return view('admin.search', [
+    //         'users' => $users,
+    //         'query' => $query,
+    //     ]);
+    // }
 
     //questions
 
@@ -449,8 +446,6 @@ class AdminController extends Controller
     public function totalQuestions(Request $request)
     {
         $questions = Question::all();
-<<<<<<< HEAD
-
         if ($request->has('search')) {
             $questions = $questions->filter(function ($question) use ($request) {
                 return stripos($question->questionName, $request->input('search')) !== false
@@ -473,7 +468,6 @@ class AdminController extends Controller
         }
 
         return view('questions.list_question', compact('questions', 'questionsCount'));
-=======
         return view('questions.list_question')->with('questions', $questions);
     }
     public function listCategoryQuestion()
@@ -481,7 +475,6 @@ class AdminController extends Controller
 
         $categories = Category::all();
         return view('questions.list_question')->with('categories', $categories);
->>>>>>> belinda
     }
 
 
@@ -493,7 +486,6 @@ class AdminController extends Controller
      */
     public function storeQuestions(Request $request)
     {
-<<<<<<< HEAD
         $request->validate([
             'questionName' => 'required|string|max:255',
             'category_id' => 'required|string|exists:category,id',
@@ -502,7 +494,6 @@ class AdminController extends Controller
             'video' => 'nullable',
             'photo' => 'required',
             'photo2' => 'required',
-=======
         $input = $request->validate([
             'questionName' => 'required',
             'category_id' => 'required|unique|exists:user,id',
@@ -511,8 +502,8 @@ class AdminController extends Controller
             'video' => 'required',
             'photo' => 'required|unique',
             'user_id' => 'required|exists:user,id',
->>>>>>> belinda
-        ]);
+        ])
+    ]);
 
 
         Question::create([
@@ -559,14 +550,11 @@ class AdminController extends Controller
      */
     public function sowQuestions($id)
     {
-<<<<<<< HEAD
         $questions = Question::find($id);
         return view('questions.show_question',compact('questions'));
-=======
         $question = Question::find($id);
         $answers = $question->answers;
         return view('questions.show_question')->with($question, $answers);
->>>>>>> belinda
     }
 
     /**

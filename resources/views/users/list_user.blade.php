@@ -1,8 +1,8 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="d-flex justify-content-between container-fluid">
-        <h4>Gestions des utilisateurs</h4>
+    <div class="d-flex justify-content-between">
+        <h4 class="ms-3">Gestions des utilisateurs</h4>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}" id="lien">Accueil</a></li>
@@ -12,7 +12,7 @@
         </nav>
 
     </div>
-    <div class="container-fluid py-4">
+    <div class="container-fluid mt-2">
         <div class="row">
             <div class="col-12">
 
@@ -33,6 +33,7 @@
                     </div>
                     <div class="card-body">
                         <form action="{{ url('/users/filter') }}" method="GET">
+
                             <div class="filter-bar d-flex justify-content-between bg-light " id="filter-bar"
                                 style="padding-top: 10px; padding-bottom:10px; border-raduis:0;">
                                 <div class="order ">
@@ -78,16 +79,12 @@
                                     </select>
 
                                 </div>
-                                <div class="search ">
+                                {{-- <div class="search ">
                                     <form class="search-form d-flex" action="{{ route('users.total') }}" method="GET">
                                         <input class="search-input filtered" type="search" id="myinpu" name="search"
                                             placeholder="Recherche..." aria-label="Search">
                                     </form>
-                                </div>
-                                {{-- <button class=" btn btn-primary" id="myinputs" type="submit">
-                                    <i class="fas fa-search btn-sm"></i>
-                                </button> --}}
-                                {{-- <button type="submit">Appliquer</button> --}}
+                                </div> --}}
                             </div>
 
                         </form>
@@ -153,9 +150,9 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                            {{-- <div id="pagination">
+                            <div id="pagination">
                                 {{ $users->links() }}
-                            </div> --}}
+                            </div>
                             {{-- <nav aria-label="Page navigation example">
                                 <ul class="pagination justify-content-end">
                                   <li class="page-item disabled">

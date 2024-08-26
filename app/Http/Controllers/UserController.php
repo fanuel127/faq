@@ -39,6 +39,7 @@ class UserController extends  Controller
                 'role.role_name as role_name'
             )
             ->orderBy('users.firstName', 'asc')
+            ->paginate(20)
             ->get();
         return view('users.list_user', compact('users', 'roles'));
     }
@@ -82,7 +83,7 @@ class UserController extends  Controller
 
     public function total(Request $request)
     {
-        $users = User::all();
+        $users = User::paginate(20);
 
         if ($request->has('search')) {
             $users = $users->filter(function ($user) use ($request) {
@@ -128,7 +129,8 @@ class UserController extends  Controller
                 'users.created_at',
                 'role.role_name as role_name'
             )
-            ->orderBy('users.firstName', 'asc');
+            ->orderBy('users.firstName', 'asc')
+            ->paginate(20);
         // Début de la requête Eloquent
 
         // Vérifier si l'utilisateur a sélectionné un ordre de tri et un champ
@@ -167,7 +169,7 @@ class UserController extends  Controller
 
         }
 
-        $users =  $users->get(); //Exécute la requête et récupère les résultats
+        // $users =  $users->get(); //Exécute la requête et récupère les résultats
 
         // Récupérer la liste des roles
         $roles = Role::all();
