@@ -18,7 +18,7 @@
         @endif
     </div>
     <section class="gradient-custom">
-        <form action="{{ route('questions.update',$questions->id) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('questions.update', $questions->id) }}" method="POST" enctype="multipart/form-data">
             {{-- {!! csrf_field() !!} --}}
             @csrf
             @method('PUT')
@@ -32,13 +32,12 @@
                         <li class="breadcrumb-item active" aria-current="page">Modifier une question</li>
                     </ol>
                 </nav>
-
             </div>
             <div class="card bg-light rounded-0">
                 <div class="card-header bg-secondary d-flex justify-content-between">
-                    <h2 style="color: whitesmoke;"><i class="bi bi-plus-square me-2"></i>Modifier une question</h2>
+                    <h3 style="color: whitesmoke;"><i class="bi bi-plus-square me-2"></i>Modifier une question</h3>
                     <div>
-                        <a href="{{ url('/questions/list_question') }}" class="btn btn-primary mt-3" id="mybutton">
+                        <a href="{{ url('/questions/list_question') }}" class="btn btn-primary mt-2" id="mybutton">
                             <i class="bi bi-arrow-return-left me-2"></i>
                             Retour
                         </a>
@@ -84,20 +83,16 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row d-flex justify-content-between">
-                        <div class="col-3 mt-3">
-                            <div>
-                                <button type="reset" class="btn btn-lg btn-danger rounded-0">
-                                    <i class="bi bi-backspace-fill me-2"></i>Annuler
-                                </button>
-                            </div>
+                    <div class="d-flex justify-content-between">
+                        <div class="mt-3">
+                            <button type="reset" class="btn btn-lg btn-danger rounded-0">
+                                <i class="bi bi-backspace-fill me-2"></i>Annuler
+                            </button>
                         </div>
-                        <div class="col-3 mt-3">
-                            <div>
-                                <button type="submit" class="btn btn-lg btn-warning rounded-0">
-                                    <i class="bi bi-save me-2"></i>Enregistrer
-                                </button>
-                            </div>
+                        <div class="mt-3">
+                            <button type="submit" class="btn btn-lg btn-warning rounded-0">
+                                <i class="bi bi-save me-2"></i>Enregistrer
+                            </button>
                         </div>
                     </div>
                 </div>

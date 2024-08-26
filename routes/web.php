@@ -8,8 +8,9 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\loginController;
 use App\Http\Controllers\Auth\RegisterController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
-
 use App\Http\Controllers\Question\QuestionController;
+
+// use App\Http\Controllers\Question\QuestionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,7 @@ use App\Http\Controllers\Question\QuestionController;
 Route::get('/', function () {
     return view('welcome');
 });
+
 //route controller test
 Route::get('/test', [TestController::class, 'index'])->name('Tests.index');
 Route::get('/test/create', [TestController::class, 'create'])->name('Tests.create');
@@ -122,6 +124,7 @@ Route::get('/dashboard', function () {
     return view('admin.dashboard');
 })->name('admin.dashboard');
 
+
 Route::get('/dashboard', [UserController::class, 'nombre'])->name('users.nombre');
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('showlogin');
@@ -135,8 +138,13 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::post('/update/password', [UserController::class, 'updatePassword'])->name('update.password');
 
 
-
-
+//route pour les pages des clients
+Route::get('/client/question_list', function () {
+    return view('client.question_list');
+});
+Route::get('/client/question_detail', function () {
+    return view('client.question_detail');
+});
 
 
 // pour le status
@@ -147,15 +155,19 @@ Route::get('/list_user', [UserController::class, 'total'])->name('users.total');
 Route::put('/users/edit_user/{id}', [UserController::class, 'update'])->name('users.update');
 Route::get('/users/update/{id}', [UserController::class, 'edit'])->name('users.edit_user');
 Route::get('/users/show_user/{id}', [UserController::class, 'show'])->name('users.show_user');
-Route::get('/users/profile_user/{id}', [UserController::class, 'showp'])->name('users.profile_user');
+Route::get('/users/profile_user/{id}', [UserController::class, 'profil'])->name('users.profile_user');
+// Route::get('/users/filter', [UserController::class, 'filter'])->name('users.filter');
 
 // Routes for Users
 Route::group(['prefix' => 'users', 'as' => 'users.'], function () {
-    Route::get('/list_user', [UserController::class, 'index'])->name('users.list_user');
+    Route::get('/list_user', [UserController::class, 'filter'])->name('users.list_user');
     Route::get('/add_user', [UserController::class, 'create'])->name('users.add_user');
     Route::post('/', [UserController::class, 'store'])->name('users.store');
     Route::get('/show_user', [UserController::class, 'show'])->name('users.show_user');
+    Route::get('/profile_user', [UserController::class, 'profil'])->name('users.profile_user');
+    Route::get('/filter', [UserController::class, 'filter'])->name('users.filter');
 });
+
 //Route pour les questions
 Route::post('/questions/list_question', [QuestionController::class, 'storeQuestions'])->name('questions.store');
 Route::get('/list_question', [QuestionController::class, 'indexQuestions'])->name('questions.list_question');

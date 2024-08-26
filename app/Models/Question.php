@@ -17,6 +17,7 @@ class Question extends Model
         'category_id',
         'answer',
         'photo',
+        'photo2',
         'video',
         'user_id',
 

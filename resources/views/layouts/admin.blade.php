@@ -16,6 +16,8 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <script src="https://cdn.datatables.net/2.1.3/js/dataTables.js"></script>
+    <link rel="stylesheet" href="{{ asset('admin/bootstrap-5.3.3-dist/font/font-awesome-npm.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/bootstrap-5.3.3-dist/font/font-awesome.css') }}">
 
     <style>
         /* add_user css */
@@ -38,15 +40,15 @@
         }
 
         #myinputs {
-            font-size: 22px;
+            font-size: 16px;
             border-radius: 0;
-            height: 50px;
+            height: 40px;
         }
 
         #myinpu {
-            font-size: 22px;
+            font-size: 16px;
             border-radius: 0;
-            height: 50px;
+            height: 40px;
         }
 
         .btn {
@@ -115,20 +117,33 @@
             font-size: 18px;
         }
 
+        select option  {
+            font-size: 16px;
+        }
+
         .filtered {
             border-radius: 0;
             outline: none;
-            padding-left: 20px;
+            padding-left: 10px;
             height: 45px;
             border: solid 1px rgb(45, 84, 97)
         }
 
+
         button {
             font-weight: bold;
             font-size: 22px;
-            width: 400px;
+            width: 350px;
             height: 70px;
             border-radius: 0;
+        }
+
+        #haut {
+            max-height: 150vh;
+        }
+
+        #password {
+            max-width: 425px;
         }
 
         .btn {
@@ -145,17 +160,6 @@
         .search-button {
             margin-right: 90px;
         }
-
-        .search-input {
-            margin-left: 0px;
-            width: 350px;
-        }
-
-        /* .search-form{
-            padding-left: 60px;
-            outline: none;
-            padding-right: -60px;
-        } */
 
         /* Modal styles */
         .modal {
@@ -180,18 +184,14 @@
             border-radius: 0;
         }
 
-        /* Sidebar styles */
-        /* .sidebar {
-      height: 100%;
-      width: 200px;
-      position: fixed;
-      z-index: 1;
-      top: 0;
-      left: 0;
-      background-color: #f1f1f1;
-      overflow-x: hidden;
-      padding-top: 20px;
-        } */
+        .video {
+            height: 350px ;
+            width: 850px;
+        }
+        .photo {
+            height: 250px ;
+            width: 418px;
+        }
 
         .sidebar a {
             padding: 6px 8px 6px 16px;
@@ -208,7 +208,7 @@
         #myinput {
             font-size: 22px;
             border-radius: 0;
-            height: 70px;
+            height: 60px;
         }
 
         #mybutton {

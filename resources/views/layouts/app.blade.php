@@ -97,7 +97,7 @@
 
     <script src="{{ asset('admin/js/script.js') }}"></script>
     <script src="{{ asset('admin/datatables.min.js') }}"></script>
-    <script src={{ asset('admin/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js') }}></script>
+    <script src="{{ asset('admin/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('admin/jquery-3.7.1.js') }}"></script>
 
 </body>

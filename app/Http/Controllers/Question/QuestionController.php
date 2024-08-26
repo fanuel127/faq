@@ -8,6 +8,8 @@ use App\Models\Category;
 use App\Models\Question;
 
 
+use Illuminate\Support\Facades\DB;
+
 class QuestionController extends Controller
 {
     /**
@@ -26,6 +28,7 @@ class QuestionController extends Controller
                 'question.questionName',
                 'question.description',
                 'question.photo',
+                'question.photo2',
                 'question.video',
                 'question.answer',
                 'question.updated_at',
@@ -48,6 +51,7 @@ class QuestionController extends Controller
                 'question.questionName',
                 'question.description',
                 'question.photo',
+                'question.photo2',
                 'question.video',
                 'question.answer',
                 'question.updated_at',
@@ -67,8 +71,7 @@ class QuestionController extends Controller
         if ($request->has('search')) {
             $questions = $questions->filter(function ($question) use ($request) {
                 return stripos($question->questionName, $request->input('search')) !== false
-                    || stripos($question->description, $request->input('search')) !== false
-                    || stripos($question->name, $request->input('search')) !== false;
+                    || stripos($question->description, $request->input('search')) !== false;
             });
         }
 
@@ -76,8 +79,7 @@ class QuestionController extends Controller
         if ($request->has('search')) {
             $questions = $questions->filter(function ($question) use ($request) {
                 return stripos($question->questionName, $request->input('search')) !== false
-                    || stripos($question->description, $request->input('search')) !== false
-                    || stripos($question->name, $request->input('search')) !== false;
+                    || stripos($question->description, $request->input('search')) !== false;
             });
         }
 
@@ -89,6 +91,8 @@ class QuestionController extends Controller
 
         return view('questions.list_question', compact('questions', 'questionsCount'));
 
+
+        return view('questions.list_question')->with('questions', $questions);
     }
     public function listCategoryQuestion()
     {
@@ -113,9 +117,20 @@ class QuestionController extends Controller
             'answer' => 'required',
             'video' => 'nullable',
             'photo' => 'required',
+            'photo2' => 'required',
 
         ]);
 
+
+        $input = $request->validate([
+            'questionName' => 'required',
+            'category_id' => 'required|exists:Category,id',
+            'description' => 'required|string',
+            'answer' => 'required|string',
+            'video' => 'required|string',
+            'photo' => 'required',
+            'user_id' => 'required|exists:user,id',
+        ]);
 
         Question::create([
             'questionName' => $request['questionName'],
@@ -123,6 +138,7 @@ class QuestionController extends Controller
             'description' => $request['description'],
             'answer' => $request['answer'],
             'photo' =>  $request['photo'],
+            'photo2' =>  $request['photo2'],
             'video' =>  $request['video'],
         ]);
 
@@ -163,6 +179,9 @@ class QuestionController extends Controller
         $questions = Question::find($id);
         return view('questions.show_question',compact('questions'));
 // Retrieving a question by its ID
+
+        // $question = Question::find($id);
+        // Retrieving a question by its ID
         $question = Question::with('user')->find($id);
         $answers = $question->answers;
         $photo = $question->photo;

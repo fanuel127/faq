@@ -19,7 +19,7 @@
                     <h3 class="fs-2">{{ $totalAllUsers }}</h3>
                     <p class="fs-5">totale des utilisateurs</p>
                 </div>
-                <i class="fas fa-gift fs-1 primary-text border rounded-full secondary-bg p-3"></i>
+                <i class="bi bi-people-fill me-2 fs-1 primary-text border rounded-full secondary-bg p-3"></i>
             </div>
         </div>
         <div class="col-md-3" id="mybutton">
@@ -28,7 +28,7 @@
                     <h3 class="fs-2">{{ $totalAdmin }}</h3>
                     <p class="fs-5">Administrateur</p>
                 </div>
-                <i class="fas fa-hand-holding fs-1 primary-text border rounded-full secondary-bg p-3"></i>
+                <i class="bi bi-shield-lock-fill fs-1 primary-text border rounded-full secondary-bg p-3"></i>
             </div>
         </div>
         <div class="col-md-3" id="mybutton">
@@ -37,7 +37,7 @@
                     <h3 class="fs-2">{{ $totalUser }}</h3>
                     <p class="fs-5">Gestionnaire</p>
                 </div>
-                <i class="fas fa-truck fs-1 primary-text border rounded-full secondary-bg p-3"></i>
+                <i class="bi bi-person-fill fs-1 primary-text border rounded-full secondary-bg p-3"></i>
             </div>
         </div>
         <div class="col-md-3" id="mybutton">
@@ -46,42 +46,87 @@
                     <h3 class="fs-2">{{ $totalQuestion }}</h3>
                     <p class="fs-5">totale questions</p>
                 </div>
-                <i class="fas fa-chart-line fs-1 primary-text border rounded-full secondary-bg p-3"></i>
+                <i class="bi bi-question-diamond-fill fs-1 primary-text border rounded-full secondary-bg p-3"></i>
             </div>
         </div>
     </div>
 
-
-    {{-- <h3>Tableau de Bord</h3>
-    <br>
-    <div class="row">
-        <div class="col-md-3">
-            <div class="card card-body bg-primary text-white mb-3">
-                <label style="font-size: 20px;">Totale Utilisateur</label>
-                <h1 style="font-size: 50px">{{ $totalAllUsers }} <i class="bi bi-people-fill me-2"
-                        style="font-size:90px ; margin-left:250px;"></i></h1>
-            </div>
+    <div class="row mt-4">
+        <div class="col-6 mt-4">
+            <h3>Liste des utilisateurs</h3>
+            <table id="example" class="table table-striped align-middle table-hover text-center" style="height: 50vh;">
+                <thead class="table-dark">
+                    <tr class="">
+                        <th>#</th>
+                        <th>Nom</th>
+                        <th>Prenom</th>
+                        <th>Genre</th>
+                        <th>Email</th>
+                        <th>Telephone</th>
+                        <th>Role</th>
+                        <th>Statut</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @php
+                        $i = 0;
+                        $users = App\Models\User::all();
+                    @endphp
+                    @foreach ($users as $user)
+                        @php
+                            $i++;
+                        @endphp
+                        <tr>
+                            <td>{{ $i }}</td>
+                            <td>{{ $user->firstName }}</td>
+                            <td>{{ $user->lastName }}</td>
+                            <td>{{ $user->gender }}</td>
+                            <td>{{ $user->email }}</td>
+                            <td>{{ $user->phoneNumber }}</td>
+                            <td>{{ $user->role->role_name }}</td>
+                            <td>
+                                @if ($user->status == 0)
+                                    <span class="badge rounded-0 bg-danger">Désactivé</span>
+                                @else
+                                    <span class="badge rounded-0 bg-success">Activé</span>
+                                @endif
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
-        <div class="col-md-3">
-            <div class="card card-body bg-success text-white mb-3">
-                <label style="font-size: 20px;">Totale Administrateur</label>
-                <h1>{{ $totalUser }} <i class="bi bi-people-fill me-2" style="font-size:90px ; margin-left:250px;"></i>
-                </h1>
-            </div>
+        <div class="col-6 table-responsive mt-4">
+            <h3>Liste des questions</h3>
+            <table id="example" class="table table-striped table-hover align-middle" style="height: 50vh;">
+                <thead class="table-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Nom</th>
+                        <th>Categorie</th>
+                        <th>Description</th>
+                        <th>Solution</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @php
+                        $i = 0;
+                        $questions = App\Models\Question::all();
+                    @endphp
+                    @foreach ($questions as $question)
+                        @php
+                            $i++;
+                        @endphp
+                        <tr>
+                            <td>{{ $i }}</td>
+                            <td>{{ $question->questionName }}</td>
+                            <td>{{ $question->category->name }}</td>
+                            <td>{{ $question->description }}</td>
+                            <td>{{ $question->answer }}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
-        <div class="col-md-3">
-            <div class="card card-body bg-danger text-white mb-3">
-                <label>Totale Gestionnaire</label>
-                <h1>{{ $totalAdmin }} <i class="bi bi-people-fill me-2" style="font-size:90px ; margin-left:250px;"></i>
-                </h1>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card card-body bg-warning text-white mb-3">
-                <label style="font-size: 20px;">Totale Questions</label>
-                <h1 style="font-size: 50px">{{ $totalQuestion }} <i class="bi bi-question-octagon-fill me-2"
-                        style="font-size:90px ; margin-left:250px;"></i></h1>
-            </div>
-        </div> --}}
     </div>
 @endsection
