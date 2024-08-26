@@ -57,9 +57,9 @@ class LoginController extends Controller
 
         $credentials = $request->only('email', 'password');
 
-        $remember = $request->has('remember_me');
+        // $remember = $request->has('remember_me');
 
-        if (Auth::attempt($credentials, $remember)) {
+        if (Auth::attempt($credentials, )) {
             // Authentification réussie
             return redirect()->intended('/dashboard');
         } else {

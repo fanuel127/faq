@@ -27,7 +27,6 @@ class DatabaseSeeder extends Seeder
 
             RoleTableSeeder::class,
 
-            CreateUserSeeder::class,
 
 
         ]);
