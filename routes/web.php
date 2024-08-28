@@ -156,7 +156,9 @@ Route::put('/users/edit_user/{id}', [UserController::class, 'update'])->name('us
 Route::get('/users/update/{id}', [UserController::class, 'edit'])->name('users.edit_user');
 Route::get('/users/show_user/{id}', [UserController::class, 'show'])->name('users.show_user');
 Route::get('/users/profile_user/{id}', [UserController::class, 'profil'])->name('users.profile_user');
-// Route::get('/users/filter', [UserController::class, 'filter'])->name('users.filter');
+Route::get('/users/filter', [UserController::class, 'filter'])->name('users.filter');
+Route::get('/search_user', [UserController::class, 'search']);
+
 
 // Routes for Users
 Route::group(['prefix' => 'users', 'as' => 'users.'], function () {
@@ -165,8 +167,14 @@ Route::group(['prefix' => 'users', 'as' => 'users.'], function () {
     Route::post('/', [UserController::class, 'store'])->name('users.store');
     Route::get('/show_user', [UserController::class, 'show'])->name('users.show_user');
     Route::get('/profile_user', [UserController::class, 'profil'])->name('users.profile_user');
-    Route::get('/filter', [UserController::class, 'filter'])->name('users.filter');
+    // Route::get('/filter', [UserController::class, 'filter'])->name('users.filter');
+
 });
+
+//Route pour les questions coté client
+Route::get('/client/question_list', [QuestionController::class, 'indexQuestionsclient'])->name('client.question_list');
+Route::get('/client/question_detail/{id}', [QuestionController::class, 'showQuestionsclient'])->name('client.question_detail');
+
 
 //Route pour les questions
 Route::post('/questions/list_question', [QuestionController::class, 'storeQuestions'])->name('questions.store');
@@ -174,7 +182,9 @@ Route::get('/list_question', [QuestionController::class, 'indexQuestions'])->nam
 Route::put('/questions/edit_question/{id}', [QuestionController::class, 'updateQuestions'])->name('questions.update');
 Route::get('/questions/update/{id}', [QuestionController::class, 'editQuestions'])->name('questions.edit_question');
 Route::get('/questions/show_question/{id}', [QuestionController::class, 'showQuestions'])->name('questions.show_question');
-Route::get('/list_question', [QuestionController::class, 'totalQuestions'])->name('questions.total');
+Route::get('/questions/list_question/{id}', [QuestionController::class, 'totalQuestions'])->name('questions.total');
+Route::get('/search', [QuestionController::class, 'search']);
+Route::get('/client/question_list/search', [QuestionController::class, 'searchQuestionsclient']);
 
 
 

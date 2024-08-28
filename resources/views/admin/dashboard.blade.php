@@ -14,7 +14,7 @@
             </div>
         </div>
         <div class="col-md-3" id="mybutton">
-            <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+            <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded-0">
                 <div>
                     <h3 class="fs-2">{{ $totalAllUsers }}</h3>
                     <p class="fs-5">totale des utilisateurs</p>
@@ -23,7 +23,7 @@
             </div>
         </div>
         <div class="col-md-3" id="mybutton">
-            <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+            <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded-0">
                 <div>
                     <h3 class="fs-2">{{ $totalAdmin }}</h3>
                     <p class="fs-5">Administrateur</p>
@@ -32,7 +32,7 @@
             </div>
         </div>
         <div class="col-md-3" id="mybutton">
-            <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+            <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded-0">
                 <div>
                     <h3 class="fs-2">{{ $totalUser }}</h3>
                     <p class="fs-5">Gestionnaire</p>
@@ -41,7 +41,7 @@
             </div>
         </div>
         <div class="col-md-3" id="mybutton">
-            <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+            <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded-0">
                 <div>
                     <h3 class="fs-2">{{ $totalQuestion }}</h3>
                     <p class="fs-5">totale questions</p>

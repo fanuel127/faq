@@ -38,9 +38,9 @@ class AdminController extends Controller
                 'users.created_at',
                 'role.role_name as role_name'
             )
-            ->orderBy('users.firstName', 'asc')
-            ->get();
-        return view('users.list_user', compact('users', 'roles'));
+            ->orderBy('users.firstName', 'asc')->paginate(4);
+            // ->get();
+        return view('users.list_user', compact('users', $users));
     }
 
 
@@ -395,11 +395,6 @@ class AdminController extends Controller
      */
     public function indexQuestions()
     {
-        $questions = Question::paginate(10);
-        return view ('questions.list_question')->with('questions', $questions);
-
-
-
         // $questions = Question::paginate(10);
         // return view ('questions.list_question')->with('questions', $questions);
         $questions = Question::join('category', 'question.category_id', '=', 'category.id')
@@ -416,8 +411,8 @@ class AdminController extends Controller
                 'question.created_at',
                 'category.name'
             )
-            ->orderBy('question.questionName', 'asc')
-            ->get();
+            ->orderBy('question.questionName', 'asc')->paginate(6);
+            // ->get();
         return view('questions.list_question')->with('questions', $questions);
     }
 

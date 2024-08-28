@@ -44,21 +44,21 @@
                                 <label for="exampleFormControlTextarea1" class="form-label">
                                     <h4>Nom de la question<span class="text-danger">*</span></h4>
                                 </label>
-                                <input class="form-control rounded-0" name="questionName" id="exampleFormControlTextarea1">
+                                <input class="form-control form-control-lg rounded-0" name="questionName" id="exampleFormControlTextarea1">
                             </div>
                             <br>
                             <div>
                                 <label for="formFile" class="form-label">
                                     <h4>Image de la question<span class="text-danger">*</span></h4>
                                 </label>
-                                <input class="form-control rounded-0" name="photo" type="file" id="formFile">
+                                <input class="form-control form-control-lg rounded-0" name="photo" type="file" id="formFile">
                             </div>
                             <br>
                             <div>
                                 <label for="formFileMultiple" class="form-label">
                                     <h4>Video de la question</h4>
                                 </label>
-                                <input class="form-control rounded-0" name="video" type="file" id="formFileMultiple"
+                                <input class="form-control form-control-lg rounded-0" name="video" type="file" id="formFileMultiple"
                                     multiple>
                             </div>
                         </div>
@@ -67,7 +67,7 @@
                                 <label for="exampleFormControlTextarea3 form-group col-md-6 mb-3" class="form-label">
                                     <h4>Categorie de la question<span class="text-danger">*</span></h4>
                                 </label>
-                                <select class="form-select rounded-0" name="category_id" id="category">
+                                <select class="form-select form-select-lg rounded-0" name="category_id" id="category">
                                     <option value="" selected disabled>selectionner votre categorie</option>
                                     @foreach ($categories as $category)
                                         <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -80,14 +80,14 @@
                                 <label for="formFile" class="form-label">
                                     <h4>Image de la question<span class="text-danger">*</span></h4>
                                 </label>
-                                <input class="form-control rounded-0" name="photo2" type="file" id="formFile">
+                                <input class="form-control form-control-lg rounded-0" name="photo2" type="file" id="formFile">
                             </div>
                             <br>
                             <div>
                                 <label for="exampleFormControlTextarea1" class="form-label">
                                     <h4>Solution à la question<span class="text-danger">*</span></h4>
                                 </label>
-                                <input class="form-control rounded-0" name="answer" id="exampleFormControlTextarea1">
+                                <input class="form-control form-control-lg rounded-0" name="answer" id="exampleFormControlTextarea1">
                             </div>
 
                         </div>
@@ -96,7 +96,7 @@
                         <label for="exampleFormControlTextarea2 form-group col-md-6 mb-3" class="form-label">
                             <h4>Description de la question<span class="text-danger">*</span></h4>
                         </label>
-                        <textarea class="form-control rounded-0" name="description" id="exampleFormControlTextarea2"></textarea>
+                        <textarea class="form-control form-control-lg rounded-0" name="description" id="exampleFormControlTextarea2"></textarea>
                     </div>
                     <div class="d-flex justify-content-between mt-3">
                         <button type="reset" class="btn btn-danger btn-lg" id="mybutton">

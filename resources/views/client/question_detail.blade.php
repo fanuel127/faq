@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>question_detail_client</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -32,12 +32,12 @@
 
 </head>
 
-<body>
+<body class="bg-light">
 
     <div class="container-fluid py-3">
         <div>
-            <a href="{{ url('/client/question_list') }}" class="btn btn-info btn-sm rounded-0">
-                Retour
+            <a href="{{ url('/client/question_list') }}" class="btn btn-info btn-sm rounded-0 text-white me-2">
+                <i class="bi bi-arrow-return-left me-2"></i>Retour
             </a>
         </div>
         <div class="row">
@@ -45,14 +45,21 @@
                 <div class="row">
                     <div class="col-md-7">
                         <div class="ms-4 mt-3">
-                            <iframe src="{{ asset('video/video1.mp4') }}" frameborder="0" height="450"
-                                width="1000"></iframe>
+                            @if ($questions->video)
+                                <iframe class="video" src="{{ asset('video/' . $questions->video) }}" frameborder="0"
+                                    height="450" width="1000"></iframe>
+                            @endif
                         </div>
                         <div class="d-flex">
-                            <img src="{{ asset('image/img2.jpg') }}" alt="img" height="400" width="489"
+                            @if ($questions->photo)
+                            <img src="{{ asset('image/' . $questions->photo) }}" alt="img" height="400" width="489"
                                 class="card-amg-top ms-4 mt-2">
-                            <img src="{{ asset('image/img2.jpg') }}" alt="img" height="400" width="489"
+                            @endif
+                            @if ($questions->photo2)
+                            <img src="{{ asset('image/' . $questions->photo2) }}" alt="img" height="400" width="489"
                                 class="card-amg-top ms-4 mt-2">
+                            @endif
+
                         </div>
                     </div>
 
@@ -64,8 +71,7 @@
                                 </div>
                                 <div class="card-body">
                                     <p class="description">
-                                        weitypwierytpweytwerioytpieoy weitypwierytpweytwerioytpieoy weit
-                                        weitypwierytpwey twerioytpieoy weitypwierytpweytwerioytpieoy
+                                        {{ $questions->questionName }}
                                     </p>
                                 </div>
                             </div>
@@ -73,13 +79,12 @@
                         <br>
                         <div class="mt-3 me-4">
                             <div class="card rounded-0" id="card">
-                                <div class="card-header text-white bg-warning">
+                                <div class="card-header text-white bg-secondary">
                                     <h5> Description</h5>
                                 </div>
                                 <div class="card-body">
                                     <p class="description">
-                                        weitypwierytpweytwerioytpieoy weitypwierytpweytwerioytpieoy weit
-                                        weitypwierytpwey twerioytpieoy weitypwierytpweytwerioytpieoy
+                                        {{ $questions->description }}
                                     </p>
                                 </div>
                             </div>
@@ -92,8 +97,7 @@
                                 </div>
                                 <div class="card-body">
                                     <p class="description">
-                                        weitypwierytpweytwerioytpieoy weitypwierytpweytwerioytpieoy weit
-                                        weitypwierytpwey twerioytpieoy weitypwierytpweytwerioytpieoy
+                                        {{ $questions->answer }}
                                     </p>
                                 </div>
                             </div>

@@ -22,16 +22,14 @@ class Question extends Model
         'user_id',
 
     ];
-    public function category(){
+    public function category()
+    {
+        return $this->belongsTo(Category::class); // Exemple de relation
+    }
 
-        return $this->belongsTo(Category::class);
-
+    // Définir la relation 'questions' (si elle existe)
+    public function questions()
+    {
+        return $this->hasMany(Question::class , 'category_id'); // Exemple d'une relation en cascade
+    }
 }
-public function user(){
-
-    return $this->belongsTo(user::class);
-
-}
-
-}
-

@@ -38,10 +38,9 @@ class UserController extends  Controller
                 'users.created_at',
                 'role.role_name as role_name'
             )
-            ->orderBy('users.firstName', 'asc')
-            ->paginate(20)
-            ->get();
-        return view('users.list_user', compact('users', 'roles'));
+            ->orderBy('users.firstName', 'asc')->paginate(3);
+            // ->get();
+        return view('users.list_user', compact('users', $users,'roles'));
     }
 
     //modifier le mot de passe de l'utilisateur connecter dans la page profile_user
@@ -81,37 +80,37 @@ class UserController extends  Controller
         ]);
     }
 
-    public function total(Request $request)
-    {
-        $users = User::paginate(20);
+    // public function total(Request $request)
+    // {
+    //     $users = User::paginate(20);
 
-        if ($request->has('search')) {
-            $users = $users->filter(function ($user) use ($request) {
-                return stripos($user->firstName, $request->input('search')) !== false
-                    || stripos($user->lastName, $request->input('search')) !== false
-                    || stripos($user->gender, $request->input('search')) !== false
-                    || stripos($user->email, $request->input('search')) !== false;
-            });
-        }
+    //     if ($request->has('search')) {
+    //         $users = $users->filter(function ($user) use ($request) {
+    //             return stripos($user->firstName, $request->input('search')) !== false
+    //                 || stripos($user->lastName, $request->input('search')) !== false
+    //                 || stripos($user->gender, $request->input('search')) !== false
+    //                 || stripos($user->email, $request->input('search')) !== false;
+    //         });
+    //     }
 
-        $usersCount = $users->count();
-        if ($request->has('search')) {
-            $users = $users->filter(function ($user) use ($request) {
-                return stripos($user->firstName, $request->input('search')) !== false
-                    || stripos($user->lastName, $request->input('search')) !== false
-                    || stripos($user->gender, $request->input('search')) !== false
-                    || stripos($user->email, $request->input('search')) !== false;
-            });
-        }
+    //     $usersCount = $users->count();
+    //     if ($request->has('search')) {
+    //         $users = $users->filter(function ($user) use ($request) {
+    //             return stripos($user->firstName, $request->input('search')) !== false
+    //                 || stripos($user->lastName, $request->input('search')) !== false
+    //                 || stripos($user->gender, $request->input('search')) !== false
+    //                 || stripos($user->email, $request->input('search')) !== false;
+    //         });
+    //     }
 
-        if ($request->has('sort') && $request->input('sort') === 'asc') {
-            $users = $users->sortBy('firstName');
-        } elseif ($request->has('sort') && $request->input('sort') === 'desc') {
-            $users = $users->sortByDesc('firstName');
-        }
+    //     if ($request->has('sort') && $request->input('sort') === 'asc') {
+    //         $users = $users->sortBy('firstName');
+    //     } elseif ($request->has('sort') && $request->input('sort') === 'desc') {
+    //         $users = $users->sortByDesc('firstName');
+    //     }
 
-        return view('users.list_user', compact('users', 'usersCount'));
-    }
+    //     return view('users.list_user', compact('users', 'usersCount'));
+    // }
 
     public function filter(Request $request)
     {
@@ -130,7 +129,7 @@ class UserController extends  Controller
                 'role.role_name as role_name'
             )
             ->orderBy('users.firstName', 'asc')
-            ->paginate(20);
+            ->paginate(3);
         // Début de la requête Eloquent
 
         // Vérifier si l'utilisateur a sélectionné un ordre de tri et un champ
@@ -179,17 +178,22 @@ class UserController extends  Controller
 
     public function search(Request $request)
     {
-        $query = $request->input('query');
-        // Effectuer la recherche dans votre base de données ou autre logique
-        $results = User::where('firstName', 'LIKE', "%{$query}%")->paginate(10);
+        $search = $request->input('search');
 
-        return response()->json([
-            'data' => $results->items(),
-            'current_page' => $results->currentPage(),
-            'last_page' => $results->lastPage(),
-            'total' => $results->total(),
-            'links' => $results->links('pagination::bootstrap-4')->toHtml()
-        ]);
+        $roles = Role::all();
+
+        $users = User::query()
+            ->where('firstName', 'like', "%$search%")
+            ->orWhere('lastName', 'like', "%$search%")
+            ->orWhere('gender', 'like', "%$search%")
+            ->orWhere('email', 'like', "%$search%")
+            ->with('role') // Charger la relation category
+            ->orWhereHas('role', function ($query) use ($search) {
+                $query->where('role_name', 'like', "%$search%");
+            })
+            ->paginate(3); // Utilisez paginate si vous souhaitez paginer les résultats
+
+        return view('users.list_user', compact('users', 'search','roles'));
     }
 
     public function create()

@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="ftco-section">
+    <section class="ftco-section rounded-0">
         <section class="ftco-section">
-            <div class="container">
-                <div class="row justify-content-center">
+            <div class="container py-0.25" style="margin-top: -11vh;">
+                <div class="row justify-content-center rounded-0">
                     <div class="col-md-12 col-lg-10">
                         <div class="wrap d-md-flex">
                             <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
@@ -28,7 +28,7 @@
                                     <span class="visually-hidden">Previous</span>
                                 </button>
                             </div>
-                            <div class="login-wrap p-4 p-md-5">
+                            <div class="login-wrap p-4 p-md-4">
                                 <div class="d-flex">
                                     <div class="card-header text-warning mb-3" style="font-size: 20px;">
                                         <h2>{{ __('Se Connecter') }}</h2>
@@ -65,20 +65,20 @@
                                             </span>
                                         @enderror
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group pt-2">
                                         <button type="submit" class="form-control btn btn-warning rounded-0 submit px-3">
                                             {{ __('Se Connecter') }}
                                         </button>
                                     </div>
-                                    <div class="form-group d-md-flex">
-                                        <div class="w-50 text-left">
+                                    <div class="form-group pt-3">
+                                        {{-- <div class="w-50 text-left">
                                             <input type="checkbox" name="remember_me" class="rounded-0" id="remember_me"
                                                 {{ old('remember') ? 'checked' : '' }}>
                                             <label for="remember_me"
                                                 class="form-check-label checkbox-warning mt-2 mb-0">{{ __('Remember Me') }}
                                             </label>
-                                        </div>
-                                        <div class="w-50 text-md-right">
+                                        </div> --}}
+                                        <div class="w-50">
                                             @if (Route::has('password.request'))
                                                 <a class="btn btn-link text-warning"
                                                     href="{{ route('password.request') }}">
@@ -93,15 +93,6 @@
                     </div>
                 </div>
             </div>
-            {{-- <script>
-            let index = 0;
-            const images = document.querySelectorAll('.carrousel img');
-            setInterval( () => {
-                images[index].style.opacity = 0 ;
-                index = (index + 1) % images.length;
-                images[index].style.opacity = 1 ;
-            } , 2000 ) ;
-        </script> --}}
             <script src="js/jquery.min.js"></script>
             <script src="js/popper.js"></script>
             <script src="js/bootstrap.min.js"></script>
