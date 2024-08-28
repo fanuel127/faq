@@ -31,10 +31,10 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form action="{{ url('/questions/list_question/{id}') }}" method="GET">
+                        {{-- <form action="{{ url('/questions/list_question/{id}') }}" method="GET"> --}}
                             <div class="filter-bar d-flex justify-content-between bg-light mt-2 mb-3 rounded-0"
                                 id="filter-bar" style="padding-top: 10px; padding-bottom:10px;">
-                                <div class="order mt-3 mb-2">
+                                <div class="order">
                                     <label for="myinputs">Trie par..</label>
                                     <select class="filtered" name="sort" id="myinputs">
                                         <option value="" selected>--</option>
@@ -42,14 +42,14 @@
                                         <option value="desc">Ordre decroissant</option>
                                     </select>
                                 </div>
-                                <div class="sort mt-3 mb-2">
+                                <div class="sort">
                                     <label for="myinputs">De..</label>
                                     <select class="filtered" name="sort" id="myinputs">
                                         <option value="" selected desabled>--</option>
                                         <option value="questionName">Nom</option>
                                     </select>
                                 </div>
-                                <div class="name mt-3 mb-2">
+                                <div class="name">
                                     <label for="myinputs">categorie..</label>
                                     <select class="filtered" name="mame" id="myinputs">
                                         <option value="" selected>--</option>
@@ -59,9 +59,18 @@
                                         @endforeach
                                     </select>
                                 </div>
+                                <div class="search">
+                                    <form class="search-form d-flex" action="/search" method="GET">
+                                        <div class="input-group">
+                                            <input class="search-input filtered" type="search" id="myinpu" name="search"
+                                            placeholder="Recherche..." aria-label="Search" value="{{ isset($search) ? $search : '' }}">
+                                            <button type="submit" class="btn btn-primary" id="myinpu" style="width: 10vh;"><i class="bi bi-search"></i></button>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
-                        </form>
-                        <div class="search mt-3 mb-2 filter-bar d-flex justify-content-end bg-light">
+                        {{-- </form> --}}
+                        {{-- <div class="search mt-3 mb-2 filter-bar d-flex justify-content-end bg-light">
                             <form class="search-form d-flex" action="/search" method="GET">
                                 <div class="input-group">
                                     <input class="search-input filtered" type="search" id="myinpu" name="search"
@@ -69,7 +78,7 @@
                                     <button type="submit" class="btn btn-primary" id="myinpu" style="width: 10vh;"><i class="bi bi-search"></i></button>
                                 </div>
                             </form>
-                        </div>
+                        </div> --}}
                         <div class="table-responsive">
                             <table id="example" class="table table-striped table-hover align-middle" style="width:100%">
                                 <thead class="table-dark">

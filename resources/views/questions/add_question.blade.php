@@ -21,42 +21,42 @@
                 <h4>Gestions des questions</h4>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}" style="color: black;">Accueil</a></li>
+                        <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}" style="color: black;text-decoration:0;">Accueil</a></li>
                         <li class="breadcrumb-item">Questions</li>
                         <li class="breadcrumb-item active" aria-current="page">Ajouter une question</li>
                     </ol>
                 </nav>
 
             </div>
-            <div class="card bg-light rounded-0">
+            <div class="card bg-light rounded-0 mt-4">
                 <div class="card-header bg-secondary text-white d-flex justify-content-between">
                     <h4><i class="bi bi-plus-square me-2"></i>Ajouter une question</h4>
-                    <a href="{{ url('/questions/list_question') }}" class="btn btn-lg btn-primary rounded-0 text-white"><i
+                    <a href="{{ url('/questions/list_question') }}" class="btn btn-sm btn-primary rounded-0 text-white"><i
                             class="bi bi-arrow-return-left me-2"></i>Retour</a>
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <h4 class="mt-3 ">les champs marqués d'un Astérix <span class="text-danger">(*)</span> sont
+                        <h5 class="mt-3 ">les champs marqués d'un Astérix <span class="text-danger">(*)</span> sont
                             obligatoires
-                        </h4>
+                        </h5>
                         <div class="col-md-6 mt-3">
                             <div>
                                 <label for="exampleFormControlTextarea1" class="form-label">
-                                    <h4>Nom de la question<span class="text-danger">*</span></h4>
+                                    <h5>Nom de la question<span class="text-danger">*</span></h5>
                                 </label>
                                 <input class="form-control form-control-lg rounded-0" name="questionName" id="exampleFormControlTextarea1">
                             </div>
                             <br>
                             <div>
                                 <label for="formFile" class="form-label">
-                                    <h4>Image de la question<span class="text-danger">*</span></h4>
+                                    <h5>Image de la question<span class="text-danger">*</span></h5>
                                 </label>
                                 <input class="form-control form-control-lg rounded-0" name="photo" type="file" id="formFile">
                             </div>
                             <br>
                             <div>
                                 <label for="formFileMultiple" class="form-label">
-                                    <h4>Video de la question</h4>
+                                    <h5>Video de la question</h5>
                                 </label>
                                 <input class="form-control form-control-lg rounded-0" name="video" type="file" id="formFileMultiple"
                                     multiple>
@@ -65,7 +65,7 @@
                         <div class="col-md-6 mt-3">
                             <div>
                                 <label for="exampleFormControlTextarea3 form-group col-md-6 mb-3" class="form-label">
-                                    <h4>Categorie de la question<span class="text-danger">*</span></h4>
+                                    <h5>Categorie de la question<span class="text-danger">*</span></h5>
                                 </label>
                                 <select class="form-select form-select-lg rounded-0" name="category_id" id="category">
                                     <option value="" selected disabled>selectionner votre categorie</option>
@@ -78,14 +78,14 @@
                             <br>
                             <div>
                                 <label for="formFile" class="form-label">
-                                    <h4>Image de la question<span class="text-danger">*</span></h4>
+                                    <h5>Image de la question<span class="text-danger">*</span></h5>
                                 </label>
                                 <input class="form-control form-control-lg rounded-0" name="photo2" type="file" id="formFile">
                             </div>
                             <br>
                             <div>
                                 <label for="exampleFormControlTextarea1" class="form-label">
-                                    <h4>Solution à la question<span class="text-danger">*</span></h4>
+                                    <h5>Solution à la question<span class="text-danger">*</span></h5>
                                 </label>
                                 <input class="form-control form-control-lg rounded-0" name="answer" id="exampleFormControlTextarea1">
                             </div>
@@ -94,7 +94,7 @@
                     </div>
                     <div class="mt-3">
                         <label for="exampleFormControlTextarea2 form-group col-md-6 mb-3" class="form-label">
-                            <h4>Description de la question<span class="text-danger">*</span></h4>
+                            <h5>Description de la question<span class="text-danger">*</span></h5>
                         </label>
                         <textarea class="form-control form-control-lg rounded-0" name="description" id="exampleFormControlTextarea2"></textarea>
                     </div>

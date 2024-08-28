@@ -32,7 +32,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form action="{{ url('/users/filter') }}" method="GET">
+                        {{-- <form action="{{ url('/users/filter') }}" method="GET"> --}}
 
                             <div class="filter-bar d-flex justify-content-between bg-light " id="filter-bar"
                                 style="padding-top: 10px; padding-bottom:10px; border-raduis:0;">
@@ -78,19 +78,19 @@
                                         @endforeach
                                     </select>
                                 </div>
-                            </div>
-                        </form>
-                        <div class="search filter-bar d-flex justify-content-end bg-light rounded-0 mt-2 ">
-                            <form class="search-form d-flex" action="/search_user" method="GET">
-                                <div class="input-group">
-                                    <input class="search-input filtered" type="search" id="myinpu" name="search"
-                                        placeholder="Recherche..." aria-label="Search"
-                                        value="{{ isset($search) ? $search : '' }}">
-                                    <button type="submit" class="btn btn-primary" id="myinpu" style="width: 10vh;"><i
-                                            class="bi bi-search text-white"></i></button>
+                                <div class="search">
+                                    <form class="search-form d-flex" action="/search_user" method="GET">
+                                        <div class="input-group">
+                                            <input class="search-input filtered" type="search" id="myinpu" name="search"
+                                                placeholder="Recherche..." aria-label="Search"
+                                                value="{{ isset($search) ? $search : '' }}">
+                                            <button type="submit" class="btn btn-primary" id="myinpu" style="width: 10vh;"><i
+                                                    class="bi bi-search text-white"></i></button>
+                                        </div>
+                                    </form>
                                 </div>
-                            </form>
-                        </div>
+                            </div>
+                        {{-- </form> --}}
                     </div>
 
                     <div>

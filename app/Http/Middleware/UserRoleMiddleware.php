@@ -43,4 +43,12 @@ class UserRoleMiddleware
 
         return redirect('/dashboard'); // Redirige vers la page d'accueil si l'utilisateur n'a pas le bon rôle
     }
+    // public function handle(Request $request, Closure $next, $role)
+    // {
+    //     if (Auth::check() && Auth::user()->role == $role) {
+    //         return redirect('/dashboard');
+    //     }
+
+    //     return $next($request); // Redirige vers la page d'accueil si l'utilisateur n'a pas le bon rôle
+    // }
 }

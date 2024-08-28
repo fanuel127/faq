@@ -16,7 +16,9 @@
         <div class="col-md-3" id="mybutton">
             <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded-0">
                 <div>
-                    <h3 class="fs-2">{{ $totalAllUsers }}</h3>
+                    <form action="{{ route('users.nombre') }}">
+                        <h3 class="fs-2">{{ $totalAllUsers }}</h3>
+                    </form>
                     <p class="fs-5">totale des utilisateurs</p>
                 </div>
                 <i class="bi bi-people-fill me-2 fs-1 primary-text border rounded-full secondary-bg p-3"></i>
@@ -25,7 +27,9 @@
         <div class="col-md-3" id="mybutton">
             <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded-0">
                 <div>
-                    <h3 class="fs-2">{{ $totalAdmin }}</h3>
+                    <form action="{{ route('users.nombre') }}">
+                        <h3 class="fs-2">{{ $totalAdmin }}</h3>
+                    </form>
                     <p class="fs-5">Administrateur</p>
                 </div>
                 <i class="bi bi-shield-lock-fill fs-1 primary-text border rounded-full secondary-bg p-3"></i>
@@ -34,7 +38,9 @@
         <div class="col-md-3" id="mybutton">
             <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded-0">
                 <div>
-                    <h3 class="fs-2">{{ $totalUser }}</h3>
+                    <form action="{{ route('users.nombre') }}">
+                        <h3 class="fs-2">{{ $totalUser }}</h3>
+                    </form>
                     <p class="fs-5">Gestionnaire</p>
                 </div>
                 <i class="bi bi-person-fill fs-1 primary-text border rounded-full secondary-bg p-3"></i>
@@ -43,7 +49,9 @@
         <div class="col-md-3" id="mybutton">
             <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded-0">
                 <div>
-                    <h3 class="fs-2">{{ $totalQuestion }}</h3>
+                    <form action="{{ route('users.nombre') }}">
+                        <h3 class="fs-2">{{ $totalQuestion }}</h3>
+                    </form>
                     <p class="fs-5">totale questions</p>
                 </div>
                 <i class="bi bi-question-diamond-fill fs-1 primary-text border rounded-full secondary-bg p-3"></i>

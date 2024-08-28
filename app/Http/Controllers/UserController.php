@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use App\Models\Question;
 use App\Models\Role;
@@ -38,9 +39,9 @@ class UserController extends  Controller
                 'users.created_at',
                 'role.role_name as role_name'
             )
-            ->orderBy('users.firstName', 'asc')->paginate(3);
-            // ->get();
-        return view('users.list_user', compact('users', $users,'roles'));
+            ->orderBy('users.lastName', 'asc')->paginate(5);
+        // ->get();
+        return view('users.list_user', compact('users', $users, 'roles'));
     }
 
     //modifier le mot de passe de l'utilisateur connecter dans la page profile_user
@@ -128,8 +129,8 @@ class UserController extends  Controller
                 'users.created_at',
                 'role.role_name as role_name'
             )
-            ->orderBy('users.firstName', 'asc')
-            ->paginate(3);
+            ->orderBy('users.lastName', 'asc')
+            ->paginate(5);
         // Début de la requête Eloquent
 
         // Vérifier si l'utilisateur a sélectionné un ordre de tri et un champ
@@ -191,9 +192,9 @@ class UserController extends  Controller
             ->orWhereHas('role', function ($query) use ($search) {
                 $query->where('role_name', 'like', "%$search%");
             })
-            ->paginate(3); // Utilisez paginate si vous souhaitez paginer les résultats
+            ->paginate(5); // Utilisez paginate si vous souhaitez paginer les résultats
 
-        return view('users.list_user', compact('users', 'search','roles'));
+        return view('users.list_user', compact('users', 'search', 'roles'));
     }
 
     public function create()
@@ -258,7 +259,7 @@ class UserController extends  Controller
                 'users.created_at',
                 'role.role_name'
             )
-            ->where('users.id',$id)
+            ->where('users.id', $id)
             ->first();
 
         // Détermine l'image à afficher en fonction du genre
@@ -271,7 +272,7 @@ class UserController extends  Controller
         return view('users.show_user', compact('users', 'image', $users));
     }
 
-    public function profil()
+    public function profil($id)
     {
         $users = User::join('role', 'users.role_id', '=', 'role.id')
             ->select(
@@ -287,10 +288,10 @@ class UserController extends  Controller
                 'users.created_at',
                 'role.role_name'
             )
-            ->where('users.id')
+            ->where('users.id', $id) // Assurez-vous de filtrer par l'utilisateur connecté
             ->first();
 
-        // Détermine l'image à afficher en fonction du genre
+        // Déterminer l'image à afficher en fonction du genre
         if (Auth::user()->gender == 'masculin') {
             $image = 'image/homme.png';
         } else {

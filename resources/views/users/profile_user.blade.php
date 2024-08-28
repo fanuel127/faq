@@ -18,9 +18,14 @@
                 <div>
                     <div class="card rounded-0 bg-white pb-3 pt-2" style="height: 71.5vh;">
                         <div class="card-hearder">
-                            <form action="{{ url('users/profile_user/{id}') }}">
-                                <img style="margin-left: 25%; max-width:440px; max-height:335px;" src="{{ asset($image) }}">
-                            </form>
+                            {{-- <form action="{{ url('/users/profile_user/{id}') }}" method="GET"> --}}
+                            @if (Auth::user()->gender == 'masculin')
+                                <img style="margin-left: 25%; max-width:440px; max-height:335px;" src="{{ asset('image/homme.png') }}">
+                            @else
+                                <img style="margin-left: 25%; max-width:440px; max-height:335px;" src="{{ asset('image/female.png') }}">
+                            @endif
+
+                            {{-- </form> --}}
                         </div>
                         <div class="card-body">
                             <div class="card text-center rounded-0 mt-5 bg-light" id="haut">
