@@ -3,7 +3,7 @@
         <div class="bg-secondary" id="sidebar-wrapper">
 
             <div class="sidebar-heading text-center py-4 success-text fs-4 fw-bold text-uppercase">
-                <i class="fas fa-user-secret me-2 fs-2"> <a href="{{ url('/dashboard') }}" id="liens">ALLFAQ</a></i>
+                <i class="fas fa-user-secret me-2 fs-2"> <a href="{{ url('/dashboard') }}" id="liens">RESPON</a></i>
             </div>
 
             <div class="sidebar-heading text-center py-3 success-text fs-4 fw-bold text-uppercase">
@@ -101,7 +101,7 @@
         <div class="bg-secondary" id="sidebar-wrapper">
 
             <div class="sidebar-heading text-center py-4 success-text fs-4 fw-bold text-uppercase">
-                <i class="fas fa-user-secret me-2 fs-2"> <a href="{{ url('/dashboard') }}" id="liens">ALLFAQ</a></i>
+                <i class="fas fa-user-secret me-2 fs-2"> <a href="{{ url('/dashboard') }}" id="liens">RESPON</a></i>
             </div>
 
             <div class="sidebar-heading text-center py-3 success-text fs-4 fw-bold text-uppercase">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Question;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use Illuminate\Support\Facades\Log;
 use App\Models\Question;
 
 
@@ -17,10 +18,8 @@ class QuestionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function indexQuestions()
+    public function indexQuestions(Request $request)
     {
-        // $questions = Question::paginate(10);
-        // return view ('questions.list_question')->with('questions', $questions);
         $categories = Category::all();
         $questions = Question::join('category', 'questions.category_id', '=', 'category.id')
             ->select(
@@ -37,8 +36,29 @@ class QuestionController extends Controller
                 'category.name'
             )
             ->orderBy('questions.questionName', 'asc')->paginate(6);
+
+        $query = Question::query();
+
+        // Filtre par catégorie
+        if ($request->filled('category_id')) {
+            $query->where('category_id', $request->input('category_id'));
+        }
+
+        // Gestion du tri
+        if ($request->filled('sortField') && $request->filled('sortOrder')) {
+            $sortField = $request->input('sortField'); // 'questionName' par exemple
+            $sortOrder = $request->input('sortOrder'); // 'asc' ou 'desc'
+
+            if ($sortField === 'questionName') {
+                $query->orderBy('questionName', $sortOrder); // Assurez-vous que le champ est correct
+            }
+        }
+
+        // Récupérez les questions filtrées
+        $questions = $query->paginate(6);
+
         // ->get();
-        return view('questions.list_question', compact('questions', $questions,'categories'));
+        return view('questions.list_question', compact('questions', $questions, 'categories'));
     }
     public function indexQuestionsclient()
     {
@@ -61,7 +81,7 @@ class QuestionController extends Controller
             )
             ->orderBy('questions.questionName', 'asc')->paginate(8);
         // ->get();
-        return view('client.question_list', compact('questions', $questions,'categories'));
+        return view('client.question_list', compact('questions', $questions, 'categories'));
     }
 
     public function showQuestions($id)
@@ -86,7 +106,7 @@ class QuestionController extends Controller
             ->orderBy('questions.questionName', 'asc')
             ->where('questions.id', $id)
             ->first();
-        return view('questions.show_question', compact('questions', $questions,'categories'));
+        return view('questions.show_question', compact('questions', $questions, 'categories'));
     }
     public function showQuestionsclient($id)
     {
@@ -114,33 +134,56 @@ class QuestionController extends Controller
 
     public function totalQuestions(Request $request)
     {
-        $questions = Question::all();
 
-        if ($request->has('search')) {
-            $questions = $questions->filter(function ($question) use ($request) {
-                return stripos($question->questionName, $request->input('search')) !== false
-                    || stripos($question->description, $request->input('search')) !== false
-                    || stripos($question->name, $request->input('search')) !== false;
-            });
-        }
-
-        $questionsCount = $questions->count();
-        if ($request->has('search')) {
-            $questions = $questions->filter(function ($question) use ($request) {
-                return stripos($question->questionName, $request->input('search')) !== false
-                    || stripos($question->description, $request->input('search')) !== false
-                    || stripos($question->name, $request->input('search')) !== false;
-            });
-        }
-
-        if ($request->has('sort') && $request->input('sort') === 'asc') {
-            $questions = $questions->sortBy('questionName');
-        } elseif ($request->has('sort') && $request->input('sort') === 'desc') {
-            $questions = $questions->sortByDesc('questionName');
-        }
         $categories = Category::all();
+        $query = Question::query();
 
-        return view('questions.list_question', compact('questions', 'questionsCount', $questions));
+        // Filtre par catégorie
+        if ($request->filled('category_id')) {
+            $query->where('category_id', $request->input('category_id'));
+        }
+
+        // Gestion du tri
+        if ($request->filled('sortField') && $request->filled('sortOrder')) {
+            $sortField = $request->input('sortField'); // 'questionName' par exemple
+            $sortOrder = $request->input('sortOrder'); // 'asc' ou 'desc'
+
+            if ($sortField === 'questionName') {
+                $query->orderBy('questionName', $sortOrder); // Assurez-vous que le champ est correct
+            }
+        }
+
+        // Récupérez les questions filtrées
+        $questions = $query->get();
+
+        return view('questions.list_question', compact('questions', 'categories'));
+        // $questions = Question::paginate(6);
+
+        // if ($request->has('search')) {
+        //     $questions = $questions->filter(function ($question) use ($request) {
+        //         return stripos($question->questionName, $request->input('search')) !== false
+        //             || stripos($question->description, $request->input('search')) !== false
+        //             || stripos($question->name, $request->input('search')) !== false;
+        //     });
+        // }
+
+        // $questionsCount = $questions->count();
+        // if ($request->has('search')) {
+        //     $questions = $questions->filter(function ($question) use ($request) {
+        //         return stripos($question->questionName, $request->input('search')) !== false
+        //             || stripos($question->description, $request->input('search')) !== false
+        //             || stripos($question->name, $request->input('search')) !== false;
+        //     });
+        // }
+
+        // if ($request->has('sort') && $request->input('sort') === 'asc') {
+        //     $questions = $questions->sortBy('questionName');
+        // } elseif ($request->has('sort') && $request->input('sort') === 'desc') {
+        //     $questions = $questions->sortByDesc('questionName');
+        // }
+        // $categories = Category::all();
+
+        // return view('questions.list_question', compact('questions', 'categories', 'questionsCount', $questions));
     }
 
     public function listCategoryQuestion()
@@ -164,7 +207,7 @@ class QuestionController extends Controller
             })
             ->paginate(6); // Utilisez paginate si vous souhaitez paginer les résultats
 
-        return view('questions.list_question', compact('questions', 'search','categories'));
+        return view('questions.list_question', compact('questions', 'search', 'categories'));
     }
     public function searchQuestionsclient(Request $request)
     {
@@ -181,7 +224,7 @@ class QuestionController extends Controller
             })
             ->paginate(8); // Utilisez paginate si vous souhaitez paginer les résultats
 
-        return view('client.question_list', compact('questions', 'search','categories'));
+        return view('client.question_list', compact('questions', 'search', 'categories'));
     }
 
 

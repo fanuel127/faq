@@ -39,7 +39,17 @@
             border-radius: 0;
         }
 
-        #myinputs {
+        #category_id {
+            font-size: 16px;
+            border-radius: 0;
+            height: 40px;
+        }
+        #sortField , #gender {
+            font-size: 16px;
+            border-radius: 0;
+            height: 40px;
+        }
+        #sortOrder , #role_id , #status {
             font-size: 16px;
             border-radius: 0;
             height: 40px;

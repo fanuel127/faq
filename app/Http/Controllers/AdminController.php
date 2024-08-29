@@ -290,14 +290,7 @@ class AdminController extends Controller
             ->where('users.id',$id)
             ->first();
 
-        // Détermine l'image à afficher en fonction du genre
-        if (Auth::user()->gender == 'masculin') {
-            $image = 'image/homme.png';
-        } else {
-            $image = 'image/female.png';
-        }
-
-        return view('users.profile_user', compact('users', 'image'));
+        return view('users.profile_user', compact('users', $users));
     }
 
     //  public function show(User $users)

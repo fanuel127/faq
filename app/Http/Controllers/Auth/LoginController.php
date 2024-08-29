@@ -36,32 +36,32 @@ class LoginController extends Controller
     //     return '/dashboard';
     // }
 
-    protected function authenticated(Request $request)
-    {
-        $credentials = $request->only(['email', 'password']);
-        $users = Auth::user();
+    // protected function authenticated(Request $request)
+    // {
+    //     $credentials = $request->only(['email', 'password']);
+    //     $users = Auth::user();
 
-        // Vérifie si le statut de l'utilisateur est égal à 1
-        if ($users->status === 1) {
-            if (Auth::attempt($credentials)) {
-                return redirect()->intended('/dashboard');
-            } else {
-                // Authentification échouée
-                return back()->withErrors([
-                    'email' => 'L\'email ne correspond pas.',
-                    'password' => 'Le mot de passe ne correspond pas.',
-                ]);
-            }
-        } else {
-            // Déconnecte l'utilisateur s'il est déjà connecté
-            Auth::logout();
+    //     // Vérifie si le statut de l'utilisateur est égal à 1
+    //     if ($users->status === 1) {
+    //         if (Auth::attempt($credentials)) {
+    //             return redirect()->intended('/dashboard');
+    //         } else {
+    //             // Authentification échouée
+    //             return back()->withErrors([
+    //                 'email' => 'L\'email ne correspond pas.',
+    //                 'password' => 'Le mot de passe ne correspond pas.',
+    //             ]);
+    //         }
+    //     } else {
+    //         // Déconnecte l'utilisateur s'il est déjà connecté
+    //         Auth::logout();
 
-            // Redirige vers la page de connexion avec un message d'erreur
-            return redirect('/login')->withErrors([
-                'email' => 'Votre compte n\'est pas activé. Veuillez contacter l\'administration.',
-            ])->withInput();
-        }
-    }
+    //         // Redirige vers la page de connexion avec un message d'erreur
+    //         return redirect('/login')->withErrors([
+    //             'email' => 'Votre compte n\'est pas activé. Veuillez contacter l\'administration.',
+    //         ])->withInput();
+    //     }
+    // }
 
 
     /**

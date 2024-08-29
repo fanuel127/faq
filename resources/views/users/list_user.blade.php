@@ -32,65 +32,72 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        {{-- <form action="{{ url('/users/filter') }}" method="GET"> --}}
-
-                            <div class="filter-bar d-flex justify-content-between bg-light " id="filter-bar"
-                                style="padding-top: 10px; padding-bottom:10px; border-raduis:0;">
-                                <div class="order ">
-                                    <label for="myinputs">Trie par ordre..</label>
-                                    <select class="filtered" name="order" id="myinputs">
-                                        <option value="" selected desabled>--</option>
-                                        <option value="asc">Croissant</option>
-                                        <option value="desc">Decroissant</option>
-                                    </select>
+                        <div class="d-flex justify-content-between bg-light pt-1">
+                            <form action="{{ url('/users/filter') }}" method="GET">
+                                <div class="filter-bar d-flex justify-content-between bg-light " id="filter-bar"
+                                    style="padding-top: 10px; padding-bottom:10px; border-raduis:0;">
+                                    <div class="order mx-3">
+                                        <label for="sortOrder">Trie par ordre..</label>
+                                        <select class="filtered" name="sortOrder" id="sortOrder">
+                                            <option value="" selected desabled>--</option>
+                                            <option value="asc">Croissant</option>
+                                            <option value="desc">Decroissant</option>
+                                        </select>
+                                    </div>
+                                    <div class="sort mx-3">
+                                        <label for="sortField">De..</label>
+                                        <select class="filtered" name="sortField" id="sortField">
+                                            <option value="" selected>--</option>
+                                            <option value="firstName">Nom</option>
+                                            <option value="lastName">Prenom</option>
+                                        </select>
+                                    </div>
+                                    <div class="gender mx-3">
+                                        <label for="gender">Genre..</label>
+                                        <select class="filtered" name="gender" id="gender">
+                                            <option value="" selected>--</option>
+                                            <option value="masculin">Masculin</option>
+                                            <option value="feminin">Feminin</option>
+                                        </select>
+                                    </div>
+                                    <div class="status mx-3">
+                                        <label for="status">Statut..</label>
+                                        <select class="filtered" name="status" id="status">
+                                            <option value="" selected>--</option>
+                                            <option value="1">Activer</option>
+                                            <option value="0">Desactiver</option>
+                                        </select>
+                                    </div>
+                                    <div class="role mx-3">
+                                        <label for="role_id">Role..</label>
+                                        <select class="filtered" name="role_id" id="role_id">
+                                            <option value="" selected>--</option>
+                                            @foreach ($roles as $role)
+                                                <option value="{{ $role->id }}">{{ $role->role_name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="mx-3">
+                                        <button type="submit" class="btn btn-warning text-white rounded-0 btn-sm" id="filterButton" style="width: 12vh;height:4.2vh;">
+                                            filtrer
+                                        </button>
+                                    </div>
                                 </div>
-                                <div class="sort ">
-                                    <label for="myinputs">De..</label>
-                                    <select class="filtered" name="sort" id="myinputs">
-                                        <option value="" selected>--</option>
-                                        <option value="firstName">Nom</option>
-                                        <option value="lastName">Prenom</option>
-                                    </select>
-                                </div>
-                                <div class="gender ">
-                                    <label for="myinputs">Genre..</label>
-                                    <select class="filtered" name="gender" id="myinputs">
-                                        <option value="" selected>--</option>
-                                        <option value="masculin">Masculin</option>
-                                        <option value="feminin">Feminin</option>
-                                    </select>
-                                </div>
-                                <div class="status ">
-                                    <label for="myinputs">Statut..</label>
-                                    <select class="filtered" name="status" id="myinputs">
-                                        <option value="" selected>--</option>
-                                        <option value="1">Actif</option>
-                                        <option value="0">Inactif</option>
-                                    </select>
-                                </div>
-                                <div class="role ">
-                                    <label for="myinputs">Role..</label>
-                                    <select class="filtered" name="role" id="myinputs">
-                                        <option value="" selected>--</option>
-                                        @foreach ($roles as $role)
-                                            <option value="{{ $role->id }}">{{ $role->role_name }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="search">
-                                    <form class="search-form d-flex" action="/search_user" method="GET">
-                                        <div class="input-group">
-                                            <input class="search-input filtered" type="search" id="myinpu" name="search"
-                                                placeholder="Recherche..." aria-label="Search"
-                                                value="{{ isset($search) ? $search : '' }}">
-                                            <button type="submit" class="btn btn-primary" id="myinpu" style="width: 10vh;"><i
-                                                    class="bi bi-search text-white"></i></button>
-                                        </div>
-                                    </form>
-                                </div>
+                            </form>
+                            <div class="filter-bar search mt-1 mb-2">
+                                <form class="search-form d-flex" action="/search_user" method="GET">
+                                    <div class="input-group">
+                                        <input class="search-input form-control filtered" type="search" id="myinpu"
+                                            name="search" placeholder="Recherche..." aria-label="Search"
+                                            value="{{ isset($search) ? $search : '' }}" style="width: 27vh;">
+                                        <button type="submit" class="btn btn-primary" id="myinpu"
+                                            style="width: 10vh;"><i class="bi bi-search text-white"></i></button>
+                                    </div>
+                                </form>
                             </div>
-                        {{-- </form> --}}
+                        </div>
+
                     </div>
 
                     <div>
@@ -156,7 +163,7 @@
                             </tbody>
                         </table>
 
-                        <div class="d-flex justify-content-end">
+                        <div class="d-flex justify-content-end mx-2">
                             {{ $users->links() }}
                         </div>
                         {{-- <div id="results"></div>

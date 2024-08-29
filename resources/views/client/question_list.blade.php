@@ -28,6 +28,20 @@
             transform: scale(1.1);
         }
 
+        button {
+            transition: 0.5s;
+            border: none;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+        }
+
+        button:nth-child() {
+            color: red;
+            background-color: transparent;
+        }
+
         .card-body .description {
             display: -webkit-box;
             -webkit-line-clamp: 3;
@@ -49,7 +63,7 @@
                         <input class="search-input form-control filtered border-0 rounded-0" type="search"
                             id="myinpu" name="search" placeholder="Recherche..." aria-label="Search"
                             value="{{ isset($search) ? $search : '' }}">
-                        <button type="submit" class="btn btn-warning rounded-0 me-3" id="myinpu"
+                        <button type="submit" class="btn btn-warning rounded-0 ms-3 me-3" id="myinpu"
                             style="width: 10vh;"><i class="bi bi-search"></i></button>
                     </div>
                 </form>
@@ -66,7 +80,7 @@
                             <div class="row mb-3 w-100">
                         @endif
                         <div class="col-md-3 col-sm-3 ml-2 my-4">
-                            <div class="card rounded-0 my-1 ms-2">
+                            <div class="card rounded-0 my-1 ms-2 h-100">
                                 <a href="{{ url('/client/question_detail/' . $question->id) }}">
                                     <img src="{{ asset('image/' . $question->photo) }}" alt="img" height="175"
                                         width="415" class="card-amg-top">
