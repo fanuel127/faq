@@ -3,7 +3,7 @@
 @section('content')
     <section class="ftco-section">
         <section class="ftco-section">
-            <div class="container">
+            <div class="container " style="margin-top: -19vh;">
                 <div class="row justify-content-center">
                     <div class="col-md-12 col-lg-10">
                         <div class="wrap d-md-flex">
@@ -30,7 +30,7 @@
                             </div>
                             <div class="login-wrap p-4 p-md-5">
                                 <div class="d-flex">
-                                    <div class="card-header text-warning mb-3" style="font-size: 20px;">
+                                    <div class="card-header text-warning mb-2" style="font-size: 20px;">
                                         <h2>{{ __('Se Connecter') }}</h2>
                                     </div>
                                 </div>
@@ -71,14 +71,14 @@
                                         </button>
                                     </div>
                                     <div class="form-group d-md-flex">
-                                        <div class="w-50 text-left">
+                                        {{-- <div class="w-50 text-left">
                                             <input type="checkbox" name="remember_me" class="rounded-0" id="remember_me"
                                                 {{ old('remember') ? 'checked' : '' }}>
                                             <label for="remember_me"
                                                 class="form-check-label checkbox-warning mt-2 mb-0">{{ __('Remember Me') }}
                                             </label>
-                                        </div>
-                                        <div class="w-50 text-md-right">
+                                        </div> --}}
+                                        <div class="w-50 text-md">
                                             @if (Route::has('password.request'))
                                                 <a class="btn btn-link text-warning"
                                                     href="{{ route('password.request') }}">

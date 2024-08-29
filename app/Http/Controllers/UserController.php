@@ -264,7 +264,7 @@ class UserController extends  Controller
             $image = 'female.png';
         }
 
-        return view('users.show_user', compact('users', 'image', $users));
+        return view('users.show_user', compact('users', 'image', ));
     }
 
     public function profil()

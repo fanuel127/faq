@@ -6,7 +6,7 @@
         <div class="bg-secondary" id="sidebar-wrapper">
 
             <div class="sidebar-heading text-center py-4 success-text fs-4 fw-bold text-uppercase">
-                <i class="fas fa-user-secret me-2 fs-2"> <a href="{{ url('/dashboard') }}" id="liens">FAQ</a></i>
+                <i class="fas fa-user-secret me-2 fs-2"> <a href="{{ url('/dashboard') }}" id="liens">AllFAQ</a></i>
             </div>
 
             <div class="sidebar-heading text-center py-3 success-text fs-4 fw-bold text-uppercase">
@@ -83,6 +83,20 @@
                 </aside>
             </div>
 
+            <div class="sidebar">
+                <div class="fixed-bottom mb-4">
+                    <a class="text-white" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                       <h4 class="ms-3"> <i class="fas fa-project-diagram me-2 text-danger"></i> {{ __('Deconnexion') }} </h4>
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                </div>
+            </div>
+
         </div>
     </div>
 @else
@@ -93,7 +107,7 @@
         <div class="bg-secondary" id="sidebar-wrapper">
 
             <div class="sidebar-heading text-center py-4 success-text fs-4 fw-bold text-uppercase">
-                <i class="fas fa-user-secret me-2 fs-2"> <a href="{{ url('/dashboard') }}" id="liens">FAQ</a></i>
+                <i class="fas fa-user-secret me-2 fs-2"> <a href="{{ url('/dashboard') }}" id="liens">AllFAQ</a></i>
             </div>
 
             <div class="sidebar-heading text-center py-3 success-text fs-4 fw-bold text-uppercase">
@@ -140,6 +154,20 @@
                         </li>
                     </ul>
                 </aside>
+            </div>
+
+            <div class="sidebar">
+                <div class="fixed-bottom mb-4">
+                    <a class="text-white" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                       <h4 class="ms-3"> <i class="fas fa-project-diagram me-2 text-danger"></i> {{ __('Deconnexion') }} </h4>
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                </div>
             </div>
 
         </div>

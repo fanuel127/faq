@@ -59,9 +59,18 @@ class LoginController extends Controller
 
         // $remember = $request->has('remember_me');
 
-        if (Auth::attempt($credentials, )) {
+        if (Auth::attempt($credentials,)) {
+            $users = Auth::user();
+            if ($users->status === 1) {
+                return redirect()->intended('/dashboard');
+            }
             // Authentification réussie
-            return redirect()->intended('/dashboard');
+
+            else {
+                return back()->withErrors([
+                    'email' => ' Demande a L\'Administrateur de vous activer.'
+                ]);
+            }
         } else {
             // Authentification échouée
             return back()->withErrors([
@@ -70,7 +79,6 @@ class LoginController extends Controller
             ]);
         }
     }
-
 
     public function logout(Request $request)
     {

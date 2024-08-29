@@ -21,22 +21,23 @@ class QuestionController extends Controller
     {
         // $questions = Question::paginate(10);
         // return view ('questions.list_question')->with('questions', $questions);
-        $questions = Question::join('category', 'question.category_id', '=', 'category.id')
+        $questions = Question::join('category', 'questions.category_id', '=', 'category.id')
             ->select(
-                'question.category_id',
-                'question.id',
-                'question.questionName',
-                'question.description',
-                'question.photo',
-                'question.photo2',
-                'question.video',
-                'question.answer',
-                'question.updated_at',
-                'question.created_at',
+               'questions.category_id',
+                'questions.id',
+                'questions.questionName',
+                'questions.description',
+                'questions.photo',
+                'questions.photo2',
+                'questions.video',
+                'questions.answer',
+                'questions.updated_at',
+                'questions.created_at',
                 'category.name'
             )
-            ->orderBy('question.questionName', 'asc')
-            ->get();
+            ->orderBy('questions.questionName', 'asc')
+             ->get(
+             );
         return view('questions.list_question')->with('questions', $questions);
     }
 
@@ -44,23 +45,23 @@ class QuestionController extends Controller
     {
         // $questions = Question::paginate(10);
         // return view ('questions.list_question')->with('questions', $questions);
-        $questions = Question::join('category', 'question.category_id', '=', 'category.id')
+        $questions = Question::join('category', 'questions.category_id', '=', 'category.id')
             ->select(
-                'question.category_id',
-                'question.id',
-                'question.questionName',
-                'question.description',
-                'question.photo',
-                'question.photo2',
-                'question.video',
-                'question.answer',
-                'question.updated_at',
-                'question.created_at',
+                'questions.category_id',
+                'questions.id',
+                'questions.questionName',
+                'questions.description',
+                'questions.photo',
+                'questions.photo2',
+                'questions.video',
+                'questions.answer',
+                'questions.updated_at',
+                'questions.created_at',
                 'category.name'
             )
-            ->orderBy('question.questionName', 'asc')
-            ->where('question.id',$id)
-            ->first();
+            ->orderBy('questions.questionName', 'asc')
+            ->where('questions.id',$id)
+             ->first();
         return view('questions.show_question')->with('questions', $questions);
     }
 
@@ -121,16 +122,15 @@ class QuestionController extends Controller
 
         ]);
 
-
-        $input = $request->validate([
-            'questionName' => 'required',
-            'category_id' => 'required|exists:Category,id',
-            'description' => 'required|string',
-            'answer' => 'required|string',
-            'video' => 'required|string',
-            'photo' => 'required',
-            'user_id' => 'required|exists:user,id',
-        ]);
+        //  $request->validate([
+        //     'questionName' => 'required',
+        //     'category_id' => 'required|exists:Category,id',
+        //     'description' => 'required|string',
+        //     'answer' => 'required|string',
+        //     'video' => 'required|string',
+        //     'photo' => 'required',
+        //     // 'user_id' => 'required|exists:user,id',
+        // ]);
 
         Question::create([
             'questionName' => $request['questionName'],

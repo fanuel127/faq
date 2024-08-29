@@ -14,16 +14,16 @@ return new class extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
             $table->string('questionName');
-            $table->string('category_id');
+            // $table->string('category_id');
             $table->string('description');
             $table->string('answer');
             $table->text('photo');
             $table->text('photo2');
             $table->text('video')->nullable;
-            // $table->unsignedBigInteger('user_id')->default('1');
-            // $table->foreign('user_id')->constrained()->references('id')->on('users')
-            // ->onUpdate('cascade')
-            // ->onDelete('cascade');
+            $table->unsignedBigInteger('category_id');
+            $table->foreign('category_id')->constrained()->references('id')->on('category')
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
 
             $table->timestamps();
         });

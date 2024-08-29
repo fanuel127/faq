@@ -127,8 +127,8 @@ Route::get('/dashboard', function () {
 
 Route::get('/dashboard', [UserController::class, 'nombre'])->name('users.nombre');
 
-Route::get('/login', [LoginController::class, 'showLoginForm'])->name('showlogin');
-Route::post('/login', [LoginController::class, 'login'])->name('login');
+Route::get('/', [LoginController::class, 'showLoginForm'])->name('showlogin');
+Route::post('/', [LoginController::class, 'login'])->name('login');
 // Route::post('/login', 'Auth\LoginController@login')->name('login');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 

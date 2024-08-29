@@ -48,12 +48,14 @@
                             <iframe src="{{ asset('video/video1.mp4') }}" frameborder="0" height="450"
                                 width="1000"></iframe>
                         </div>
-                        <div class="d-flex">
-                            <img src="{{ asset('image/img2.jpg') }}" alt="img" height="400" width="489"
-                                class="card-amg-top ms-4 mt-2">
-                            <img src="{{ asset('image/img2.jpg') }}" alt="img" height="400" width="489"
-                                class="card-amg-top ms-4 mt-2">
-                        </div>
+                        <marquee behavoir="scroll" direction="left" scrollamount="18">
+                            <div class="d-flex">
+                                <img src="{{ asset('image/img2.jpg') }}" alt="img" height="400" width="489"
+                                    class="card-amg-top ms-4 mt-2">
+                                <img src="{{ asset('image/img2.jpg') }}" alt="img" height="400" width="489"
+                                    class="card-amg-top ms-4 mt-2">
+                            </div>
+                        </marquee>
                     </div>
 
                     <div class="col-md-5">

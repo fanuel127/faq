@@ -1,4 +1,3 @@
-
 @extends('layouts.admin')
 
 @section('content')
@@ -30,27 +29,31 @@
                                     <h3>
                                         <b>
                                             @if ($questions->video)
-                                                <iframe class="video" src="{{ asset('video/' . $questions->video) }}"></iframe>
+                                                <iframe class="video"
+                                                    src="{{ asset('video/' . $questions->video) }}"></iframe>
                                             @endif
                                         </b>
                                     </h3>
                                 </div>
-                                <div class="d-flex">
-                                    <h3>
-                                        <b>
-                                            @if ($questions->photo)
-                                                <img class="photo" src="{{ asset('image/' . $questions->photo) }}">
-                                            @endif
-                                        </b>
-                                    </h3>
-                                    <h3 class="mx-3">
-                                        <b>
-                                            @if ($questions->photo2)
-                                                <img class="photo" src="{{ asset('image/' . $questions->photo2) }}">
-                                            @endif
-                                        </b>
-                                    </h3>
-                                </div>
+                                <marquee behavoir="scroll" direction="left" scrollamount="18">
+                                    <div class="d-flex">
+
+                                        <h3>
+                                            <b>
+                                                @if ($questions->photo)
+                                                    <img class="photo" src="{{ asset('image/' . $questions->photo) }}">
+                                                @endif
+                                            </b>
+                                        </h3>
+                                        <h3 class="mx-3">
+                                            <b>
+                                                @if ($questions->photo2)
+                                                    <img class="photo" src="{{ asset('image/' . $questions->photo2) }}">
+                                                @endif
+                                            </b>
+                                        </h3>
+                                    </div>
+                                </marquee>
                             </div>
                             <div class="col-md-5">
                                 <div class="mt-3">
@@ -99,7 +102,3 @@
         </div>
     </section>
 @endsection
-
-
-
-
