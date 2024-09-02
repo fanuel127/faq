@@ -96,7 +96,6 @@
                         <th>#</th>
                         <th>Nom</th>
                         <th>Categorie</th>
-                        <th>Description</th>
                         <th>Solution</th>
                     </tr>
                 </thead>
@@ -113,7 +112,6 @@
                             <td>{{ $i }}</td>
                             <td>{{ $question->questionName }}</td>
                             <td>{{ $question->category->name }}</td>
-                            <td>{{ $question->description }}</td>
                             <td>{{ $question->answer }}</td>
                         </tr>
                     @endforeach

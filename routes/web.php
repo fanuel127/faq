@@ -28,6 +28,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/page_php/page', function () {
+    return view('page_php.page');
+});
+
 //route controller test
 Route::get('/test', [TestController::class, 'index'])->name('Tests.index');
 Route::get('/test/create', [TestController::class, 'create'])->name('Tests.create');
@@ -171,17 +175,18 @@ Route::get('/question/show', function () {
     Route::get('/users/update/{id}', [UserController::class, 'edit'])->name('users.edit_user');
     Route::get('/users/show_user/{id}', [UserController::class, 'show'])->name('users.show_user');
     Route::get('/users/profile_user/{id}', [UserController::class, 'profil'])->name('users.profile_user');
-    Route::post('/update/password', [UserController::class, 'updatePassword'])->name('update.password');
     Route::get('/users/filter', [UserController::class, 'filter'])->name('users.filter');
     Route::get('/search_user', [UserController::class, 'search']);
 
     //Route pour les questions
     Route::post('/questions/list_question', [QuestionController::class, 'storeQuestions'])->name('questions.store');
     Route::get('/list_question', [QuestionController::class, 'indexQuestions'])->name('questions.list_question');
+    Route::get('/client/question_list', [QuestionController::class, 'indexQuestionsclient'])->name('client.question_list');
     Route::put('/questions/edit_question/{id}', [QuestionController::class, 'updateQuestions'])->name('questions.update');
     Route::get('/questions/update/{id}', [QuestionController::class, 'editQuestions'])->name('questions.edit_question');
     Route::get('/questions/show_question/{id}', [QuestionController::class, 'showQuestions'])->name('questions.show_question');
     Route::get('/questions/list_question/{id}', [QuestionController::class, 'totalQuestions'])->name('questions.total');
+    Route::get('/client/question_list/{id}', [QuestionController::class, 'totalQuestionsclient'])->name('questions.total_client');
     Route::get('/search', [QuestionController::class, 'search']);
     Route::get('/client/question_list/search', [QuestionController::class, 'searchQuestionsclient']);
 

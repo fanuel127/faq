@@ -1,6 +1,31 @@
 @extends('layouts.admin')
 
 @section('content')
+    @if (session('success'))
+        <script>
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-right',
+                iconColor: 'white',
+                customClass: {
+                    popup: 'colored-toast',
+                },
+                showConfirmButton: false,
+                timer: 1500,
+                timerProgressBar: true,
+            })
+            Toast.fire({
+                icon: 'success',
+                title: "{{ session('success') }}",
+            });
+            // Swal.fire({
+            //     icon: "Success",
+            //     title: "Wow...",
+            //     text: "{{ session('Success') }}",
+            //     timer: 2500
+            // });
+        </script>
+    @endif
     <div style="display:flex; justify-content:space-between;margin: 30px;">
         <h4>Gestions des questions</h4>
         <nav aria-label="breadcrumb">
@@ -22,6 +47,9 @@
                             <div class="d-flex justify-content-between ">
                                 <h4 class="text-center text-light  pt-3"><i
                                         class="bi bi-list-ul text-warning me-2"></i>Liste des questions</h4>
+                                <div>
+                                    <h4 class="text-white pt-3"> Totale Questions : {{ $totalQuestion }}</h4>
+                                </div>
                                 <a href="{{ url('/questions/add_question') }}" id="mybutton"
                                     class="btn btn-warning pt-2 mt-2 text-center rounded-0">
                                     <i class="fas fa-plus"></i>
@@ -61,7 +89,8 @@
                                         </select>
                                     </div>
                                     <div class="ms-4">
-                                        <button type="submit" class="btn btn-warning text-white rounded-0 btn-sm" id="filterButton" style="width: 10vh;height:4vh;">
+                                        <button type="submit" class="btn btn-warning text-white rounded-0 btn-sm"
+                                            id="filterButton" style="width: 10vh;height:4vh;">
                                             filtrer
                                         </button>
                                     </div>
@@ -70,15 +99,18 @@
                             <div class="filter-bar search mt-2 mb-3">
                                 <form class="search-form d-flex" action="/search" method="GET">
                                     <div class="input-group">
-                                        <input class="search-input form-control filtered" type="search" id="myinpu" name="search" style="width: 50vh;"
-                                        placeholder="Recherche..." aria-label="Search" value="{{ isset($search) ? $search : '' }}">
-                                        <button type="submit" class="btn btn-primary" id="myinpu" style="width: 10vh;"><i class="bi bi-search"></i></button>
+                                        <input class="search-input form-control filtered" type="search" id="myinpu"
+                                            name="search" style="width: 50vh;" placeholder="Recherche..."
+                                            aria-label="Search" value="{{ isset($search) ? $search : '' }}">
+                                        <button type="submit" class="btn btn-primary" id="myinpu"
+                                            style="width: 10vh;"><i class="bi bi-search"></i></button>
                                     </div>
                                 </form>
                             </div>
                         </div>
                         <div class="table-responsive-xxl mt-3">
-                            <table id="example" class="table table-striped table-hover h-100 vertical-align-middle" style="width:100%; height:100%;">
+                            <table id="example" class="table table-striped table-hover h-100 vertical-align-middle"
+                                style="width:100%; height:100%;">
                                 <thead class="table-dark">
                                     <tr>
                                         <th>#</th>

@@ -50,7 +50,7 @@
                         <div class="d-flex justify-content-between">
                             @if ($users->role_name == 'Admin')
                                 <h5><i class="bi bi-shield-lock-fill text-warning me-2"></i>Role : </h5> <h3> {{ $users->role_name }}</h3>
-                            @elseif ($users->role_name == 'SimpleUser')
+                            @elseif ($users->role_name == 'Gestionnaire')
                                 <h5><i class="bi bi-person-fill text-warning me-2"></i>Role : </h5> <h3> {{ $users->role_name }}</h3>
                             @endif
                         </div>

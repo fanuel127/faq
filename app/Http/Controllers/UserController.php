@@ -22,8 +22,6 @@ class UserController extends  Controller
      */
     public function index(Request $request)
     {
-        // $users = User::paginate(10);
-        // return view('users.list_user')->with('users', $users);
 
         $users = User::join('role', 'users.role_id', '=', 'role.id')
             ->select(
@@ -75,23 +73,25 @@ class UserController extends  Controller
         }
 
         // Récupérez les utilisateurs filtrés avec pagination
-        $users = $query->paginate(5);
+        $users = $query->paginate(10);
 
         $roles = Role::all();
 
+        $totalAllUsers = User::count();
+
         // ->get();
-        return view('users.list_user', compact('users', $users, 'roles'));
+        return view('users.list_user', compact('users', $users, 'roles','totalAllUsers'));
     }
 
     //modifier le mot de passe de l'utilisateur connecter dans la page profile_user
     public function updatePassword(Request $request)
     {
-        $user = Auth::user();
+        $users = Auth::user();
         $old_password = $request->input('old_password');
         $new_password = $request->input('new_password');
         $confirm_new_password = $request->input('confirm_new_password');
 
-        if (!Hash::check($old_password, $user->password)) {
+        if (!Hash::check($old_password, $users->password)) {
             return back()->withErrors(['old_password' => 'L\'ancien mot de passe est incorrect.']);
         }
 
@@ -99,7 +99,7 @@ class UserController extends  Controller
             return back()->withErrors(['new_password' => 'Les deux nouveaux mots de passe ne correspondent pas.']);
         }
 
-        $user->password = bcrypt($new_password);
+        $users->password = bcrypt($new_password);
 
         return back()->with('success', 'Le mot de passe a été modifié avec succès.');
     }
@@ -202,12 +202,14 @@ class UserController extends  Controller
         }
 
         // Récupérez les utilisateurs filtrés avec pagination
-        $users = $query->paginate(5);
+        $users = $query->paginate(10);
 
         // Récupérer la liste des rôles
         $roles = Role::all();
 
-        return view('users.list_user', compact('users', 'roles')); // Envoie les données à la vue
+        $totalAllUsers = User::count();
+
+        return view('users.list_user', compact('users', 'roles','totalAllUsers')); // Envoie les données à la vue
     }
 
     // public function filter(Request $request)
@@ -283,6 +285,8 @@ class UserController extends  Controller
 
         $roles = Role::all();
 
+        $totalAllUsers = User::count();
+
         $users = User::query()
             ->where('firstName', 'like', "%$search%")
             ->orWhere('lastName', 'like', "%$search%")
@@ -293,9 +297,9 @@ class UserController extends  Controller
                 $query->where('role_name', 'like', "%$search%");
             })
             ->orderBy('users.firstName', 'asc')
-            ->paginate(5); // Utilisez paginate si vous souhaitez paginer les résultats
+            ->paginate(10); // Utilisez paginate si vous souhaitez paginer les résultats
 
-        return view('users.list_user', compact('users', 'search', 'roles'));
+        return view('users.list_user', compact('users', 'search', 'roles','totalAllUsers'));
     }
 
     public function create()
@@ -333,7 +337,7 @@ class UserController extends  Controller
             'password' => Hash::make($request['password']),
         ]);
 
-        return redirect(url('users/list_user'))->with('success', 'Utilisateur Ajouter!');
+        return redirect(url('users/add_user'))->with('success', 'Utilisateur Ajouter!');
     }
 
     /**
@@ -442,6 +446,8 @@ class UserController extends  Controller
         $user = User::find($id);
         $user->status = !$user->status;
         if ($user->save()) {
+            $message = $user->status ? 'Utilisateur activé avec succès.' : 'Utilisateur désactivé avec succès.';
+            session()->flash('success_status', $message);
             return back();
         } else {
             return redirect(route('status'));

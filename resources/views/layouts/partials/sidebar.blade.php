@@ -26,7 +26,7 @@
                                 class="sidebar-link has-dropdown collapsed list-group-item list-group-item-action bg-transparent second-text fw-bold"
                                 data-bs-toggle="collapse" data-bs-target="#auth" aria-expanded="false"
                                 aria-controls="auth">
-                                <i class="bi bi-people-fill me-2 text-warning" style="margin-left:15px"></i>Utilisateur
+                                <i class="bi bi-people-fill me-2 text-warning" style="margin-left:15px"></i>Utilisateurs
                             </a>
 
                             <ul id="auth" class="sidebar-dropdown list-unstyled collapse"
@@ -80,19 +80,54 @@
                 </aside>
             </div>
 
-            <div class="sidebar">
-                <div class="fixed-bottom mb-4">
-                        <a class="text-white" href="{{ route('logout') }}"
-                            onclick="event.preventDefault();
-                                                 document.getElementById('logout-form').submit();">
-                            <h5 class="ms-3"><i class="fas fa-project-diagram me-2 text-warning"></i>{{ __('Deconnexion') }}</h5>
-                        </a>
+            {{-- <div class="sidebar"> --}}
+            <div class="fixed-bottom mb-4">
+                <a class="text-white" href="{{ route('logout') }}" id="logoutButton_admin" style="text-decoration: 0;"
+                    onclick="event.preventDefault();">
+                    <h5 class="ms-3"><i class="fas fa-project-diagram me-2 text-warning"></i>{{ __('Deconnexion') }}
+                    </h5>
+                </a>
 
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
-                </div>
+                <form id="logout_form_admin" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+                <script>
+                    document.getElementById('logoutButton_admin').addEventListener('click', function(event) {
+                        event.preventDefault(); // Empêche le comportement par défaut
+                        Swal.fire({
+                            icon: 'warning',
+                            title: 'Confirmation de déconnexion',
+                            text: 'Voulez-vous vraiment vous déconnecter ?',
+                            showDenyButton: true,
+                            // showCancelButton: true,
+                            denyButtonText: 'Non',
+                            confirmButtonText: 'Oui',
+                            customClass: {
+                                actions: 'my-actions',
+                                // cancelButton: 'order-1 right-gap btn1',
+                                denyButton: 'order-2 btn1 right-gap',
+                                confirmButton: 'order-3 btn1',
+                            },
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                document.getElementById('logout_form_admin').submit();
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Déconnecté !',
+                                    text: "{{ session('status') }}",
+                                    showConfirmButton: false,
+                                    timer: 2000
+                                });
+                            } else if (result.isDenied) {
+                                Swal.fire(
+                                    'Vous êtes toujours connecté.', '', 'info'
+                                )
+                            }
+                        })
+                    });
+                </script>
             </div>
+            {{-- </div> --}}
 
         </div>
     </div>
@@ -101,7 +136,8 @@
         <div class="bg-secondary" id="sidebar-wrapper">
 
             <div class="sidebar-heading text-center py-4 success-text fs-4 fw-bold text-uppercase">
-                <i class="fas fa-user-secret me-2 fs-2"> <a href="{{ url('/dashboard') }}" id="liens">RESPON</a></i>
+                <i class="fas fa-user-secret me-2 fs-2"> <a href="{{ url('/dashboard') }}"
+                        id="liens">RESPON</a></i>
             </div>
 
             <div class="sidebar-heading text-center py-3 success-text fs-4 fw-bold text-uppercase">
@@ -151,16 +187,51 @@
             </div>
 
             <div class="sidebar">
-                <div class="fixed-bottom mb-4">
-                        <a class="text-white text-warning" href="{{ route('logout') }}"
-                            onclick="event.preventDefault();
-                                                 document.getElementById('logout-form').submit();">
-                            <h5 class="ms-3"><i class="fas fa-project-diagram me-2 text-warning"></i>{{ __('Deconnexion') }}</h5>
-                        </a>
+                <div class="fixed-bottom">
+                    <a class="text-white text-warning" href="{{ route('logout') }}" id="logoutButton_user"
+                        onclick="evently.preventDefault();">
+                        <h5 class="ms-3"><i
+                                class="fas fa-project-diagram me-2 text-warning"></i>{{ __('Deconnexion') }}</h5>
+                    </a>
 
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
+                    <form id="logout_form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                    <script>
+                        document.getElementById('logoutButton_user').addEventListener('click', function(evently) {
+                            evently.preventDefault(); // Empêche le comportement par défaut
+                            Swal.fire({
+                                icon: 'warning',
+                                title: 'Confirmation de déconnexion',
+                                text: 'Voulez-vous vraiment vous déconnecter ?',
+                                showDenyButton: true,
+                                // showCancelButton: true,
+                                denyButtonText: 'Non',
+                                confirmButtonText: 'Oui',
+                                customClass: {
+                                    actions: 'my-actions',
+                                    // cancelButton: 'order-1 right-gap btn1',
+                                    denyButton: 'order-2 btn1 right-gap',
+                                    confirmButton: 'order-3 btn1',
+                                },
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    document.getElementById('logout_form').submit();
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'Déconnecté !',
+                                        text: "{{ session('status') }}",
+                                        showConfirmButton: false,
+                                        timer: 2000
+                                    });
+                                } else if (result.isDenied) {
+                                    Swal.fire(
+                                        'Vous êtes toujours connecté.', '', 'info'
+                                    )
+                                }
+                            })
+                        });
+                    </script>
                 </div>
             </div>
 

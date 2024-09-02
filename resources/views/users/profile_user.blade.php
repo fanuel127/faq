@@ -20,9 +20,11 @@
                         <div class="card-hearder">
                             {{-- <form action="{{ url('/users/profile_user/{id}') }}" method="GET"> --}}
                             @if (Auth::user()->gender == 'masculin')
-                                <img style="margin-left: 25%; max-width:440px; max-height:335px;" src="{{ asset('image/homme.png') }}">
+                                <img style="margin-left: 25%; max-width:440px; max-height:335px;"
+                                    src="{{ asset('image/homme.png') }}">
                             @else
-                                <img style="margin-left: 25%; max-width:440px; max-height:335px;" src="{{ asset('image/female.png') }}">
+                                <img style="margin-left: 25%; max-width:440px; max-height:335px;"
+                                    src="{{ asset('image/female.png') }}">
                             @endif
 
                             {{-- </form> --}}
@@ -100,11 +102,6 @@
                 <div class="mt-3">
                     <form action="{{ route('update.password') }}" method="POST">
                         @csrf
-                        @if (session('success'))
-                            <div class="mb-3">
-                                <h3><i class="bi bi-check-circle-fill me-2 text-success"></i>{{ session('success') }}</h3>
-                            </div>
-                        @endif
 
                         @if ($errors->any())
                             <div>
@@ -113,6 +110,16 @@
                                 @endforeach
 
                             </div>
+                        @endif
+                        @if (session('success'))
+                            <script>
+                                Swal.fire({
+                                    icon: "success",
+                                    title: "Wow...",
+                                    text: "{{ session('success') }}",
+                                    timer: 2500
+                                });
+                            </script>
                         @endif
                         <div class="card rounded-0">
                             <div class="card-header bg-secondary text-white">

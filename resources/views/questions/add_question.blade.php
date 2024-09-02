@@ -13,6 +13,25 @@
             </ul>
         @endif
     </div>
+    @if (session('Success'))
+        <script>
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-right',
+                iconColor: 'white',
+                customClass: {
+                    popup: 'colored-toast',
+                },
+                showConfirmButton: false,
+                timer: 1400,
+                timerProgressBar: true,
+            })
+            Toast.fire({
+                icon: 'success',
+                title: "{{ session('Success') }}",
+            });
+        </script>
+    @endif
     <section class="gradient-custom">
         <form action="{{ route('questions.store') }}" method="post">
             {!! csrf_field() !!}
@@ -21,7 +40,8 @@
                 <h4>Gestions des questions</h4>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}" style="color: black;text-decoration:0;">Accueil</a></li>
+                        <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}"
+                                style="color: black;text-decoration:0;">Accueil</a></li>
                         <li class="breadcrumb-item">Questions</li>
                         <li class="breadcrumb-item active" aria-current="page">Ajouter une question</li>
                     </ol>
@@ -44,22 +64,24 @@
                                 <label for="exampleFormControlTextarea1" class="form-label">
                                     <h5>Nom de la question<span class="text-danger">*</span></h5>
                                 </label>
-                                <input class="form-control form-control-lg rounded-0" name="questionName" id="exampleFormControlTextarea1">
+                                <input class="form-control form-control-lg rounded-0" name="questionName"
+                                    id="exampleFormControlTextarea1">
                             </div>
                             <br>
                             <div>
                                 <label for="formFile" class="form-label">
                                     <h5>Image de la question<span class="text-danger">*</span></h5>
                                 </label>
-                                <input class="form-control form-control-lg rounded-0" name="photo" type="file" id="formFile">
+                                <input class="form-control form-control-lg rounded-0" name="photo" type="file"
+                                    id="formFile">
                             </div>
                             <br>
                             <div>
                                 <label for="formFileMultiple" class="form-label">
                                     <h5>Video de la question</h5>
                                 </label>
-                                <input class="form-control form-control-lg rounded-0" name="video" type="file" id="formFileMultiple"
-                                    multiple>
+                                <input class="form-control form-control-lg rounded-0" name="video" type="file"
+                                    id="formFileMultiple" multiple>
                             </div>
                         </div>
                         <div class="col-md-6 mt-3">
@@ -80,14 +102,16 @@
                                 <label for="formFile" class="form-label">
                                     <h5>Image de la question<span class="text-danger">*</span></h5>
                                 </label>
-                                <input class="form-control form-control-lg rounded-0" name="photo2" type="file" id="formFile">
+                                <input class="form-control form-control-lg rounded-0" name="photo2" type="file"
+                                    id="formFile">
                             </div>
                             <br>
                             <div>
                                 <label for="exampleFormControlTextarea1" class="form-label">
                                     <h5>Solution à la question<span class="text-danger">*</span></h5>
                                 </label>
-                                <input class="form-control form-control-lg rounded-0" name="answer" id="exampleFormControlTextarea1">
+                                <input class="form-control form-control-lg rounded-0" name="answer"
+                                    id="exampleFormControlTextarea1">
                             </div>
 
                         </div>

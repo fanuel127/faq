@@ -1,6 +1,43 @@
 @extends('layouts.admin')
 
 @section('content')
+    @if (session('Success'))
+        <script>
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-right',
+                iconColor: 'white',
+                customClass: {
+                    popup: 'colored-toast',
+                },
+                showConfirmButton: false,
+                timer: 1500,
+                timerProgressBar: true,
+            })
+            Toast.fire({
+                icon: 'success',
+                title: "{{ session('Success') }}",
+            });
+            // Swal.fire({
+            //     icon: "Success",
+            //     title: "Wow...",
+            //     text: "{{ session('Success') }}",
+            //     timer: 2500
+            // });
+        </script>
+    @endif
+
+    @if (session('success_status'))
+        <script>
+            Swal.fire({
+                icon: "success",
+                title: "Wow...",
+                text: "{{ session('success_status') }}",
+                timer: 2500
+            });
+        </script>
+    @endif
+
     <div class="d-flex justify-content-between">
         <h4 class="ms-3">Gestions des utilisateurs</h4>
         <nav aria-label="breadcrumb">
@@ -23,6 +60,9 @@
                                 <h4 class="text-center text-light  pt-3">
                                     <i class="bi bi-list-ul text-warning me-2"></i>Liste des utilisateurs
                                 </h4>
+                                <div>
+                                    <h4 class="text-white pt-3"> Totale Utilisateurs : {{ $totalAllUsers }}</h4>
+                                </div>
                                 <a href="{{ url('/users/add_user') }}" id="mybutton"
                                     class="btn btn-warning pt-2 mt-2 text-center">
                                     <i class="fas fa-plus"></i>
@@ -79,7 +119,8 @@
                                         </select>
                                     </div>
                                     <div class="mx-3">
-                                        <button type="submit" class="btn btn-warning text-white rounded-0 btn-sm" id="filterButton" style="width: 12vh;height:4.2vh;">
+                                        <button type="submit" class="btn btn-warning text-white rounded-0 btn-sm"
+                                            id="filterButton" style="width: 12vh;height:4.2vh;">
                                             filtrer
                                         </button>
                                     </div>
