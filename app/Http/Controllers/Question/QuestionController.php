@@ -21,9 +21,59 @@ class QuestionController extends Controller
     {
         // $questions = Question::paginate(10);
         // return view ('questions.list_question')->with('questions', $questions);
+
         $questions = Question::join('category', 'questions.category_id', '=', 'category.id')
             ->select(
-               'questions.category_id',
+                'questions.category_id',
+                'questions.id',
+                'questions.questionName',
+                'questions.description',
+                'questions.photo',
+                'questions.photo2',
+                'questions.video',
+                'questions.answer',
+                'questions.updated_at',
+                'questions.created_at',
+                'category.name'
+            )
+
+            ->orderBy('questions.questionName', 'asc')->paginate(6);
+        //  ->get();
+        return view('questions.list_question', compact('questions', $questions,'categories'));
+    }
+    public function indexQuestionsclient()
+    {
+        // $questions = Question::paginate(10);
+        // return view ('questions.list_question')->with('questions', $questions);
+        $categories = Category::all();
+        $questions = Question::join('category', 'questions.category_id', '=', 'category.id')
+            ->select(
+                'questions.category_id',
+                'questions.id',
+                'questions.questionName',
+                'questions.description',
+                'questions.photo',
+                'questions.photo2',
+                'questions.video',
+                'questions.answer',
+                'questions.updated_at',
+                'questions.created_at',
+                'category.name'
+            )
+            ->orderBy('questions.questionName', 'asc')->paginate(8);
+        // ->get();
+        return view('client.question_list', compact('questions', $questions,'categories'));
+    }
+
+    public function showQuestions($id)
+    {
+        // $questions = Question::paginate(10);
+        // return view ('questions.list_question')->with('questions', $questions);
+
+        $categories = Category::all();
+        $questions = Question::join('category', 'questions.category_id', '=', 'category.id')
+            ->select(
+                'questions.category_id',
                 'questions.id',
                 'questions.questionName',
                 'questions.description',
@@ -36,12 +86,11 @@ class QuestionController extends Controller
                 'category.name'
             )
             ->orderBy('questions.questionName', 'asc')
-             ->get(
-             );
-        return view('questions.list_question')->with('questions', $questions);
+            ->where('questions.id', $id)
+            ->first();
+        return view('questions.show_question', compact('questions', $questions,'categories'));
     }
-
-    public function showQuestions($id)
+    public function showQuestionsclient($id)
     {
         // $questions = Question::paginate(10);
         // return view ('questions.list_question')->with('questions', $questions);
@@ -60,9 +109,9 @@ class QuestionController extends Controller
                 'category.name'
             )
             ->orderBy('questions.questionName', 'asc')
-            ->where('questions.id',$id)
-             ->first();
-        return view('questions.show_question')->with('questions', $questions);
+            ->where('questions.id', $id)
+            ->first();
+        return view('client.question_detail', compact('questions', $questions));
     }
 
     public function totalQuestions(Request $request)
@@ -72,7 +121,8 @@ class QuestionController extends Controller
         if ($request->has('search')) {
             $questions = $questions->filter(function ($question) use ($request) {
                 return stripos($question->questionName, $request->input('search')) !== false
-                    || stripos($question->description, $request->input('search')) !== false;
+                    || stripos($question->description, $request->input('search')) !== false
+                    || stripos($question->name, $request->input('search')) !== false;
             });
         }
 
@@ -80,7 +130,8 @@ class QuestionController extends Controller
         if ($request->has('search')) {
             $questions = $questions->filter(function ($question) use ($request) {
                 return stripos($question->questionName, $request->input('search')) !== false
-                    || stripos($question->description, $request->input('search')) !== false;
+                    || stripos($question->description, $request->input('search')) !== false
+                    || stripos($question->name, $request->input('search')) !== false;
             });
         }
 
@@ -89,17 +140,50 @@ class QuestionController extends Controller
         } elseif ($request->has('sort') && $request->input('sort') === 'desc') {
             $questions = $questions->sortByDesc('questionName');
         }
+        $categories = Category::all();
 
-        return view('questions.list_question', compact('questions', 'questionsCount'));
-
-
-        return view('questions.list_question')->with('questions', $questions);
+        return view('questions.list_question', compact('questions', 'questionsCount', $questions));
     }
+
     public function listCategoryQuestion()
     {
-
         $categories = Category::all();
         return view('questions.list_question')->with('categories', $categories);
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request->input('search');
+
+        $categories = Category::all();
+
+        $questions = Question::query()
+            ->where('questionName', 'like', "%$search%")
+            ->orWhere('description', 'like', "%$search%")
+            ->with('category') // Charger la relation category
+            ->orWhereHas('category', function ($query) use ($search) {
+                $query->where('name', 'like', "%$search%");
+            })
+            ->paginate(6); // Utilisez paginate si vous souhaitez paginer les résultats
+
+        return view('questions.list_question', compact('questions', 'search','categories'));
+    }
+    public function searchQuestionsclient(Request $request)
+    {
+        $search = $request->input('search');
+
+        $categories = Category::all();
+
+        $questions = Question::query()
+            ->where('questionName', 'like', "%$search%")
+            ->orWhere('description', 'like', "%$search%")
+            ->with('category') // Charger la relation category
+            ->orWhereHas('category', function ($query) use ($search) {
+                $query->where('name', 'like', "%$search%");
+            })
+            ->paginate(8); // Utilisez paginate si vous souhaitez paginer les résultats
+
+        return view('client.question_list', compact('questions', 'search','categories'));
     }
 
 
@@ -116,7 +200,7 @@ class QuestionController extends Controller
             'category_id' => 'required|string|exists:category,id',
             'description' => 'required',
             'answer' => 'required',
-            'video' => 'nullable',
+            'video' => 'required',
             'photo' => 'required',
             'photo2' => 'required',
 
@@ -131,6 +215,7 @@ class QuestionController extends Controller
         //     'photo' => 'required',
         //     // 'user_id' => 'required|exists:user,id',
         // ]);
+
 
         Question::create([
             'questionName' => $request['questionName'],
@@ -158,12 +243,12 @@ class QuestionController extends Controller
 
         // return redirect()->url('/questions/list_question')->with('Success', '');
         return redirect('/questions/list_question')->with('success', 'question modifier');
-
     }
 
 
     public function createQuestions()
     {
+        $questions = Question::all();
         $categories = Category::all();
         return view('questions.add_question', compact('categories'));
     }
@@ -174,22 +259,6 @@ class QuestionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function sowQuestions($id)
-    {
-        $questions = Question::find($id);
-        return view('questions.show_question',compact('questions'));
-// Retrieving a question by its ID
-
-        // $question = Question::find($id);
-        // Retrieving a question by its ID
-        $question = Question::with('user')->find($id);
-        $answers = $question->answers;
-        $photo = $question->photo;
-        $video = $question->video;
-        // Accessing the user who created the question
-        $user = $question->user;
-        return view('questions.show_question', compact($question, $answers, $photo, $video, $user));
-    }
 
     /**
      * Show the form for editing the specified resource.

@@ -56,11 +56,11 @@ class User extends Authenticatable implements AuthenticatableContract
 
         return $this->belongsTo(Role::class);
     }
-    
-    public function Question()
+
+    public function Users()
     {
 
-        return $this->hasMany(Question::class);
+        return $this->hasMany(User::class , 'role_id');
     }
 
 

@@ -12,7 +12,7 @@
         </nav>
 
     </div>
-    <div class="container-fluid mt-2">
+    <div class="container-fluid mt-2 py-4">
         <div class="row">
             <div class="col-12">
 
@@ -32,7 +32,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form action="{{ url('/users/filter') }}" method="GET">
+                        {{-- <form action="{{ url('/users/filter') }}" method="GET"> --}}
 
                             <div class="filter-bar d-flex justify-content-between bg-light " id="filter-bar"
                                 style="padding-top: 10px; padding-bottom:10px; border-raduis:0;">
@@ -77,96 +77,89 @@
                                             </option>
                                         @endforeach
                                     </select>
-
                                 </div>
-                                {{-- <div class="search ">
-                                    <form class="search-form d-flex" action="{{ route('users.total') }}" method="GET">
-                                        <input class="search-input filtered" type="search" id="myinpu" name="search"
-                                            placeholder="Recherche..." aria-label="Search">
+                                <div class="search">
+                                    <form class="search-form d-flex" action="/search_user" method="GET">
+                                        <div class="input-group">
+                                            <input class="search-input filtered" type="search" id="myinpu" name="search"
+                                                placeholder="Recherche..." aria-label="Search"
+                                                value="{{ isset($search) ? $search : '' }}">
+                                            <button type="submit" class="btn btn-primary" id="myinpu" style="width: 10vh;"><i
+                                                    class="bi bi-search text-white"></i></button>
+                                        </div>
                                     </form>
-                                </div> --}}
+                                </div>
                             </div>
+                        {{-- </form> --}}
+                    </div>
 
-                        </form>
-                        <div>
-                            <table id="example" class="table table-striped table-hover text-center" style="width:100%">
-                                <thead class="table-dark">
-                                    <tr class="">
-                                        <th>#</th>
-                                        <th>Nom</th>
-                                        <th>Prenom</th>
-                                        <th>Genre</th>
-                                        <th>Email</th>
-                                        <th>Telephone</th>
-                                        <th>Role</th>
-                                        <th>Statut</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
+                    <div>
+                        <table id="example" class="table table-striped table-hover text-center" style="width:100%">
+                            <thead class="table-dark">
+                                <tr class="">
+                                    <th>#</th>
+                                    <th>Nom</th>
+                                    <th>Prenom</th>
+                                    <th>Genre</th>
+                                    <th>Email</th>
+                                    <th>Telephone</th>
+                                    <th>Role</th>
+                                    <th>Statut</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @php
+                                    $i = 0;
+                                @endphp
+                                @foreach ($users as $user)
                                     @php
-                                        $i = 0;
+                                        $i++;
                                     @endphp
-                                    @foreach ($users as $user)
-                                        @php
-                                            $i++;
-                                        @endphp
-                                        <tr>
-                                            <td>{{ $i }}</td>
-                                            <td>{{ $user->firstName }}</td>
-                                            <td>{{ $user->lastName }}</td>
-                                            <td>{{ $user->gender }}</td>
-                                            <td>{{ $user->email }}</td>
-                                            <td>{{ $user->phoneNumber }}</td>
-                                            <td>{{ $user->role_name }}</td>
-                                            <td>
-                                                @if ($user->status == 0)
-                                                    <span class="badge rounded-0 bg-danger">Désactivé</span>
-                                                @else
-                                                    <span class="badge rounded-0 bg-success">Activé</span>
-                                                @endif
-                                            </td>
-                                            <td class="d-flex justify-content-center ">
-                                                <a href="{{ url('/users/update/' . $user->id) }}" id="mybutton"
-                                                    title="Modifier" class="btn btn-warning">
-                                                    <i class="fas fa-edit btn-sm text-white"></i>
+                                    <tr>
+                                        <td>{{ $i }}</td>
+                                        <td>{{ $user->firstName }}</td>
+                                        <td>{{ $user->lastName }}</td>
+                                        <td>{{ $user->gender }}</td>
+                                        <td>{{ $user->email }}</td>
+                                        <td>{{ $user->phoneNumber }}</td>
+                                        <td>{{ $user->role->role_name }}</td>
+                                        <td>
+                                            @if ($user->status == 0)
+                                                <span class="badge rounded-0 bg-danger">Désactivé</span>
+                                            @else
+                                                <span class="badge rounded-0 bg-success">Activé</span>
+                                            @endif
+                                        </td>
+                                        <td class="d-flex justify-content-center ">
+                                            <a href="{{ url('/users/update/' . $user->id) }}" id="mybutton"
+                                                title="Modifier" class="btn btn-warning">
+                                                <i class="fas fa-edit btn-sm text-white"></i>
+                                            </a>
+                                            <form method="POST">
+                                                <a class="btn btn-primary mx-2" id="mybutton" title="Voir plus"
+                                                    href="{{ url('/users/show_user/' . $user->id) }}"style="text-decoration: 0;color:black;">
+                                                    <i class="fas fa-eye btn-sm text-white"></i>
                                                 </a>
-                                                <form method="POST">
-                                                    <a class="btn btn-primary mx-2" id="mybutton" title="Voir plus"
-                                                        href="{{ url('/users/show_user/' . $user->id) }}"style="text-decoration: 0;color:black;">
-                                                        <i class="fas fa-eye btn-sm text-white"></i>
-                                                    </a>
-                                                </form>
+                                            </form>
 
-                                                @if ($user->status == 1)
-                                                    <a href="{{ route('status', $user->id) }}"
-                                                        class="btn btn-danger btn-sm" id="span">Désactivé</a>
-                                                @else
-                                                    <a href="{{ route('status', $user->id) }}"
-                                                        class="btn btn-success" id="span">Activé</a>
-                                                @endif
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                            <div id="pagination">
-                                {{ $users->links() }}
-                            </div>
-                            {{-- <nav aria-label="Page navigation example">
-                                <ul class="pagination justify-content-end">
-                                  <li class="page-item disabled">
-                                    <a class="page-link">Previous</a>
-                                  </li>
-                                  <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                  <li class="page-item">
-                                    <a class="page-link" href="#">Next</a>
-                                  </li>
-                                </ul>
-                              </nav> --}}
-                            <div id="results"></div>
+                                            @if ($user->status == 1)
+                                                <a href="{{ route('status', $user->id) }}" class="btn btn-danger btn-sm"
+                                                    id="span">Désactivé</a>
+                                            @else
+                                                <a href="{{ route('status', $user->id) }}" class="btn btn-success"
+                                                    id="span">Activé</a>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+
+                        <div class="d-flex justify-content-end">
+                            {{ $users->links() }}
+                        </div>
+                        {{-- <div id="results"></div>
 
                             <script>
                                 $(document).ready(function() {
@@ -212,19 +205,12 @@
                                         fetchResults(query, page);
                                     });
                                 });
-                            </script>
-                            </body>
+                            </script> --}}
 
-                            </html>
-
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    </div>
 @endsection
-{{-- </body>
-
-</html> --}}
-{{-- <button id="myButton" class="btn btn-sm btn-success switch-button">Activer</button> --}}

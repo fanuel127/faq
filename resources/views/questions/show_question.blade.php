@@ -45,6 +45,8 @@
                                                 @endif
                                             </b>
                                         </h3>
+                                        {{-- </marquee>
+                                    <marquee behavior="scroll" direction="left" scrollamount="10"> --}}
                                         <h3 class="mx-3">
                                             <b>
                                                 @if ($questions->photo2)

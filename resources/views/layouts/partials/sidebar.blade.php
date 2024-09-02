@@ -1,8 +1,5 @@
 @if (Auth::user()->role->role_name == 'Admin')
-    <div class="d-flex" id="wrapper">
-
-        <!-- sidebar starts here -->
-
+    <div class="d-flex h-100" id="wrapper">
         <div class="bg-secondary" id="sidebar-wrapper">
 
             <div class="sidebar-heading text-center py-4 success-text fs-4 fw-bold text-uppercase">
@@ -11,7 +8,7 @@
 
             <div class="sidebar-heading text-center py-3 success-text fs-4 fw-bold text-uppercase">
                 <marquee>
-                    <h4 id="liens"><i class="bi bi-shield-lock-fill text-warning me-2 fs-2">Admin</i></h4>
+                    <h4 id="liens"><i class="bi bi-shield-lock-fill text-warning me-2">Admin</i></h4>
                 </marquee>
             </div>
 
@@ -84,35 +81,33 @@
             </div>
 
             <div class="sidebar">
-                <div class="fixed-bottom mb-4">
-                    <a class="text-white" href="{{ route('logout') }}"
-                        onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                       <h4 class="ms-3"> <i class="fas fa-project-diagram me-2 text-danger"></i> {{ __('Deconnexion') }} </h4>
-                    </a>
 
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        @csrf
-                    </form>
+                        <a class="text-white" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                            <h5 class="ms-3"><i class="fas fa-project-diagram me-2 text-warning"></i>{{ __('Deconnexion') }}</h5>
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
                 </div>
             </div>
 
         </div>
     </div>
 @else
-    <div class="d-flex" id="wrapper">
-
-        <!-- sidebar starts here -->
-
+    <div class="d-flex h-100" id="wrapper">
         <div class="bg-secondary" id="sidebar-wrapper">
 
             <div class="sidebar-heading text-center py-4 success-text fs-4 fw-bold text-uppercase">
                 <i class="fas fa-user-secret me-2 fs-2"> <a href="{{ url('/dashboard') }}" id="liens">AllFAQ</a></i>
+
             </div>
 
             <div class="sidebar-heading text-center py-3 success-text fs-4 fw-bold text-uppercase">
                 <marquee>
-                    <h4 id="liens"><i class="bi bi-person-fill text-warning me-2 fs-2">Gestionnaire</i></h4>
+                    <h4 id="liens"><i class="bi bi-person-fill text-warning me-2">Gestionnaire</i></h4>
                 </marquee>
             </div>
 
@@ -158,15 +153,16 @@
 
             <div class="sidebar">
                 <div class="fixed-bottom mb-4">
-                    <a class="text-white" href="{{ route('logout') }}"
-                        onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                       <h4 class="ms-3"> <i class="fas fa-project-diagram me-2 text-danger"></i> {{ __('Deconnexion') }} </h4>
-                    </a>
 
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        @csrf
-                    </form>
+                        <a class="text-white text-warning" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                            <h5 class="ms-3"><i class="fas fa-project-diagram me-2 text-warning"></i>{{ __('Deconnexion') }}</h5>
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
                 </div>
             </div>
 
