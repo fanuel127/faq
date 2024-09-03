@@ -35,8 +35,6 @@ Route::post('/test', [TestController::class, 'store'])->name('Tests.store');
 Route::get('/test/show/{id}', [TestController::class, 'show'])->name('Tests.show');
 
 Route::get('/question', [QuestionController::class, 'indexQuestion'])->name('question.index');
-
-// Route::put('/test/{id}/edit', [TestController::class, 'edit'])->name('Test.edit');
 Route::put('/test/edit', [TestController::class, 'update'])->name('Tests.edit');
 
 //route view test
