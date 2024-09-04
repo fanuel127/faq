@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Question;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use Illuminate\Support\Facades\Log;
 use App\Models\Question;
 
 
@@ -17,11 +18,12 @@ class QuestionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function indexQuestions()
+    public function indexQuestions(Request $request)
     {
         // $questions = Question::paginate(10);
         // return view ('questions.list_question')->with('questions', $questions);
 
+        $categories = Category::all();
         $questions = Question::join('category', 'questions.category_id', '=', 'category.id')
             ->select(
                 'questions.category_id',
@@ -38,10 +40,32 @@ class QuestionController extends Controller
             )
 
             ->orderBy('questions.questionName', 'asc')->paginate(6);
-        //  ->get();
-        return view('questions.list_question', compact('questions', $questions,'categories'));
+        $query = Question::query();
+
+        // Filtre par catégorie
+        if ($request->filled('category_id')) {
+            $query->where('category_id', $request->input('category_id'));
+        }
+
+        // Gestion du tri
+        if ($request->filled('sortField') && $request->filled('sortOrder')) {
+            $sortField = $request->input('sortField'); // 'questionName' par exemple
+            $sortOrder = $request->input('sortOrder'); // 'asc' ou 'desc'
+
+            if ($sortField === 'questionName') {
+                $query->orderBy('questionName', $sortOrder); // Assurez-vous que le champ est correct
+            }
+        }
+
+        // Récupérez les questions filtrées
+        $questions = $query->paginate(10);
+
+        $totalQuestion = Question::count();
+
+        // ->get();
+        return view('questions.list_question', compact('questions', $questions, 'categories','totalQuestion'));
     }
-    public function indexQuestionsclient()
+    public function indexQuestionsclient(Request $request)
     {
         // $questions = Question::paginate(10);
         // return view ('questions.list_question')->with('questions', $questions);
@@ -60,9 +84,17 @@ class QuestionController extends Controller
                 'questions.created_at',
                 'category.name'
             )
-            ->orderBy('questions.questionName', 'asc')->paginate(8);
+            ->orderBy('questions.questionName', 'asc');
+            $query = Question::query();
+
+            // Filtre par catégorie
+            if ($request->filled('category_id')) {
+                $query->where('category_id', $request->input('category_id'));
+            }
         // ->get();
-        return view('client.question_list', compact('questions', $questions,'categories'));
+        $questions = $query->paginate(8);
+
+        return view('client.question_list', compact('questions', $questions, 'categories'));
     }
 
     public function showQuestions($id)
@@ -88,7 +120,7 @@ class QuestionController extends Controller
             ->orderBy('questions.questionName', 'asc')
             ->where('questions.id', $id)
             ->first();
-        return view('questions.show_question', compact('questions', $questions,'categories'));
+        return view('questions.show_question', compact('questions', $questions, 'categories'));
     }
     public function showQuestionsclient($id)
     {
@@ -116,33 +148,50 @@ class QuestionController extends Controller
 
     public function totalQuestions(Request $request)
     {
-        $questions = Question::all();
 
-        if ($request->has('search')) {
-            $questions = $questions->filter(function ($question) use ($request) {
-                return stripos($question->questionName, $request->input('search')) !== false
-                    || stripos($question->description, $request->input('search')) !== false
-                    || stripos($question->name, $request->input('search')) !== false;
-            });
-        }
-
-        $questionsCount = $questions->count();
-        if ($request->has('search')) {
-            $questions = $questions->filter(function ($question) use ($request) {
-                return stripos($question->questionName, $request->input('search')) !== false
-                    || stripos($question->description, $request->input('search')) !== false
-                    || stripos($question->name, $request->input('search')) !== false;
-            });
-        }
-
-        if ($request->has('sort') && $request->input('sort') === 'asc') {
-            $questions = $questions->sortBy('questionName');
-        } elseif ($request->has('sort') && $request->input('sort') === 'desc') {
-            $questions = $questions->sortByDesc('questionName');
-        }
         $categories = Category::all();
+        $query = Question::query();
 
-        return view('questions.list_question', compact('questions', 'questionsCount', $questions));
+        // Filtre par catégorie
+        if ($request->filled('category_id')) {
+            $query->where('category_id', $request->input('category_id'));
+        }
+
+        // Gestion du tri
+        if ($request->filled('sortField') && $request->filled('sortOrder')) {
+            $sortField = $request->input('sortField'); // 'questionName' par exemple
+            $sortOrder = $request->input('sortOrder'); // 'asc' ou 'desc'
+
+            if ($sortField === 'questionName') {
+                $query->orderBy('questionName', $sortOrder); // Assurez-vous que le champ est correct
+            }
+        }
+
+        // Récupérez les questions filtrées
+        $questions = $query->paginate(10);
+
+        $totalQuestion = Question::count();
+
+        return view('questions.list_question', compact('questions', 'categories','totalQuestion'));
+    }
+
+    public function totalQuestionsclient(Request $request)
+    {
+
+        $categories = Category::all();
+        $query = Question::query();
+
+        // Filtre par catégorie
+        if ($request->filled('category_id')) {
+            $query->where('category_id', $request->input('category_id'));
+        }
+
+        // Récupérez les questions filtrées
+        $questions = $query->paginate(8);
+
+        $totalQuestion = Question::count();
+
+        return view('client.question_list', compact('questions', 'categories','totalQuestion'));
     }
 
     public function listCategoryQuestion()
@@ -157,6 +206,8 @@ class QuestionController extends Controller
 
         $categories = Category::all();
 
+        $totalQuestion = Question::count();
+
         $questions = Question::query()
             ->where('questionName', 'like', "%$search%")
             ->orWhere('description', 'like', "%$search%")
@@ -164,13 +215,13 @@ class QuestionController extends Controller
             ->orWhereHas('category', function ($query) use ($search) {
                 $query->where('name', 'like', "%$search%");
             })
-            ->paginate(6); // Utilisez paginate si vous souhaitez paginer les résultats
+            ->paginate(10); // Utilisez paginate si vous souhaitez paginer les résultats
 
-        return view('questions.list_question', compact('questions', 'search','categories'));
+        return view('questions.list_question', compact('questions', 'search', 'categories','totalQuestion'));
     }
     public function searchQuestionsclient(Request $request)
     {
-        $search = $request->input('search');
+        $search = $request->input('search_client_question');
 
         $categories = Category::all();
 
@@ -183,7 +234,7 @@ class QuestionController extends Controller
             })
             ->paginate(8); // Utilisez paginate si vous souhaitez paginer les résultats
 
-        return view('client.question_list', compact('questions', 'search','categories'));
+        return view('client.question_list', compact('questions', 'search', 'categories'));
     }
 
 
@@ -227,7 +278,7 @@ class QuestionController extends Controller
             'video' =>  $request['video'],
         ]);
 
-        return redirect(url('questions/list_question'))->with('success', 'Questions Ajouter!');
+        return redirect(url('questions/add_question'))->with('Success', 'Question Ajoutée !');
     }
 
     public function updateQuestions($id, Request $request)
@@ -242,7 +293,7 @@ class QuestionController extends Controller
         Question::whereId($id)->update($data);
 
         // return redirect()->url('/questions/list_question')->with('Success', '');
-        return redirect('/questions/list_question')->with('success', 'question modifier');
+        return redirect('/questions/list_question')->with('success', 'question modifiée');
     }
 
 

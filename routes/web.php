@@ -28,6 +28,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/page_php/page', function () {
+    return view('page_php.page');
+});
+
 //route controller test
 Route::get('/test', [TestController::class, 'index'])->name('Tests.index');
 Route::get('/test/create', [TestController::class, 'create'])->name('Tests.create');
@@ -95,10 +99,22 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::post('/update/password', [UserController::class, 'updatePassword'])->name('update.password');
 
 
+// Route::middleware(['role:0'])->group(function () {
+
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+    Route::get('/login', [LoginController::class, 'showLoginForm'])->name('showlogin');
+    Route::post('/login', [LoginController::class, 'login'])->name('login');
+
+    //profile
+    // Route::post('/update/password', 'UserController@updatePassword')->name('update.password');
+    Route::post('/update/password', [UserController::class, 'updatePassword'])->name('update.password');
 
 
-// Route::middleware(['role:Admin'])->group(function () {
+    Route::get('/users/profile_user', function () {
+        return view('users.profile_user');
+    });
 
+    // Route::resource("/user", UserController::class);
 
     // // Auth: routes();
     Route::get('/dashboard', function () {
@@ -112,12 +128,6 @@ Route::post('/update/password', [UserController::class, 'updatePassword'])->name
     Route::get('/user/add_user', function () {
         return view('users.add_user');
     });
-
-    Route::get('/users/profile_user', function () {
-        return view('users.profile_user');
-    });
-
-    Route::resource("/user", UserController::class);
 
     Route::get('/users/edit_user', function () {
         return view('users.edit_user');
@@ -173,6 +183,18 @@ Route::post('/update/password', [UserController::class, 'updatePassword'])->name
     Route::get('/users/filter', [UserController::class, 'filter'])->name('users.filter');
     Route::get('/search_user', [UserController::class, 'search']);
 
+    //Route pour les questions
+    Route::post('/questions/list_question', [QuestionController::class, 'storeQuestions'])->name('questions.store');
+    Route::get('/list_question', [QuestionController::class, 'indexQuestions'])->name('questions.list_question');
+    Route::get('/client/question_list', [QuestionController::class, 'indexQuestionsclient'])->name('client.question_list');
+    Route::put('/questions/edit_question/{id}', [QuestionController::class, 'updateQuestions'])->name('questions.update');
+    Route::get('/questions/update/{id}', [QuestionController::class, 'editQuestions'])->name('questions.edit_question');
+    Route::get('/questions/show_question/{id}', [QuestionController::class, 'showQuestions'])->name('questions.show_question');
+    Route::get('/questions/list_question/{id}', [QuestionController::class, 'totalQuestions'])->name('questions.total');
+    Route::get('/client/question_list/{id}', [QuestionController::class, 'totalQuestionsclient'])->name('questions.total_client');
+    Route::get('/search', [QuestionController::class, 'search']);
+    Route::get('/client/question_list/search', [QuestionController::class, 'searchQuestionsclient']);
+
     // Routes for Users
     Route::group(['prefix' => 'users', 'as' => 'users.'], function () {
         Route::get('/list_user', [UserController::class, 'filter'])->name('users.list_user');
@@ -184,23 +206,6 @@ Route::post('/update/password', [UserController::class, 'updatePassword'])->name
 
     });
 
-
-
-    //Route pour les questions coté client
-    Route::get('/client/question_list', [QuestionController::class, 'indexQuestionsclient'])->name('client.question_list');
-    Route::get('/client/question_detail/{id}', [QuestionController::class, 'showQuestionsclient'])->name('client.question_detail');
-
-
-    //Route pour les questions
-    Route::post('/questions/list_question', [QuestionController::class, 'storeQuestions'])->name('questions.store');
-    Route::get('/list_question', [QuestionController::class, 'indexQuestions'])->name('questions.list_question');
-    Route::put('/questions/edit_question/{id}', [QuestionController::class, 'updateQuestions'])->name('questions.update');
-    Route::get('/questions/update/{id}', [QuestionController::class, 'editQuestions'])->name('questions.edit_question');
-    Route::get('/questions/show_question/{id}', [QuestionController::class, 'showQuestions'])->name('questions.show_question');
-    Route::get('/questions/list_question/{id}', [QuestionController::class, 'totalQuestions'])->name('questions.total');
-    Route::get('/search', [QuestionController::class, 'search']);
-    Route::get('/client/question_list/search', [QuestionController::class, 'searchQuestionsclient']);
-
     // routes for questions
     Route::group(['prefix' => 'questions', 'as' => 'questions.'], function () {
         Route::get('/list_question', [QuestionController::class, 'indexQuestions'])->name('questions.list_question');
@@ -210,7 +215,93 @@ Route::post('/update/password', [UserController::class, 'updatePassword'])->name
         Route::put('/{question}/edit_question', [QuestionController::class, 'editQuestions'])->name('edit');
     });
 
+
+    //Route pour les questions coté client
+    Route::get('/client/question_list', [QuestionController::class, 'indexQuestionsclient'])->name('client.question_list');
+    Route::get('/client/question_detail/{id}', [QuestionController::class, 'showQuestionsclient'])->name('client.question_detail');
+
+
+
+
     Auth::routes();
 
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// });
+
+// Route::middleware(['role:1'])->group(function () {
+
+//     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+//     Route::get('/login', [LoginController::class, 'showLoginForm'])->name('showlogin');
+//     Route::post('/login', [LoginController::class, 'login'])->name('login');
+
+//     //profile
+//     // Route::post('/update/password', 'UserController@updatePassword')->name('update.password');
+//     Route::post('/update/password', [UserController::class, 'updatePassword'])->name('update.password');
+
+//     Route::get('/dashboard', function () {
+//         return view('admin.dashboard');
+//     })->middleware('auth');
+
+//     Route::get('/dashboard', function () {
+//         return view('admin.dashboard');
+//     })->name('admin.dashboard');
+
+//     Route::get('/users/profile_user', function () {
+//         return view('users.profile_user');
+//     });
+
+//     //route pour les pages des clients
+//     Route::get('/client/question_list', function () {
+//         return view('client.question_list');
+//     });
+//     Route::get('/client/question_detail', function () {
+//         return view('client.question_detail');
+//     });
+
+//     Route::get('/dashboard', [UserController::class, 'nombre'])->name('users.nombre');
+
+//     //Route pour les questions coté client
+//     Route::get('/client/question_list', [QuestionController::class, 'indexQuestionsclient'])->name('client.question_list');
+//     Route::get('/client/question_detail/{id}', [QuestionController::class, 'showQuestionsclient'])->name('client.question_detail');
+
+//     Route::get('/users/profile_user/{id}', [UserController::class, 'profil'])->name('users.profile_user');
+//     Route::post('/update/password', [UserController::class, 'updatePassword'])->name('update.password');
+
+
+//     Route::get('/questions/add_question', function () {
+//         return view('questions.add_question');
+//     });
+
+//     Route::get('/questions/list_question', function () {
+//         return view('questions.list_question');
+//     });
+
+//     Route::get('/questions/edit_question', function () {
+//         return view('questions.edit_question');
+//     });
+
+//     Route::get('/questions/show_question', function () {
+//         return view('questions.show_question');
+//     });
+
+//     //Route pour les questions
+//     Route::post('/questions/list_question', [QuestionController::class, 'storeQuestions'])->name('questions.store');
+//     Route::get('/list_question', [QuestionController::class, 'indexQuestions'])->name('questions.list_question');
+//     Route::put('/questions/edit_question/{id}', [QuestionController::class, 'updateQuestions'])->name('questions.update');
+//     Route::get('/questions/update/{id}', [QuestionController::class, 'editQuestions'])->name('questions.edit_question');
+//     Route::get('/questions/show_question/{id}', [QuestionController::class, 'showQuestions'])->name('questions.show_question');
+//     Route::get('/questions/list_question', [QuestionController::class, 'totalQuestions'])->name('questions.total');
+//     Route::get('/search', [QuestionController::class, 'search']);
+//     Route::get('/client/question_list/search', [QuestionController::class, 'searchQuestionsclient']);
+
+//     // routes for questions
+//     Route::group(['prefix' => 'questions', 'as' => 'questions.'], function () {
+//         Route::get('/list_question', [QuestionController::class, 'indexQuestions'])->name('questions.list_question');
+//         Route::get('/add_question', [QuestionController::class, 'createQuestions'])->name('add_question');
+//         // Route::post('/', [QuestionController::class, 'storeQuestion'])->name('questions.store');
+//         Route::get('/questions/show_question/{id}', [QuestionController::class, 'showQuestions'])->name('show_question');
+//         Route::put('/{question}/edit_question', [QuestionController::class, 'editQuestions'])->name('edit');
+//     });
+
+//     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // });

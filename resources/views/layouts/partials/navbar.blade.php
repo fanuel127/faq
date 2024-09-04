@@ -35,16 +35,52 @@
                     <div class="dropdown-menu dropdown-menu-end rounded-0" aria-labelledby="navbarDropdown">
                         <a href="{{ url('/users/profile_user') }}" class="dropdown-item">Profile</a>
 
-                        <a class="dropdown-item" href="{{ route('logout') }}"
-                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                        <a class="dropdown-item" href="{{ route('logout') }}" id="logoutButtons"
+                            onclick="event.preventDefault();">
                             {{ __('Deconnexion') }}
                         </a>
 
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        <form id="logoutForm" action="{{ route('logout') }}" method="POST" class="d-none">
                             @csrf
                         </form>
+                        <script>
+                            document.getElementById('logoutButtons').addEventListener('click', function(event) {
+                                event.preventDefault(); // Empêche le comportement par défaut
+                                Swal.fire({
+                                    icon: 'warning',
+                                    title: 'Confirmation de déconnexion',
+                                    text: 'Voulez-vous vraiment vous déconnecter ?',
+                                    showDenyButton: true,
+                                    // showCancelButton: true,
+                                    denyButtonText: 'Non',
+                                    confirmButtonText: 'Oui',
+                                    customClass: {
+                                        actions: 'my-actions',
+                                        // cancelButton: 'order-1 right-gap btn1',
+                                        denyButton: 'order-2 btn1 right-gap',
+                                        confirmButton: 'order-3 btn1',
+                                    },
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        document.getElementById('logoutForm').submit();
+                                        Swal.fire({
+                                            icon: 'success',
+                                            title: 'Déconnecté !',
+                                            text: "{{ session('status') }}",
+                                            showConfirmButton: false,
+                                            timer: 2000
+                                        });
+                                    } else if (result.isDenied) {
+                                        Swal.fire(
+                                            'Vous êtes toujours connecté.', '', 'info'
+                                        )
+                                    }
+                                })
+                            });
+                        </script>
+
                     </div>
+
                 </li>
             @endguest
             </li>

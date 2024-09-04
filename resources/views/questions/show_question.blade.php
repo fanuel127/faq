@@ -57,8 +57,8 @@
                                     </div>
                                 </marquee>
                             </div>
-                            <div class="col-md-5">
-                                <div class="mt-3">
+                            <div class="col-md-5 h-100">
+                                <div class="mt-3 h-100">
                                     <div class="card rounded-0">
                                         <div class="card-header text-white bg-warning">
                                             <h5> Nom de la question : </h5>

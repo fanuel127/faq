@@ -13,6 +13,34 @@
             </ul>
         @endif
     </div>
+    @if (session('success'))
+        <script>
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-right',
+                iconColor: 'white',
+                customClass: {
+                    popup: 'colored-toast',
+                },
+                showConfirmButton: false,
+                timer: 1400,
+                timerProgressBar: true,
+            })
+            Toast.fire({
+                icon: 'success',
+                title: "{{ session('success') }}",
+            });
+            // Swal.fire({
+            //     icon: "success",
+            //     title: "Wow...",
+            //     text: "{{ session('success') }}",
+            //     timer: 2300
+            // });
+        </script>
+        {{-- <div class="alert alert-success">
+            <i class="bi bi-check-circle-fill me-2 text-success"></i>{{ session('success') }}
+        </div> --}}
+    @endif
     <section class="gradient-custom">
         <div class="d-flex justify-content-between">
             <h4>Gestions des utilisateurs</h4>

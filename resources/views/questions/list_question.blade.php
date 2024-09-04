@@ -1,6 +1,31 @@
 @extends('layouts.admin')
 
 @section('content')
+    @if (session('success'))
+        <script>
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-right',
+                iconColor: 'white',
+                customClass: {
+                    popup: 'colored-toast',
+                },
+                showConfirmButton: false,
+                timer: 1500,
+                timerProgressBar: true,
+            })
+            Toast.fire({
+                icon: 'success',
+                title: "{{ session('success') }}",
+            });
+            // Swal.fire({
+            //     icon: "Success",
+            //     title: "Wow...",
+            //     text: "{{ session('Success') }}",
+            //     timer: 2500
+            // });
+        </script>
+    @endif
     <div style="display:flex; justify-content:space-between;margin: 30px;">
         <h4>Gestions des questions</h4>
         <nav aria-label="breadcrumb">
@@ -22,6 +47,9 @@
                             <div class="d-flex justify-content-between ">
                                 <h4 class="text-center text-light  pt-3"><i
                                         class="bi bi-list-ul text-warning me-2"></i>Liste des questions</h4>
+                                <div>
+                                    <h4 class="text-white pt-3"> Totale Questions : {{ $totalQuestion }}</h4>
+                                </div>
                                 <a href="{{ url('/questions/add_question') }}" id="mybutton"
                                     class="btn btn-warning pt-2 mt-2 text-center rounded-0">
                                     <i class="fas fa-plus"></i>
@@ -31,62 +59,63 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        {{-- <form action="{{ url('/questions/list_question/{id}') }}" method="GET"> --}}
-                            <div class="filter-bar d-flex justify-content-between bg-light mt-2 mb-3 rounded-0"
-                                id="filter-bar" style="padding-top: 10px; padding-bottom:10px;">
-                                <div class="order">
-                                    <label for="myinputs">Trie par..</label>
-                                    <select class="filtered" name="sort" id="myinputs">
-                                        <option value="" selected>--</option>
-                                        <option value="asc">Ordre croissant</option>
-                                        <option value="desc">Ordre decroissant</option>
-                                    </select>
-                                </div>
-                                <div class="sort">
-                                    <label for="myinputs">De..</label>
-                                    <select class="filtered" name="sort" id="myinputs">
-                                        <option value="" selected desabled>--</option>
-                                        <option value="questionName">Nom</option>
-                                    </select>
-                                </div>
-                                <div class="name">
-                                    <label for="myinputs">categorie..</label>
-                                    <select class="filtered" name="mame" id="myinputs">
-                                        <option value="" selected>--</option>
-                                        @foreach ($categories as $category)
-                                            <option value="{{ $category->id }}">{{ $category->name }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="search">
-                                    <form class="search-form d-flex" action="/search" method="GET">
-                                        <div class="input-group">
-                                            <input class="search-input filtered" type="search" id="myinpu" name="search"
-                                            placeholder="Recherche..." aria-label="Search" value="{{ isset($search) ? $search : '' }}">
-                                            <button type="submit" class="btn btn-primary" id="myinpu" style="width: 10vh;"><i class="bi bi-search"></i></button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        {{-- </form> --}}
-                        {{-- <div class="search mt-3 mb-2 filter-bar d-flex justify-content-end bg-light">
-                            <form class="search-form d-flex" action="/search" method="GET">
-                                <div class="input-group">
-                                    <input class="search-input filtered" type="search" id="myinpu" name="search"
-                                    placeholder="Recherche..." aria-label="Search" value="{{ isset($search) ? $search : '' }}">
-                                    <button type="submit" class="btn btn-primary" id="myinpu" style="width: 10vh;"><i class="bi bi-search"></i></button>
+                        <div class="d-flex justify-content-between bg-light pt-1">
+                            <form action="{{ url('/questions/list_question') }}" method="GET">
+                                <div class="filter-bar d-flex justify-content-between bg-light mt-2 mb-3 rounded-0"
+                                    id="filter-bar" style="padding-top: 10px; padding-bottom:10px;">
+                                    <div class="order">
+                                        <label for="sortOrder">Trie par..</label>
+                                        <select class="filtered" name="sortOrder" id="sortOrder">
+                                            <option value="" selected>--</option>
+                                            <option value="asc">Ordre croissant</option>
+                                            <option value="desc">Ordre decroissant</option>
+                                        </select>
+                                    </div>
+                                    <div class="sort mx-4 ms-5">
+                                        <label for="sortField">De..</label>
+                                        <select class="filtered" name="sortField" id="sortField" style="width: 13vh;">
+                                            <option value="" selected desabled>--</option>
+                                            <option value="questionName">Nom</option>
+                                        </select>
+                                    </div>
+                                    <div class="name mx-3">
+                                        <label for="category_id">categorie..</label>
+                                        <select class="filtered" name="category_id" id="category_id">
+                                            <option value="" selected>--</option>
+                                            @foreach ($categories as $category)
+                                                <option value="{{ $category->id }}">{{ $category->name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="ms-4">
+                                        <button type="submit" class="btn btn-warning text-white rounded-0 btn-sm"
+                                            id="filterButton" style="width: 10vh;height:4vh;">
+                                            filtrer
+                                        </button>
+                                    </div>
                                 </div>
                             </form>
-                        </div> --}}
-                        <div class="table-responsive">
-                            <table id="example" class="table table-striped table-hover align-middle" style="width:100%">
+                            <div class="filter-bar search mt-2 mb-3">
+                                <form class="search-form d-flex" action="/search" method="GET">
+                                    <div class="input-group">
+                                        <input class="search-input form-control filtered" type="search" id="myinpu"
+                                            name="search" style="width: 50vh;" placeholder="Recherche..."
+                                            aria-label="Search" value="{{ isset($search) ? $search : '' }}">
+                                        <button type="submit" class="btn btn-primary" id="myinpu"
+                                            style="width: 10vh;"><i class="bi bi-search"></i></button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="table-responsive-xxl mt-3">
+                            <table id="example" class="table table-striped table-hover h-100 vertical-align-middle"
+                                style="width:100%; height:100%;">
                                 <thead class="table-dark">
                                     <tr>
                                         <th>#</th>
                                         <th>Nom</th>
                                         <th>Categorie</th>
-                                        <th>Description</th>
                                         <th>Solution</th>
                                         <th>Actions</th>
                                     </tr>
@@ -103,9 +132,8 @@
                                             <td>{{ $i }}</td>
                                             <td>{{ $question->questionName }}</td>
                                             <td>{{ $question->category->name }}</td>
-                                            <td>{{ $question->description }}</td>
                                             <td>{{ $question->answer }}</td>
-                                            <td class="d-flex align-middle">
+                                            <td class="d-flex vertical-align-middle">
                                                 <a href="{{ url('/questions/update/' . $question->id) }}" title="Modifier"
                                                     class="btn btn-warning rounded-0 ">
                                                     <i class="fas fa-edit "></i>
